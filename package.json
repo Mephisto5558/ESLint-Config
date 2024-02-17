@@ -1,12 +1,14 @@
 {
   "name": "@mephisto5558/eslint-config",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "description": "ESLint config file",
-  "main":".eslintrc.json",
-  "files": [".eslintrc.json"],
+  "main": ".eslintrc.json",
+  "files": [
+    ".eslintrc.json"
+  ],
   "keywords": [
     "eslint"
   ],
