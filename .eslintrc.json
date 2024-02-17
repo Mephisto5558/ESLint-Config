@@ -35,7 +35,7 @@
     "@stylistic"
   ],
   "parser": "@typescript-eslint/parser",
-  "reportUnusedDisableDirectives":true,
+  "reportUnusedDisableDirectives": true,
   "rules": {
     // [ESLint] https://eslint.org/docs/latest/rules/ | Using "warn" wherever applicable
     //  Possible Problems
@@ -94,7 +94,12 @@
     "no-sparse-arrays": "error",
     "no-template-curly-in-string": "warn",
     "no-this-before-super": "error",
-    "no-undef": "error",
+    "no-undef": [
+      "error",
+      {
+        "typeof": true
+      }
+    ],
     "no-unexpected-multiline": "warn",
     "no-unmodified-loop-condition": "warn",
     "no-unreachable": "error",
@@ -915,8 +920,8 @@
       "extends": "plugin:@typescript-eslint/recommended",
       "rules": {
         //TS-Only rules
-        "no-use-before-define": "off",
         "no-shadow": "off",
+        "no-use-before-define": "off",
         "@stylistic/member-delimiter-style": [
           "error",
           {
