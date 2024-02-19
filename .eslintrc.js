@@ -31,7 +31,8 @@ module.exports = {
     ...importJsonC('configs/@stylistic.jsonc'),
     ...importJsonC('configs/@typescript-eslint.jsonc'),
     ...importJsonC('configs/jsdoc.jsonc'),
-    ...importJsonC('configs/sonarjs.jsonc')
+    ...importJsonC('configs/sonarjs.jsonc'),
+    ...importJsonC('configs/unicorn.jsonc')
   },
   overrides: [
     {
