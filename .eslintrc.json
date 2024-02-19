@@ -7,28 +7,6 @@
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-  "ignorePatterns": [
-    "Templates/*"
-  ],
-  "globals": {
-    // promisified setTimeout
-    "sleep": "readonly",
-    "log": "readonly",
-    // [TYPES] see globals.d.ts
-    "lang": "writable",
-    "slashCommand": "writable",
-    "prefixCommand": "writable",
-    "command": "writable",
-    "commandOptions": "writable",
-    "bBoundFunction": "writable",
-    "Client": "writable",
-    "Message": "writable",
-    "Interaction": "writable",
-    "OptionalInteractionProperties": "writable",
-    "OptionalMessageProperties": "writable",
-    "GuildInteraction": "writable",
-    "DMInteraction": "writable"
-  },
   "plugins": [
     "@typescript-eslint",
     "jsdoc",
