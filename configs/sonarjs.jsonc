@@ -1,0 +1,42 @@
+{
+  // [SONARJS] https://github.com/SonarSource/eslint-plugin-sonarjs | Using "warn" wherever applicable
+  "sonarjs/cognitive-complexity": "off", // See `complexity`
+  "sonarjs/elseif-without-else": "off",
+  "sonarjs/max-switch-cases": [
+    "error",
+    30
+  ],
+  "sonarjs/no-all-duplicated-branches": "error",
+  "sonarjs/no-collapsible-if": "error",
+  "sonarjs/no-collection-size-mischeck": "error",
+  "sonarjs/no-duplicate-string": [
+    "warn",
+    {
+      "threshold": 5
+    }
+  ],
+  "sonarjs/no-duplicated-branches": "error",
+  "sonarjs/no-element-overwrite": "warn",
+  "sonarjs/no-empty-collection": "error",
+  "sonarjs/no-extra-arguments": "error",
+  "sonarjs/no-gratuitous-expressions": "error",
+  "sonarjs/no-identical-conditions": "error",
+  "sonarjs/no-identical-expressions": "error",
+  "sonarjs/no-identical-functions": "error",
+  "sonarjs/no-ignored-return": "off", // Doesn't seem to work, even with the rule's code example
+  "sonarjs/no-inverted-boolean-check": "error",
+  "sonarjs/no-nested-switch": "error",
+  "sonarjs/no-nested-template-literals": "error",
+  "sonarjs/no-one-iteration-loop": "error",
+  "sonarjs/no-redundant-boolean": "warn",
+  "sonarjs/no-same-line-conditional": "error",
+  "sonarjs/no-small-switch": "warn",
+  "sonarjs/no-unused-collection": "error",
+  "sonarjs/no-use-of-empty-return-value": "error",
+  "sonarjs/no-useless-catch": "off", // Handled by `no-useless-catch`
+  "sonarjs/non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
+  "sonarjs/prefer-immediate-return": "warn",
+  "sonarjs/prefer-object-literal": "warn",
+  "sonarjs/prefer-single-boolean-return": "error",
+  "sonarjs/prefer-while": "error"
+}
