@@ -1,0 +1,309 @@
+{
+  // [STYLISTIC] https://eslint.style/packages/default#rules
+  "@stylistic/array-bracket-newline": [
+    "error",
+    "consistent"
+  ],
+  "@stylistic/array-bracket-spacing": [
+    "error",
+    "never",
+    {
+      "singleValue": false,
+      "objectsInArrays": false,
+      "arraysInArrays": false
+    }
+  ],
+  "@stylistic/array-element-newline": "off",
+  "@stylistic/arrow-parens": [
+    "error",
+    "as-needed",
+    {
+      "requireForBlockBody": false
+    }
+  ],
+  "@stylistic/arrow-spacing": [
+    "error",
+    {
+      "before": true,
+      "after": true
+    }
+  ],
+  "@stylistic/block-spacing": [
+    "error",
+    "always"
+  ],
+  "@stylistic/brace-style": [
+    "error",
+    "stroustrup",
+    {
+      "allowSingleLine": true
+    }
+  ],
+  "@stylistic/comma-dangle": [
+    "error",
+    "never"
+  ],
+  "@stylistic/comma-spacing": [
+    "error",
+    {
+      "before": false,
+      "after": true
+    }
+  ],
+  "@stylistic/comma-style": [
+    "error",
+    "last"
+  ],
+  "@stylistic/computed-property-spacing": [
+    "error",
+    "never"
+  ],
+  "@stylistic/dot-location": [
+    "error",
+    "property"
+  ],
+  "@stylistic/eol-last": [
+    "error",
+    "never"
+  ],
+  "@stylistic/function-call-argument-newline": "off",
+  "@stylistic/function-call-spacing": [
+    "error",
+    "never"
+  ],
+  "@stylistic/function-paren-newline": [
+    "error",
+    "consistent"
+  ],
+  "@stylistic/generator-star-spacing": [
+    "error",
+    {
+      "before": false,
+      "after": true,
+      "anonymous": {
+        "before": false,
+        "after": false
+      }
+    }
+  ],
+  "@stylistic/implicit-arrow-linebreak": [
+    "error",
+    "beside"
+  ],
+  "@stylistic/indent": [
+    "error",
+    2,
+    {
+      "SwitchCase": 1
+    }
+  ],
+  "@stylistic/indent-binary-ops": [
+    "error",
+    2
+  ],
+  "@stylistic/key-spacing": [
+    "error",
+    {
+      "beforeColon": false,
+      "afterColon": true,
+      "mode": "strict"
+    }
+  ],
+  "@stylistic/keyword-spacing": [
+    "error",
+    {
+      "before": true,
+      "after": true
+    }
+  ],
+  "@stylistic/linebreak-style": "off",
+  "@stylistic/lines-around-comment": [
+    "error",
+    {
+      "beforeBlockComment": true,
+      "allowBlockStart": true,
+      "allowObjectStart": true,
+      "allowArrayStart": true,
+      "allowClassStart": true
+    }
+  ],
+  "@stylistic/lines-between-class-members": [
+    "error",
+    "always",
+    {
+      "exceptAfterSingleLine": true
+    }
+  ],
+  "@stylistic/max-len": [
+    "error",
+    200
+  ],
+  "@stylistic/max-statements-per-line": "off",
+  "@stylistic/multiline-ternary": [
+    "error",
+    "always-multiline"
+  ],
+  "@stylistic/new-parens": [
+    "error",
+    "always"
+  ],
+  "@stylistic/newline-per-chained-call": [
+    "error",
+    {
+      "ignoreChainWithDepth": 3
+    }
+  ],
+  "@stylistic/no-confusing-arrow": "off",
+  "@stylistic/no-extra-parens": [
+    "error",
+    "all",
+    {
+      "nestedBinaryExpressions": false
+    }
+  ],
+  "@stylistic/no-extra-semi": "error",
+  "@stylistic/no-floating-decimal": "off", // Does not support only disallowing trailing dots
+  "@stylistic/no-mixed-operators": "off",
+  "@stylistic/no-mixed-spaces-and-tabs": "error",
+  "@stylistic/no-multi-spaces": "error",
+  "@stylistic/no-multiple-empty-lines": [
+    "error",
+    {
+      "max": 2,
+      "maxBOF": 0 //Beginning Of File
+    }
+  ],
+  "@stylistic/no-tabs": "error",
+  "@stylistic/no-trailing-spaces": "warn",
+  "@stylistic/no-whitespace-before-property": "error",
+  "@stylistic/nonblock-statement-body-position": "off",
+  "@stylistic/object-curly-newline": [
+    "error",
+    {
+      "ObjectExpression": {
+        "consistent": true
+      },
+      "ObjectPattern": {
+        "multiline": true
+      },
+      "ImportDeclaration": {
+        "consistent": true
+      },
+      "ExportDeclaration": {
+        "consistent": true
+      }
+    }
+  ],
+  "@stylistic/object-curly-spacing": [
+    "error",
+    "always"
+  ],
+  "@stylistic/object-property-newline": "off", // Not configurable enough
+  "@stylistic/one-var-declaration-per-line": [
+    "error",
+    "initializations"
+  ],
+  "@stylistic/operator-linebreak": [
+    "error",
+    "before"
+  ],
+  "@stylistic/padded-blocks": [
+    "warn",
+    "never",
+    {
+      "allowSingleLineBlocks": false
+    }
+  ],
+  "@stylistic/padding-line-between-statements": "off",
+  "@stylistic/quote-props": [
+    "error",
+    "as-needed",
+    {
+      "unnecessary": true,
+      "numbers": true
+    }
+  ],
+  "@stylistic/quotes": [
+    "warn",
+    "single",
+    {
+      "avoidEscape": true
+    }
+  ],
+  "@stylistic/rest-spread-spacing": [
+    "error",
+    "never"
+  ],
+  "@stylistic/semi": [
+    "error",
+    "always"
+  ],
+  "@stylistic/semi-spacing": [
+    "error",
+    {
+      "before": false
+    }
+  ],
+  "@stylistic/semi-style": [
+    "error",
+    "last"
+  ],
+  "@stylistic/space-before-blocks": [
+    "error",
+    "always"
+  ],
+  "@stylistic/space-before-function-paren": [
+    "error",
+    {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }
+  ],
+  "@stylistic/space-in-parens": [
+    "warn",
+    "never"
+  ],
+  "@stylistic/space-infix-ops": "error",
+  "@stylistic/space-unary-ops": [
+    "error",
+    {
+      "words": true,
+      "nonwords": false
+    }
+  ],
+  "@stylistic/spaced-comment": [
+    "error",
+    "always"
+  ],
+  "@stylistic/switch-colon-spacing": [
+    "error",
+    {
+      "after": true,
+      "before": false
+    }
+  ],
+  "@stylistic/template-curly-spacing": [
+    "error",
+    "never"
+  ],
+  "@stylistic/template-tag-spacing": [
+    "error",
+    "never"
+  ],
+  "@stylistic/wrap-iife": [
+    "error",
+    "inside",
+    {
+      "functionPrototypeMethods": true
+    }
+  ],
+  "@stylistic/wrap-regex": "off",
+  "@stylistic/yield-star-spacing": [
+    "error",
+    {
+      "before": false,
+      "after": true
+    }
+  ]
+}

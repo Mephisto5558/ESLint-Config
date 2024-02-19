@@ -5,9 +5,10 @@
     "test": "echo \"Error: no test specified\""
   },
   "description": "ESLint config file",
-  "main": ".eslintrc.json",
+  "main": ".eslintrc.js",
   "files": [
-    ".eslintrc.json"
+    ".eslintrc.js",
+    "configs"
   ],
   "keywords": [
     "eslint"
@@ -24,7 +25,8 @@
     "@stylistic/eslint-plugin": ">=1.6.2",
     "@typescript-eslint/eslint-plugin": ">=7.0.1",
     "eslint": ">=8.56.0",
-    "eslint-plugin-jsdoc": ">=48.1.0"
+    "eslint-plugin-jsdoc": ">=48.1.0",
+    "eslint-plugin-sonarjs": ">=0.24.0"
   },
   "repository": {
     "type": "git",
