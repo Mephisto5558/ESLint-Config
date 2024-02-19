@@ -92,7 +92,7 @@
   "unicorn/prefer-modern-dom-apis": "error",
   "unicorn/prefer-modern-math-apis": "error",
   "unicorn/prefer-module": "off",
-  "unicorn/prefer-native-coercion-function": "error",
+  // "unicorn/prefer-native-coercion-function": "error", // does not exist but is documented
   "unicorn/prefer-negative-index": "error",
   "unicorn/prefer-node-protocol": "warn",
   "unicorn/prefer-number-properties": "error",
