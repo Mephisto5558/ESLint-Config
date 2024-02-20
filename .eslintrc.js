@@ -1,10 +1,10 @@
 const
-  { readFileSync } = require('fs'),
-  { join } = require('path');
+  { readFileSync } = require('node:fs'),
+  { join } = require('node:path');
 
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
-  return JSON.parse(readFileSync(join(__dirname, path), 'utf-8').replace(/\/\/.*/g, ''));
+  return JSON.parse(readFileSync(join(__dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
 }
 
 // This config lists all rules from every plugin it uses.
