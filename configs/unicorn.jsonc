@@ -66,7 +66,14 @@
   "unicorn/no-useless-undefined": "error",
   "unicorn/no-zero-fractions": "error",
   "unicorn/number-literal-case": "error",
-  "unicorn/numeric-separators-style": "error",
+  "unicorn/numeric-separators-style": [
+    "error",
+    {
+      "hexadecimal": {
+        "minimumDigits": 7 // Hex color codes
+      }
+    }
+  ],
   "unicorn/prefer-add-event-listener": "off", // Browser stuff where I am not sure if it's beneficial
   "unicorn/prefer-array-find": "error",
   "unicorn/prefer-array-flat-map": "error",
