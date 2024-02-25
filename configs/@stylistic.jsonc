@@ -124,7 +124,10 @@
       "allowBlockStart": true,
       "allowObjectStart": true,
       "allowArrayStart": true,
-      "allowClassStart": true
+      "allowClassStart": true,
+      "allowEnumStart": true,
+      "allowInterfaceStart": true,
+      "allowModuleStart": true
     }
   ],
   "@stylistic/lines-between-class-members": [
