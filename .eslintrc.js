@@ -9,6 +9,7 @@ function importJsonC(path) {
 
 // This config lists all rules from every plugin it uses.
 module.exports = {
+  root: true,
   env: {
     node: true,
     es2024: true
