@@ -132,5 +132,8 @@
   "unicorn/switch-case-braces": "off", // Can't allow oneliner to not have braces
   "unicorn/template-indent": "off",
   "unicorn/text-encoding-identifier-case": "error",
-  "unicorn/throw-new-error": "error" // Handled by `new-cap`
+  "unicorn/throw-new-error": "error", // Handled by `new-cap` // Why is this not `off` tho
+  "unicorn/no-single-promise-in-promise-methods": "error",
+  "unicorn/no-await-in-promise-methods":"error",
+  "unicorn/no-anonymous-default-export":"error"
 }
