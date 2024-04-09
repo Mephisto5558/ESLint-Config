@@ -120,9 +120,9 @@
   "@stylistic/lines-around-comment": [
     // Todo: Allow comments after opening parentheses:
     // arr.sort(
-    /**
-     * @param {x}a
-     * @param {x}b*/
+    // /**
+    // * @param {x}a
+    // * @param {x}b*/
     // (a, b) => b.abc - a.abc
     // )
     "error",
