@@ -118,16 +118,35 @@
   ],
   "@stylistic/linebreak-style": "off",
   "@stylistic/lines-around-comment": [
+    // Todo: Allow comments after opening parentheses:
+    // arr.sort(
+    /**
+     * @param {x}a
+     * @param {x}b*/
+    // (a, b) => b.abc - a.abc
+    // )
     "error",
     {
       "beforeBlockComment": true,
+      "afterBlockComment": false,
+      "beforeLineComment": true,
+      "afterLineComment": false,
       "allowBlockStart": true,
-      "allowObjectStart": true,
-      "allowArrayStart": true,
+      "allowBlockEnd": false,
       "allowClassStart": true,
+      "allowClassEnd": false,
+      "allowObjectStart": true,
+      "allowObjectEnd": false,
+      "allowArrayStart": true,
+      "allowArrayEnd": false,
       "allowEnumStart": true,
+      "allowEnumEnd": false,
       "allowInterfaceStart": true,
-      "allowModuleStart": true
+      "allowInterfaceEnd": false,
+      "allowModuleStart": true,
+      "allowModuleEnd": false,
+      "allowTypeStart": true,
+      "allowTypeEnd": false
     }
   ],
   "@stylistic/lines-between-class-members": [
