@@ -22,7 +22,7 @@
     "@typescript-eslint/parser": ">=7.0.1"
   },
   "peerDependencies": {
-    "@stylistic/eslint-plugin": ">=1.7.0",
+    "@stylistic/eslint-plugin": ">=2.0.0",
     "@typescript-eslint/eslint-plugin": ">=7.5.0",
     "eslint": ">=8.56.0",
     "eslint-plugin-jsdoc": ">=48.2.3",
