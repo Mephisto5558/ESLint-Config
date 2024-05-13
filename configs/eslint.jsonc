@@ -166,10 +166,6 @@
   ], // promises are to use whenever possible
   "max-params": "off",
   "max-statements": "off",
-  "multiline-comment-style": [
-    "error",
-    "bare-block"
-  ],
   "new-cap": "error",
   "no-alert": "error",
   "no-array-constructor": "error",
@@ -325,6 +321,5 @@
     "error",
     "never"
   ],
-  "line-comment-position": "off",
   "unicode-bom": "warn"
 }

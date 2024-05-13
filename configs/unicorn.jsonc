@@ -8,6 +8,7 @@
   ],
   "unicorn/catch-error-name": "off",
   "unicorn/consistent-destructuring": "error",
+  "unicorn/consistent-empty-array-spread": "error",
   "unicorn/consistent-function-scoping": "error",
   "unicorn/custom-error-definition": "error",
   "unicorn/empty-brace-spaces": "off", // Handled by `no-empty`
@@ -39,9 +40,11 @@
   "unicorn/no-for-loop": "error",
   "unicorn/no-hex-escape": "error",
   "unicorn/no-instanceof-array": "error",
+  "unicorn/no-invalid-fetch-options": "error",
   "unicorn/no-invalid-remove-event-listener": "error",
   "unicorn/no-keyword-prefix": "off",
   "unicorn/no-lonely-if": "error",
+  "unicorn/no-magic-array-flat-depth": "warn",
   "unicorn/no-negated-condition": "error",
   "unicorn/no-nested-ternary": "error",
   "unicorn/no-new-array": "error",
@@ -112,10 +115,12 @@
   "unicorn/prefer-set-has": "error",
   "unicorn/prefer-set-size": "error",
   "unicorn/prefer-spread": "error",
+  "unicorn/prefer-string-raw": "warn",
   "unicorn/prefer-string-replace-all": "error",
   "unicorn/prefer-string-slice": "error",
   "unicorn/prefer-string-starts-ends-with": "error",
   "unicorn/prefer-string-trim-start-end": "error",
+  "unicorn/prefer-structured-clone": "error",
   "unicorn/prefer-switch": "error",
   "unicorn/prefer-ternary": "error",
   "unicorn/prefer-top-level-await": "off",
@@ -134,6 +139,6 @@
   "unicorn/text-encoding-identifier-case": "error",
   "unicorn/throw-new-error": "error", // Handled by `new-cap` // Why is this not `off` tho
   "unicorn/no-single-promise-in-promise-methods": "error",
-  "unicorn/no-await-in-promise-methods":"error",
-  "unicorn/no-anonymous-default-export":"error"
+  "unicorn/no-await-in-promise-methods": "error",
+  "unicorn/no-anonymous-default-export": "error"
 }
