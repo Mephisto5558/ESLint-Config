@@ -46,6 +46,7 @@
   "unicorn/no-lonely-if": "error",
   "unicorn/no-magic-array-flat-depth": "warn",
   "unicorn/no-negated-condition": "error",
+  "unicorn/no-negation-in-equality-check": "error",
   "unicorn/no-nested-ternary": "error",
   "unicorn/no-new-array": "error",
   "unicorn/no-new-buffer": "error",
