@@ -6,4 +6,6 @@
 [![npm version](https://badge.fury.io/js/@mephisto5558%2Feslint-config.svg)](https://www.npmjs.com/package/@mephisto5558/eslint-config)
 [![npm downloads](https://img.shields.io/npm/dm/%40mephisto5558%2Feslint-config)](https://www.npmjs.com/package/@mephisto5558/eslint-config)
 
+[![Discord Server](https://discord.com/api/guilds/1011956895529041950/widget.png?style=shield)](https://discord.com/invite/yWwGTeppjR)
+
 This is a full opinionated eslint config using multiple plugins.
