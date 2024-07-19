@@ -1,10 +1,14 @@
 const
   { readFileSync } = require('node:fs'),
-  { join } = require('node:path');
+  { join, basename } = require('node:path');
 
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
-  return JSON.parse(readFileSync(join(__dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
+  const rules = JSON.parse(readFileSync(join(__dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
+  let filename = basename(path, '.jsonc');
+  filename = filename == 'eslint' ? '' : `${filename}/`;
+
+  return Object.fromEntries(Object.entries(rules).map(([k, v]) => [`${filename}${k}`, v]));
 }
 
 // This config lists all rules from every plugin it uses.

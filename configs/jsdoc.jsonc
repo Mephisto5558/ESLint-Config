@@ -1,47 +1,47 @@
 {
-  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules
-  "jsdoc/check-access": "error",
-  "jsdoc/check-alignment": "error",
-  "jsdoc/check-examples": "off", // Currently not supported
-  "jsdoc/check-indentation": "error",
-  "jsdoc/check-line-alignment": "off",
-  "jsdoc/check-param-names": "error",
-  "jsdoc/check-property-names": "error",
-  "jsdoc/check-syntax": "error",
-  "jsdoc/check-tag-names": "error",
-  "jsdoc/check-types": "error",
-  "jsdoc/check-values": "error",
-  "jsdoc/empty-tags": "error",
-  "jsdoc/implements-on-classes": "error",
-  "jsdoc/imports-as-dependencies": "error",
-  "jsdoc/informative-docs": "error",
-  "jsdoc/match-description": "off",
-  "jsdoc/match-name": "off",
-  "jsdoc/multiline-blocks": [
+  // [JSDOC] https://github.com/gajus/eslint-plugin-tree/main/.README#rules
+  "check-access": "error",
+  "check-alignment": "error",
+  "check-examples": "off", // Currently not supported
+  "check-indentation": "error",
+  "check-line-alignment": "off",
+  "check-param-names": "error",
+  "check-property-names": "error",
+  "check-syntax": "error",
+  "check-tag-names": "error",
+  "check-types": "error",
+  "check-values": "error",
+  "empty-tags": "error",
+  "implements-on-classes": "error",
+  "imports-as-dependencies": "error",
+  "informative-docs": "error",
+  "match-description": "off",
+  "match-name": "off",
+  "multiline-blocks": [
     "error",
     {
       "noFinalLineText": false
     }
   ],
-  "jsdoc/no-bad-blocks": "error",
-  "jsdoc/no-blank-block-descriptions": "error",
-  "jsdoc/no-blank-blocks": [
+  "no-bad-blocks": "error",
+  "no-blank-block-descriptions": "error",
+  "no-blank-blocks": [
     "error",
     {
       "enableFixer": true
     }
   ],
-  "jsdoc/no-defaults": "error",
-  "jsdoc/no-missing-syntax": "off",
-  "jsdoc/no-multi-asterisks": [
+  "no-defaults": "error",
+  "no-missing-syntax": "off",
+  "no-multi-asterisks": [
     "warn",
     {
       "preventAtEnd": false
     }
   ],
-  "jsdoc/no-restricted-syntax": "off",
-  "jsdoc/no-types": "off",
-  "jsdoc/no-undefined-types": [
+  "no-restricted-syntax": "off",
+  "no-types": "off",
+  "no-undefined-types": [
     "error",
     {
       "markVariablesAsUsed": false,
@@ -50,53 +50,53 @@
       ]
     }
   ],
-  "jsdoc/require-asterisk-prefix": [
+  "require-asterisk-prefix": [
     "warn",
     "always"
   ],
-  "jsdoc/require-description-complete-sentence": "off",
-  "jsdoc/require-description": "off",
-  "jsdoc/require-example": "off",
-  "jsdoc/require-file-overview": "off",
-  "jsdoc/require-hyphen-before-param-description": [
+  "require-description-complete-sentence": "off",
+  "require-description": "off",
+  "require-example": "off",
+  "require-file-overview": "off",
+  "require-hyphen-before-param-description": [
     "error",
     "never"
   ],
-  "jsdoc/require-jsdoc": "off",
-  "jsdoc/require-param-description": "off",
-  "jsdoc/require-param-name": "error",
-  "jsdoc/require-param-type": "error",
-  "jsdoc/require-param": [
+  "require-jsdoc": "off",
+  "require-param-description": "off",
+  "require-param-name": "error",
+  "require-param-type": "error",
+  "require-param": [
     "error",
     {
       "enableFixer": false,
       "useDefaultObjectProperties": true
     }
   ],
-  "jsdoc/require-property-description": "off",
-  "jsdoc/require-property-name": "error",
-  "jsdoc/require-property-type": "error",
-  "jsdoc/require-property": "error",
-  "jsdoc/require-returns-check": [
+  "require-property-description": "off",
+  "require-property-name": "error",
+  "require-property-type": "error",
+  "require-property": "error",
+  "require-returns-check": [
     "error",
     {
       "exemptAsync": false
     }
   ],
-  "jsdoc/require-returns-description": "off",
-  "jsdoc/require-returns-type": "error",
-  "jsdoc/require-returns": "off",
-  "jsdoc/require-throws": "error",
-  "jsdoc/require-yields-check": "error",
-  "jsdoc/require-yields": "off",
-  "jsdoc/sort-tags": [
+  "require-returns-description": "off",
+  "require-returns-type": "error",
+  "require-returns": "off",
+  "require-throws": "error",
+  "require-yields-check": "error",
+  "require-yields": "off",
+  "sort-tags": [
     "warn",
     {
       "linesBetween": 0,
       "tagSequence": [
         {
           "tags": [
-            // Copied from https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md#tagsequence
+            // Copied from https://github.com/gajus/eslint-plugin-blob/main/docs/rules/sort-tags.md#tagsequence
             // Brief descriptions
             "summary",
             "typeSummary",
@@ -239,7 +239,7 @@
       ]
     }
   ],
-  "jsdoc/tag-lines": "off", //Handled by other jsdoc rules
-  "jsdoc/text-escaping": "off",
-  "jsdoc/valid-types": "error"
+  "tag-lines": "off", //Handled by other jsdoc rules
+  "text-escaping": "off",
+  "valid-types": "error"
 }
