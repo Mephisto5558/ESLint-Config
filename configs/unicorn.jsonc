@@ -43,6 +43,7 @@
   "no-invalid-fetch-options": "error",
   "no-invalid-remove-event-listener": "error",
   "no-keyword-prefix": "off",
+  "no-length-as-slice-end": "error",
   "no-lonely-if": "error",
   "no-magic-array-flat-depth": "warn",
   "no-negated-condition": "error",
@@ -135,7 +136,10 @@
   "require-number-to-fixed-digits-argument": "error",
   "require-post-message-target-origin": "off",
   "string-content": "off",
-  "switch-case-braces": "off", // Can't allow oneliner to not have braces
+  "switch-case-braces": [
+    "error",
+    "avoid"
+  ],
   "template-indent": "off",
   "text-encoding-identifier-case": "error",
   "throw-new-error": "error", // Handled by `new-cap` // Why is this not `off` tho
