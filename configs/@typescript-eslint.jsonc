@@ -1,3 +1,242 @@
 {
-  
+  // [TYPESCRIPT-ESLINT] https://typescript-eslint.io/rules | Using "warn" wherever applicable
+  "adjacent-overload-signatures": "warn",
+  "array-type": [
+    "error",
+    {
+      "default": "array"
+    }
+  ],
+  "await-thenable": "error",
+  "ban-ts-comment": "warn",
+  "ban-tslint-comment": "off",
+  "ban-types": "error",
+  "class-literal-property-style": "error",
+  "class-methods-use-this": "warn",
+  "consistent-generic-constructors": [
+    "error",
+    "constructor"
+  ],
+  "consistent-indexed-object-style": [
+    "error",
+    "record"
+  ],
+  "consistent-return": "off",
+  "consistent-type-assertions": [
+    "error",
+    {
+      "assertionStyle": "as"
+    }
+  ],
+  "consistent-type-definitions": "off",
+  "consistent-type-exports": "error",
+  "consistent-type-imports": [
+    "error",
+    {
+      "prefer": "type-imports",
+      "fixStyle": "separate-type-imports"
+    }
+  ],
+  "default-param-last": "error",
+  "dot-notation": [
+    "error",
+    {
+      "allowPrivateClassPropertyAccess": false,
+      "allowProtectedClassPropertyAccess": false,
+      "allowIndexSignaturePropertyAccess": true
+    }
+  ],
+  "explicit-function-return-type": "off",
+  "explicit-member-accessibility": "off", //Set in `.eslintrc.js` for only TS files
+  "explicit-module-boundary-types": "off", //Set in `.eslintrc.js` for only TS files
+  "init-declarations": "off",
+  "max-params": "off",
+  "member-ordering": "off",
+  "method-signature-style": [
+    "error",
+    "method"
+  ],
+  "naming-convention": "off", // too complex and covered by other rules
+  "no-array-constructor": "error",
+  "no-array-delete": "error",
+  "no-base-to-string": [
+    "error",
+    {
+      "ignoredTypeNames": [
+        "DiscordAPIError" // Has a custom toString
+      ]
+    }
+  ],
+  "no-confusing-non-null-assertion": "error",
+  "no-confusing-void-expression": "off",
+  "no-dupe-class-members": "error",
+  "no-duplicate-enum-values": "error",
+  "no-duplicate-type-constituents": "error",
+  "no-dynamic-delete": "warn",
+  "no-empty-function": "error",
+  "no-empty-interface": "error",
+  "no-empty-object-type": "warn",
+  "no-explicit-any": "error",
+  "no-extra-non-null-assertion": "error",
+  "no-extraneous-class": "error",
+  "no-floating-promises": "warn",
+  "no-for-in-array": "warn",
+  "no-implied-eval": "error",
+  "no-import-type-side-effects": "error",
+  "no-inferrable-types": [
+    "error",
+    {
+      "ignoreParameters": true
+    }
+  ],
+  "no-invalid-this": "error",
+  "no-invalid-void-type": "error",
+  "no-loop-func": "warn",
+  "no-loss-of-precision": "warn",
+  "no-magic-numbers": "off",
+  "no-meaningless-void-operator": "error",
+  "no-misused-new": "error",
+  // "no-misused-promises": "off", // performance reasons (top 3 slowest)
+  "no-misused-promises": [
+   "error",
+   {
+     "checksVoidReturn": false
+   }
+  ],
+  "no-mixed-enums": "error",
+  "no-namespace": "error",
+  "no-non-null-asserted-nullish-coalescing": "error",
+  "no-non-null-asserted-optional-chain": "error",
+  "no-non-null-assertion": "error",
+  "no-redeclare": "error",
+  "no-redundant-type-constituents": "error",
+  "no-require-imports": "off",
+  "no-restricted-imports": "off",
+  "no-shadow": [
+    "warn",
+    {
+      "allow": [
+        "a",
+        "b",
+        "e",
+        "i",
+        "k",
+        "v",
+        "err",
+        "res"
+      ]
+    }
+  ],
+  "no-this-alias": "error",
+  "no-unnecessary-boolean-literal-compare": "error",
+  "no-unnecessary-condition": [
+    "error",
+    {
+      "allowConstantLoopConditions": true
+    }
+  ],
+  "no-unnecessary-parameter-property-assignment": "error",
+  "no-unnecessary-qualifier": "error",
+  "no-unnecessary-template-expression": "error",
+  "no-unnecessary-type-arguments": "error",
+  "no-unnecessary-type-assertion": "error",
+  "no-unnecessary-type-constraint": "error",
+  "no-unnecessary-type-parameters": "error",
+  "no-unsafe-argument": "off", // Doesn't really work
+  "no-unsafe-assignment": "off", // Doesn't really work
+  "no-unsafe-call": "off", // Doesn't really work
+  "no-unsafe-declaration-merging": "error",
+  "no-unsafe-enum-comparison": "error",
+  "no-unsafe-function-type": "error",
+  "no-unsafe-member-access": "off", // Doesn't really work
+  "no-unsafe-return": "off", // Doesn't really work
+  "no-unsafe-unary-minus": "error",
+  "no-unused-expressions": [
+    "error",
+    {
+      "allowShortCircuit": true,
+      "allowTernary": true
+    }
+  ],
+  "no-unused-vars": "error",
+  "no-use-before-define": [
+    "error",
+    {
+      "functions": false,
+      "allowNamedExports": true
+    }
+  ],
+  "no-useless-constructor": "error",
+  "no-useless-empty-export": "error",
+  "no-var-requires": "off",
+  "no-wrapper-object-types": "error",
+  "non-nullable-type-assertion-style": "error",
+  "only-throw-error": "error",
+  "parameter-properties": "error",
+  "prefer-as-const": "error",
+  "prefer-destructuring": [
+    "error",
+    {
+      "AssignmentExpression": {
+        // These two values should not be changed for compatibility reasons
+        // (with `unicorn/no-unreadable-array-destructing`)
+        "array": false,
+        "object": true
+      }
+    }
+  ],
+  "prefer-enum-initializers": "error",
+  "prefer-find": "error",
+  "prefer-for-of": "error",
+  "prefer-function-type": "error",
+  "prefer-includes": "error",
+  "prefer-literal-enum-member": "error",
+  "prefer-namespace-keyword": "error",
+  "prefer-nullish-coalescing": [
+    "error",
+    {
+      "ignoreConditionalTests": true
+    }
+  ],
+  "prefer-optional-chain": "error",
+  "prefer-promise-reject-errors": "error",
+  "prefer-readonly": "off",
+  "prefer-readonly-parameter-types": "off",
+  "prefer-reduce-type-parameter": "error",
+  "prefer-regexp-exec": "error",
+  "prefer-return-this-type": "error",
+  "prefer-string-starts-ends-with": "error",
+  "promise-function-async": [
+    "error",
+    {
+      "checkArrowFunctions": false
+    }
+  ],
+  "require-array-sort-compare": "error",
+  "require-await": "error",
+  "restrict-plus-operands": "warn",
+  "restrict-template-expressions": [
+    "error",
+    {
+      "allowAny": true,
+      "allowArray": true,
+      "allowBoolean": true,
+      "allowNullish": true,
+      "allowNumber": true,
+      "allowRegExp": true
+    }
+  ],
+  "return-await": "off",
+  "strict-boolean-expressions": "off",
+  "switch-exhaustiveness-check": "error",
+  "triple-slash-reference": "warn",
+  "typedef": "warn",
+  "unbound-method": [
+    "error",
+    {
+      "ignoreStatic": true
+    }
+  ],
+  "unified-signatures": "error",
+  "use-unknown-in-catch-callback-variable": "off"
 }
