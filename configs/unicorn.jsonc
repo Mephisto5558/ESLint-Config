@@ -18,7 +18,7 @@
   "explicit-length-check": "off",
   "filename-case": [
     // See filename-case: eslint disable directive does not work
-    // https://github.com/sindresorhus/eslint-plugin-issues/2043
+    // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2043
     "off",
     {
       "case": "camelCase"
@@ -27,13 +27,14 @@
   "import-style": "off", // Only a per-module config
   "new-for-builtins": "error",
   "no-abusive-eslint-disable": "warn",
-  // "no-anonymous-default-export": "error", // does not exist but is documented
-  "no-array-callback-reference": "warn",
+  "no-anonymous-default-export": "error",
+  "no-array-callback-reference": "off", // incompatible with `unicorn/prefer-native-coercion-functions` cannot allow native functions, e.g. Number;
   "no-array-for-each": "error",
   "no-array-method-this-argument": "error",
   "no-array-push-push": "error",
   "no-array-reduce": "off", // Array#reduce my beloved
   "no-await-expression-member": "off", // Can't disable it for chained function calls, eg. (await x()).y.z()
+  "no-await-in-promise-methods": "error",
   "no-console-spaces": "warn",
   "no-document-cookie": "error",
   "no-empty-file": "error",
@@ -54,12 +55,13 @@
   "no-null": "error",
   "no-object-as-default-parameter": "error",
   "no-process-exit": "off",
+  "no-single-promise-in-promise-methods": "error",
   "no-static-only-class": "error",
   "no-thenable": "error",
   "no-this-assignment": "error",
   "no-typeof-undefined": "error",
   "no-unnecessary-await": "warn",
-  "no-unnecessary-polyfills": "off", // This rule is very slow. (~13% on a personal repo)
+  "no-unnecessary-polyfills": "error", // Disabled due to performance reasons
   "no-unreadable-array-destructuring": "error",
   "no-unreadable-iife": "error",
   "no-unused-properties": "error",
@@ -104,7 +106,7 @@
   "prefer-modern-dom-apis": "error",
   "prefer-modern-math-apis": "error",
   "prefer-module": "off",
-  // "prefer-native-coercion-function": "error", // does not exist but is documented
+  "prefer-native-coercion-functions": "error",
   "prefer-negative-index": "error",
   "prefer-node-protocol": "warn",
   "prefer-number-properties": "error",
@@ -142,8 +144,5 @@
   ],
   "template-indent": "off",
   "text-encoding-identifier-case": "error",
-  "throw-new-error": "error", // Handled by `new-cap` // Why is this not `off` tho
-  "no-single-promise-in-promise-methods": "error",
-  "no-await-in-promise-methods": "error",
-  "no-anonymous-default-export": "error"
+  "throw-new-error": "error"
 }
