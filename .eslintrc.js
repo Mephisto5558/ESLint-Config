@@ -23,8 +23,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: true,
-    __tsconfigRootDir: __dirname,
-    tsconfigRootDir: __dirname
+    tsconfigRootDir: '.'
   },
   plugins: [
     '@stylistic',
