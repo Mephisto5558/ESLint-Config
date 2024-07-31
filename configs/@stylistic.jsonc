@@ -197,7 +197,7 @@
     "error",
     {
       "max": 2,
-      "maxBOF": 0 //Beginning Of File
+      "maxBOF": 0 // Beginning Of File
     }
   ],
   "no-tabs": "error",
