@@ -1,16 +1,18 @@
 {
-  // [JSDOC] https://github.com/gajus/eslint-plugin-tree/main/.README#rules
+  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules
   "check-access": "error",
   "check-alignment": "error",
-  "check-examples": "off", // Currently not supported
+  "check-examples": "off", // not supported in eslint@8, only with weird config in eslint@9
   "check-indentation": "error",
   "check-line-alignment": "off",
   "check-param-names": "error",
   "check-property-names": "error",
   "check-syntax": "error",
   "check-tag-names": "error",
+  "check-template-names": "error",
   "check-types": "error",
   "check-values": "error",
+  "convert-to-jsdoc-comments":"off",
   "empty-tags": "error",
   "implements-on-classes": "error",
   "imports-as-dependencies": "error",
@@ -86,6 +88,7 @@
   "require-returns-description": "off",
   "require-returns-type": "error",
   "require-returns": "off",
+  "require-template": "off",
   "require-throws": "error",
   "require-yields-check": "error",
   "require-yields": "off",
