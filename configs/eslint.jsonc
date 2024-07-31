@@ -20,7 +20,7 @@
   "no-control-regex": "error",
   "no-debugger": "error",
   "no-dupe-args": "error",
-  "no-dupe-class-members": "error",
+  "no-dupe-class-members": "off", // Handeled by `@typescript-eslint/no-dupe-class-members`
   "no-dupe-else-if": "off", // Handled by `sonarjs/no-identical-conditions`
   "no-dupe-keys": "error",
   "no-duplicate-case": "off", // Handled by `sonarjs/no-identical-conditions`
@@ -43,7 +43,7 @@
       "skipStrings": false
     }
   ],
-  "no-loss-of-precision": "warn",
+  "no-loss-of-precision": "off", // Handeled by `@typescript-eslint/no-loss-of-precision`
   "no-misleading-character-class": "error",
   "no-new-native-nonconstructor": "error",
   "no-new-symbol": "off", // handled by `no-new-native-nonconstructor`
@@ -70,13 +70,8 @@
   "no-unsafe-negation": "error",
   "no-unsafe-optional-chaining": "error",
   "no-unused-private-class-members": "error",
-  "no-unused-vars": "error",
-  "no-use-before-define": [
-    "error",
-    {
-      "functions": false
-    }
-  ],
+  "no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
+  "no-use-before-define": "off", // Handled by `@typescript-eslint/no-use-before-define`
   "no-useless-backreference": "error",
   "require-atomic-updates": "warn",
   "use-isnan": "error",
@@ -90,7 +85,7 @@
   "block-scoped-var": "off", // Handled by `no-var`
   "camelcase": "error",
   "capitalized-comments": "off",
-  "class-methods-use-this": "warn",
+  "class-methods-use-this": "off", // Handled by `@typescript-eslint/no-var`
   "complexity": "off", // The day I decide to make my code less complex will never come.
   "consistent-return": "off",
   "consistent-this": "off",
@@ -100,8 +95,8 @@
   ],
   "default-case": "off",
   "default-case-last": "error",
-  "default-param-last": "error",
-  "dot-notation": "error",
+  "default-param-last": "off", // Handled by `@typescript-eslint/default-param-last`
+  "dot-notation": "off", // Handled by `@typescript-eslint/dot-notation`
   // "eqeqeq": ["error", "always"], // will be included later
   "func-name-matching": "off", // Handled by `func-style`
   "func-names": [
@@ -138,7 +133,7 @@
     }
   ],
   "id-match": "off", // Handled by `camelcase`
-  "init-declarations": "off",
+  "init-declarations": "off", // Handeled by `@typescript-eslint/init-declarations`
   "logical-assignment-operators": [
     "error",
     "always",
@@ -164,11 +159,11 @@
     "warn",
     2
   ], // promises are to use whenever possible
-  "max-params": "off",
+  "max-params": "off", // Handeled by `@typescript-eslint/max-params`
   "max-statements": "off",
   "new-cap": "error",
   "no-alert": "error",
-  "no-array-constructor": "error",
+  "no-array-constructor": "off", // Handeled by `@typescript-eslint/no-array-constructor`
   "no-bitwise": "off",
   "no-caller": "error",
   "no-case-declarations": "error",
@@ -178,7 +173,7 @@
   "no-div-regex": "warn",
   "no-else-return": "error",
   "no-empty": "error",
-  "no-empty-function": "error",
+  "no-empty-function": "off", // Handeled by `@typescript-eslint/no-empty-function`
   "no-empty-static-block": "error",
   "no-eq-null": "off", // Handled by `unicorn/no-null`
   "no-eval": "error",
@@ -191,18 +186,18 @@
   "no-implicit-globals": "error",
   "no-implied-eval": "error",
   "no-inline-comments": "off",
-  "no-invalid-this": "error",
+  "no-invalid-this": "off", // Handeled by `@typescript-eslint/no-invalid-this`
   "no-iterator": "error",
   "no-label-var": "warn",
   "no-labels": "error",
   "no-lone-blocks": "error",
   "no-lonely-if": "error",
-  "no-loop-func": "warn",
-  "no-magic-numbers": "off",
+  "no-loop-func": "off", // Handeled by `@typescript-eslint/no-loop-func`
+  "no-magic-numbers": "off", // Handeled by `@typescript-eslint/no-magic-numbers`
   "no-multi-assign": "error",
   "no-multi-str": "error",
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
-  "no-nested-ternary": "off", // better Handled by `unicorn/no-nested-ternary`
+  "no-nested-ternary": "off", // Handled by `unicorn/no-nested-ternary`
   "no-new": "warn",
   "no-new-func": "error",
   "no-new-wrappers": "error",
@@ -213,31 +208,17 @@
   "no-param-reassign": "off",
   "no-plusplus": "off",
   "no-proto": "error",
-  "no-redeclare": "error",
+  "no-redeclare": "off", // Handeled by `@typescript-eslint/no-redeclare`
   "no-regex-spaces": "error",
   "no-restricted-exports": "off",
   "no-restricted-globals": "off",
-  "no-restricted-imports": "off",
+  "no-restricted-imports": "off", // Handeled by `@typescript-eslint/no-restricted-imports`
   "no-restricted-properties": "off",
   "no-restricted-syntax": "off",
   "no-return-assign": "error",
   "no-script-url": "error",
   "no-sequences": "error",
-  "no-shadow": [
-    "warn",
-    {
-      "allow": [
-        "a",
-        "b",
-        "e",
-        "i",
-        "k",
-        "v",
-        "err",
-        "res"
-      ]
-    }
-  ],
+  "no-shadow": "off", // Handled by `@typescript-eslint/no-shadow`
   "no-shadow-restricted-names": "error",
   "no-ternary": "off",
   "no-throw-literal": "error",
@@ -245,19 +226,13 @@
   "no-undefined": "off",
   "no-underscore-dangle": "off",
   "no-unneeded-ternary": "error",
-  "no-unused-expressions": [
-    "error",
-    {
-      "allowShortCircuit": true,
-      "allowTernary": true
-    }
-  ],
+  "no-unused-expressions": "off", // Handled by `@typescript-eslint/no-unused-expressions`
   "no-unused-labels": "error",
   "no-useless-call": "error",
   "no-useless-catch": "error",
   "no-useless-computed-key": "error",
   "no-useless-concat": "error",
-  "no-useless-constructor": "error",
+  "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
   "no-useless-escape": "error",
   "no-useless-rename": "error",
   "no-useless-return": "error",
@@ -278,23 +253,13 @@
       "destructuring": "all"
     }
   ],
-  "prefer-destructuring": [
-    "error",
-    {
-      "AssignmentExpression": {
-         // These two values should not be changed for compatibility reasons
-         // (with `unicorn/no-unreadable-array-destructing`)
-        "array": false,
-        "object": true
-      }
-    }
-  ],
+  "prefer-destructuring": "off", // Handled by `@typescript-eslint/prefer-destructuring`
   "prefer-exponentiation-operator": "warn",
   "prefer-named-capture-group": "off",
   "prefer-numeric-literals": "off",
   "prefer-object-has-own": "error",
   "prefer-object-spread": "error",
-  "prefer-promise-reject-errors": "error",
+  "prefer-promise-reject-errors": "off", // Handled by `@typescript-eslint/prefer-promise-reject-errors`
   "prefer-regex-literals": [
     "error",
     {
@@ -308,7 +273,7 @@
     "error",
     "as-needed"
   ],
-  "require-await": "error",
+  "require-await": "off", // Handled by `@typescript-eslint/require-await`
   "require-unicode-regexp": "off",
   "require-yield": "error",
   "sort-imports": "off", // Can't make local files go last

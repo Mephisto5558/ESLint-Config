@@ -18,9 +18,13 @@ module.exports = {
     node: true,
     es2024: true
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module'
+    sourceType: 'module',
+    project: true,
+    __tsconfigRootDir: __dirname,
+    tsconfigRootDir: __dirname
   },
   plugins: [
     '@stylistic',
@@ -29,7 +33,6 @@ module.exports = {
     'sonarjs',
     'unicorn'
   ],
-  parser: '@typescript-eslint/parser',
   reportUnusedDisableDirectives: true,
   rules: {
     ...importJsonC('configs/eslint.jsonc'),
@@ -47,6 +50,25 @@ module.exports = {
         // TS-Only rules
         'no-shadow': 'off',
         'no-use-before-define': 'off',
+        'class-methods-use-this': 'off',
+        'jsdoc/require-param': 'off',
+        'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
+        '@typescript-eslint/explicit-member-accessibility': [
+          'error',
+          {
+            accessibility: 'no-public'
+          }
+        ],
+        '@typescript-eslint/explicit-module-boundary-types': [
+          'error',
+          {
+            allowArgumentsExplicitlyTypedAsAny: true,
+            /* eslint-disable-next-line id-length */
+            allowDirectConstAssertionInArrowFunctions: true,
+            allowHigherOrderFunctions: true,
+            allowTypedFunctionExpressions: true
+          }
+        ],
         '@stylistic/member-delimiter-style': [
           'error',
           {
