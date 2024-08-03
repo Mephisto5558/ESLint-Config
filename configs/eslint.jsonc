@@ -43,7 +43,7 @@
       "skipStrings": false
     }
   ],
-  "no-loss-of-precision": "off", // Handeled by `@typescript-eslint/no-loss-of-precision`
+  "no-loss-of-precision": "error",
   "no-misleading-character-class": "error",
   "no-new-native-nonconstructor": "error",
   "no-new-symbol": "off", // handled by `no-new-native-nonconstructor`
@@ -72,6 +72,7 @@
   "no-unused-private-class-members": "error",
   "no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
   "no-use-before-define": "off", // Handled by `@typescript-eslint/no-use-before-define`
+  "no-useless-assignment": "error",
   "no-useless-backreference": "error",
   "require-atomic-updates": "warn",
   "use-isnan": "error",

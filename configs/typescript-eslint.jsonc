@@ -10,7 +10,6 @@
   "await-thenable": "error",
   "ban-ts-comment": "warn",
   "ban-tslint-comment": "off",
-  "ban-types": "error",
   "class-literal-property-style": "error",
   "class-methods-use-this": "warn",
   "consistent-generic-constructors": [
@@ -75,7 +74,7 @@
   "no-dynamic-delete": "warn",
   "no-empty-function": "error",
   "no-empty-interface": "error",
-  "no-empty-object-type": "warn",
+  "no-empty-object-type": "error",
   "no-explicit-any": "error",
   "no-extra-non-null-assertion": "error",
   "no-extraneous-class": "error",
@@ -92,7 +91,6 @@
   "no-invalid-this": "error",
   "no-invalid-void-type": "error",
   "no-loop-func": "warn",
-  "no-loss-of-precision": "warn",
   "no-magic-numbers": "off",
   "no-meaningless-void-operator": "error",
   "no-misused-new": "error",
@@ -112,6 +110,7 @@
   "no-redundant-type-constituents": "error",
   "no-require-imports": "off",
   "no-restricted-imports": "off",
+  "no-restricted-types":"off",
   "no-shadow": [
     "warn",
     {

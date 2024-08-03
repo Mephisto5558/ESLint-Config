@@ -1,13 +1,14 @@
 {
   "name": "@mephisto5558/eslint-config",
   "version": "1.2.4",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\""
   },
   "description": "ESLint config file",
-  "main": ".eslintrc.js",
+  "main": "eslint.config.js",
   "files": [
-    ".eslintrc.js",
+    "eslint.config.js",
     "configs"
   ],
   "keywords": [
@@ -16,16 +17,20 @@
   "author": "Mephisto5558",
   "license": "MIT",
   "engines": {
-    "node": ">=18.18.0"
+    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   },
-  "devDependencies": {
-    "@typescript-eslint/parser": "^7.18.0",
-    "eslint": "^8.57.0",
+  "dependencies": {
     "@stylistic/eslint-plugin": ">=2.4.0",
-    "@typescript-eslint/eslint-plugin": ">=7.18.0",
+    "@typescript-eslint/eslint-plugin": ">=8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.8.0",
     "eslint-plugin-jsdoc": ">=48.10.2",
     "eslint-plugin-sonarjs": ">=1.0.4",
-    "eslint-plugin-unicorn": ">=55.0.0"
+    "eslint-plugin-unicorn": ">=55.0.0",
+    "globals": "^15.9.0"
+  },
+  "devDependencies": {
+    "@types/eslint": "^9.6.0"
   },
   "repository": {
     "type": "git",
