@@ -9,6 +9,8 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
+export { plugins };
+
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
@@ -18,14 +20,22 @@ function importJsonC(path) {
   return Object.fromEntries(Object.entries(rules).map(([k, v]) => [`${filename}${k}`, v]));
 }
 
-const rules = {
-  ...importJsonC('configs/eslint.jsonc'),
-  ...importJsonC('configs/@typescript-eslint.jsonc'),
-  ...importJsonC('configs/@stylistic.jsonc'),
-  ...importJsonC('configs/jsdoc.jsonc'),
-  ...importJsonC('configs/sonarjs.jsonc'),
-  ...importJsonC('configs/unicorn.jsonc')
-};
+const
+  plugins = {
+    '@typescript-eslint': typescriptPlugin,
+    '@stylistic': stylisticPlugin,
+    jsdoc: jsdocPlugin,
+    sonarjs: sonarjsPlugin,
+    unicorn: unicornPlugin
+  },
+  rules = {
+    ...importJsonC('configs/eslint.jsonc'),
+    ...importJsonC('configs/@typescript-eslint.jsonc'),
+    ...importJsonC('configs/@stylistic.jsonc'),
+    ...importJsonC('configs/jsdoc.jsonc'),
+    ...importJsonC('configs/sonarjs.jsonc'),
+    ...importJsonC('configs/unicorn.jsonc')
+  };
 
 /**
  * @type { import('eslint').Linter.Config[] }
@@ -33,6 +43,7 @@ const rules = {
 export default [
   {
     name: 'eslint-config:all',
+    files: ['**/*.js', '**/*.ts'],
     languageOptions: {
       parser,
       parserOptions: {
@@ -50,18 +61,11 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: true
     },
-    plugins: {
-      '@typescript-eslint': typescriptPlugin,
-      '@stylistic': stylisticPlugin,
-      jsdoc: jsdocPlugin,
-      sonarjs: sonarjsPlugin,
-      unicorn: unicornPlugin
-    },
-    rules
+    plugins, rules
   },
   {
     name: 'eslint-config:d.ts',
-    files: ['*.d.ts'],
+    files: ['**/*.d.ts'],
     rules: {
       // TS-Only rules
       'no-shadow': 'off',
