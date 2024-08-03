@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { join, basename } from 'node:path';
+import { basename, resolve } from 'node:path';
 import globals from 'globals';
 
 import parser from '@typescript-eslint/parser';
@@ -11,7 +11,7 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
-  const rules = JSON.parse(readFileSync(join('.', path), 'utf8').replaceAll(/\/\/.*/g, ''));
+  const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
   let filename = basename(path, '.jsonc');
   filename = filename == 'eslint' ? '' : `${filename}/`;
 
@@ -69,13 +69,13 @@ export default [
       'class-methods-use-this': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
-      '@typescript-eslint/explicit-member-accessibility': [
+      'typescript-eslint/explicit-member-accessibility': [
         'error',
         {
           accessibility: 'no-public'
         }
       ],
-      '@typescript-eslint/explicit-module-boundary-types': [
+      'typescript-eslint/explicit-module-boundary-types': [
         'error',
         {
           allowArgumentsExplicitlyTypedAsAny: true,
@@ -85,7 +85,7 @@ export default [
           allowTypedFunctionExpressions: true
         }
       ],
-      '@stylistic/member-delimiter-style': [
+      'stylistic/member-delimiter-style': [
         'error',
         {
           multiline: {
@@ -99,7 +99,7 @@ export default [
           multilineDetection: 'brackets'
         }
       ],
-      '@stylistic/type-annotation-spacing': [
+      'stylistic/type-annotation-spacing': [
         'error',
         {
           before: false,
@@ -112,8 +112,8 @@ export default [
           }
         }
       ],
-      '@stylistic/type-generic-spacing': 'error',
-      '@stylistic/type-named-tuple-spacing': 'error',
+      'stylistic/type-generic-spacing': 'error',
+      'stylistic/type-named-tuple-spacing': 'error',
       'jsdoc/no-types': 'error'
     }
   }
