@@ -17,7 +17,7 @@
   "author": "Mephisto5558",
   "license": "MIT",
   "engines": {
-    "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
+    "node": "^20.11.0 || >=21.1.0"
   },
   "dependencies": {
     "@stylistic/eslint-plugin": ">=2.4.0",
