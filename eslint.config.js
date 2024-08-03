@@ -20,8 +20,8 @@ function importJsonC(path) {
 
 const rules = {
   ...importJsonC('configs/eslint.jsonc'),
-  ...importJsonC('configs/typescript-eslint.jsonc'),
-  ...importJsonC('configs/stylistic.jsonc'),
+  ...importJsonC('configs/@typescript-eslint.jsonc'),
+  ...importJsonC('configs/@stylistic.jsonc'),
   ...importJsonC('configs/jsdoc.jsonc'),
   ...importJsonC('configs/sonarjs.jsonc'),
   ...importJsonC('configs/unicorn.jsonc')
@@ -51,8 +51,8 @@ export default [
       reportUnusedDisableDirectives: true
     },
     plugins: {
-      'typescript-eslint': typescriptPlugin,
-      stylistic: stylisticPlugin,
+      '@typescript-eslint': typescriptPlugin,
+      '@stylistic': stylisticPlugin,
       jsdoc: jsdocPlugin,
       sonarjs: sonarjsPlugin,
       unicorn: unicornPlugin
@@ -69,13 +69,13 @@ export default [
       'class-methods-use-this': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
-      'typescript-eslint/explicit-member-accessibility': [
+      '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
           accessibility: 'no-public'
         }
       ],
-      'typescript-eslint/explicit-module-boundary-types': [
+      '@typescript-eslint/explicit-module-boundary-types': [
         'error',
         {
           allowArgumentsExplicitlyTypedAsAny: true,
@@ -85,7 +85,7 @@ export default [
           allowTypedFunctionExpressions: true
         }
       ],
-      'stylistic/member-delimiter-style': [
+      '@stylistic/member-delimiter-style': [
         'error',
         {
           multiline: {
@@ -99,7 +99,7 @@ export default [
           multilineDetection: 'brackets'
         }
       ],
-      'stylistic/type-annotation-spacing': [
+      '@stylistic/type-annotation-spacing': [
         'error',
         {
           before: false,
@@ -112,8 +112,8 @@ export default [
           }
         }
       ],
-      'stylistic/type-generic-spacing': 'error',
-      'stylistic/type-named-tuple-spacing': 'error',
+      '@stylistic/type-generic-spacing': 'error',
+      '@stylistic/type-named-tuple-spacing': 'error',
       'jsdoc/no-types': 'error'
     }
   }
