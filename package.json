@@ -7,8 +7,10 @@
   },
   "description": "ESLint config file",
   "main": "eslint.config.js",
+  "types": "eslint.config.d.ts",
   "files": [
     "eslint.config.js",
+    "eslint.config.d.ts",
     "configs"
   ],
   "keywords": [
