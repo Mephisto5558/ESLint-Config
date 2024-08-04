@@ -55,7 +55,8 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.node,
-        ...globals.es2024
+        ...globals.es2024,
+        NodeJS: 'readonly'
       }
     },
     linterOptions: {
@@ -67,11 +68,13 @@ export default [
     name: 'eslint-config:d.ts',
     files: ['**/*.d.ts'],
     rules: {
-      // TS-Only rules
+      // D.TS-Only rules
       'no-shadow': 'off',
       'no-use-before-define': 'off',
       'class-methods-use-this': 'off',
+      'jsdoc/require-param-type': 'off',
       'jsdoc/require-param': 'off',
+      'jsdoc/require-returns-type': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
