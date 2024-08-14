@@ -37,9 +37,11 @@ const
     ...importJsonC('configs/unicorn.jsonc')
   };
 
+/* eslint-disable jsdoc/imports-as-dependencies -- bug - see https://github.com/gajus/eslint-plugin-jsdoc/issues/1114*/
 /**
  * @type { import('eslint').Linter.Config[] }
  * This config lists all rules from every plugin it uses.*/
+/* eslint-enable jsdoc/imports-as-dependencies */
 export default [
   {
     name: 'eslint-config:all',
