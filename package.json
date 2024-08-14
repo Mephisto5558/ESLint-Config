@@ -22,11 +22,11 @@
     "node": "^20.11.0 || >=21.1.0"
   },
   "dependencies": {
-    "@stylistic/eslint-plugin": ">=2.4.0",
-    "@typescript-eslint/eslint-plugin": ">=8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^9.8.0",
-    "eslint-plugin-jsdoc": ">=48.10.2",
+    "@stylistic/eslint-plugin": ">=2.6.2",
+    "@typescript-eslint/eslint-plugin": ">=8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-jsdoc": ">=50.2.1",
     "eslint-plugin-sonarjs": ">=1.0.4",
     "eslint-plugin-unicorn": ">=55.0.0",
     "globals": "^15.9.0"

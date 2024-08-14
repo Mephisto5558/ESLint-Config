@@ -17,6 +17,7 @@
   "implements-on-classes": "error",
   "imports-as-dependencies": "error",
   "informative-docs": "error",
+  "lines-before-block": "off", // Handled by `@stylistic/lines-around-comment`
   "match-description": "off",
   "match-name": "off",
   "multiline-blocks": [
