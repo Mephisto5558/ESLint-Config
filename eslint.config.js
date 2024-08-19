@@ -78,6 +78,7 @@ export default [
       'jsdoc/require-param-type': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/require-returns-type': 'off',
+      'jsdoc/check-param-names': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
