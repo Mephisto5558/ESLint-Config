@@ -95,10 +95,10 @@
   "no-misused-new": "error",
   // "no-misused-promises": "off", // performance reasons (top 3 slowest)
   "no-misused-promises": [
-   "error",
-   {
-     "checksVoidReturn": false
-   }
+    "error",
+    {
+      "checksVoidReturn": false
+    }
   ],
   "no-mixed-enums": "error",
   "no-namespace": "error",
@@ -109,7 +109,7 @@
   "no-redundant-type-constituents": "error",
   "no-require-imports": "off",
   "no-restricted-imports": "off",
-  "no-restricted-types":"off",
+  "no-restricted-types": "off",
   "no-shadow": [
     "warn",
     {
@@ -234,7 +234,18 @@
     }
   ],
   "return-await": "off",
-  "strict-boolean-expressions": "off",
+  "strict-boolean-expressions": [
+    "error",
+    {
+      "allowString": true,
+      "allowNumber": true,
+      "allowNullableObject": true,
+      "allowNullableBoolean": true,
+      "allowNullableString": true,
+      "allowNullableEnum": false,
+      "allowAny": true // definitely not optimal, but needed in js projects.
+    }
+  ],
   "switch-exhaustiveness-check": "error",
   "triple-slash-reference": "warn",
   "typedef": "warn",
