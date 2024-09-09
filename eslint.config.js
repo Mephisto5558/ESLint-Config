@@ -17,7 +17,7 @@ function importJsonC(path) {
   let filename = basename(path, '.jsonc');
   filename = filename == 'eslint' ? '' : `${filename}/`;
 
-  return Object.fromEntries(Object.entries(rules).map(([k, v]) => [`${filename}${k}`, v]));
+  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v != '').map(([k, v]) => [`${filename}${k}`, v]));
 }
 
 const
@@ -45,7 +45,7 @@ const
 export default [
   {
     name: 'eslint-config:all',
-    files: ['**/*.js', '**/*.ts'],
+    files: ['**/*.js', '**/*.ts', '**/*.html'],
     languageOptions: {
       parser,
       parserOptions: {
