@@ -200,7 +200,7 @@
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
   "no-nested-ternary": "off", // Handled by `unicorn/no-nested-ternary`
   "no-new": "warn",
-  "no-new-func": "error",
+  "no-new-func": "off", // Handled by `@typescript-eslint/no-implied-eval`
   "no-new-wrappers": "error",
   "no-nonoctal-decimal-escape": "error",
   "no-object-constructor": "error",

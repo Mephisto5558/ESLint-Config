@@ -68,6 +68,7 @@
   ],
   "no-confusing-non-null-assertion": "error",
   "no-confusing-void-expression": "off",
+  "no-deprecated": "warn",
   "no-dupe-class-members": "error",
   "no-duplicate-enum-values": "error",
   "no-duplicate-type-constituents": "error",
