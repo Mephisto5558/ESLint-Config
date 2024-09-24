@@ -1,9 +1,6 @@
 {
   // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md | Using "warn" wherever applicable
   "accessor-pairs": "off", // Handled by `accessor-pairs`
-  "alt-text": "warn",
-  "anchor-has-content": "warn", // Seems to not work
-  "anchor-is-valid": "error",
   "anchor-precedence": "error",
   "argument-type": "error",
   "arguments-order": "error",
@@ -49,7 +46,7 @@
   "cookie-no-httponly": "warn",
   "cors": "warn",
   "csrf": "warn",
-  "cyclomatic-complexity": "error",
+  "cyclomatic-complexity": "off", // See `complexity`
   "declarations-in-global-scope": "off", // Not for non-browser environments, the rest is handled by `no-var`
   "default-param-last": "off", // Handled by `@typescript-eslint/default-param-last`
   "deprecation": "off", // Handled by `@typescript-eslint/no-deprecated`
@@ -87,31 +84,25 @@
   "insecure-cookie": "warn",
   "insecure-jwt-token": "warn",
   "inverted-assertion-arguments": "error",
-  "jsx-key": "warn", //todo: jsx stuff to only jsx files
-  "jsx-no-constructed-context-values": "",
-  "jsx-no-useless-fragment": "",
-  "label-has-associated-control": "",
-  "label-position": "",
-  "link-with-target-blank": "",
+  "label-position": "off", // Handled by `no-labels`
+  "link-with-target-blank": "warn",
   "max-switch-cases": [
     "error",
     30
   ],
-  "max-union-size": "",
-  "media-has-caption": "",
-  "misplaced-loop-counter": "",
-  "mouse-events-a11y": "",
-  "nested-control-flow": "",
-  "new-cap": "",
-  "new-operator-misuse": "",
-  "no-accessor-field-mismatch": "",
+  "max-union-size": "warn",
+  "misplaced-loop-counter": "error",
+  "nested-control-flow": "warn",
+  "new-cap": "off", // Handled by `new-cap`
+  "new-operator-misuse": "off", // Handled by `new-cap`, `@stylistic/new-parens`
+  "no-accessor-field-mismatch": "error",
   "no-all-duplicated-branches": "error",
-  "no-alphabetical-sort": "",
-  "no-angular-bypass-sanitization": "",
-  "no-array-delete": "",
-  "no-array-index-key": "",
-  "no-associative-arrays": "",
-  "no-base-to-string": "",
+  "no-alphabetical-sort": "off", // Handled by `@typescript-eslint/require-array-sort-compare`
+  "no-angular-bypass-sanitization": "off", // Not using angular
+  "no-array-delete": "off", // Handled by `@typescript-eslint/no-array-delete`
+  "no-associative-arrays": "warn", // Note: does not detect "arr.xyz", just "arr['xyz']".
+  "no-async-constructor": "off", // Seems like it got deleted but is still documented.
+  "no-base-to-string": "off", // Handled by `@typescript-eslint/no-base-to-string`
   "no-built-in-override": "",
   "no-case-label-in-switch": "",
   "no-clear-text-protocols": "",
@@ -275,7 +266,6 @@
   "slow-regex": "",
   "sockets": "",
   "sonar-block-scoped-var": "",
-  "sonar-jsx-no-leaked-render": "",
   "sonar-max-lines": "",
   "sonar-max-lines-per-function": "",
   "sonar-max-params": "",

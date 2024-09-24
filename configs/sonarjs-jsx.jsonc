@@ -1,0 +1,7 @@
+{
+  "jsx-key": "warn",
+  "jsx-no-constructed-context-values": "",
+  "jsx-no-useless-fragment": "",
+  "no-array-index-key": "",
+  "sonar-jsx-no-leaked-render": ""
+}
