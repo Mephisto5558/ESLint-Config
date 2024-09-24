@@ -14,10 +14,12 @@ export { plugins };
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
+
   let filename = basename(path, '.jsonc');
+  if (filename.startsWith('sonarjs')) filename = 'sonarjs';
   filename = filename == 'eslint' ? '' : `${filename}/`;
 
-  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v != '').map(([k, v]) => [`${filename}${k}`, v]));
+  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
 }
 
 const
@@ -65,6 +67,16 @@ export default [
       reportUnusedDisableDirectives: true
     },
     plugins, rules
+  },
+  {
+    name: 'eslint-config:jsx',
+    files: ['**/*.jsx'],
+    rules: importJsonC('configs/sonarjs-jsx.jsonc')
+  },
+  {
+    name: 'eslint-config:html',
+    files: ['**/*.html'],
+    rules: importJsonC('configs/sonarjs-html.jsonc')
   },
   {
     name: 'eslint-config:d.ts',
