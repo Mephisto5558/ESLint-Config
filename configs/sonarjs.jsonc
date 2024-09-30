@@ -103,17 +103,16 @@
   "no-associative-arrays": "warn", // Note: does not detect "arr.xyz", just "arr['xyz']".
   "no-async-constructor": "off", // Seems like it got deleted but is still documented.
   "no-base-to-string": "off", // Handled by `@typescript-eslint/no-base-to-string`
-  "no-built-in-override": "",
-  "no-case-label-in-switch": "",
-  "no-clear-text-protocols": "",
-  "no-code-after-done": "",
+  "no-built-in-override": "warn",
+  "no-case-label-in-switch": "error",
+  "no-clear-text-protocols": "warn",
+  "no-code-after-done": "error",
   "no-collapsible-if": "error",
   "no-collection-size-mischeck": "error",
-  "no-commented-code": "",
-  "no-dead-store": "",
-  "no-delete-var": "",
-  "no-deprecated-react": "",
-  "no-duplicate-in-composite": "",
+  "no-commented-code": "warn",
+  "no-dead-store": "off", // Handled by `no-useless-assignment`, `@typescript-eslint/no-unused-vars`
+  "no-delete-var": "off", // Handled by `no-delete-var`
+  "no-duplicate-in-composite": "off", // Handled by `@typescript-eslint/no-duplicate-type-constituents`
   "no-duplicate-string": [
     "warn",
     {
@@ -122,60 +121,63 @@
   ],
   "no-duplicated-branches": "error",
   "no-element-overwrite": "warn",
-  "no-empty-after-reluctant": "",
-  "no-empty-alternatives": "",
+  "no-empty-after-reluctant": "error",
+  "no-empty-alternatives": "error",
   "no-empty-collection": "error",
-  "no-empty-function": "",
-  "no-empty-group": "",
-  "no-empty-interface": "",
-  "no-empty-test-file": "",
-  "no-equals-in-for-termination": "",
-  "no-exclusive-tests": "",
-  "no-extend-native": "",
+  "no-empty-function": "off", // Handled by `@typescript-eslint/no-empty-function`
+  "no-empty-group": "error",
+  "no-empty-interface": "off", // Handled by `@typescript-eslint/no-empty-object-type`
+  "no-empty-test-file": "off", // Handled by `unicorn/no-empty-file`
+  "no-equals-in-for-termination": "warn",
+  "no-exclusive-tests": "warn",
+  "no-extend-native": "warn",
   "no-extra-arguments": "error",
-  "no-extra-semi": "",
-  "no-find-dom-node": "",
-  "no-for-in-iterable": "",
-  "no-function-declaration-in-block": "",
-  "no-global-this": "",
-  "no-globals-shadowing": "",
+  "no-extra-semi": "off", // Handled by `@stylistic/no-extra-semi`
+  "no-for-in-iterable": "error",
+  "no-function-declaration-in-block": "warn",
+  "no-global-this": "off", // Handled by `@typescript-eslint/no-invalid-this`
+  "no-globals-shadowing": "off", // Handled by `no-shadow-restricted-names`, `no-func-assign`, `sonarjs/no-built-in-override`
   "no-gratuitous-expressions": "error",
-  "no-hardcoded-credentials": "",
-  "no-hardcoded-ip": "",
-  "no-hook-setter-in-body": "",
+  "no-hardcoded-credentials": "warn",
+  "no-hardcoded-ip": "warn",
   "no-identical-conditions": "error",
   "no-identical-expressions": "error",
   "no-identical-functions": "error",
-  "no-ignored-exceptions": "",
-  "no-ignored-return": "off", // Doesn't seem to work, even with the rule's code example
-  "no-implicit-dependencies": "",
-  "no-implicit-global": "",
-  "no-in-misuse": "",
-  "no-incomplete-assertions": "",
-  "no-inconsistent-returns": "",
-  "no-incorrect-string-concat": "",
-  "no-infinite-loop": "",
-  "no-intrusive-permissions": "",
-  "no-invalid-await": "",
-  "no-invariant-returns": "",
+  "no-ignored-exceptions": "off", // Handled by `no-empty`
+  "no-ignored-return": "error",
+  "no-implicit-dependencies": "warn",
+  "no-implicit-global": "off", // Handled by `no-undef`
+  "no-in-misuse": "error",
+  "no-incomplete-assertions": "error",
+  "no-inconsistent-returns": "off", // "warn" - Throws `Cannot read properties of undefined (reading 'some')`
+  "no-incorrect-string-concat": "error",
+  "no-infinite-loop": "warn",
+  "no-intrusive-permissions": "off", // Should be set by the lib user
+  "no-invalid-await": "off", // Handled by `@typescript-eslint/await-thenable`
+  "no-invariant-returns": "warn",
   "no-inverted-boolean-check": "error",
-  "no-ip-forward": "",
-  "no-labels": "",
-  "no-literal-call": "",
-  "no-lonely-if": "",
-  "no-mime-sniff": "",
-  "no-misleading-array-reverse": "",
-  "no-misused-promises": "",
-  "no-mixed-content": "",
-  "no-nested-assignment": "",
-  "no-nested-conditional": "",
-  "no-nested-functions": "",
-  "no-nested-incdec": "",
+  "no-ip-forward": "warn",
+  "no-labels": "off", // Handled by `no-labels`
+  "no-literal-call": "error",
+  "no-lonely-if": "off", // Handled by `no-lonely-if`
+  "no-mime-sniff": "warn",
+  "no-misleading-array-reverse": "warn",
+  "no-misused-promises": "error",
+  "no-mixed-content": "warn",
+  "no-nested-assignment": "off", // Handled by `no-cond-assign`
+  "no-nested-conditional": "warn",
+  "no-nested-functions": [
+    "error",
+    {
+      "threshold": 2
+    }
+  ],
+  "no-nested-incdec": "error",
   "no-nested-switch": "error",
   "no-nested-template-literals": "error",
   "no-one-iteration-loop": "error",
-  "no-os-command-from-path": "",
-  "no-parameter-reassignment": "",
+  "no-os-command-from-path": "warn",
+  "no-parameter-reassignment": "error",
   "no-primitive-wrappers": "",
   "no-redeclare": "",
   "no-redundant-assignments": "",
