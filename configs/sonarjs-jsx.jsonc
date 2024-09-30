@@ -3,5 +3,9 @@
   "jsx-no-constructed-context-values": "",
   "jsx-no-useless-fragment": "",
   "no-array-index-key": "",
+  "no-deprecated-react": "",
+  "no-find-dom-node": "",
+  "no-hook-setter-in-body": "",
+
   "sonar-jsx-no-leaked-render": ""
 }
