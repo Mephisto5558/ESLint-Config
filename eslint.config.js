@@ -43,7 +43,6 @@ const
 /**
  * @type { import('eslint').Linter.Config[] }
  * This config lists all rules from every plugin it uses.*/
-
 export default [
   {
     name: 'eslint-config:all',
@@ -51,7 +50,9 @@ export default [
     languageOptions: {
       parser,
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['*.js', '*.html']
+        },
         tsconfigRootDir: '.',
         warnOnUnsupportedTypeScriptVersion: true
       },
@@ -64,14 +65,14 @@ export default [
       }
     },
     linterOptions: {
-      reportUnusedDisableDirectives: true
+      reportUnusedDisableDirectives: 'warn'
     },
     plugins, rules
   },
   {
-    name: 'eslint-config:jsx',
+    name: 'eslint-config:react',
     files: ['**/*.jsx'],
-    rules: importJsonC('configs/sonarjs-jsx.jsonc')
+    rules: importJsonC('configs/sonarjs-react.jsonc')
   },
   {
     name: 'eslint-config:html',
