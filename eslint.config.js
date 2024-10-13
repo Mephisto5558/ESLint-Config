@@ -79,6 +79,16 @@ export default [
     files: ['**/*.html'],
     languageOptions: {
       globals: globals.browser
+    },
+    rules: {
+      '@stylistic/no-multiple-empty-lines': [
+        'error',
+        {
+          max: 2,
+          maxBOF: 1 // <script> tag should be on its own line
+        }
+      ],
+      '@stylistic/eol-last': 'off' // </script> tag should be on the next line
     }
   },
   {
