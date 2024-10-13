@@ -1,14 +1,10 @@
 {
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn?/tree/main/.README#rules
-  "better-regex": [
-    "error",
-    {
-      "sortCharacterClasses": true
-    }
-  ],
+  "better-regex": "off",  // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
   "catch-error-name": "off",
   "consistent-destructuring": "error",
   "consistent-empty-array-spread": "error",
+  "consistent-existence-index-check": "error",
   "consistent-function-scoping": "error",
   "custom-error-definition": "error",
   "empty-brace-spaces": "off", // Handled by `no-empty`
@@ -98,10 +94,12 @@
   "prefer-dom-node-text-content": "error",
   "prefer-event-target": "error",
   "prefer-export-from": "error",
+  "prefer-global-this": "error",
   "prefer-includes": "error",
   "prefer-json-parse-buffer": "off",
   "prefer-keyboard-event-key": "error",
   "prefer-logical-operator-over-ternary": "error",
+  "prefer-math-min-max":"error",
   "prefer-math-trunc": "error",
   "prefer-modern-dom-apis": "error",
   "prefer-modern-math-apis": "error",
