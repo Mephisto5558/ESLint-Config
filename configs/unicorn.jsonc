@@ -113,7 +113,7 @@
   "prefer-prototype-methods": "error",
   "prefer-query-selector": "error",
   "prefer-reflect-apply": "error",
-  "prefer-regexp-test": "error",
+  "prefer-regexp-test": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-set-has": "error",
   "prefer-set-size": "error",
   "prefer-spread": "error",

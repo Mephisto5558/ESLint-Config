@@ -17,15 +17,15 @@
   "no-constant-binary-expression": "error",
   "no-constant-condition": "error",
   "no-constructor-return": "warn",
-  "no-control-regex": "error",
+  "no-control-regex": "off", // Handled by `regexp/no-control-character`
   "no-debugger": "error",
   "no-dupe-args": "error",
-  "no-dupe-class-members": "off", // Handeled by `@typescript-eslint/no-dupe-class-members`
+  "no-dupe-class-members": "off", // Handled by `@typescript-eslint/no-dupe-class-members`
   "no-dupe-else-if": "off", // Handled by `sonarjs/no-identical-conditions`
   "no-dupe-keys": "error",
   "no-duplicate-case": "off", // Handled by `sonarjs/no-identical-conditions`
   "no-duplicate-imports": "error",
-  "no-empty-character-class": "error",
+  "no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
   "no-empty-pattern": "error",
   "no-ex-assign": "error",
   "no-fallthrough": "warn",
@@ -35,18 +35,19 @@
     "error",
     "both"
   ],
-  "no-invalid-regexp": "error",
+  "no-invalid-regexp": "off", // Handled by `regexp/no-invalid-regexp`, `regexp/no-non-standard-flag`
   "no-irregular-whitespace": [
     "error",
     {
       // It should be escaped unicode sequences and not the literal character
-      "skipStrings": false
+      "skipStrings": false,
+      "skipRegExps": true // Handled by `regexp/no-invisible-character`
     }
   ],
   "no-loss-of-precision": "error",
-  "no-misleading-character-class": "error",
+  "no-misleading-character-class": "off", // Handled by `regexp/no-misleading-unicode-character`
   "no-new-native-nonconstructor": "error",
-  "no-new-symbol": "off", // handled by `no-new-native-nonconstructor`
+  "no-new-symbol": "off", // Handled by `no-new-native-nonconstructor`
   "no-obj-calls": "error",
   "no-promise-executor-return": "off", // because this also affects `new Promise(res => x.on('y', z => res(z)));`
   "no-prototype-builtins": "error",
@@ -73,7 +74,7 @@
   "no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
   "no-use-before-define": "off", // Handled by `@typescript-eslint/no-use-before-define`
   "no-useless-assignment": "error",
-  "no-useless-backreference": "error",
+  "no-useless-backreference": "off", // Handled by `regexp/no-useless-backreference`
   "require-atomic-updates": "warn",
   "use-isnan": "error",
   "valid-typeof": "error",
@@ -234,7 +235,7 @@
   "no-useless-computed-key": "error",
   "no-useless-concat": "error",
   "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
-  "no-useless-escape": "error",
+  "no-useless-escape": "off", // Handled by `regexp/no-useless-escape`
   "no-useless-rename": "error",
   "no-useless-return": "error",
   "no-var": "error",

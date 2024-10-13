@@ -7,6 +7,7 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
+import regExPlugin from 'eslint-plugin-regexp';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 export { plugins };
@@ -26,6 +27,7 @@ const
     '@stylistic': stylisticPlugin,
     jsdoc: jsdocPlugin,
     sonarjs: sonarjsPlugin,
+    regexp: regExPlugin,
     unicorn: unicornPlugin
   },
   rules = {
@@ -34,6 +36,7 @@ const
     ...importJsonC('configs/@stylistic.jsonc'),
     ...importJsonC('configs/jsdoc.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
+    ...importJsonC('configs/regexp.jsonc'),
     ...importJsonC('configs/unicorn.jsonc')
   };
 
@@ -41,7 +44,6 @@ const
 /**
  * @type { import('eslint').Linter.Config[] }
  * This config lists all rules from every plugin it uses.*/
-
 export default [
   {
     name: 'eslint-config:all',
