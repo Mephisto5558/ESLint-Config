@@ -1,5 +1,5 @@
 {
-  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md | Using "warn" wherever applicable
+  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md | Using "error" only for invalid code
   "accessor-pairs": "off", // Handled by `accessor-pairs`
   "anchor-precedence": "error",
   "argument-type": "error",
@@ -178,54 +178,50 @@
   "no-one-iteration-loop": "error",
   "no-os-command-from-path": "warn",
   "no-parameter-reassignment": "error",
-  "no-primitive-wrappers": "",
-  "no-redeclare": "",
-  "no-redundant-assignments": "",
+  "no-primitive-wrappers": "off", // Handled by `no-new-wrappers`
+  "no-redeclare": "off", // Handled by `@typescript-eslint/no-redeclare`
+  "no-redundant-assignments": "warn",
   "no-redundant-boolean": "warn",
-  "no-redundant-jump": "",
-  "no-redundant-optional": "",
-  "no-redundant-parentheses": "",
-  "no-redundant-type-constituents": "",
-  "no-reference-error": "",
-  "no-referrer-policy": "",
-  "no-require-or-define": "",
-  "no-return-type-any": "",
-  "no-same-argument-assert": "",
+  "no-redundant-jump": "warn",
+  "no-redundant-optional": "warn",
+  "no-redundant-type-constituents": "off", // Handled by `@typescript-eslint/no-redundant-type-constituents`
+  "no-reference-error": "off", // Handled by `no-undef`
+  "no-referrer-policy": "warn",
+  "no-require-or-define": "off",
+  "no-return-type-any": "off", // Handled by `@typescript-eslint/no-explicit-any`
+  "no-same-argument-assert": "error",
   "no-same-line-conditional": "error",
-  "no-self-compare": "",
+  "no-selector-parameter": "warn",
+  "no-self-compare": "error",
+  "no-self-import": "error",
+  "no-skipped-test": "warn",
   "no-small-switch": "warn",
-  "no-tab": "",
-  "no-table-as-layout": "",
-  "no-this-alias": "",
-  "no-throw-literal": "",
-  "no-try-promise": "",
-  "no-undefined-argument": "",
-  "no-undefined-assignment": "",
-  "no-unenclosed-multiline-block": "",
-  "no-uniq-key": "",
-  "no-unknown-property": "",
-  "no-unreachable": "",
-  "no-unsafe": "",
-  "no-unsafe-unzip": "",
-  "no-unstable-nested-components": "",
-  "no-unthrown-error": "",
-  "no-unused-collection": "error",
-  "no-unused-expressions": "",
-  "no-unused-function-argument": "",
-  "no-unused-private-class-members": "",
+  "no-table-as-layout": "warn",
+  "no-this-alias": "warn",
+  "no-throw-literal": "off", // Handled by `@typescript-eslint/only-throw-error`
+  "no-try-promise": "error",
+  "no-undefined-argument": "off", // Handled by `unicorn/no-useless-undefined`
+  "no-undefined-assignment": "off", // Incompatible with `unicorn/no-null`
+  "no-unenclosed-multiline-block": "warn",
+  "no-unreachable": "off", // Handled by `no-unreachable` 
+  "no-unsafe-unzip": "warn",
+  "no-unthrown-error": "warn",
+  "no-unused-collection": "warn",
+  "no-unused-expressions": "off", // Handled by `@typescript-eslint/no-unused-expressions`
+  "no-unused-function-argument": "off", // Handled by `@typescript-eslint/no-unused-vars`
+  "no-unused-private-class-members": "off", // Handled by `no-unused-private-class-members`
   "no-use-of-empty-return-value": "error",
-  "no-useless-call": "",
+  "no-useless-call": "off", // Handled by `no-useless-call`
   "no-useless-catch": "off", // Handled by `no-useless-catch`
-  "no-useless-constructor": "",
-  "no-useless-increment": "",
-  "no-useless-intersection": "",
-  "no-useless-react-setstate": "",
-  "no-var": "",
-  "no-variable-usage-before-declaration": "",
-  "no-vue-bypass-sanitization": "",
-  "no-weak-cipher": "",
-  "no-weak-keys": "",
-  "no-wildcard-import": "",
+  "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
+  "no-useless-increment": "off", // Handled by `no-useless-assignment`
+  "no-useless-intersection": "off", // Handled by `@typescript-eslint/no-redundant-type-constituents`
+  "no-var": "off", // Handled by `no-var`
+  "no-variable-usage-before-declaration": "off", // Handled by `no-var`
+  "no-vue-bypass-sanitization": "warn",
+  "no-weak-cipher": "warn",
+  "no-weak-keys": "warn",
+  "no-wildcard-import": "warn",
   "non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
   "non-number-in-arithmetic-expression": "",
   "null-dereference": "",

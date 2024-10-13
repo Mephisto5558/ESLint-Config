@@ -1,11 +1,16 @@
 {
-  "jsx-key": "warn",
+  "jsx-key": "",
   "jsx-no-constructed-context-values": "",
   "jsx-no-useless-fragment": "",
   "no-array-index-key": "",
   "no-deprecated-react": "",
   "no-find-dom-node": "",
   "no-hook-setter-in-body": "",
+  "no-uniq-key": "",
+  "no-unknown-property": "",
+  "no-unsafe": "",
+  "no-unstable-nested-components": "",
+  "no-useless-react-setstate": "",
 
   "sonar-jsx-no-leaked-render": ""
 }

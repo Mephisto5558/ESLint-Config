@@ -223,21 +223,21 @@
   "no-shadow": "off", // Handled by `@typescript-eslint/no-shadow`
   "no-shadow-restricted-names": "error",
   "no-ternary": "off",
-  "no-throw-literal": "error",
+  "no-throw-literal": "off", // Handeled by `@typescript-eslint/only-throw-error
   "no-undef-init": "error",
   "no-undefined": "off",
   "no-underscore-dangle": "off",
   "no-unneeded-ternary": "error",
   "no-unused-expressions": "off", // Handled by `@typescript-eslint/no-unused-expressions`
   "no-unused-labels": "error",
-  "no-useless-call": "error",
+  "no-useless-call": "warn",
   "no-useless-catch": "error",
   "no-useless-computed-key": "error",
   "no-useless-concat": "error",
   "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
   "no-useless-escape": "off", // Handled by `regexp/no-useless-escape`
   "no-useless-rename": "error",
-  "no-useless-return": "error",
+  "no-useless-return": "off", // Handled by `sonarjs/no-redundant-jump`
   "no-var": "error",
   "no-void": "off",
   "no-warning-comments": "off",
