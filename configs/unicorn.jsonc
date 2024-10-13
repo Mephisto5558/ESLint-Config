@@ -35,7 +35,7 @@
   "no-document-cookie": "error",
   "no-empty-file": "error",
   "no-for-loop": "error",
-  "no-hex-escape": "error",
+  "no-hex-escape": "off", // Handled by `regexp/hexadecimal-escape`
   "no-instanceof-array": "error",
   "no-invalid-fetch-options": "error",
   "no-invalid-remove-event-listener": "error",

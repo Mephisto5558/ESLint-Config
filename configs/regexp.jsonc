@@ -100,7 +100,7 @@
   "grapheme-string-literal": "warn",
   "hexadecimal-escape": [
     "error",
-    "always"
+    "never"
   ],
   "letter-case": "", // TODO
   "match-any": [
