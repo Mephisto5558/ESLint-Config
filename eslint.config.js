@@ -57,7 +57,7 @@ export default [
       parserOptions: {
         project: true,
         tsconfigRootDir: '.',
-        extraFileExtensions: ['html'],
+        extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
       ecmaVersion: 'latest',
@@ -70,7 +70,7 @@ export default [
       }
     },
     linterOptions: {
-      reportUnusedDisableDirectives: true
+      reportUnusedDisableDirectives: 'warn'
     },
     settings: {
       ...importJsonC('configs/html.jsonc')
@@ -78,9 +78,9 @@ export default [
     plugins, rules
   },
   {
-    name: 'eslint-config:jsx',
+    name: 'eslint-config:react',
     files: ['**/*.jsx'],
-    rules: importJsonC('configs/sonarjs-jsx.jsonc')
+    rules: importJsonC('configs/sonarjs-react.jsonc')
   },
   {
     name: 'eslint-config:html',
