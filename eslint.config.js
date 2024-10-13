@@ -75,6 +75,13 @@ export default [
     plugins, rules
   },
   {
+    name: 'eslint-config:html',
+    files: ['**/*.html'],
+    languageOptions: {
+      globals: globals.browser
+    }
+  },
+  {
     name: 'eslint-config:d.ts',
     files: ['**/*.d.ts'],
     rules: {
