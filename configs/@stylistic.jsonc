@@ -58,6 +58,7 @@
     "error",
     "never"
   ],
+  "curly-newline": "off", // Handled by `@stylistic/brace-style`
   "dot-location": [
     "error",
     "property"
