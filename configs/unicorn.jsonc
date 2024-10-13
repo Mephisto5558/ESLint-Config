@@ -1,6 +1,6 @@
 {
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn?/tree/main/.README#rules
-  "better-regex": "off",  // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
+  "better-regex": "off", // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
   "catch-error-name": "off",
   "consistent-destructuring": "error",
   "consistent-empty-array-spread": "error",
@@ -99,7 +99,7 @@
   "prefer-json-parse-buffer": "off",
   "prefer-keyboard-event-key": "error",
   "prefer-logical-operator-over-ternary": "error",
-  "prefer-math-min-max":"error",
+  "prefer-math-min-max": "error",
   "prefer-math-trunc": "error",
   "prefer-modern-dom-apis": "error",
   "prefer-modern-math-apis": "error",
