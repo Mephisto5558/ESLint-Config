@@ -7,8 +7,9 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
-import regExPlugin from 'eslint-plugin-regexp';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import regExPlugin from 'eslint-plugin-regexp';
+import htmlPlugin from 'eslint-plugin-html';
 
 export { plugins };
 
@@ -27,8 +28,9 @@ const
     '@stylistic': stylisticPlugin,
     jsdoc: jsdocPlugin,
     sonarjs: sonarjsPlugin,
+    unicorn: unicornPlugin,
     regexp: regExPlugin,
-    unicorn: unicornPlugin
+    html: htmlPlugin
   },
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
@@ -36,8 +38,8 @@ const
     ...importJsonC('configs/@stylistic.jsonc'),
     ...importJsonC('configs/jsdoc.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
-    ...importJsonC('configs/regexp.jsonc'),
-    ...importJsonC('configs/unicorn.jsonc')
+    ...importJsonC('configs/unicorn.jsonc'),
+    ...importJsonC('configs/regexp.jsonc')
   };
 
 
@@ -51,10 +53,9 @@ export default [
     languageOptions: {
       parser,
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ['./*.js', './*.html']
-        },
+        project: true,
         tsconfigRootDir: '.',
+        extraFileExtensions: ['html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
       ecmaVersion: 'latest',
@@ -67,6 +68,9 @@ export default [
     },
     linterOptions: {
       reportUnusedDisableDirectives: true
+    },
+    settings: {
+      ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
   },
