@@ -15,7 +15,7 @@
   "convert-to-jsdoc-comments": "off",
   "empty-tags": "error",
   "implements-on-classes": "error",
-  "imports-as-dependencies": "error",
+  "imports-as-dependencies": "off", // "error" // See https://github.com/gajus/eslint-plugin-jsdoc/issues/1114
   "informative-docs": "error",
   "lines-before-block": "off", // Handled by `@stylistic/lines-around-comment`
   "match-description": "off",
