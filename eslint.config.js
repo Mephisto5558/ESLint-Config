@@ -49,7 +49,9 @@ export default [
     languageOptions: {
       parser,
       parserOptions: {
-        projectService: true,
+        projectService: {
+          allowDefaultProject: ['*.js', '*.html']
+        },
         tsconfigRootDir: '.',
         warnOnUnsupportedTypeScriptVersion: true
       },
