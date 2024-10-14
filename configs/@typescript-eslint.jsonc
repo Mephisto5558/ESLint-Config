@@ -211,7 +211,7 @@
   "prefer-readonly": "off",
   "prefer-readonly-parameter-types": "off",
   "prefer-reduce-type-parameter": "error",
-  "prefer-regexp-exec": "error",
+  "prefer-regexp-exec": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-return-this-type": "error",
   "prefer-string-starts-ends-with": "error",
   "promise-function-async": [

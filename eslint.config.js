@@ -8,6 +8,8 @@ import stylisticPlugin from '@stylistic/eslint-plugin';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import regExPlugin from 'eslint-plugin-regexp';
+import htmlPlugin from 'eslint-plugin-html';
 
 export { plugins };
 
@@ -28,7 +30,9 @@ const
     '@stylistic': stylisticPlugin,
     jsdoc: jsdocPlugin,
     sonarjs: sonarjsPlugin,
-    unicorn: unicornPlugin
+    unicorn: unicornPlugin,
+    regexp: regExPlugin,
+    html: htmlPlugin
   },
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
@@ -36,7 +40,8 @@ const
     ...importJsonC('configs/@stylistic.jsonc'),
     ...importJsonC('configs/jsdoc.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
-    ...importJsonC('configs/unicorn.jsonc')
+    ...importJsonC('configs/unicorn.jsonc'),
+    ...importJsonC('configs/regexp.jsonc')
   };
 
 
@@ -50,10 +55,9 @@ export default [
     languageOptions: {
       parser,
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ['*.js', '*.html']
-        },
+        project: true,
         tsconfigRootDir: '.',
+        extraFileExtensions: ['html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
       ecmaVersion: 'latest',
@@ -67,6 +71,9 @@ export default [
     linterOptions: {
       reportUnusedDisableDirectives: 'warn'
     },
+    settings: {
+      ...importJsonC('configs/html.jsonc')
+    },
     plugins, rules
   },
   {
@@ -77,7 +84,20 @@ export default [
   {
     name: 'eslint-config:html',
     files: ['**/*.html'],
-    rules: importJsonC('configs/sonarjs-html.jsonc')
+    languageOptions: {
+      globals: globals.browser
+    },
+    rules: {
+      ...importJsonC('configs/sonarjs-html.jsonc')
+      '@stylistic/no-multiple-empty-lines': [
+        'error',
+        {
+          max: 2,
+          maxBOF: 1 // <script> tag should be on its own line
+        }
+      ],
+      '@stylistic/eol-last': 'off' // </script> tag should be on the next line
+    }
   },
   {
     name: 'eslint-config:d.ts',

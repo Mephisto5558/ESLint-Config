@@ -1,6 +1,6 @@
 {
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn?/tree/main/.README#rules
-  "better-regex": "off",  // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
+  "better-regex": "off", // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
   "catch-error-name": "off",
   "consistent-destructuring": "error",
   "consistent-empty-array-spread": "error",
@@ -35,7 +35,7 @@
   "no-document-cookie": "error",
   "no-empty-file": "error",
   "no-for-loop": "error",
-  "no-hex-escape": "error",
+  "no-hex-escape": "off", // Handled by `regexp/hexadecimal-escape`
   "no-instanceof-array": "error",
   "no-invalid-fetch-options": "error",
   "no-invalid-remove-event-listener": "error",
@@ -99,7 +99,7 @@
   "prefer-json-parse-buffer": "off",
   "prefer-keyboard-event-key": "error",
   "prefer-logical-operator-over-ternary": "error",
-  "prefer-math-min-max":"error",
+  "prefer-math-min-max": "error",
   "prefer-math-trunc": "error",
   "prefer-modern-dom-apis": "error",
   "prefer-modern-math-apis": "error",
@@ -113,7 +113,7 @@
   "prefer-prototype-methods": "error",
   "prefer-query-selector": "error",
   "prefer-reflect-apply": "error",
-  "prefer-regexp-test": "error",
+  "prefer-regexp-test": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-set-has": "error",
   "prefer-set-size": "error",
   "prefer-spread": "error",
