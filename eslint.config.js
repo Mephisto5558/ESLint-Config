@@ -61,6 +61,7 @@ export default [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
+        ...globals.builtin,
         ...globals.node,
         ...globals.es2024,
         NodeJS: 'readonly'
