@@ -1,6 +1,5 @@
 {
   // [TYPESCRIPT-ESLINT] https://typescript-eslint.io/rules | Using "warn" wherever applicable
-  "adjacent-overload-signatures": "warn",
   "array-type": [
     "error",
     {

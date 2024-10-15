@@ -114,6 +114,7 @@ export default [
       'jsdoc/require-returns-type': 'off',
       'jsdoc/check-param-names': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
+      '@typescript-eslint/adjacent-overload-signatures': 'warn',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
