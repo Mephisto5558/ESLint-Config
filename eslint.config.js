@@ -88,7 +88,7 @@ export default [
       globals: globals.browser
     },
     rules: {
-      ...importJsonC('configs/sonarjs-html.jsonc')
+      ...importJsonC('configs/sonarjs-html.jsonc'),
       '@stylistic/no-multiple-empty-lines': [
         'error',
         {
@@ -113,6 +113,7 @@ export default [
       'jsdoc/require-returns-type': 'off',
       'jsdoc/check-param-names': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
+      '@typescript-eslint/adjacent-overload-signatures': 'warn',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {

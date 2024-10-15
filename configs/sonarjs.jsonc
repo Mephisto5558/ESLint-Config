@@ -178,7 +178,7 @@
   "no-one-iteration-loop": "error",
   "no-os-command-from-path": "warn",
   "no-parameter-reassignment": "error",
-  "no-primitive-wrappers": "off", // Handled by `no-new-wrappers`
+  "no-primitive-wrappers": "off", // Handled by `no-new-wrappers`, `unicorn/new-for-builtins`
   "no-redeclare": "off", // Handled by `@typescript-eslint/no-redeclare`
   "no-redundant-assignments": "warn",
   "no-redundant-boolean": "warn",
