@@ -46,7 +46,7 @@
   "no-negated-condition": "error",
   "no-negation-in-equality-check": "error",
   "no-nested-ternary": "error",
-  "no-new-array": "error",
+  "no-new-array": "off", // Handled by `sonarjs/array-constructor`
   "no-new-buffer": "error",
   "no-null": "error",
   "no-object-as-default-parameter": "error",
