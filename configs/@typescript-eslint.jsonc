@@ -162,9 +162,9 @@
       "vars": "all",
       "args": "all",
       "caughtErrors": "all",
-      "argsIgnorePattern": "^_",
-      "destructuredArrayIgnorePattern": "^_",
-      "varsIgnorePattern": "^_"
+      "argsIgnorePattern": "^_.+",
+      "destructuredArrayIgnorePattern": "^_.+",
+      "varsIgnorePattern": "^_.+"
     }
   ],
   "no-use-before-define": [
