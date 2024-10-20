@@ -11,6 +11,8 @@
   "no-unsafe": "",
   "no-unstable-nested-components": "",
   "no-useless-react-setstate": "",
-
-  "sonar-jsx-no-leaked-render": ""
+  "rules-of-hooks": "",
+  "sonar-jsx-no-leaked-render": "",
+  "sonar-no-unused-class-component-methods": "",
+  "sonar-prefer-read-only-props": ""
 }

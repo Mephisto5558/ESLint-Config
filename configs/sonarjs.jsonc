@@ -223,93 +223,89 @@
   "no-weak-keys": "warn",
   "no-wildcard-import": "warn",
   "non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
-  "non-number-in-arithmetic-expression": "",
-  "null-dereference": "",
-  "object-alt-content": "",
-  "object-shorthand": "",
-  "operation-returning-nan": "",
-  "os-command": "",
-  "post-message": "",
-  "prefer-default-last": "",
-  "prefer-enum-initializers": "",
-  "prefer-for-of": "",
-  "prefer-function-type": "",
+  "non-number-in-arithmetic-expression": "warn",
+  "null-dereference": "error",
+  "object-shorthand": "warn",
+  "operation-returning-nan": "error",
+  "os-command": "warn",
+  "post-message": "warn",
+  "prefer-default-last": "off", // Handled by `default-case-last`
+  "prefer-enum-initializers": "warn",
+  "prefer-for-of": "off", // Handled by `unicorn/no-for-loop`, `@typescript-eslint/prefer-for-of`
+  "prefer-function-type": "warn",
   "prefer-immediate-return": "warn",
-  "prefer-namespace-keyword": "",
-  "prefer-nullish-coalescing": "",
+  "prefer-namespace-keyword": "warn",
+  "prefer-nullish-coalescing": "off", // Handled by `@typescript-eslint/prefer-nullish-coalescing`
   "prefer-object-literal": "warn",
-  "prefer-object-spread": "",
-  "prefer-promise-shorthand": "",
+  "prefer-object-spread": "off", // Handled by `prefer-object-spread`
+  "prefer-promise-shorthand": "warn",
   "prefer-single-boolean-return": "error",
-  "prefer-spread": "",
-  "prefer-string-starts-ends-with": "",
-  "prefer-template": "",
-  "prefer-type-guard": "",
-  "prefer-while": "error",
-  "process-argv": "",
-  "production-debug": "",
-  "pseudo-random": "",
-  "public-static-readonly": "",
-  "publicly-writable-directories": "",
-  "reduce-initial-value": "",
-  "redundant-type-aliases": "",
-  "regex-complexity": "",
-  "regular-expr": "",
-  "rules-of-hooks": "",
-  "semi": "",
-  "session-regeneration": "",
-  "shorthand-property-grouping": "",
-  "single-char-in-character-classes": "",
-  "single-character-alternation": "",
-  "slow-regex": "",
-  "sockets": "",
-  "sonar-block-scoped-var": "",
-  "sonar-max-lines": "",
-  "sonar-max-lines-per-function": "",
-  "sonar-max-params": "",
-  "sonar-no-control-regex": "",
-  "sonar-no-dupe-keys": "",
-  "sonar-no-empty-character-class": "",
-  "sonar-no-fallthrough": "",
-  "sonar-no-invalid-regexp": "",
-  "sonar-no-magic-numbers": "",
-  "sonar-no-misleading-character-class": "",
-  "sonar-no-regex-spaces": "",
-  "sonar-no-unused-class-component-methods": "",
-  "sonar-no-unused-vars": "",
-  "sonar-prefer-optional-chain": "",
-  "sonar-prefer-read-only-props": "",
-  "sonar-prefer-regexp-exec": "",
-  "sql-queries": "",
-  "stable-tests": "",
-  "standard-input": "",
-  "stateful-regex": "",
-  "strict-transport-security": "",
-  "strings-comparison": "",
-  "super-invocation": "",
-  "switch-without-default": "",
-  "table-header": "",
-  "table-header-reference": "",
-  "test-check-exception": "",
-  "todo-tag": "",
-  "too-many-break-or-continue-in-loop": "",
-  "unicode-aware-regex": "",
-  "unnecessary-character-escapes": "",
-  "unused-import": "",
-  "unused-named-groups": "",
-  "unverified-certificate": "",
-  "unverified-hostname": "",
-  "updated-const-var": "",
-  "updated-loop-counter": "",
-  "use-isnan": "",
-  "use-type-alias": "",
-  "useless-string-operation": "",
-  "values-not-convertible-to-numbers": "",
-  "variable-name": "",
-  "void-use": "",
-  "weak-ssl": "",
-  "web-sql-database": "",
-  "x-powered-by": "",
-  "xml-parser-xxe": "",
-  "xpath": ""
+  "prefer-spread": "warn",
+  "prefer-string-starts-ends-with": "off", // Handled by `@typescript-eslint/prefer-string-starts-ends-with`
+  "prefer-template": "warn",
+  "prefer-type-guard": "warn",
+  "prefer-while": "warn",
+  "production-debug": "warn",
+  "pseudo-random": "warn",
+  "public-static-readonly": "warn",
+  "publicly-writable-directories": "warn",
+  "reduce-initial-value": "error",
+  "redundant-type-aliases": "warn",
+  "regex-complexity": "warn",
+  "session-regeneration": "warn",
+  "shorthand-property-grouping": "warn",
+  "single-char-in-character-classes": "off", // Handled by `regexp/no-useless-character-class`
+  "single-character-alternation": "off", // Handled by `regexp/prefer-character-class`
+  "slow-regex": "off", // Handled by `regexp/no-super-linear-move`, `regexp/no-super-linear-backtracking`
+  "sonar-block-scoped-var": "off", // Handled by `no-var`, `vars-on-top`, `no-inner-declarations`
+  "sonar-max-lines": [
+    "warn",
+    {
+      "maximum": 300
+    }
+  ],
+  "sonar-max-lines-per-function": "off", // Would just make people write less readable, more compact code.
+  "sonar-max-params": [
+    "warn",
+    {
+      "max": 10
+    }
+  ],
+  "sonar-no-control-regex": "off", // Handled by `regexp/no-control-character`
+  "sonar-no-dupe-keys": "off", // Handled by `no-dupe-keys`, `@typescript-eslint/no-dupe-class-members`
+  "sonar-no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
+  "sonar-no-fallthrough": "off", // Handled by `no-fallthrough`
+  "sonar-no-invalid-regexp": "off", // Handled by `regexp/no-invalid-regexp`
+  "sonar-no-magic-numbers": "warn",
+  "sonar-no-misleading-character-class": "off", // Handled by `regexp/no-misleading-unicode-character`
+  "sonar-no-regex-spaces": "off", // Handled by `no-regex-spaces`
+  "sonar-no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
+  "sonar-prefer-optional-chain": "off", //Handled by `@typescript-eslint/prefer-optional-chain`
+  "sonar-prefer-regexp-exec": "warn",
+  "sql-queries": "warn",
+  "stable-tests": "warn",
+  "stateful-regex": "error",
+  "strict-transport-security": "warn",
+  "strings-comparison": "error",
+  "super-invocation": "error", // Handled by `constructor-super`, `no-this-before-super`
+  "switch-without-default": "warn",
+  "test-check-exception": "warn",
+  "todo-tag": "warn",
+  "too-many-break-or-continue-in-loop": "off",
+  "unicode-aware-regex": "error",
+  "unnecessary-character-escapes": "warn",
+  "unused-import": "off", // Handled by `@typescript-eslint/no-unused-vars`
+  "unused-named-groups": "warn",
+  "unverified-certificate": "warn",
+  "unverified-hostname": "warn",
+  "updated-const-var": "off", // Handled by `no-const-assign`
+  "updated-loop-counter": "error",
+  "use-isnan": "off", // Handled by `use-isnan`
+  "use-type-alias": "warn",
+  "values-not-convertible-to-numbers": "error",
+  "variable-name": "off", // Handled by `camelcase`
+  "void-use": "warn",
+  "weak-ssl": "warn",
+  "x-powered-by": "warn",
+  "xml-parser-xxe": "warn"
 }

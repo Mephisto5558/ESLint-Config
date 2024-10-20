@@ -4,5 +4,8 @@
   "anchor-is-valid": "error",
   "label-has-associated-control": "warn",
   "media-has-caption": "warn",
-  "mouse-events-a11y": "warn"
+  "mouse-events-a11y": "warn",
+  "object-alt-content": "warn",
+  "table-header": "warn",
+  "table-header-reference": "warn"
 }
