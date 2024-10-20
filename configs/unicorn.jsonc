@@ -142,5 +142,5 @@
   ],
   "template-indent": "off",
   "text-encoding-identifier-case": "error",
-  "throw-new-error": "error"
+  "throw-new-error": "error" // Overlaps with `unicorn/new-for-builtins` but not on e.g. SyntaxError
 }
