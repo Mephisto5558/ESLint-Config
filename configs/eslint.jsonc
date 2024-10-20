@@ -28,7 +28,12 @@
   "no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
   "no-empty-pattern": "error",
   "no-ex-assign": "error",
-  "no-fallthrough": "warn",
+  "no-fallthrough": [
+    "warn",
+    {
+      "reportUnusedFallthroughComment": true
+    }
+  ],
   "no-func-assign": "error",
   "no-import-assign": "error",
   "no-inner-declarations": [
