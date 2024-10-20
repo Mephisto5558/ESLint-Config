@@ -2,7 +2,7 @@
   // [ESLint] https://eslint.org/docs/latest/rules/ | Using "warn" wherever applicable
   //  Possible Problems
   "array-callback-return": "error",
-  "constructor-super": "error",
+  "constructor-super": "off", // Handled by `sonarjs/super-invocation`
   "for-direction": "error",
   "getter-return": "error",
   "no-async-promise-executor": "error",
@@ -56,7 +56,7 @@
   "no-setter-return": "warn",
   "no-sparse-arrays": "error",
   "no-template-curly-in-string": "warn",
-  "no-this-before-super": "error",
+  "no-this-before-super": "off", // Handled by `sonarjs/super-invocation`
   "no-undef": [
     "error",
     {
@@ -135,7 +135,7 @@
     }
   ],
   "id-match": "off", // Handled by `camelcase`
-  "init-declarations": "off", // Handeled by `@typescript-eslint/init-declarations`
+  "init-declarations": "off", // Handled by `@typescript-eslint/init-declarations`
   "logical-assignment-operators": [
     "error",
     "always",
@@ -161,11 +161,11 @@
     "warn",
     2
   ], // promises are to use whenever possible
-  "max-params": "off", // Handeled by `@typescript-eslint/max-params`
+  "max-params": "off", // Handled by `@typescript-eslint/max-params`
   "max-statements": "off",
   "new-cap": "error",
   "no-alert": "error",
-  "no-array-constructor": "off", // Handeled by `@typescript-eslint/no-array-constructor`
+  "no-array-constructor": "off", // Handled by `@typescript-eslint/no-array-constructor`
   "no-bitwise": "off",
   "no-caller": "error",
   "no-case-declarations": "error",
@@ -175,7 +175,7 @@
   "no-div-regex": "warn",
   "no-else-return": "error",
   "no-empty": "error",
-  "no-empty-function": "off", // Handeled by `@typescript-eslint/no-empty-function`
+  "no-empty-function": "off", // Handled by `@typescript-eslint/no-empty-function`
   "no-empty-static-block": "error",
   "no-eq-null": "off", // Handled by `unicorn/no-null`
   "no-eval": "error",
@@ -188,14 +188,14 @@
   "no-implicit-globals": "error",
   "no-implied-eval": "error",
   "no-inline-comments": "off",
-  "no-invalid-this": "off", // Handeled by `@typescript-eslint/no-invalid-this`
+  "no-invalid-this": "off", // Handled by `@typescript-eslint/no-invalid-this`
   "no-iterator": "error",
   "no-label-var": "warn",
   "no-labels": "error",
   "no-lone-blocks": "error",
   "no-lonely-if": "error",
-  "no-loop-func": "off", // Handeled by `@typescript-eslint/no-loop-func`
-  "no-magic-numbers": "off", // Handeled by `@typescript-eslint/no-magic-numbers`
+  "no-loop-func": "off", // Handled by `@typescript-eslint/no-loop-func`
+  "no-magic-numbers": "off", // Handled by `@typescript-eslint/no-magic-numbers`
   "no-multi-assign": "error",
   "no-multi-str": "error",
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
@@ -210,11 +210,11 @@
   "no-param-reassign": "off",
   "no-plusplus": "off",
   "no-proto": "error",
-  "no-redeclare": "off", // Handeled by `@typescript-eslint/no-redeclare`
-  "no-regex-spaces": "error",
+  "no-redeclare": "off", // Handled by `@typescript-eslint/no-redeclare`
+  "no-regex-spaces": "off", // Handled by `regexp/prefer-quantifier`
   "no-restricted-exports": "off",
   "no-restricted-globals": "off",
-  "no-restricted-imports": "off", // Handeled by `@typescript-eslint/no-restricted-imports`
+  "no-restricted-imports": "off", // Handled by `@typescript-eslint/no-restricted-imports`
   "no-restricted-properties": "off",
   "no-restricted-syntax": "off",
   "no-return-assign": "error",
@@ -223,21 +223,21 @@
   "no-shadow": "off", // Handled by `@typescript-eslint/no-shadow`
   "no-shadow-restricted-names": "error",
   "no-ternary": "off",
-  "no-throw-literal": "error",
+  "no-throw-literal": "off", // Handled by `@typescript-eslint/only-throw-error
   "no-undef-init": "error",
   "no-undefined": "off",
   "no-underscore-dangle": "off",
   "no-unneeded-ternary": "error",
   "no-unused-expressions": "off", // Handled by `@typescript-eslint/no-unused-expressions`
   "no-unused-labels": "error",
-  "no-useless-call": "error",
+  "no-useless-call": "warn",
   "no-useless-catch": "error",
   "no-useless-computed-key": "error",
   "no-useless-concat": "error",
   "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
   "no-useless-escape": "off", // Handled by `regexp/no-useless-escape`
   "no-useless-rename": "error",
-  "no-useless-return": "error",
+  "no-useless-return": "off", // Handled by `sonarjs/no-redundant-jump`
   "no-var": "error",
   "no-void": "off",
   "no-warning-comments": "off",

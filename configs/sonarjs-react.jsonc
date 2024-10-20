@@ -1,0 +1,18 @@
+{
+  "jsx-key": "",
+  "jsx-no-constructed-context-values": "",
+  "jsx-no-useless-fragment": "",
+  "no-array-index-key": "",
+  "no-deprecated-react": "",
+  "no-find-dom-node": "",
+  "no-hook-setter-in-body": "",
+  "no-uniq-key": "",
+  "no-unknown-property": "",
+  "no-unsafe": "",
+  "no-unstable-nested-components": "",
+  "no-useless-react-setstate": "",
+  "rules-of-hooks": "",
+  "sonar-jsx-no-leaked-render": "",
+  "sonar-no-unused-class-component-methods": "",
+  "sonar-prefer-read-only-props": ""
+}

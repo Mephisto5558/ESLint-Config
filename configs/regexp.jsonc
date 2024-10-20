@@ -88,7 +88,7 @@
       "target": "alphanumeric"
     }
   ],
-  "prefer-regexp-exec": "off", // Handled by `regexp/prefer-regexp-test`
+  "prefer-regexp-exec": "off", // Handled by `sonarjs/sonar-prefer-regexp-exec` until this one is auto-fixable.
   "prefer-regexp-test": "warn",
   "prefer-set-operation": "off", // I have no idea how they work, and regex101 doesn't support them.
   "require-unicode-regexp": "off", // No real need to

@@ -16,10 +16,12 @@ export { plugins };
 /** @param {string}path Removes comments*/
 function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
+
   let filename = basename(path, '.jsonc');
+  if (filename.startsWith('sonarjs')) filename = 'sonarjs';
   filename = filename == 'eslint' ? '' : `${filename}/`;
 
-  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v != '').map(([k, v]) => [`${filename}${k}`, v]));
+  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
 }
 
 const
@@ -55,7 +57,7 @@ export default [
       parserOptions: {
         project: true,
         tsconfigRootDir: '.',
-        extraFileExtensions: ['html'],
+        extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
       ecmaVersion: 'latest',
@@ -68,12 +70,18 @@ export default [
       }
     },
     linterOptions: {
-      reportUnusedDisableDirectives: true
+      reportUnusedDisableDirectives: 'warn'
     },
     settings: {
+      react: { version: 'detect' },
       ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
+  },
+  {
+    name: 'eslint-config:react',
+    files: ['**/*.jsx'],
+    rules: importJsonC('configs/sonarjs-react.jsonc')
   },
   {
     name: 'eslint-config:html',
@@ -82,6 +90,7 @@ export default [
       globals: globals.browser
     },
     rules: {
+      ...importJsonC('configs/sonarjs-html.jsonc'),
       '@stylistic/no-multiple-empty-lines': [
         'error',
         {
@@ -106,6 +115,7 @@ export default [
       'jsdoc/require-returns-type': 'off',
       'jsdoc/check-param-names': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
+      '@typescript-eslint/adjacent-overload-signatures': 'warn',
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {
