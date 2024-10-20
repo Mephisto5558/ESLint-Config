@@ -73,6 +73,7 @@ export default [
       reportUnusedDisableDirectives: 'warn'
     },
     settings: {
+      react: { version: 'detect' },
       ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
