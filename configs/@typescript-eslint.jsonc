@@ -93,7 +93,6 @@
   "no-magic-numbers": "off",
   "no-meaningless-void-operator": "error",
   "no-misused-new": "error",
-  // "no-misused-promises": "off", // performance reasons (top 3 slowest)
   "no-misused-promises": [
     "error",
     {
@@ -162,7 +161,7 @@
       "vars": "all",
       "args": "all",
       "caughtErrors": "all",
-      "argsIgnorePattern": "^_.+",
+      "argsIgnorePattern": "^_",
       "destructuredArrayIgnorePattern": "^_.+",
       "varsIgnorePattern": "^_.+"
     }
