@@ -23,8 +23,8 @@
   },
   "dependencies": {
     "@stylistic/eslint-plugin": ">=2.9.0",
-    "@typescript-eslint/eslint-plugin": ">=8.10.0",
-    "@typescript-eslint/parser": "^8.10.0",
+    "@typescript-eslint/eslint-plugin": ">=8.11.0",
+    "@typescript-eslint/parser": ">=8.11.0",
     "eslint": "^9.13.0",
     "eslint-plugin-html": ">=8.1.2",
     "eslint-plugin-jsdoc": ">=50.4.3",
