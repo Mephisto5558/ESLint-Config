@@ -60,7 +60,12 @@
   "empty-string-repetition": "error",
   "encryption-secure-mode": "warn",
   "existing-groups": "error",
-  "expression-complexity": "warn",
+  "expression-complexity": [
+    "warn",
+    {
+      "max": 5
+    }
+  ],
   "file-header": "off",
   "file-name-differ-from-class": "warn",
   "file-permissions": "warn",
@@ -70,7 +75,7 @@
   "for-loop-increment-sign": "error",
   "frame-ancestors": "error",
   "function-inside-loop": "off", // Handled by `unicorn/consistent-function-scoping`
-  "function-name": "error",
+  "function-name": "off", // Handled by `camelcase`
   "function-return-type": "off",
   "future-reserved-words": "warn",
   "generator-without-yield": "error",
@@ -79,7 +84,7 @@
   "hook-use-state": "warn",
   "html-has-lang": "warn",
   "in-operator-type-error": "error",
-  "inconsistent-function-call": "off", // Handled by `new-cap`, `sonarjs/function-name`
+  "inconsistent-function-call": "off", // Handled by `new-cap`, `camelcase`
   "index-of-compare-to-positive-number": "error",
   "insecure-cookie": "warn",
   "insecure-jwt-token": "warn",
@@ -90,9 +95,19 @@
     "error",
     30
   ],
-  "max-union-size": "warn",
+  "max-union-size": [
+    "warn",
+    {
+      "threshold": 5
+    }
+  ],
   "misplaced-loop-counter": "error",
-  "nested-control-flow": "warn",
+  "nested-control-flow": [
+    "warn",
+    {
+      "maximumNestingLevel": 5
+    }
+  ],
   "new-cap": "off", // Handled by `new-cap`
   "new-operator-misuse": "off", // Handled by `new-cap`, `@stylistic/new-parens`
   "no-accessor-field-mismatch": "error",
@@ -162,14 +177,14 @@
   "no-lonely-if": "off", // Handled by `no-lonely-if`
   "no-mime-sniff": "warn",
   "no-misleading-array-reverse": "warn",
-  "no-misused-promises": "error",
+  "no-misused-promises": "off", // Handled by `@typescript-eslint/no-misused-promises`
   "no-mixed-content": "warn",
   "no-nested-assignment": "off", // Handled by `no-cond-assign`
   "no-nested-conditional": "warn",
   "no-nested-functions": [
     "error",
     {
-      "threshold": 2
+      "threshold": 3
     }
   ],
   "no-nested-incdec": "error",
@@ -242,12 +257,11 @@
   "prefer-single-boolean-return": "error",
   "prefer-spread": "warn",
   "prefer-string-starts-ends-with": "off", // Handled by `@typescript-eslint/prefer-string-starts-ends-with`
-  "prefer-template": "warn",
+  "prefer-template": "off", // No option to not make multiline strings (combined with "+") a template string
   "prefer-type-guard": "warn",
   "prefer-while": "warn",
   "production-debug": "warn",
   "pseudo-random": "warn",
-  "public-static-readonly": "warn",
   "publicly-writable-directories": "warn",
   "reduce-initial-value": "error",
   "redundant-type-aliases": "warn",
@@ -258,13 +272,8 @@
   "single-character-alternation": "off", // Handled by `regexp/prefer-character-class`
   "slow-regex": "off", // Handled by `regexp/no-super-linear-move`, `regexp/no-super-linear-backtracking`
   "sonar-block-scoped-var": "off", // Handled by `no-var`, `vars-on-top`, `no-inner-declarations`
-  "sonar-max-lines": [
-    "warn",
-    {
-      "maximum": 300
-    }
-  ],
-  "sonar-max-lines-per-function": "off", // Would just make people write less readable, more compact code.
+  "sonar-max-lines": "off", // Handled by `max-lines`
+  "sonar-max-lines-per-function": "off", // See `complexity`
   "sonar-max-params": [
     "warn",
     {
@@ -304,7 +313,7 @@
   "use-type-alias": "warn",
   "values-not-convertible-to-numbers": "error",
   "variable-name": "off", // Handled by `camelcase`
-  "void-use": "warn",
+  "void-use": "off", // Incompatible with `no-new`
   "weak-ssl": "warn",
   "x-powered-by": "warn",
   "xml-parser-xxe": "warn"
