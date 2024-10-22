@@ -161,7 +161,8 @@ export default [
       ],
       '@stylistic/type-generic-spacing': 'error',
       '@stylistic/type-named-tuple-spacing': 'error',
-      'jsdoc/no-types': 'error'
+      'jsdoc/no-types': 'error',
+      'sonarjs/public-static-readonly': 'warn'
     }
   }
 ];
