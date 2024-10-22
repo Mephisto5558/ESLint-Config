@@ -124,7 +124,7 @@
   "prefer-string-trim-start-end": "error",
   "prefer-structured-clone": "error",
   "prefer-switch": "error",
-  "prefer-ternary": "error",
+  "prefer-ternary": ["error","only-single-line"],
   "prefer-top-level-await": "off",
   "prefer-type-error": "error",
   "prevent-abbreviations": "off",
