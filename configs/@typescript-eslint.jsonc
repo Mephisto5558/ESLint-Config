@@ -245,7 +245,12 @@
       "allowAny": true // definitely not optimal, but needed in js projects.
     }
   ],
-  "switch-exhaustiveness-check": "error",
+  "switch-exhaustiveness-check": [
+    "error",
+    {
+      "considerDefaultExhaustiveForUnions": true
+    }
+  ],
   "triple-slash-reference": "warn",
   "typedef": "warn",
   "unbound-method": [
