@@ -17,6 +17,8 @@
    Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
 // https://sonarsource.github.io/rspec/#/rspec/S109/javascript
 
+// CHANGES: Allow `-1`
+
 /* eslint-disable sonarjs/sonar-no-magic-numbers */
 /** @typedef {Parameters<import('eslint').Rule.RuleListener['Literal']>[0]}node*/
 
