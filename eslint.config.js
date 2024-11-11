@@ -1,5 +1,5 @@
-import { readFileSync } from 'node:fs';
-import { basename, resolve } from 'node:path';
+import { readFileSync, readdirSync } from 'node:fs';
+import { basename, resolve, join } from 'node:path';
 import globals from 'globals';
 
 import parser from '@typescript-eslint/parser';
@@ -24,7 +24,32 @@ function importJsonC(path) {
   return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
 }
 
+/** @param {string}directory*/
+function readDirectory(directory) {
+  /** @type {Map<string, Record<string, string>>}*/
+  const
+    fileMap = new Map(),
+    extentionLength = 3;
+
+  for (const dir of readdirSync(join(import.meta.dirname, directory), { withFileTypes: true })) {
+    let path = join(dir.parentPath, dir.name);
+
+    for (const file of readdirSync(path)) {
+      path = `file://${join(path, file)}`;
+      const fileName = file.slice(0, -extentionLength);
+
+      if (fileMap.has(dir.name)) fileMap.get(dir.name)[fileName] = path;
+      else fileMap.set(dir.name, { [fileName]: path });
+    }
+  }
+
+  return fileMap;
+}
+
 const
+  overwrites = readDirectory('ruleOverwrites'),
+
+  /** @type {Record<string, import('eslint').ESLint.Plugin>} */
   plugins = {
     '@typescript-eslint': typescriptPlugin,
     '@stylistic': stylisticPlugin,
@@ -44,6 +69,14 @@ const
     ...importJsonC('configs/regexp.jsonc')
   };
 
+for (const [overwrite, overwriteRules] of overwrites) {
+  if (!(overwrite in plugins)) continue;
+
+  for (const [rulename, path] of Object.entries(overwriteRules)) {
+    if (!(rulename in plugins[overwrite].rules)) continue;
+    plugins[overwrite].rules[rulename].create = (await import(path)).default;
+  }
+}
 
 /**
  * @type { import('eslint').Linter.Config[] }

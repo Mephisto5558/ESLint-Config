@@ -285,7 +285,16 @@
   "sonar-no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
   "sonar-no-fallthrough": "off", // Handled by `no-fallthrough`
   "sonar-no-invalid-regexp": "off", // Handled by `regexp/no-invalid-regexp`
-  "sonar-no-magic-numbers": "warn",
+  "sonar-no-magic-numbers": [
+    "warn",
+    {
+      // See https://typescript-eslint.io/rules/no-magic-numbers
+      // See https://eslint.org/docs/latest/rules/no-magic-numbers
+      "detectObjects": true,
+      "ignoreEnums": true,
+      "ignoreDefaultValues": true
+    }
+  ],
   "sonar-no-misleading-character-class": "off", // Handled by `regexp/no-misleading-unicode-character`
   "sonar-no-regex-spaces": "off", // Handled by `no-regex-spaces`
   "sonar-no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
