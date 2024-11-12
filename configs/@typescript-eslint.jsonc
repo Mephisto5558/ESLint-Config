@@ -253,12 +253,7 @@
   ],
   "triple-slash-reference": "warn",
   "typedef": "warn",
-  "unbound-method": [
-    "error",
-    {
-      "ignoreStatic": true
-    }
-  ],
+  "unbound-method": "off", // Handled by `custom/unbound-method`
   "unified-signatures": "error",
   "use-unknown-in-catch-callback-variable": "off"
 }

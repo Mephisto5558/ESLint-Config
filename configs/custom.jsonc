@@ -1,0 +1,18 @@
+{
+  "sonar-no-magic-numbers": [
+    "warn",
+    {
+      // See https://typescript-eslint.io/rules/no-magic-numbers
+      // See https://eslint.org/docs/latest/rules/no-magic-numbers
+      "detectObjects": true,
+      "ignoreEnums": true,
+      "ignoreDefaultValues": true
+    }
+  ],
+  "unbound-method": [
+    "error",
+    {
+      "ignoreStatic": true
+    }
+  ]
+}

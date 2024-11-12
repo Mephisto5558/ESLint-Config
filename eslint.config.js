@@ -10,6 +10,7 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import regExPlugin from 'eslint-plugin-regexp';
 import htmlPlugin from 'eslint-plugin-html';
+import customPlugin from './ruleOverwrites/index.js';
 
 export { plugins };
 
@@ -18,8 +19,8 @@ function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
 
   let filename = basename(path, '.jsonc');
-  if (filename.startsWith('sonarjs')) filename = 'sonarjs';
-  filename = filename == 'eslint' ? '' : `${filename}/`;
+  if (filename.startsWith('sonarjs')) filename = 'sonarjs/';
+  else filename = filename == 'eslint' ? '' : `${filename}/`;
 
   return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
 }
@@ -32,7 +33,8 @@ const
     sonarjs: sonarjsPlugin,
     unicorn: unicornPlugin,
     regexp: regExPlugin,
-    html: htmlPlugin
+    html: htmlPlugin,
+    custom: customPlugin
   },
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
@@ -41,7 +43,8 @@ const
     ...importJsonC('configs/jsdoc.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
     ...importJsonC('configs/unicorn.jsonc'),
-    ...importJsonC('configs/regexp.jsonc')
+    ...importJsonC('configs/regexp.jsonc'),
+    ...importJsonC('configs/custom.jsonc')
   };
 
 /**
