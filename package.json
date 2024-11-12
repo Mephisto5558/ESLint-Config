@@ -13,7 +13,7 @@
     "eslint.config.js",
     "eslint.config.d.ts",
     "configs",
-    "ruleOverwrites"
+    "ruleOverwrites/@mephisto5558+eslint-config+*"
   ],
   "keywords": [
     "eslint"
