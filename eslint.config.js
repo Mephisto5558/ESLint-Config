@@ -25,7 +25,6 @@ function importJsonC(path) {
 }
 
 const
-  /** @type {Record<string, import('eslint').ESLint.Plugin>} */
   plugins = {
     '@typescript-eslint': typescriptPlugin,
     '@stylistic': stylisticPlugin,
