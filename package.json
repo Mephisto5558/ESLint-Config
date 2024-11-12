@@ -1,6 +1,6 @@
 {
   "name": "@mephisto5558/eslint-config",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
