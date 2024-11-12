@@ -3,7 +3,8 @@
   "version": "3.0.1",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "postinstall": "patch-package --patch-dir ruleOverwrites"
   },
   "description": "ESLint config file",
   "main": "eslint.config.js",
@@ -24,15 +25,16 @@
   },
   "dependencies": {
     "@stylistic/eslint-plugin": ">=2.10.1",
-    "@typescript-eslint/eslint-plugin": ">=8.13.0",
-    "@typescript-eslint/parser": ">=8.13.0",
+    "@typescript-eslint/eslint-plugin": ">=8.14.0",
+    "@typescript-eslint/parser": ">=8.14.0",
     "eslint": "^9.14.0",
     "eslint-plugin-html": ">=8.1.2",
     "eslint-plugin-jsdoc": ">=50.4.3",
     "eslint-plugin-regexp": ">=2.6.0",
     "eslint-plugin-sonarjs": ">=2.0.4",
     "eslint-plugin-unicorn": ">=56.0.0",
-    "globals": "^15.12.0"
+    "globals": "^15.12.0",
+    "patch-package": "^8.0.0"
   },
   "repository": {
     "type": "git",

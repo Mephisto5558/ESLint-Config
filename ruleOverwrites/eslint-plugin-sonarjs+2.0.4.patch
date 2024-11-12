@@ -1,0 +1,23 @@
+diff --git a/node_modules/eslint-plugin-sonarjs/cjs/S109/rule.js b/node_modules/eslint-plugin-sonarjs/cjs/S109/rule.js
+index 044dd44..3377c05 100644
+--- a/node_modules/eslint-plugin-sonarjs/cjs/S109/rule.js
++++ b/node_modules/eslint-plugin-sonarjs/cjs/S109/rule.js
+@@ -39,7 +39,8 @@ exports.rule = {
+                     return;
+                 }
+                 const { value, parent } = numericLiteral;
+-                if (isPower(value) ||
++                if (isException(value) ||
++                    isPower(value) ||
+                     isJSX(context, node) ||
+                     isBitwiseOperator(parent) ||
+                     isJsonStringify(parent)) {
+@@ -94,3 +95,7 @@ function isBitwiseOperator(node) {
+ function isJsonStringify(node) {
+     return node.type === 'CallExpression' && (0, index_js_2.isMethodInvocation)(node, 'JSON', 'stringify', 3);
+ }
++// CUSTOM
++function isException(value) {
++  return value === -1;
++}
+\ No newline at end of file
