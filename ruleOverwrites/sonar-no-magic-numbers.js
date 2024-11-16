@@ -9,6 +9,7 @@ export default {
 
     return {
       ...baseRule,
+      /** @param {import('eslint').Rule.Node}node*/
       Literal: node => {
         if (getNumericLiteral(node) === -1) return;
 
@@ -19,6 +20,7 @@ export default {
   }
 };
 
+/** @param {import('eslint').Rule.Node}node*/
 function getNumericLiteral(node) {
   if (node.parent && typeof node.value == 'number')
     return node.parent.type === 'UnaryExpression' && node.parent.operator === '-' ? -node.value : node.value;
