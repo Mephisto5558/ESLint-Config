@@ -3,8 +3,7 @@
   "version": "3.0.4",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "postinstall": "patch-package --patch-dir ruleOverwrites"
+    "test": "echo \"Error: no test specified\""
   },
   "description": "ESLint config file",
   "main": "eslint.config.js",
