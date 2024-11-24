@@ -118,6 +118,11 @@ export default [
       'jsdoc/check-param-names': 'off',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/adjacent-overload-signatures': 'warn',
+      '@typescript-eslint/no-unsafe-return': 'error', // Doesn't work in js due to all returns showing as `any`
+      '@typescript-eslint/no-unsafe-call': 'error', // Doesn't work in js with .bind/.call
+      '@typescript-eslint/no-unsafe-argument': 'error', // Doesn't work in js with .bind/.call
+      '@typescript-eslint/no-unsafe-assignment': 'error', // Doesn't work in js with .bind/.call
+      '@typescript-eslint/no-unsafe-member-access': 'error', // Doesn't work in js
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
         {

@@ -139,14 +139,15 @@
   "no-unnecessary-type-assertion": "error",
   "no-unnecessary-type-constraint": "error",
   "no-unnecessary-type-parameters": "error",
-  "no-unsafe-argument": "off", // Doesn't really work
-  "no-unsafe-assignment": "off", // Doesn't really work
-  "no-unsafe-call": "off", // Doesn't really work
+  "no-unsafe-argument": "off", //Set in `.eslintrc.js` for only TS files
+  "no-unsafe-assignment": "off", //Set in `.eslintrc.js` for only TS files
+  "no-unsafe-call": "off", //Set in `.eslintrc.js` for only TS files
   "no-unsafe-declaration-merging": "error",
   "no-unsafe-enum-comparison": "error",
   "no-unsafe-function-type": "error",
-  "no-unsafe-member-access": "off", // Doesn't really work
-  "no-unsafe-return": "off", // Doesn't really work
+  "no-unsafe-member-access": "off", //Set in `.eslintrc.js` for only TS files
+  "no-unsafe-return": "off", //Set in `.eslintrc.js` for only TS files
+  "no-unsafe-type-assertion": "warn",
   "no-unsafe-unary-minus": "error",
   "no-unused-expressions": [
     "error",
@@ -218,6 +219,7 @@
       "checkArrowFunctions": false
     }
   ],
+  "related-getter-setter-pairs": "error",
   "require-array-sort-compare": "error",
   "require-await": "error",
   "restrict-plus-operands": "warn",
