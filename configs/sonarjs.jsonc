@@ -160,7 +160,7 @@
   "no-identical-functions": "error",
   "no-ignored-exceptions": "off", // Handled by `no-empty`
   "no-ignored-return": "error",
-  "no-implicit-dependencies": "warn",
+  "no-implicit-dependencies": "off", // Handled by `custom/no.implicit-dependencies`
   "no-implicit-global": "off", // Handled by `no-undef`
   "no-in-misuse": "error",
   "no-incomplete-assertions": "error",

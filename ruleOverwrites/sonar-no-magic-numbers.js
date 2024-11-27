@@ -9,6 +9,7 @@ export default {
 
     return {
       ...baseRule,
+
       /** @param {import('eslint').Rule.Node}node*/
       Literal: node => {
         if (getNumericLiteral(node) === -1) return;

@@ -1,4 +1,5 @@
 {
+  "no-implicit-dependencies": "warn",
   "sonar-no-magic-numbers": [
     "warn",
     {
