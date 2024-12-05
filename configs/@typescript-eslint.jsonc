@@ -90,7 +90,20 @@
   "no-invalid-this": "error",
   "no-invalid-void-type": "error",
   "no-loop-func": "warn",
-  "no-magic-numbers": "off",
+  "no-magic-numbers": [
+    "warn",
+    {
+      "ignore": [
+        1,
+        -1
+      ],
+      "ignoreDefaultValues": true,
+      "ignoreClassFieldInitialValues": true,
+      "detectObjects": true,
+      "ignoreEnums": true,
+      "ignoreReadonlyClassProperties": true
+    }
+  ],
   "no-meaningless-void-operator": "error",
   "no-misused-new": "error",
   "no-misused-promises": [
@@ -192,13 +205,13 @@
       }
     }
   ],
-  "prefer-enum-initializers": "error",
+  "prefer-enum-initializers": "warn",
   "prefer-find": "error",
   "prefer-for-of": "error",
-  "prefer-function-type": "error",
+  "prefer-function-type": "warn",
   "prefer-includes": "error",
   "prefer-literal-enum-member": "error",
-  "prefer-namespace-keyword": "error",
+  "prefer-namespace-keyword": "warn",
   "prefer-nullish-coalescing": [
     "error",
     {

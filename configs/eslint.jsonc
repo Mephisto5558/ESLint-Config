@@ -200,7 +200,7 @@
   "no-lone-blocks": "error",
   "no-lonely-if": "error",
   "no-loop-func": "off", // Handled by `@typescript-eslint/no-loop-func`
-  "no-magic-numbers": "off", // Handled by `@typescript-eslint/no-magic-numbers`
+  "no-magic-numbers": "off",  // Handled by `custom/no-magic-numbers`
   "no-multi-assign": "error",
   "no-multi-str": "error",
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
