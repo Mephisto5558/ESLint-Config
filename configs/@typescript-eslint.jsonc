@@ -94,8 +94,9 @@
     "warn",
     {
       "ignore": [
-        1,
-        -1
+        -1,
+        0,
+        1
       ],
       "ignoreDefaultValues": true,
       "ignoreClassFieldInitialValues": true,

@@ -104,10 +104,10 @@ export default [
     }
   },
   {
-    name: 'eslint-config:d.ts',
-    files: ['**/*.d.ts'],
+    name: 'eslint-config:ts',
+    files: ['**/*.ts'],
     rules: {
-      // D.TS-Only rules
+      // TS-Only rules
       'no-undef': 'off',
       'no-shadow': 'off',
       'no-use-before-define': 'off',
