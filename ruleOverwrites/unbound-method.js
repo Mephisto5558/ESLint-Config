@@ -9,12 +9,13 @@ export default {
 
     return {
       ...baseRule,
+
       /** @param {import('eslint').Rule.Node}node*/
       ObjectPattern: node => {
         if (
           node.parent?.init?.type === 'CallExpression'
           && node.parent.init.callee?.name === 'require'
-          && node.parent.init.arguments[0]?.value.startsWith('node:')
+          && node.parent.init.arguments[0]?.value?.startsWith('node:')
         ) return;
 
         /* eslint-disable-next-line new-cap */
