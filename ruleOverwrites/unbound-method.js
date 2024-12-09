@@ -10,7 +10,7 @@ export default {
     return {
       ...baseRule,
 
-      /** @param {import('eslint').Rule.Node}node*/
+      /** @param {import('eslint').Rule.Node}node */
       ObjectPattern: node => {
         if (
           node.parent?.init?.type === 'CallExpression'

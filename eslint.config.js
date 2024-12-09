@@ -14,7 +14,7 @@ import customPlugin from './ruleOverwrites/index.js';
 
 export { plugins };
 
-/** @param {string}path Removes comments*/
+/** @param {string}path Removes comments */
 function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
 
@@ -49,7 +49,7 @@ const
 
 /**
  * @type { import('eslint').Linter.Config[] }
- * This config lists all rules from every plugin it uses.*/
+ * This config lists all rules from every plugin it uses. */
 export default [
   {
     name: 'eslint-config:all',

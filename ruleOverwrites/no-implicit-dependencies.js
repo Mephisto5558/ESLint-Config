@@ -10,7 +10,7 @@ export default {
     return {
       ...baseRule,
 
-      /** @param {import('eslint').Rule.Node}node*/
+      /** @param {import('eslint').Rule.Node}node */
       CallExpression: node => {
         if (
           node.callee.type === 'Identifier'
@@ -23,7 +23,7 @@ export default {
         baseRule.CallExpression(node);
       },
 
-      /** @param {import('eslint').Rule.Node}node*/
+      /** @param {import('eslint').Rule.Node}node */
       ImportDeclaration: node => {
         if (node.source?.value?.startsWith('#')) return;
 

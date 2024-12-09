@@ -124,7 +124,7 @@
     // arr.sort(
     // /**
     // * @param {x}a
-    // * @param {x}b*/
+    // * @param {x}b */
     // (a, b) => b.abc - a.abc
     // )
     "error",
