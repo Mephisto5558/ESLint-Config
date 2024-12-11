@@ -184,7 +184,7 @@
   "no-empty-static-block": "error",
   "no-eq-null": "off", // Handled by `unicorn/no-null`
   "no-eval": "error",
-  "no-extend-native": "off",
+  "no-extend-native": "error",
   "no-extra-bind": "error",
   "no-extra-boolean-cast": "error",
   "no-extra-label": "error",
