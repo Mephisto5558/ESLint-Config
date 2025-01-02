@@ -221,7 +221,6 @@
   "no-useless-increment": "off", // Handled by `no-useless-assignment`
   "no-useless-intersection": "off", // Handled by `@typescript-eslint/no-redundant-type-constituents`
   "no-variable-usage-before-declaration": "off", // Handled by `no-var`
-  "no-vue-bypass-sanitization": "warn",
   "no-weak-cipher": "warn",
   "no-weak-keys": "warn",
   "no-wildcard-import": "warn",
