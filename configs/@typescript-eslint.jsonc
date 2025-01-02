@@ -259,6 +259,7 @@
       "allowNullableObject": true,
       "allowNullableBoolean": true,
       "allowNullableString": true,
+      "allowNullableNumber": false,
       "allowNullableEnum": false,
       "allowAny": true // definitely not optimal, but needed in js projects.
     }
