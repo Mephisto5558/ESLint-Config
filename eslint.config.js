@@ -72,7 +72,8 @@ export default [
       }
     },
     linterOptions: {
-      reportUnusedDisableDirectives: 'warn'
+      reportUnusedDisableDirectives: 'warn',
+      reportUnusedInlineConfigs: 'warn'
     },
     settings: {
       react: { version: 'detect' },

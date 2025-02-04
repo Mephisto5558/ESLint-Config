@@ -102,7 +102,7 @@
     "error",
     "never"
   ],
-  "letter-case": "", // TODO
+  "letter-case": "off", // Handled by `unicorn/escape-case`
   "match-any": [
     "error",
     {
