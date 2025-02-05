@@ -13,6 +13,7 @@ export default {
       /** @param {import('eslint').Rule.Node}node */
       ObjectPattern: node => {
         if (
+          /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- I believe this prevents an error */
           node.parent?.init?.type === 'CallExpression'
           && node.parent.init.callee?.name === 'require'
           && node.parent.init.arguments[0]?.value?.startsWith('node:')
