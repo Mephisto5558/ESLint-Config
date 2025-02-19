@@ -2,6 +2,8 @@
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn?/tree/main/.README#rules
   "better-regex": "off", // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
   "catch-error-name": "off",
+  "consistent-assert": "warn",
+  "consistent-date-clone": "warn",
   "consistent-destructuring": "error",
   "consistent-empty-array-spread": "error",
   "consistent-existence-index-check": "error",
@@ -22,6 +24,7 @@
   ],
   "import-style": "off", // Only a per-module config
   "new-for-builtins": "error",
+  "no-accessor-recursion": "error",
   "no-abusive-eslint-disable": "warn",
   "no-anonymous-default-export": "error",
   "no-array-callback-reference": "off", // incompatible with `unicorn/prefer-native-coercion-functions` cannot allow native functions, e.g. Number;
@@ -36,13 +39,14 @@
   "no-empty-file": "error",
   "no-for-loop": "error",
   "no-hex-escape": "off", // Handled by `regexp/hexadecimal-escape`
-  "no-instanceof-array": "error",
+  "no-instanceof-builtins": "error",
   "no-invalid-fetch-options": "error",
   "no-invalid-remove-event-listener": "error",
   "no-keyword-prefix": "off",
   "no-length-as-slice-end": "error",
   "no-lonely-if": "error",
   "no-magic-array-flat-depth": "warn",
+  "no-named-default": "warn",
   "no-negated-condition": "error",
   "no-negation-in-equality-check": "error",
   "no-nested-ternary": "error",
