@@ -1,4 +1,5 @@
-import { rules } from '@typescript-eslint/eslint-plugin';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+const { rules } = tsPlugin;
 
 const baseRuleModule = rules['unbound-method'];
 
