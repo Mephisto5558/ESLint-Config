@@ -104,7 +104,8 @@
       "ignoreClassFieldInitialValues": true,
       "detectObjects": true,
       "ignoreEnums": true,
-      "ignoreReadonlyClassProperties": true
+      "ignoreReadonlyClassProperties": true,
+      "ignoreNumericLiteralTypes": true
     }
   ],
   "no-meaningless-void-operator": "error",
