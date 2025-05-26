@@ -45,8 +45,8 @@
     }
   ],
   "explicit-function-return-type": "off",
-  "explicit-member-accessibility": "off", // Set in `.eslintrc.js` for only TS files
-  "explicit-module-boundary-types": "off", // Set in `.eslintrc.js` for only TS files
+  "explicit-member-accessibility": "off", // Set in `eslint.config.js` for only TS files
+  "explicit-module-boundary-types": "off", // Set in `eslint.config.js` for only TS files
   "init-declarations": "off",
   "max-params": "off",
   "member-ordering": "off",
@@ -157,14 +157,14 @@
   "no-unnecessary-type-constraint": "error",
   "no-unnecessary-type-conversion": "warn",
   "no-unnecessary-type-parameters": "error",
-  "no-unsafe-argument": "off", // Set in `.eslintrc.js` for only TS files
-  "no-unsafe-assignment": "off", // Set in `.eslintrc.js` for only TS files
-  "no-unsafe-call": "off", // Set in `.eslintrc.js` for only TS files
+  "no-unsafe-argument": "off", // Set in `eslint.config.js` for only TS files
+  "no-unsafe-assignment": "off", // Set in `eslint.config.js` for only TS files
+  "no-unsafe-call": "off", // Set in `eslint.config.js` for only TS files
   "no-unsafe-declaration-merging": "error",
   "no-unsafe-enum-comparison": "error",
   "no-unsafe-function-type": "error",
-  "no-unsafe-member-access": "off", // Set in `.eslintrc.js` for only TS files
-  "no-unsafe-return": "off", // Set in `.eslintrc.js` for only TS files
+  "no-unsafe-member-access": "off", // Set in `eslint.config.js` for only TS files
+  "no-unsafe-return": "off", // Set in `eslint.config.js` for only TS files
   "no-unsafe-type-assertion": "warn",
   "no-unsafe-unary-minus": "error",
   "no-unused-expressions": [
