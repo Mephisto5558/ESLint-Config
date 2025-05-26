@@ -155,6 +155,7 @@
   "no-unnecessary-type-arguments": "error",
   "no-unnecessary-type-assertion": "error",
   "no-unnecessary-type-constraint": "error",
+  "no-unnecessary-type-conversion": "warn",
   "no-unnecessary-type-parameters": "error",
   "no-unsafe-argument": "off", // Set in `.eslintrc.js` for only TS files
   "no-unsafe-assignment": "off", // Set in `.eslintrc.js` for only TS files

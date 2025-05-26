@@ -30,7 +30,6 @@
   "no-array-callback-reference": "off", // incompatible with `unicorn/prefer-native-coercion-functions` cannot allow native functions, e.g. Number;
   "no-array-for-each": "error",
   "no-array-method-this-argument": "error",
-  "no-array-push-push": "error",
   "no-array-reduce": "off", // Array#reduce my beloved
   "no-await-expression-member": "off", // Can't disable it for chained function calls, eg. (await x()).y.z()
   "no-await-in-promise-methods": "error",
@@ -43,7 +42,6 @@
   "no-invalid-fetch-options": "error",
   "no-invalid-remove-event-listener": "error",
   "no-keyword-prefix": "off",
-  "no-length-as-slice-end": "error",
   "no-lonely-if": "error",
   "no-magic-array-flat-depth": "warn",
   "no-named-default": "warn",
@@ -59,8 +57,11 @@
   "no-static-only-class": "error",
   "no-thenable": "error",
   "no-this-assignment": "error",
+  "no-unnecessary-array-flat-depth": "warn",
+  "no-unnecessary-array-splice-count": "warn",
   "no-typeof-undefined": "error",
   "no-unnecessary-await": "warn",
+  "no-unnecessary-slice-end": "warn",
   "no-unnecessary-polyfills": "error", // Disabled due to performance reasons
   "no-unreadable-array-destructuring": "error",
   "no-unreadable-iife": "error",
@@ -99,6 +100,7 @@
   "prefer-event-target": "error",
   "prefer-export-from": "error",
   "prefer-global-this": "error",
+  "prefer-import-meta-properties": "warn",
   "prefer-includes": "error",
   "prefer-json-parse-buffer": "off",
   "prefer-keyboard-event-key": "error",
@@ -120,6 +122,7 @@
   "prefer-regexp-test": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-set-has": "error",
   "prefer-set-size": "error",
+  "prefer-single-call": "warn",
   "prefer-spread": "error",
   "prefer-string-raw": "warn",
   "prefer-string-replace-all": "error",
