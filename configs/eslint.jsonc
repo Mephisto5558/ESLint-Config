@@ -169,7 +169,7 @@
   "max-params": "off", // Handled by `@typescript-eslint/max-params`
   "max-statements": "off",
   "new-cap": "error",
-  "no-alert": "error",
+  "no-alert": "warn",
   "no-array-constructor": "off", // Handled by `@typescript-eslint/no-array-constructor`
   "no-bitwise": "off",
   "no-caller": "error",
