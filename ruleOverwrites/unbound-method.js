@@ -11,7 +11,7 @@ export default {
     return {
       ...baseRule,
 
-      /** @param {import('eslint').Rule.Node}node */
+      /** @param {import('eslint').Rule.Node} node */
       ObjectPattern: node => {
         if (
           /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- I believe this prevents an error */
