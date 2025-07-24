@@ -1,3 +1,5 @@
+/* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
+
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 import globals from 'globals';
@@ -14,7 +16,9 @@ import customPlugin from './ruleOverwrites/index.js';
 
 export { plugins };
 
-/** @param {string} path Removes comments */
+/**
+ * @param {string} path Removes comments
+ * @returns {Record<string, string | [string | number | Record<string, unknown>, unknown[]][]>} */
 function importJsonC(path) {
   const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
 
@@ -36,6 +40,7 @@ const
     html: htmlPlugin,
     custom: customPlugin
   },
+  /** @type {ReturnType<importJsonC> & {'jsdoc/check-tag-names': [string, Record<string, boolean>]}} */
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
     ...importJsonC('configs/@typescript-eslint.jsonc'),
@@ -113,10 +118,19 @@ export default [
       'no-shadow': 'off',
       'no-use-before-define': 'off',
       'class-methods-use-this': 'off',
+      'jsdoc/check-tag-names': [
+        rules['jsdoc/check-tag-names']?.[0] ?? 'off',
+        {
+          ...rules['jsdoc/check-tag-names']?.[1],
+          typed: true
+        },
+        ...rules['jsdoc/check-tag-names']?.slice(2) ?? []
+      ],
       'jsdoc/require-param-type': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/require-returns-type': 'off',
       'jsdoc/check-param-names': 'off',
+      'jsdoc/no-types': 'warn',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/adjacent-overload-signatures': 'warn',
       '@typescript-eslint/no-unsafe-return': 'error', // Doesn't work in js due to all returns showing as `any`
@@ -140,7 +154,6 @@ export default [
           allowTypedFunctionExpressions: true
         }
       ],
-      'jsdoc/no-types': 'error',
       'sonarjs/public-static-readonly': 'warn'
     }
   }
