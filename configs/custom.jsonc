@@ -6,5 +6,6 @@
       "ignoreStatic": true
     }
   ],
-  "jsdoc-formatting": "warn"
+  "jsdoc-formatting": "warn",
+  "prefer-ternary": ["warn", "only-single-line", 150]
 }

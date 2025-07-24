@@ -207,7 +207,7 @@
   "no-nested-ternary": "off", // Handled by `unicorn/no-nested-ternary`
   "no-new": "warn",
   "no-new-func": "off", // Handled by `@typescript-eslint/no-implied-eval`
-  "no-new-wrappers": "error",
+  "no-new-wrappers": "off", // Handled by `unicorn/new-for-builtins`
   "no-nonoctal-decimal-escape": "error",
   "no-object-constructor": "error",
   "no-octal": "error",
