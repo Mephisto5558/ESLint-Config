@@ -1,44 +1,156 @@
 {
-  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules
-  "check-access": "error",
-  "check-alignment": "error",
-  "check-examples": "off", // not supported in eslint@8, only with weird config in eslint@9
-  "check-indentation": "error",
-  "check-line-alignment": "off",
-  "check-param-names": "error",
-  "check-property-names": "error",
-  "check-syntax": "error",
-  "check-tag-names": "error",
-  "check-template-names": "error",
-  "check-types": "error",
-  "check-values": "error",
-  "convert-to-jsdoc-comments": "off",
-  "empty-tags": "error",
-  "implements-on-classes": "error",
-  "imports-as-dependencies": "off", // "error" // See https://github.com/gajus/eslint-plugin-jsdoc/issues/1114
-  "informative-docs": "error",
+  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules  | Using "warn" wherever applicable
+  "check-access": "warn",
+  "check-alignment": "warn",
+  "check-examples": "off", // only used in eslint@7, solution for eslint@9 does not work
+  "check-indentation": [
+    "warn",
+    {
+      "excludeTags": [
+        "example"
+      ]
+    }
+  ],
+  "check-line-alignment": [
+    "warn",
+    "never",
+    {
+      "customSpacings": {
+        "postDelimiter": 1,
+        "postTag": 1,
+        "postType": 1,
+        "postName": 1,
+        "postHyphen": 1
+      },
+      "preserveMainDescriptionPostDelimiter": false,
+      "wrapIndent": "",
+      "disableWrapIndent": false
+    }
+  ],
+  "check-param-names": [
+    "error",
+    {
+      "checkRestProperty": false,
+      // "checkTypesPattern":
+      "enableFixer": false,
+      "allowExtraTrailingParamDocs": false,
+      "checkDestructured": true,
+      "useDefaultObjectProperties": true,
+      "disableExtraPropertyReporting": false,
+      "disableMissingParamChecks": false
+    }
+  ],
+  "check-property-names": [
+    "warn",
+    {
+      "enableFixer": false
+    }
+  ],
+  "check-syntax": "warn",
+  "check-tag-names": [
+    "warn",
+    {
+      "enableFixer": true,
+      "jsxTags": true,
+      "typed": false
+    }
+  ],
+  "check-template-names": "warn",
+  "check-types": [
+    "error",
+    {
+      "noDefaults": false,
+      "exemptTagContexts": [],
+      "unifyParentAndChildTypeChecks": true
+    }
+  ],
+  "check-values": [
+    "warn",
+    {
+      // "allowedAuthors": 
+      // "allowedLicenses": 
+      // "licensePattern": 
+      "numericOnlyVariation": false
+    }
+  ],
+  "convert-to-jsdoc-comments": [
+    "off",
+    {
+      "enableFixer": true,
+      "lineOrBlockStyle": "both",
+      "enforceJsdocLineStyle": "single"
+      // "allowedPrefixes": 
+      // "contexts": 
+      // "contextsBeforeAndAfter": 
+    }
+  ],
+  "empty-tags": [
+    "warn",
+    {
+      "tags": []
+    }
+  ],
+  "implements-on-classes": [
+    "warn",
+    {
+      // "contexts": 
+    }
+  ],
+  "imports-as-dependencies": "off", // "warn" // See https://github.com/gajus/eslint-plugin-jsdoc/issues/1114
+  "informative-docs": [
+    "warn",
+    {
+      // "aliases": 
+      // "excludedTags": 
+      // "uselessWords": 
+    }
+  ],
   "lines-before-block": "off", // Handled by `@stylistic/lines-around-comment`
   "match-description": "off",
   "match-name": "off",
   "multiline-blocks": [
-    "error",
+    "warn",
     {
-      "noFinalLineText": false
+      "noZeroLineText": true,
+      "noFinalLineText": false,
+      "noSingleLineBlocks": false,
+      "requireSingleLineUnderCount": 150,
+      // "singleLineTags": 
+      "noMultilineBlocks": false,
+      // "minimumLengthForMultiline": ,
+      "multilineTags": [
+        "*"
+      ],
+      "allowMultipleTags": true
     }
   ],
-  "no-bad-blocks": "error",
-  "no-blank-block-descriptions": "error",
+  "no-bad-blocks": [
+    "warn",
+    {
+      // "ignore": 
+      "preventAllMultiAsteriskBlocks": false
+    }
+  ],
+  "no-blank-block-descriptions": "warn",
   "no-blank-blocks": [
-    "error",
+    "warn",
     {
       "enableFixer": true
     }
   ],
-  "no-defaults": "error",
+  "no-defaults": [
+    "warn",
+    {
+      "noOptionalParamNames": false
+      // "contexts": 
+    }
+  ],
   "no-missing-syntax": "off",
   "no-multi-asterisks": [
     "warn",
     {
+      "allowWhitespace": false,
+      "preventAtMiddleLines": true,
       "preventAtEnd": false
     }
   ],
@@ -47,56 +159,91 @@
   "no-undefined-types": [
     "error",
     {
-      "markVariablesAsUsed": false,
       "definedTypes": [
         "NodeJS"
-      ]
+      ],
+      "disableReporting": false,
+      "markVariablesAsUsed": false
     }
   ],
   "require-asterisk-prefix": [
     "warn",
-    "always"
+    "always",
+    {
+      "tags": {
+        "always": [],
+        "any": [],
+        "never": []
+      }
+    }
   ],
   "require-description-complete-sentence": "off",
   "require-description": "off",
   "require-example": "off",
   "require-file-overview": "off",
   "require-hyphen-before-param-description": [
-    "error",
-    "never"
+    "warn",
+    "never",
+    {
+      "tags": {}
+    }
   ],
   "require-jsdoc": "off",
   "require-param-description": "off",
-  "require-param-name": "error",
-  "require-param-type": "error",
+  "require-param-name": "warn",
+  "require-param-type": "warn",
   "require-param": [
-    "error",
+    "warn",
     {
       "enableFixer": false,
-      "useDefaultObjectProperties": true
+      "enableRootFixer": true,
+      "enableRestElementFixer": true,
+      "checkRestProperty": false,
+      "autoIncrementBase": 0,
+      "unnamedRootBase": [
+        "obj",
+        "arg"
+      ],
+      // "exemptedBy": 
+      // "checkTypesPattern": 
+      // "contexts": 
+      "checkConstructors": true,
+      "checkGetters": false,
+      "checkSetters": false,
+      "checkDestructured": true,
+      "checkDestructuredRoots": true,
+      "useDefaultObjectProperties": true,
+      "ignoreWhenAllParamsMissing": false
     }
   ],
   "require-property-description": "off",
-  "require-property-name": "error",
-  "require-property-type": "error",
-  "require-property": "error",
+  "require-property-name": "warn",
+  "require-property-type": "warn",
+  "require-property": "warn",
   "require-returns-check": [
     "error",
     {
-      "exemptAsync": false
+      "exemptGenerators": false,
+      "exemptAsync": false,
+      "reportMissingReturnForUndefinedTypes": false
     }
   ],
   "require-returns-description": "off",
-  "require-returns-type": "error",
+  "require-returns-type": "warn",
   "require-returns": "off",
   "require-template": "off",
-  "require-throws": "error",
-  "require-yields-check": "error",
+  "require-throws": [
+    "warn",
+    {
+      // "exemptedBy": 
+      // "contexts": 
+    }
+  ],
+  "require-yields-check": "warn",
   "require-yields": "off",
   "sort-tags": [
     "warn",
     {
-      "linesBetween": 0,
       "tagSequence": [
         {
           "tags": [
@@ -110,6 +257,7 @@
             "file",
             "fileoverview",
             "overview",
+            "import",
             // Identifying (name, type)
             "typedef",
             "interface",
@@ -240,10 +388,14 @@
             "todo"
           ]
         }
-      ]
+      ],
+      "alphabetizeExtras": false,
+      "linesBetween": 0,
+      "reportTagGroupSpacing": true,
+      "reportIntraTagGroupSpacing": true
     }
   ],
-  "tag-lines": "off",// Handled by other jsdoc rules
+  "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
   "valid-types": "error"
 }
