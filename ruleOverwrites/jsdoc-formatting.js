@@ -70,7 +70,6 @@ export default {
     },
     fixable: 'whitespace',
     messages: {
-      missingSpaceBeforeEnd: 'Missing space before comment end.',
       missingSpaceAfter: 'Missing space or newline after comment.',
       missingSpaceAfterType: 'Missing space or newline after JSDoc type.',
       badTypeFormatting: 'JSDoc type is not formatted correctly. Expected: {{expected}}'
@@ -84,17 +83,6 @@ export default {
           if (comment.type !== 'Block') continue;
 
           const commentText = context.sourceCode.getText(comment);
-
-          // Rule: Missing space before comment end
-          /* eslint-disable-next-line @typescript-eslint/no-magic-numbers -- closing block comment */
-          const charBeforeEnd = commentText.at(-3)?.trim();
-          if (comment.value.trim() && charBeforeEnd !== '' && charBeforeEnd !== '*') {
-            context.report({
-              node: comment,
-              messageId: 'missingSpaceBeforeEnd',
-              fix: fixer => fixer.insertTextBeforeRange([comment.range[1] - 2, comment.range[1]], ' ')
-            });
-          }
 
           // Rule: Space after the entire comment block
           const nextToken = context.sourceCode.getTokenAfter(comment);
