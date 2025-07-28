@@ -77,7 +77,7 @@
       "strategy": "loose",
       "include": [],
       "exclude": [],
-      "useErrorIsError": true
+      "useErrorIsError": false // Only available on Node>=24
     }
   ],
   "no-invalid-fetch-options": "error",
@@ -102,7 +102,7 @@
   "no-single-promise-in-promise-methods": "error",
   "no-static-only-class": "warn",
   "no-thenable": "error",
-  "no-this-assignment": "warn",
+  "no-this-assignment": "off", // Handled by `@typescript-eslint/no-this-alias`
   "no-typeof-undefined": "warn",
   "no-unnecessary-array-flat-depth": "warn",
   "no-unnecessary-array-splice-count": "warn",

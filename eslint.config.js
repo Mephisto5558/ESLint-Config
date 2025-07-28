@@ -133,27 +133,49 @@ export default [
       'jsdoc/no-types': 'warn',
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/adjacent-overload-signatures': 'warn',
-      '@typescript-eslint/no-unsafe-return': 'error', // Doesn't work in js due to all returns showing as `any`
-      '@typescript-eslint/no-unsafe-call': 'error', // Doesn't work in js with .bind/.call
-      '@typescript-eslint/no-unsafe-argument': 'error', // Doesn't work in js with .bind/.call
-      '@typescript-eslint/no-unsafe-assignment': 'error', // Doesn't work in js with .bind/.call
-      '@typescript-eslint/no-unsafe-member-access': 'error', // Doesn't work in js
+      '@typescript-eslint/explicit-function-return-type': 'warn',
       '@typescript-eslint/explicit-member-accessibility': [
-        'error',
+        'warn',
         {
-          accessibility: 'no-public'
+          accessibility: 'no-public',
+          // ignoredMethodNames:
+          overrides: {
+            // accessors:
+            // constructors:
+            // methods:
+            // parameterProperties:
+            // properties:
+          }
         }
       ],
       '@typescript-eslint/explicit-module-boundary-types': [
-        'error',
+        'warn',
         {
           allowArgumentsExplicitlyTypedAsAny: true,
           /* eslint-disable-next-line id-length */
           allowDirectConstAssertionInArrowFunctions: true,
           allowHigherOrderFunctions: true,
-          allowTypedFunctionExpressions: true
+          allowOverloadFunctions: false,
+          allowTypedFunctionExpressions: true,
+          allowedNames: []
         }
       ],
+      '@typescript-eslint/prefer-readonly': [
+        'warn',
+        {
+          onlyInlineLambdas: false
+        }
+      ],
+      '@typescript-eslint/prefer-readonly-parameter-types': [
+        'warn',
+        {
+          allow: [],
+          checkParameterProperties: true,
+          ignoreInferredTypes: false,
+          treatMethodsAsReadonly: false
+        }
+      ],
+      '@typescript-eslint/use-unknown-in-catch-callback-variable': 'warn',
       'sonarjs/public-static-readonly': 'warn'
     }
   }
