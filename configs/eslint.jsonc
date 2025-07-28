@@ -94,7 +94,7 @@
   "capitalized-comments": "off",
   "class-methods-use-this": "off", // Handled by `@typescript-eslint/no-var`
   "complexity": "off", // The day I decide to make my code less complex will never come.
-  "consistent-return": "off",
+  "consistent-return": "off", // Handled by `@typescript-eslint/consistent-return`
   "consistent-this": "off",
   "curly": [
     "error",
@@ -191,7 +191,7 @@
   "no-global-assign": "error",
   "no-implicit-coercion": "off",
   "no-implicit-globals": "error",
-  "no-implied-eval": "error",
+  "no-implied-eval": "off", // Handled by `@typescript-eslint/no-implied-eval`
   "no-inline-comments": "off",
   "no-invalid-this": "off", // Handled by `@typescript-eslint/no-invalid-this`
   "no-iterator": "error",
@@ -229,7 +229,7 @@
   "no-shadow-restricted-names": "error",
   "no-ternary": "off",
   "no-throw-literal": "off", // Handled by `@typescript-eslint/only-throw-error
-  "no-undef-init": "error",
+  "no-undef-init": "off", // Handled by `unicorn/no-useless-undefined`
   "no-undefined": "off",
   "no-underscore-dangle": "off",
   "no-unneeded-ternary": "error",

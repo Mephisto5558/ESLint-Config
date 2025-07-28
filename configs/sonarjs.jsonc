@@ -162,7 +162,7 @@
   "no-in-misuse": "error",
   "no-incomplete-assertions": "error",
   "no-inconsistent-returns": "off", // "warn" - Throws `Cannot read properties of undefined (reading 'some')`
-  "no-incorrect-string-concat": "error",
+  "no-incorrect-string-concat": "off", // Handled by `@typescript-eslint/restrict-plus-operands`
   "no-internal-api-use": "warn",
   "no-intrusive-permissions": "off", // Should be set by the lib user
   "no-invalid-await": "off", // Handled by `@typescript-eslint/await-thenable`

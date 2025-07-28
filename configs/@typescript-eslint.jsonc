@@ -1,94 +1,200 @@
 {
   // [TYPESCRIPT-ESLINT] https://typescript-eslint.io/rules | Using "warn" wherever applicable
+  "adjacent-overload-signatures": "off", // Set in `eslint.config.js` for only TS files
   "array-type": [
-    "error",
+    "warn",
     {
       "default": "array"
+      // "readonly": // Defaults to `default`
     }
   ],
   "await-thenable": "error",
-  "ban-ts-comment": "warn",
-  "ban-tslint-comment": "off",
-  "class-literal-property-style": "error",
-  "class-methods-use-this": "warn",
+  "ban-ts-comment": [
+    "warn",
+    {
+      "ts-check": false,
+      "ts-expect-error": "allow-with-description",
+      "ts-ignore": true,
+      "ts-nocheck": true,
+      "minimumDescriptionLength": 10
+    }
+  ],
+  "ban-tslint-comment": "warn",
+  "class-literal-property-style": [
+    "warn",
+    "fields"
+  ],
+  "class-methods-use-this": [
+    "warn",
+    {
+      "exceptMethods": [],
+      "enforceForClassFields": true,
+      "ignoreOverrideMethods": false,
+      // "ignoreClassWithImplements": false, // replaced with `ignoreClassesThatImplementAnInterface`
+      "ignoreClassesThatImplementAnInterface": false
+    }
+  ],
   "consistent-generic-constructors": [
-    "error",
+    "warn",
     "constructor"
   ],
   "consistent-indexed-object-style": [
-    "error",
+    "warn",
     "record"
   ],
   "consistent-return": "off",
   "consistent-type-assertions": [
-    "error",
+    "warn",
     {
-      "assertionStyle": "as"
+      "arrayLiteralTypeAssertions": "allow",
+      "assertionStyle": "as",
+      "objectLiteralTypeAssertions": "allow"
     }
   ],
-  "consistent-type-definitions": "off",
-  "consistent-type-exports": "error",
+  "consistent-type-definitions": [
+    "warn",
+    "type"
+  ],
+  "consistent-type-exports": [
+    "warn",
+    {
+      "fixMixedExportsWithInlineTypeSpecifier": false
+    }
+  ],
   "consistent-type-imports": [
-    "error",
+    "warn",
     {
-      "prefer": "type-imports",
-      "fixStyle": "separate-type-imports"
+      "disallowTypeAnnotations": true,
+      "fixStyle": "separate-type-imports",
+      "prefer": "type-imports"
     }
   ],
-  "default-param-last": "error",
+  "default-param-last": "warn",
   "dot-notation": [
-    "error",
+    "warn",
     {
+      "allowKeywords": true,
+      // "allowPattern": 
       "allowPrivateClassPropertyAccess": false,
       "allowProtectedClassPropertyAccess": false,
       "allowIndexSignaturePropertyAccess": true
     }
   ],
-  "explicit-function-return-type": "off",
+  "explicit-function-return-type": "off", // Set in `eslint.config.js` for only TS files
   "explicit-member-accessibility": "off", // Set in `eslint.config.js` for only TS files
   "explicit-module-boundary-types": "off", // Set in `eslint.config.js` for only TS files
-  "init-declarations": "off",
-  "max-params": "off",
+  "init-declarations": "off", // Needs more configurability, e.g. allowing declarations before `if`, `try` [
+  //   "warn",
+  //   "always"
+  // ],
+  "max-params": [
+    "warn",
+    {
+      "max": 6,
+      "countVoidThis": false
+    }
+  ],
   "member-ordering": "off",
   "method-signature-style": [
-    "error",
+    "warn",
     "method"
   ],
   "naming-convention": "off", // too complex and covered by other rules
-  "no-array-constructor": "error",
+  "no-array-constructor": "off", // Handled by `unicorn/new-for-builtins`, `sonarjs/array-constructor`
   "no-array-delete": "error",
   "no-base-to-string": [
     "error",
     {
+      "checkUnknown": false,
       "ignoredTypeNames": [
         "DiscordAPIError" // Has a custom toString
       ]
     }
   ],
-  "no-confusing-non-null-assertion": "error",
+  "no-confusing-non-null-assertion": "warn",
   "no-confusing-void-expression": "off",
-  "no-deprecated": "warn",
-  "no-dupe-class-members": "error",
-  "no-duplicate-enum-values": "error",
-  "no-duplicate-type-constituents": "error",
-  "no-dynamic-delete": "warn",
-  "no-empty-function": "error",
-  "no-empty-object-type": "error",
-  "no-explicit-any": "error",
-  "no-extra-non-null-assertion": "error",
-  "no-extraneous-class": "error",
-  "no-floating-promises": "warn",
-  "no-for-in-array": "warn",
-  "no-implied-eval": "error",
-  "no-import-type-side-effects": "error",
-  "no-inferrable-types": [
-    "error",
+  "no-deprecated": [
+    "warn",
     {
-      "ignoreParameters": true
+      "allow": []
     }
   ],
-  "no-invalid-this": "error",
-  "no-invalid-void-type": "error",
+  "no-dupe-class-members": "error",
+  "no-duplicate-enum-values": "error",
+  "no-duplicate-type-constituents": [
+    "warn",
+    {
+      "ignoreIntersections": false,
+      "ignoreUnions": false
+    }
+  ],
+  "no-dynamic-delete": "error",
+  "no-empty-function": [
+    "warn",
+    {
+      "allow": []
+    }
+  ],
+  "no-empty-object-type": [
+    "warn",
+    {
+      "allowInterfaces": "never",
+      "allowObjectTypes": "never"
+      // "allowWithName": 
+    }
+  ],
+  "no-explicit-any": [
+    "warn",
+    {
+      "fixToUnknown": true,
+      "ignoreRestArgs": false
+    }
+  ],
+  "no-extra-non-null-assertion": "warn",
+  "no-extraneous-class": [
+    "warn",
+    {
+      "allowConstructorOnly": false,
+      "allowEmpty": false,
+      "allowStaticOnly": false,
+      "allowWithDecorator": false
+    }
+  ],
+  "no-floating-promises": [
+    "warn",
+    {
+      "allowForKnownSafeCalls": [],
+      "allowForKnownSafePromises": [],
+      "checkThenables": false,
+      "ignoreIIFE": false,
+      "ignoreVoid": true
+    }
+  ],
+  "no-for-in-array": "warn",
+  "no-implied-eval": "warn",
+  "no-import-type-side-effects": "warn",
+  "no-inferrable-types": [
+    "warn",
+    {
+      "ignoreParameters": false,
+      "ignoreProperties": false
+    }
+  ],
+  "no-invalid-this": [
+    "error",
+    {
+      "capIsConstructor": true
+    }
+  ],
+  "no-invalid-void-type": [
+    "warn",
+    {
+      "allowAsThisParameter": true,
+      "allowInGenericTypeArguments": [
+        "Promise"
+      ]
+    }
+  ],
   "no-loop-func": "warn",
   "no-magic-numbers": [
     "warn",
@@ -105,37 +211,68 @@
         10,
         "10n"
       ],
+      "ignoreArrayIndexes": false,
       "ignoreDefaultValues": true,
       "ignoreClassFieldInitialValues": true,
+      "enforceConst": false,
       "detectObjects": true,
       "ignoreEnums": true,
+      "ignoreNumericLiteralTypes": true,
       "ignoreReadonlyClassProperties": true,
-      "ignoreNumericLiteralTypes": true
+      "ignoreTypeIndexes": false
     }
   ],
-  "no-meaningless-void-operator": "error",
-  "no-misused-new": "error",
+  "no-meaningless-void-operator": [
+    "warn",
+    {
+      "checkNever": false
+    }
+  ],
+  "no-misused-new": "warn",
   "no-misused-promises": [
     "error",
     {
-      "checksVoidReturn": false
+      "checksConditionals": true,
+      "checksSpreads": true,
+      "checksVoidReturn": {
+        "arguments": false,
+        "attributes": true,
+        "inheritedMethods": true,
+        "properties": true,
+        "returns": true,
+        "variables": true
+      }
     }
   ],
-  "no-misused-spread": "off",
-  "no-mixed-enums": "error",
-  "no-namespace": "error",
-  "no-non-null-asserted-nullish-coalescing": "error",
-  "no-non-null-asserted-optional-chain": "error",
-  "no-non-null-assertion": "error",
-  "no-redeclare": "error",
-  "no-redundant-type-constituents": "error",
+  "no-misused-spread": [
+    "error",
+    {
+      "allow": []
+    }
+  ],
+  "no-mixed-enums": "warn",
+  "no-namespace": "off", // Handled by `@typescript-eslint/prefer-namespace-keyword`
+  "no-non-null-asserted-nullish-coalescing": "off", // Handled by `@typescript-eslint/no-non-null-assertion`
+  "no-non-null-asserted-optional-chain": "off", // Handled by `@typescript-eslint/no-non-null-assertion`
+  "no-non-null-assertion": "warn",
+  "no-redeclare": [
+    "error",
+    {
+      "builtinGlobals": true,
+      "ignoreDeclarationMerge": true
+    }
+  ],
+  "no-redundant-type-constituents": "warn",
   "no-require-imports": "off",
   "no-restricted-imports": "off",
   "no-restricted-types": "off",
   "no-shadow": [
     "warn",
     {
+      "builtinGlobals": false, // clashes with global types if `true`
+      "hoist": "functions-and-types",
       "allow": [
+        // Mostly often used arrow function variables
         "a",
         "b",
         "e",
@@ -144,143 +281,262 @@
         "v",
         "err",
         "res"
-      ]
+      ],
+      "ignoreOnInitialization": false,
+      "ignoreTypeValueShadow": true,
+      "ignoreFunctionTypeParameterNameValueShadow": true
     }
   ],
-  "no-this-alias": "error",
-  "no-unnecessary-boolean-literal-compare": "error",
-  "no-unnecessary-condition": [
-    "error",
+  "no-this-alias": [
+    "warn",
     {
-      "allowConstantLoopConditions": true
+      "allowDestructuring": false,
+      "allowedNames": []
     }
   ],
-  "no-unnecessary-parameter-property-assignment": "error",
-  "no-unnecessary-qualifier": "error",
-  "no-unnecessary-template-expression": "error",
-  "no-unnecessary-type-arguments": "error",
-  "no-unnecessary-type-assertion": "error",
-  "no-unnecessary-type-constraint": "error",
+  "no-unnecessary-boolean-literal-compare": [
+    "warn",
+    {
+      "allowComparingNullableBooleansToFalse": true,
+      "allowComparingNullableBooleansToTrue": true
+    }
+  ],
+  "no-unnecessary-condition": [
+    "warn",
+    {
+      "allowConstantLoopConditions": "only-allowed-literals",
+      "checkTypePredicates": true
+    }
+  ],
+  "no-unnecessary-parameter-property-assignment": "warn",
+  "no-unnecessary-qualifier": "warn",
+  "no-unnecessary-template-expression": "warn",
+  "no-unnecessary-type-arguments": "warn",
+  "no-unnecessary-type-assertion": "warn",
+  "no-unnecessary-type-constraint": "warn",
   "no-unnecessary-type-conversion": "warn",
-  "no-unnecessary-type-parameters": "error",
-  "no-unsafe-argument": "off", // Set in `eslint.config.js` for only TS files
-  "no-unsafe-assignment": "off", // Set in `eslint.config.js` for only TS files
-  "no-unsafe-call": "off", // Set in `eslint.config.js` for only TS files
-  "no-unsafe-declaration-merging": "error",
-  "no-unsafe-enum-comparison": "error",
-  "no-unsafe-function-type": "error",
-  "no-unsafe-member-access": "off", // Set in `eslint.config.js` for only TS files
-  "no-unsafe-return": "off", // Set in `eslint.config.js` for only TS files
+  "no-unnecessary-type-parameters": "warn", // Note: does not jet have an option to allow same params on overloads
+  "no-unsafe-argument": "warn",
+  "no-unsafe-assignment": "warn",
+  "no-unsafe-call": "warn",
+  "no-unsafe-declaration-merging": "warn",
+  "no-unsafe-enum-comparison": "warn",
+  "no-unsafe-function-type": "warn",
+  "no-unsafe-member-access": "warn",
+  "no-unsafe-return": "warn",
   "no-unsafe-type-assertion": "warn",
   "no-unsafe-unary-minus": "error",
   "no-unused-expressions": [
     "error",
     {
       "allowShortCircuit": true,
-      "allowTernary": true
+      "allowTernary": true,
+      "allowTaggedTemplates": false,
+      "enforceForJSX": true,
+      "ignoreDirectives": false
     }
   ],
   "no-unused-vars": [
-    "error",
+    "warn",
     {
       "vars": "all",
       "args": "all",
       "caughtErrors": "all",
+      "varsIgnorePattern": "^_.+",
       "argsIgnorePattern": "^_",
+      // "caughtErrorsIgnorePattern": 
       "destructuredArrayIgnorePattern": "^_.+",
-      "varsIgnorePattern": "^_.+"
+      "ignoreRestSiblings": false,
+      "ignoreClassWithStaticInitBlock": false,
+      // "ignoreUsingDeclarations": false, // `@typescript-eslint` does not have this option, `eslint` does however
+      "reportUsedIgnorePattern": false
     }
   ],
   "no-use-before-define": [
     "error",
     {
       "functions": false,
-      "allowNamedExports": true
+      "classes": true,
+      "variables": true,
+      "allowNamedExports": true,
+      "enums": true,
+      "typedefs": true,
+      "ignoreTypeReferences": true
     }
   ],
-  "no-useless-constructor": "error",
-  "no-useless-empty-export": "error",
+  "no-useless-constructor": "warn",
+  "no-useless-empty-export": "warn",
   "no-wrapper-object-types": "error",
-  "non-nullable-type-assertion-style": "error",
-  "only-throw-error": "error",
-  "parameter-properties": "error",
-  "prefer-as-const": "error",
-  "prefer-destructuring": [
+  "non-nullable-type-assertion-style": "warn",
+  "only-throw-error": [
     "error",
     {
+      "allow": [],
+      "allowRethrowing": true,
+      "allowThrowingAny": false,
+      "allowThrowingUnknown": false
+    }
+  ],
+  "parameter-properties": [
+    "warn",
+    {
+      "allow": [],
+      "prefer": "class-property"
+    }
+  ],
+  "prefer-as-const": "warn",
+  "prefer-destructuring": [
+    "warn",
+    {
+      "VariableDeclarator": {
+        "array": false,
+        "object": true
+      },
       "AssignmentExpression": {
         // These two values should not be changed for compatibility reasons
-        // (with `unicorn/no-unreadable-array-destructing`)
+        // with `unicorn/no-unreadable-array-destructing`
         "array": false,
         "object": true
       }
+    },
+    {
+      "enforceForRenamedProperties": false,
+      "enforceForDeclarationWithTypeAnnotation": false
     }
   ],
   "prefer-enum-initializers": "warn",
-  "prefer-find": "error",
-  "prefer-for-of": "error",
+  "prefer-find": "warn",
+  "prefer-for-of": "warn",
   "prefer-function-type": "warn",
-  "prefer-includes": "error",
-  "prefer-literal-enum-member": "error",
-  "prefer-namespace-keyword": "warn",
-  "prefer-nullish-coalescing": [
-    "error",
+  "prefer-includes": "warn",
+  "prefer-literal-enum-member": [
+    "warn",
     {
-      "ignoreConditionalTests": true
+      "allowBitwiseExpressions": false
     }
   ],
-  "prefer-optional-chain": "error",
+  "prefer-namespace-keyword": "warn",
+  "prefer-nullish-coalescing": [
+    "warn",
+    {
+      "ignoreBooleanCoercion": false,
+      "ignoreConditionalTests": true,
+      "ignoreIfStatements": false,
+      "ignoreMixedLogicalExpressions": false,
+      "ignorePrimitives": {
+        "bigint": false,
+        "boolean": false,
+        "number": false,
+        "string": false
+      },
+      "ignoreTernaryTests": false
+    }
+  ],
+  "prefer-optional-chain": [
+    "warn",
+    {
+      "checkAny": true,
+      "checkBigInt": true,
+      "checkBoolean": true,
+      "checkNumber": true,
+      "checkString": true,
+      "checkUnknown": true,
+      "requireNullish": false
+    }
+  ],
   "prefer-promise-reject-errors": "error",
-  "prefer-readonly": "off",
-  "prefer-readonly-parameter-types": "off",
-  "prefer-reduce-type-parameter": "error",
+  "prefer-readonly": "off", // Set in `eslint.config.js` for only TS files
+  "prefer-readonly-parameter-types": "off", // Set in `eslint.config.js` for only TS files
+  "prefer-reduce-type-parameter": "warn",
   "prefer-regexp-exec": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-return-this-type": "error",
-  "prefer-string-starts-ends-with": "error",
-  "promise-function-async": [
-    "error",
+  "prefer-string-starts-ends-with": [
+    "warn",
     {
-      "checkArrowFunctions": false
+      "allowSingleElementEquality": "never"
+    }
+  ],
+  "promise-function-async": [
+    "warn",
+    {
+      "allowAny": true,
+      "allowedPromiseNames": [],
+      "checkArrowFunctions": true,
+      "checkFunctionDeclarations": true,
+      "checkFunctionExpressions": true,
+      "checkMethodDeclarations": true
     }
   ],
   "related-getter-setter-pairs": "error",
-  "require-array-sort-compare": "error",
-  "require-await": "error",
-  "restrict-plus-operands": "warn",
+  "require-array-sort-compare": [
+    "error",
+    {
+      "ignoreStringArrays": false
+    }
+  ],
+  "require-await": "warn",
+  "restrict-plus-operands": [
+    "error",
+    {
+      "allowAny": false,
+      "allowBoolean": false,
+      "allowNullish": false,
+      "allowNumberAndString": false,
+      "allowRegExp": false,
+      "skipCompoundAssignments": false
+    }
+  ],
   "restrict-template-expressions": [
     "error",
     {
-      "allowAny": true,
-      "allowArray": true,
+      "allow": [
+        {
+          "name": [
+            "Error",
+            "URL",
+            "URLSearchParams"
+          ],
+          "from": "lib"
+        }
+      ],
+      "allowAny": false,
+      "allowArray": false,
       "allowBoolean": true,
+      "allowNever": false,
       "allowNullish": true,
       "allowNumber": true,
       "allowRegExp": true
     }
   ],
-  "return-await": "off",
-  "strict-boolean-expressions": [
+  "return-await": [
     "error",
-    {
-      "allowString": true,
-      "allowNumber": true,
-      "allowNullableObject": true,
-      "allowNullableBoolean": true,
-      "allowNullableString": true,
-      "allowNullableNumber": false,
-      "allowNullableEnum": false,
-      "allowAny": true // definitely not optimal, but needed in js projects.
-    }
+    "in-try-catch"
   ],
+  "strict-boolean-expressions": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`
   "switch-exhaustiveness-check": [
-    "error",
+    "warn",
     {
-      "considerDefaultExhaustiveForUnions": true
+      "allowDefaultCaseForExhaustiveSwitch": true,
+      "considerDefaultExhaustiveForUnions": true,
+      // "defaultCaseCommentPattern": 
+      "requireDefaultForNonUnion": false
     }
   ],
-  "triple-slash-reference": "warn",
-  "typedef": "warn",
-  "unbound-method": "off", // Handled by `custom/unbound-method`
-  "unified-signatures": "error",
-  "use-unknown-in-catch-callback-variable": "off"
+  "triple-slash-reference": [
+    "warn",
+    {
+      "lib": "never",
+      "path": "never",
+      "types": "never"
+    }
+  ],
+  "typedef": "off", // see warning on https://typescript-eslint.io/rules/typedef
+  "unbound-method": "off", // Handled by `custom/unbound-method` which allows node:*
+  "unified-signatures": [
+    "warn", {
+      "ignoreDifferentlyNamedParameters": false,
+      "ignoreOverloadsWithDifferentJSDoc": false
+    }
+  ],
+  "use-unknown-in-catch-callback-variable": "off" // Set in `eslint.config.js` for only TS files
 }
