@@ -58,7 +58,7 @@ const
 export default [
   {
     name: 'eslint-config:all',
-    files: ['**/*.js', '**/*.ts', '**/*.html'],
+    files: ['**/*.js', '**/*.mjs', '**/*.ts', '**/*.html'],
     languageOptions: {
       parser,
       parserOptions: {
