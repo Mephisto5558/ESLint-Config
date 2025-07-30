@@ -3,7 +3,7 @@
  * @param {string} content The content of the type definition (inside the braces)
  * @returns {string} The formatted content */
 function getCorrectedType(content) {
-  const placeholders = [];
+  const /** @type {string[]} */ placeholders = [];
   let tempContent = content;
 
   /* STAGE 1 MASKING: Protect `${...}` expressions FIRST. */
@@ -48,8 +48,14 @@ function getCorrectedType(content) {
 
   // FIX #2: UNMASKING must be recursive to handle nested placeholders.
   let finalContent = formattedMaskedContent;
-  while (/__JSDOC_PLACEHOLDER_\d+__/.test(finalContent))
-    finalContent = finalContent.replaceAll(/__JSDOC_PLACEHOLDER_(?<i>\d+)__/g, (_, i) => placeholders[Number.parseInt(i)]);
+  while (/__JSDOC_PLACEHOLDER_\d+__/.test(finalContent)) {
+    finalContent = finalContent.replaceAll(/__JSDOC_PLACEHOLDER_(?<i>\d+)__/g,
+
+      /**
+       * @param {string} _
+       * @param {string} i */
+      (_, i) => placeholders[Number.parseInt(i)]);
+  }
 
   // Always wrap the final result in a single pair of braces for the linter rule.
   return `{${finalContent}}`;
@@ -82,10 +88,12 @@ export default {
         for (const comment of context.sourceCode.getAllComments()) {
           if (comment.type !== 'Block') continue;
 
-          const commentText = context.sourceCode.getText(comment);
+          const
+            commentText = context.sourceCode.getText(comment),
 
-          // Rule: Space after the entire comment block
-          const nextToken = context.sourceCode.getTokenAfter(comment);
+            // Rule: Space after the entire comment block
+            nextToken = context.sourceCode.getTokenAfter(comment);
+
           if (nextToken && !context.sourceCode.isSpaceBetween(comment, nextToken)) {
             context.report({
               node: comment,
@@ -102,8 +110,7 @@ export default {
           while ((match = localTypeStartRegex.exec(commentText)) !== null) {
             const typeStartIndexInComment = match.index + match[0].lastIndexOf('{');
 
-            let braceLevel = 1;
-            let typeEndIndexInComment = -1;
+            let braceLevel = 1, typeEndIndexInComment = -1;
             for (let i = typeStartIndexInComment + 1; i < commentText.length; i++) {
               if (commentText[i] === '{') braceLevel++;
               else if (commentText[i] === '}') braceLevel--;

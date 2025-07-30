@@ -43,10 +43,11 @@ const
     sonarjs: sonarjsPlugin,
     unicorn: unicornPlugin,
     regexp: regExPlugin,
-    html: htmlPlugin,
+    html: htmlPlugin, /* eslint-disable-line @typescript-eslint/no-unsafe-assignment */
     custom: customPlugin
   },
-  /** @type {ReturnType<importJsonC> & {'jsdoc/check-tag-names': [string, Record<string, boolean>]}} */
+
+  /** @type {ReturnType<importJsonC> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }} */
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
     ...importJsonC('configs/@stylistic.jsonc'),
