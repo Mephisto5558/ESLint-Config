@@ -1,22 +1,22 @@
 {
   // [REGEXP] https://github.com/ota-meshi/eslint-plugin-regexp#white_check_mark-rules | Using "warn" wherever applicable
   // [POSSIBLE ERRORS]
-  "no-contradiction-with-assertion": "error",
-  "no-control-character": "warn", // Overlaps partially with `regexp/control-character-escape`
+  "no-contradiction-with-assertion": "warn",
+  "no-control-character": "warn",
   "no-dupe-disjunctions": [
     "warn",
     {
-      "report": "trivial",
+      "report": "interesting",
       "reportExponentialBacktracking": "potential",
       "reportUnreachable": "certain"
     }
   ],
-  "no-empty-alternative": "error",
-  "no-empty-capturing-group": "warn",
+  "no-empty-alternative": "warn",
+  "no-empty-capturing-group": "off", // Handled by `regexp/no-empty-group`
   "no-empty-character-class": "error",
   "no-empty-group": "warn",
   "no-empty-lookarounds-assertion": "error",
-  "no-escape-backspace": "warn", // Incompatible with `regexp/no-control-character`, a eslint-disable comment is required.
+  "no-escape-backspace": "off", // Incompatible with `regexp/no-control-character`
   "no-invalid-regexp": "error",
   "no-lazy-ends": [
     "warn",
@@ -24,14 +24,24 @@
       "ignorePartial": true
     }
   ],
-  "no-misleading-capturing-group": "error",
+  "no-misleading-capturing-group": [
+    "error",
+    {
+      "reportBacktrackingEnds": true
+    }
+  ],
   "no-misleading-unicode-character": [
     "error",
     {
       "fixable": true
     }
   ],
-  "no-missing-g-flag": "error",
+  "no-missing-g-flag": [
+    "error",
+    {
+      "strictTypes": true
+    }
+  ],
   "no-optional-assertion": "warn",
   "no-potentially-useless-backreference": "warn",
   "no-super-linear-backtracking": [
@@ -49,27 +59,46 @@
     }
   ],
   "no-useless-assertions": "warn",
-  "no-useless-backreference": "error",
-  "no-useless-dollar-replacements": "warn",
+  "no-useless-backreference": "warn",
+  "no-useless-dollar-replacements": "error",
   "strict": "error",
   // [BEST PRACTICES]
   "confusing-quantifier": "warn",
-  "control-character-escape": "warn", // Overlaps partially with `regexp/no-control-character`
+  "control-character-escape": "off", // Handled by `regexp/no-control-character`
   "negation": "warn",
   "no-dupe-characters-character-class": "warn",
   "no-empty-string-literal": "error",
   "no-extra-lookaround-assertions": "warn",
-  "no-invisible-character": "error",
+  "no-invisible-character": "warn",
   "no-legacy-features": "off", // Handled by `@typescript-eslint/no-deprecated`
-  "no-non-standard-flag": "error",
+  "no-non-standard-flag": "warn",
   "no-obscure-range": "warn",
   "no-octal": "warn",
   "no-standalone-backslash": "warn",
   "no-trivially-nested-assertion": "warn",
   "no-trivially-nested-quantifier": "warn",
-  "no-unused-capturing-group": "warn",
-  "no-useless-character-class": "warn",
-  "no-useless-flag": "warn",
+  "no-unused-capturing-group": [
+    "warn",
+    {
+      "fixable": false,
+      "allowNamed": false
+    }
+  ],
+  "no-useless-character-class": [
+    "warn",
+    {
+      "ignores": [
+        "="
+      ]
+    }
+  ],
+  "no-useless-flag": [
+    "warn",
+    {
+      "ignore": [],
+      "strictTypes": true
+    }
+  ],
   "no-useless-lazy": "warn",
   "no-useless-quantifier": "warn",
   "no-useless-range": "warn",
@@ -78,10 +107,23 @@
   "no-useless-two-nums-quantifier": "off", // Handled by `regexp/no-useless-quantifier`
   "no-zero-quantifier": "error",
   "optimal-lookaround-quantifier": "warn",
-  "optimal-quantifier-concatenation": "warn",
+  "optimal-quantifier-concatenation": [
+    "warn",
+    {
+      "capturingGroups": "report"
+    }
+  ],
   "prefer-escape-replacement-dollar-char": "warn",
   "prefer-predefined-assertion": "warn",
-  "prefer-quantifier": "warn",
+  "prefer-quantifier": [
+    "warn",
+    {
+      "allows": [
+        "www",
+        "\\d\\d"
+      ]
+    }
+  ],
   "prefer-range": [
     "warn",
     {
@@ -90,7 +132,7 @@
   ],
   "prefer-regexp-exec": "off", // Handled by `sonarjs/sonar-prefer-regexp-exec` until this one is auto-fixable.
   "prefer-regexp-test": "warn",
-  "prefer-set-operation": "off", // I have no idea how they work, and regex101 doesn't support them.
+  "prefer-set-operation": "off", // I have no idea how they work, and regex101 doesn't support them. // TODO: l e a r n
   "require-unicode-regexp": "off", // No real need to
   "require-unicode-sets-regexp": "off", // No real need to
   "simplify-set-operations": "warn",
@@ -99,12 +141,12 @@
   // [STYLISTIC]
   "grapheme-string-literal": "warn",
   "hexadecimal-escape": [
-    "error",
+    "warn",
     "never"
   ],
   "letter-case": "off", // Handled by `unicorn/escape-case`
   "match-any": [
-    "error",
+    "warn",
     {
       "allows": [
         "dotAll"
@@ -120,18 +162,58 @@
       "insideCharacterClass": "d"
     }
   ],
-  "prefer-lookaround": "warn",
-  "prefer-named-backreference": "error",
-  "prefer-named-capture-group": "error",
-  "prefer-named-replacement": "error",
+  "prefer-lookaround": [
+    "warn",
+    {
+      "lookbehind": true,
+      "strictTypes": true
+    }
+  ],
+  "prefer-named-backreference": "warn",
+  "prefer-named-capture-group": "warn",
+  "prefer-named-replacement": [
+    "warn",
+    {
+      "strictTypes": true
+    }
+  ],
   "prefer-plus-quantifier": "warn",
   "prefer-question-quantifier": "warn",
-  "prefer-result-array-groups": "error",
+  "prefer-result-array-groups": [
+    "warn",
+    {
+      "strictTypes": true
+    }
+  ],
   "prefer-star-quantifier": "warn",
   "prefer-unicode-codepoint-escapes": "warn",
   "prefer-w": "warn",
-  "sort-character-class-elements": "warn",
+  "sort-character-class-elements": [
+    "warn",
+    {
+      "order": [ // default
+        "\\s", // \s, \S
+        "\\w", // \w, \W
+        "\\d", // \d, \D
+        "\\p", // \p{...}, \P{...}
+        "*", // Others
+        "\\q", // \q{...}
+        "[]" // Nesting character class, character class expression
+      ]
+    }
+  ],
   "sort-flags": "warn",
-  "unicode-escape": "off",
-  "unicode-property": "warn"
+  "unicode-escape": "off", // Handled by `regexp/prefer-unicode-codepoint-escapes`
+  "unicode-property": [
+    "warn",
+    {
+      "generalCategory": "never",
+      "key": "short",
+      "property": {
+        "binary": "short",
+        "generalCategory": "ignore", // is set to "never"
+        "script": "long"
+      }
+    }
+  ]
 }
