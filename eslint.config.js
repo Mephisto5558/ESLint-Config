@@ -43,12 +43,12 @@ const
   /** @type {ReturnType<importJsonC> & {'jsdoc/check-tag-names': [string, Record<string, boolean>]}} */
   rules = {
     ...importJsonC('configs/eslint.jsonc'),
-    ...importJsonC('configs/@typescript-eslint.jsonc'),
     ...importJsonC('configs/@stylistic.jsonc'),
+    ...importJsonC('configs/@typescript-eslint.jsonc'),
     ...importJsonC('configs/jsdoc.jsonc'),
+    ...importJsonC('configs/regexp.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
     ...importJsonC('configs/unicorn.jsonc'),
-    ...importJsonC('configs/regexp.jsonc'),
     ...importJsonC('configs/custom.jsonc')
   };
 
