@@ -1,5 +1,5 @@
 {
-  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules  | Using "warn" wherever applicable
+  // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules | Using "warn" wherever applicable
   "check-access": "warn",
   "check-alignment": "warn",
   "check-examples": "off", // only used in eslint@7, solution for eslint@9 does not work
