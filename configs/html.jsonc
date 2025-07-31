@@ -1,4 +1,4 @@
 {
   "indent": "+2",
-  "report-bad-indent": "warn"
+  "report-bad-indent": "warn" // Handled by `@stylistic/indent` but not correctly if the first line is indented wrong
 }
