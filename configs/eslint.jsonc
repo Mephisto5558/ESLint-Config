@@ -269,7 +269,7 @@
   ],
   "prefer-destructuring": "off", // Handled by `@typescript-eslint/prefer-destructuring`
   "prefer-exponentiation-operator": "warn",
-  "prefer-named-capture-group": "off",
+  "prefer-named-capture-group": "off", // Handled by `regexp/prefer-named-capture-group`
   "prefer-numeric-literals": "off",
   "prefer-object-has-own": "error",
   "prefer-object-spread": "error",
