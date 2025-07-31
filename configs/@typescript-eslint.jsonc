@@ -406,7 +406,7 @@
   ],
   "prefer-enum-initializers": "warn",
   "prefer-find": "warn",
-  "prefer-for-of": "warn",
+  "prefer-for-of": "off", // Handled by `unicorn/no-for-loop`
   "prefer-function-type": "warn",
   "prefer-includes": "warn",
   "prefer-literal-enum-member": [

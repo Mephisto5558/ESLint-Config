@@ -98,7 +98,10 @@ export default [
       globals: globals.browser
     },
     rules: {
-      ...importJsonC('configs/sonarjs-html.jsonc'),
+      'sonarjs/no-table-as-layout': 'warn',
+      'sonarjs/object-alt-content': 'warn',
+      'sonarjs/table-header': 'warn',
+      'sonarjs/table-header-reference': 'warn',
       '@stylistic/no-multiple-empty-lines': [
         'error',
         {

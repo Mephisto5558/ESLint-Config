@@ -1,5 +1,5 @@
 {
-  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md | Using "error" only for invalid code
+  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md#rules | Using "warn" wherever applicable
   "anchor-precedence": "error",
   "argument-type": "error",
   "arguments-order": "error",
@@ -7,58 +7,66 @@
   "array-callback-without-return": "off", // Handled by `array-callback-return`
   "array-constructor": "error",
   "arrow-function-convention": "off", // Handled by `@stylistic/arrow-parens` and `arrow-body-style`
-  "assertions-in-tests": "error",
-  "aws-apigateway-public-api": "error",
-  "aws-ec2-rds-dms-public": "error",
-  "aws-ec2-unencrypted-ebs-volume": "error",
-  "aws-efs-unencrypted": "error",
-  "aws-iam-all-privileges": "error",
-  "aws-iam-all-resources-accessible": "error",
-  "aws-iam-privilege-escalation": "error",
-  "aws-iam-public-access": "error",
-  "aws-opensearchservice-domain": "error",
-  "aws-rds-unencrypted-databases": "error",
-  "aws-restricted-ip-admin-access": "error",
-  "aws-s3-bucket-granted-access": "error",
-  "aws-s3-bucket-insecure-http": "error",
-  "aws-s3-bucket-public-access": "error",
-  "aws-s3-bucket-versioning": "error",
-  "aws-sagemaker-unencrypted-notebook": "error",
-  "aws-sns-unencrypted-topics": "error",
-  "aws-sqs-unencrypted-queue": "error",
+  "assertions-in-tests": "warn",
+  "aws-apigateway-public-api": "warn",
+  "aws-ec2-rds-dms-public": "warn",
+  "aws-ec2-unencrypted-ebs-volume": "warn",
+  "aws-efs-unencrypted": "warn",
+  "aws-iam-all-privileges": "warn",
+  "aws-iam-all-resources-accessible": "warn",
+  "aws-iam-privilege-escalation": "warn",
+  "aws-iam-public-access": "warn",
+  "aws-opensearchservice-domain": "warn",
+  "aws-rds-unencrypted-databases": "warn",
+  "aws-restricted-ip-admin-access": "warn",
+  "aws-s3-bucket-granted-access": "warn",
+  "aws-s3-bucket-insecure-http": "warn",
+  "aws-s3-bucket-public-access": "warn",
+  "aws-s3-bucket-versioning": "warn",
+  "aws-sagemaker-unencrypted-notebook": "warn",
+  "aws-sns-unencrypted-topics": "warn",
+  "aws-sqs-unencrypted-queue": "warn",
   "bitwise-operators": "error",
-  "block-scoped-var": "off", // Handled by `no-var`, `vars-on-top`, `no-inner-declarations`
-  "bool-param-default": "warn", // Seems to not work with jsdoc
+  "block-scoped-var": "off", // Handled by `no-var`, `vars-on-top`, `no-inner-declarations`, `@typescript-eslint/no-redeclare`
+  "bool-param-default": "warn", // Does not support JSDoc annotations
   "call-argument-line": "off", // Handled by `@stylistic/function-call-spacing`, `no-unexpected-newline`
-  "certificate-transparency": "warn",
-  "chai-determinate-assertion": "error",
+  "chai-determinate-assertion": "warn",
   "class-name": "off", // Handled by `camelcase`
-  "class-prototype": "error",
+  "class-prototype": "warn",
   "code-eval": "off", // Handled by `no-eval`, `@typescript-eslint/no-implied-eval`
-  "cognitive-complexity": "off", // See `complexity`
-  "comma-or-logical-or-case": "off", // Handled by `no-sequences`, `no-constant-binary-expression`, `@typescript-eslint/no.unnecessary-condition`
+  "cognitive-complexity": [
+    "warn",
+    30
+  ],
+  "comma-or-logical-or-case": "off", // Handled by `no-sequences`, `no-constant-binary-expression`, `@typescript-eslint/no-unnecessary-condition`
   "comment-regex": "off",
-  "concise-regex": "off", // Handled by `unicorn/better-regex`
-  "confidential-information-logging": "error",
+  "concise-regex": "off", // Handled by `regexp/prefer-d`, `regexp/prefer-w`, `regexp/use-ignore-case`, `regexp/match-any`, `regexp/prefer-question-quantifier`, `regexp/prefer-star-quantifier`, `regexp/prefer-plus-quantifier`, `regexp/no-useless-quantifier`
+  "conditional-indentation": "off", // Handled by `@stylistic/indent`
+  "confidential-information-logging": "warn",
   "constructor-for-side-effects": "off", // Handled by `no-new`
   "content-length": "warn",
   "content-security-policy": "warn",
   "cookie-no-httponly": "warn",
   "cors": "warn",
   "csrf": "warn",
-  "cyclomatic-complexity": "off", // See `complexity`
-  "declarations-in-global-scope": "off", // Not for non-browser environments, the rest is handled by `no-var`
+  "cyclomatic-complexity": [
+    "warn",
+    {
+      "threshold": 20
+    }
+  ],
+  "declarations-in-global-scope": "off", // Handled by `no-var`
   "deprecation": "off", // Handled by `@typescript-eslint/no-deprecated`
-  "destructuring-assignment-syntax": "error",
+  "destructuring-assignment-syntax": "off", // Handled by `@typescript-eslint/prefer-destructuring`
   "different-types-comparison": "error",
   "disabled-auto-escaping": "warn",
   "disabled-resource-integrity": "warn",
   "disabled-timeout": "error",
-  "duplicates-in-character-class": "off", // Handled by `unicorn/better-regex`
+  "duplicates-in-character-class": "off", // Handled by `regexp/no-dupe-characters-character-class`, `regexp/no-obscure-range`, `regexp/prefer-range`
   "elseif-without-else": "off",
-  "empty-string-repetition": "error",
+  "empty-string-repetition": "off", // Handled by `regexp/no-empty-group`, `regexp/no-empty-alternative`
   "encryption-secure-mode": "warn",
-  "existing-groups": "error",
+  "existing-groups": "off", // Handled by `regexp/prefer-named-capture-group`, `regexp/no-unused-capturing-group`, `regexp/regexp/prefer-escape-replacement-dollar-char`
   "expression-complexity": [
     "warn",
     {
@@ -69,15 +77,15 @@
   "file-name-differ-from-class": "warn",
   "file-permissions": "warn",
   "file-uploads": "warn",
-  "fixme-tag": "warn",
-  "for-in": "off", // Handled by `guard-for-in`
+  "fixme-tag": "off", // Handled by `no-warning-comments`
+  "for-in": "warn",
   "for-loop-increment-sign": "error",
-  "frame-ancestors": "error",
+  "frame-ancestors": "warn",
   "function-inside-loop": "off", // Handled by `unicorn/consistent-function-scoping`
   "function-name": "off", // Handled by `camelcase`
-  "function-return-type": "off",
+  "function-return-type": "off", // Not configurable: Cannot allow undefined/null
   "future-reserved-words": "warn",
-  "generator-without-yield": "error",
+  "generator-without-yield": "warn",
   "hashing": "warn",
   "hidden-files": "warn",
   "in-operator-type-error": "error",
@@ -85,13 +93,13 @@
   "index-of-compare-to-positive-number": "error",
   "insecure-cookie": "warn",
   "insecure-jwt-token": "warn",
-  "inverted-assertion-arguments": "error",
+  "inverted-assertion-arguments": "warn",
   "label-position": "off", // Handled by `no-labels`
   "link-with-target-blank": "warn",
   "max-lines": "off", // Handled by `max-lines`
-  "max-lines-per-function": "off", // See `complexity`
+  "max-lines-per-function": "off", // Better handled by `sonarjs/cognitive-complexity`, `sonarjs/cyclomatic-complexity`
   "max-switch-cases": [
-    "error",
+    "warn",
     30
   ],
   "max-union-size": [
@@ -109,18 +117,18 @@
   ],
   "new-cap": "off", // Handled by `new-cap`
   "new-operator-misuse": "off", // Handled by `new-cap`, `@stylistic/new-parens`
-  "no-all-duplicated-branches": "error",
+  "no-all-duplicated-branches": "warn",
   "no-alphabetical-sort": "off", // Handled by `@typescript-eslint/require-array-sort-compare`
-  "no-angular-bypass-sanitization": "off", // Not using angular
+  "no-angular-bypass-sanitization": "warn",
   "no-array-delete": "off", // Handled by `@typescript-eslint/no-array-delete`
   "no-associative-arrays": "warn", // Note: does not detect "arr.xyz", just "arr['xyz']".
-  "no-async-constructor": "off", // Seems like it got deleted but is still documented.
+  "no-async-constructor": "warn",
   "no-built-in-override": "warn",
-  "no-case-label-in-switch": "error",
+  "no-case-label-in-switch": "off", // Handled by `no-labels`
   "no-clear-text-protocols": "warn",
-  "no-code-after-done": "error",
-  "no-collapsible-if": "error",
-  "no-collection-size-mischeck": "error",
+  "no-code-after-done": "warn",
+  "no-collapsible-if": "warn",
+  "no-collection-size-mischeck": "warn",
   "no-commented-code": "warn",
   "no-control-regex": "off", // Handled by `regexp/no-control-character`
   "no-dead-store": "off", // Handled by `no-useless-assignment`, `@typescript-eslint/no-unused-vars`
@@ -129,54 +137,53 @@
   "no-duplicate-string": [
     "warn",
     {
-      "threshold": 5
+      "threshold": 4
     }
   ],
-  "no-duplicated-branches": "error",
+  "no-duplicated-branches": "warn",
   "no-element-overwrite": "warn",
-  "no-empty-after-reluctant": "error",
-  "no-empty-alternatives": "error",
+  "no-empty-after-reluctant": "error", // Partially handled by `regexp/no-useless-lazy`, 
+  "no-empty-alternatives": "off", // Handled by `regexp/no-empty-alternative`
   "no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
-  "no-empty-collection": "error",
-  "no-empty-group": "error",
+  "no-empty-collection": "warn",
+  "no-empty-group": "off", // Handled by `regexp/no-empty-group`
   "no-empty-test-file": "off", // Handled by `unicorn/no-empty-file`
-  "no-equals-in-for-termination": "warn",
+  "no-equals-in-for-termination": "error",
   "no-exclusive-tests": "warn",
-  "no-extra-arguments": "error",
+  "no-extra-arguments": "warn",
   "no-fallthrough": "off", // Handled by `no-fallthrough`
-  "no-for-in-iterable": "error",
-  "no-function-declaration-in-block": "warn",
+  "no-for-in-iterable": "off", // Handled by `@typescript-eslint/no-for-in-array`
+  "no-function-declaration-in-block": "off", // Handled by `unicorn/consistent-function-scoping`
   "no-global-this": "off", // Handled by `@typescript-eslint/no-invalid-this`
   "no-globals-shadowing": "off", // Handled by `no-shadow-restricted-names`, `no-func-assign`, `sonarjs/no-built-in-override`
-  "no-gratuitous-expressions": "error",
+  "no-gratuitous-expressions": "warn", // Partially handled by `@typescript-eslint/no-unnecessary-condition`
   "no-hardcoded-ip": "warn",
   "no-hardcoded-passwords": "warn",
   "no-hardcoded-secrets": "warn",
   "no-identical-conditions": "error",
   "no-identical-expressions": "error",
-  "no-identical-functions": "error",
+  "no-identical-functions": "warn",
   "no-ignored-exceptions": "off", // Handled by `no-empty`
-  "no-ignored-return": "error",
-  "no-implicit-dependencies": "off", // Handled by `custom/no.implicit-dependencies`
+  "no-ignored-return": "warn",
+  "no-implicit-dependencies": "warn",
   "no-implicit-global": "off", // Handled by `no-undef`
   "no-in-misuse": "error",
-  "no-incomplete-assertions": "error",
-  "no-inconsistent-returns": "off", // "warn" - Throws `Cannot read properties of undefined (reading 'some')`
+  "no-incomplete-assertions": "warn",
+  "no-inconsistent-returns": "off",
   "no-incorrect-string-concat": "off", // Handled by `@typescript-eslint/restrict-plus-operands`
   "no-internal-api-use": "warn",
-  "no-intrusive-permissions": "off", // Should be set by the lib user
-  "no-invalid-await": "off", // Handled by `@typescript-eslint/await-thenable`
+  "no-intrusive-permissions": "warn",
   "no-invalid-regexp": "off", // Handled by `regexp/no-invalid-regexp`
   "no-invariant-returns": "warn",
-  "no-inverted-boolean-check": "error",
+  "no-inverted-boolean-check": "warn",
   "no-ip-forward": "warn",
   "no-labels": "off", // Handled by `no-labels`
-  "no-literal-call": "error",
+  "no-literal-call": "error", // Note: Does not detect assigned literals
   "no-mime-sniff": "warn",
   "no-misleading-array-reverse": "warn",
   "no-misleading-character-class": "off", // Handled by `regexp/no-misleading-unicode-character`
   "no-mixed-content": "warn",
-  "no-nested-assignment": "off", // Handled by `no-cond-assign`
+  "no-nested-assignment": "warn",
   "no-nested-conditional": "warn",
   "no-nested-functions": [
     "error",
@@ -184,35 +191,35 @@
       "threshold": 3
     }
   ],
-  "no-nested-incdec": "error",
-  "no-nested-switch": "error",
-  "no-nested-template-literals": "error",
-  "no-one-iteration-loop": "error",
+  "no-nested-incdec": "warn",
+  "no-nested-switch": "warn",
+  "no-nested-template-literals": "warn",
+  "no-one-iteration-loop": "off", // Handled by `no-unreachable-loop`
   "no-os-command-from-path": "warn",
   "no-parameter-reassignment": "error",
   "no-primitive-wrappers": "off", // Handled by `no-new-wrappers`, `unicorn/new-for-builtins`
   "no-redundant-assignments": "warn",
   "no-redundant-boolean": "warn",
   "no-redundant-jump": "warn",
-  "no-redundant-optional": "warn",
+  "no-redundant-optional": "warn", // Note: The example does not trigger the rule
   "no-reference-error": "off", // Handled by `no-undef`
   "no-referrer-policy": "warn",
-  "no-regex-spaces": "off", // Handled by `no-regex-spaces`
+  "no-regex-spaces": "off", // Handled by `regexp/prefer-quantifier`
   "no-require-or-define": "off",
   "no-return-type-any": "off", // Handled by `@typescript-eslint/no-explicit-any`
   "no-same-argument-assert": "error",
-  "no-same-line-conditional": "error",
+  "no-same-line-conditional": "off", // Handled by `@stylistic/max-statements-per-line`
   "no-selector-parameter": "warn",
   "no-skipped-tests": "warn",
   "no-small-switch": "warn",
   "no-sonar-comments": "warn", // Use `eslint-disable-line` instead
-  "no-table-as-layout": "warn",
-  "no-try-promise": "error",
+  "no-table-as-layout": "off", // Set in `sonarjs-html.jsonc`
+  "no-try-promise": "off", // Handled by `@typescript-eslint/no-floating-promises`
   "no-undefined-argument": "off", // Handled by `unicorn/no-useless-undefined`
   "no-undefined-assignment": "off", // Incompatible with `unicorn/no-null`
   "no-unenclosed-multiline-block": "warn",
   "no-unsafe-unzip": "warn",
-  "no-unthrown-error": "warn",
+  "no-unthrown-error": "off", // Handled b< `no-new`
   "no-unused-collection": "warn",
   "no-unused-function-argument": "off", // Handled by `@typescript-eslint/no-unused-vars`
   "no-unused-vars": "off", // Handled by `@typescript-eslint/no-unused-vars`
@@ -230,7 +237,7 @@
   "operation-returning-nan": "error",
   "os-command": "warn",
   "post-message": "warn",
-  "prefer-default-last": "off", // Handled by `default-case-last`
+  "prefer-default-last": "warn",
   "prefer-immediate-return": "warn",
   "prefer-object-literal": "warn",
   "prefer-promise-shorthand": "warn",
@@ -240,11 +247,16 @@
   "prefer-while": "warn",
   "production-debug": "warn",
   "pseudo-random": "warn",
-  "public-static-readonly": "off", // "readonly" keyword is only supported in ts
+  "public-static-readonly": "off", // Set in `eslint.config.js` for only TS files
   "publicly-writable-directories": "warn",
   "reduce-initial-value": "error",
   "redundant-type-aliases": "warn",
-  "regex-complexity": "warn",
+  "regex-complexity": [
+    "warn",
+    {
+      "threshold": 20
+    }
+  ],
   "session-regeneration": "warn",
   "shorthand-property-grouping": "warn",
   "single-char-in-character-classes": "off", // Handled by `regexp/no-useless-character-class`
@@ -255,9 +267,9 @@
   "stateful-regex": "error",
   "strict-transport-security": "warn",
   "strings-comparison": "error",
-  "super-invocation": "error", // Handled by `constructor-super`, `no-this-before-super`
+  "super-invocation": "error",
   "test-check-exception": "warn",
-  "todo-tag": "warn",
+  "todo-tag": "off", // Handled by `no-warning-comments`
   "too-many-break-or-continue-in-loop": "off",
   "unicode-aware-regex": "error",
   "unused-import": "off", // Handled by `@typescript-eslint/no-unused-vars`
@@ -265,7 +277,6 @@
   "unverified-certificate": "warn",
   "unverified-hostname": "warn",
   "updated-const-var": "off", // Handled by `no-const-assign`
-  "updated-loop-counter": "error",
   "use-type-alias": "warn",
   "values-not-convertible-to-numbers": "error",
   "variable-name": "off", // Handled by `camelcase`
