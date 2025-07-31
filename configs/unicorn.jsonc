@@ -28,7 +28,7 @@
     "warn",
     "uppercase"
   ],
-  "expiring-todo-comments": "off", // Handled by `sonarjs/todo-tag`
+  "expiring-todo-comments": "off", // Handled by `no-warning-comments`
   "explicit-length-check": "off",
   "filename-case": [
     // See filename-case: eslint disable directive does not work
@@ -58,12 +58,7 @@
   "no-array-for-each": "warn",
   "no-array-method-this-argument": "error",
   "no-array-reduce": "off", // Array#reduce my beloved
-  "no-array-reverse": [
-    "warn",
-    {
-      "allowExpressionStatement": true
-    }
-  ],
+  "no-array-reverse": "off", // Handled by `sonarjs/no-misleading-array-reverse`
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
   "no-console-spaces": "warn",

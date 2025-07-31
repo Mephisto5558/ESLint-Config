@@ -3,16 +3,13 @@
   //  Possible Problems
   "array-callback-return": "error",
   "constructor-super": "off", // Handled by `sonarjs/super-invocation`
-  "for-direction": "error",
+  "for-direction": "off", // Handled by `sonarjs/for-loop-increment-sign`
   "getter-return": "error",
   "no-async-promise-executor": "error",
   "no-await-in-loop": "off",
   "no-class-assign": "error",
   "no-compare-neg-zero": "error",
-  "no-cond-assign": [
-    "error",
-    "except-parens"
-  ],
+  "no-cond-assign": "off",   // Handled by `sonarjs/no-nested-assignment`
   "no-const-assign": "error",
   "no-constant-binary-expression": "error",
   "no-constant-condition": "error",
@@ -57,7 +54,7 @@
   "no-promise-executor-return": "off", // because this also affects `new Promise(res => x.on('y', z => res(z)));`
   "no-prototype-builtins": "error",
   "no-self-assign": "error",
-  "no-self-compare": "error",
+  "no-self-compare": "off", // Handled by `sonarjs/no-identical-expressions`
   "no-setter-return": "warn",
   "no-sparse-arrays": "error",
   "no-template-curly-in-string": "warn",
@@ -93,7 +90,7 @@
   "camelcase": "error",
   "capitalized-comments": "off",
   "class-methods-use-this": "off", // Handled by `@typescript-eslint/no-var`
-  "complexity": "off", // The day I decide to make my code less complex will never come.
+  "complexity": "off", // Handled by `sonarjs/cyclomatic-complexity`
   "consistent-return": "off", // Handled by `@typescript-eslint/consistent-return`
   "consistent-this": "off",
   "curly": [
@@ -101,7 +98,7 @@
     "multi-or-nest"
   ],
   "default-case": "off",
-  "default-case-last": "error",
+  "default-case-last": "off", // Handled by `sonarjs/-prefer-default-last`
   "default-param-last": "off", // Handled by `@typescript-eslint/default-param-last`
   "dot-notation": "off", // Handled by `@typescript-eslint/dot-notation`
   // "eqeqeq": ["error", "always"], // will be included later
@@ -121,7 +118,7 @@
     "error",
     "getBeforeSet"
   ],
-  "guard-for-in": "warn",
+  "guard-for-in": "off", // Handled by `sonarjs/for-in`
   "id-denylist": "off",
   "id-length": [
     "error",
@@ -200,7 +197,7 @@
   "no-lone-blocks": "error",
   "no-lonely-if": "error",
   "no-loop-func": "off", // Handled by `@typescript-eslint/no-loop-func`
-  "no-magic-numbers": "off",  // Handled by `@typescript-eslint/no-magic-numbers`
+  "no-magic-numbers": "off", // Handled by `@typescript-eslint/no-magic-numbers`
   "no-multi-assign": "error",
   "no-multi-str": "error",
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
@@ -245,7 +242,17 @@
   "no-useless-return": "off", // Handled by `sonarjs/no-redundant-jump`
   "no-var": "error",
   "no-void": "off",
-  "no-warning-comments": "off",
+  "no-warning-comments": [
+    "warn",
+    {
+      "terms": [
+        "todo",
+        "fixme"
+      ],
+      "location": "anywhere"
+      // "decoration": []
+    }
+  ],
   "no-with": "error",
   "object-shorthand": [
     "error",

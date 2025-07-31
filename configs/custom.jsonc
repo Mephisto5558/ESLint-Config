@@ -1,5 +1,4 @@
 {
-  "no-implicit-dependencies": "warn",
   "unbound-method": [
     "error",
     {

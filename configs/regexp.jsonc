@@ -75,7 +75,7 @@
   "no-useless-range": "warn",
   "no-useless-set-operand": "warn",
   "no-useless-string-literal": "warn",
-  "no-useless-two-nums-quantifier": "warn",
+  "no-useless-two-nums-quantifier": "off", // Handled by `regexp/no-useless-quantifier`
   "no-zero-quantifier": "error",
   "optimal-lookaround-quantifier": "warn",
   "optimal-quantifier-concatenation": "warn",
