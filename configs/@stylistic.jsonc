@@ -362,10 +362,7 @@
     }
   ],
   "object-property-newline": "off", // Not configurable enough
-  "one-var-declaration-per-line": [
-    "warn",
-    "initializations"
-  ],
+  "one-var-declaration-per-line": "off", // Handled by `one-var`
   "operator-linebreak": [
     "warn",
     "before",
