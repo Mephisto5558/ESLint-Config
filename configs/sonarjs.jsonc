@@ -122,7 +122,7 @@
   "no-angular-bypass-sanitization": "warn",
   "no-array-delete": "off", // Handled by `@typescript-eslint/no-array-delete`
   "no-associative-arrays": "warn", // Note: does not detect "arr.xyz", just "arr['xyz']".
-  "no-async-constructor": "warn",
+  "no-async-constructor": "off", // Handled by `custom/no-async-constructor`
   "no-built-in-override": "warn",
   "no-case-label-in-switch": "off", // Handled by `no-labels`
   "no-clear-text-protocols": "warn",
