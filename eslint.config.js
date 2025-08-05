@@ -20,7 +20,13 @@ export { plugins };
  * @param {string} path Removes comments
  * @returns {Record<string, string | [string | number | Record<string, unknown>, unknown[]][]>} */
 function importJsonC(path) {
-  const rules = JSON.parse(readFileSync(resolve(import.meta.dirname, path), 'utf8').replaceAll(/\/\/.*/g, ''));
+  /** @type {Record<string, string | unknown[]>} */ /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
+  const rules = JSON.parse(
+    readFileSync(resolve(import.meta.dirname, path), 'utf8')
+      .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
+      .replaceAll(/\/\/.*/g, '') // remove line comments
+  );
+
 
   let filename = basename(path, '.jsonc');
   if (filename.startsWith('sonarjs')) filename = 'sonarjs/';
