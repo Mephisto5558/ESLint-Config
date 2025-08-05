@@ -1,4 +1,10 @@
 {
+  "no-async-constructor": [
+    "warn",
+    {
+      "allowVoid": true
+    }
+  ],
   "unbound-method": [
     "error",
     {
@@ -6,5 +12,9 @@
     }
   ],
   "jsdoc-formatting": "warn",
-  "prefer-ternary": ["warn", "only-single-line", 150]
+  "prefer-ternary": [
+    "warn",
+    "only-single-line",
+    150
+  ]
 }
