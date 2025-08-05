@@ -420,7 +420,7 @@
     "warn",
     {
       "ignoreBooleanCoercion": false,
-      "ignoreConditionalTests": true,
+      "ignoreConditionalTests": true, // TODO: why?
       "ignoreIfStatements": false,
       "ignoreMixedLogicalExpressions": false,
       "ignorePrimitives": {
