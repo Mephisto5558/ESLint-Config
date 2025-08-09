@@ -55,12 +55,7 @@
     "warn",
     "type"
   ],
-  "consistent-type-exports": [
-    "warn",
-    {
-      "fixMixedExportsWithInlineTypeSpecifier": false
-    }
-  ],
+  "consistent-type-exports": "off", // Handled by `import-x/consistent-type-specifier-style`
   "consistent-type-imports": [
     "warn",
     {
@@ -263,7 +258,7 @@
     }
   ],
   "no-redundant-type-constituents": "warn",
-  "no-require-imports": "off",
+  "no-require-imports": "off", // Handled by `import-x/no-commonjs`
   "no-restricted-imports": "off",
   "no-restricted-types": "off",
   "no-shadow": [

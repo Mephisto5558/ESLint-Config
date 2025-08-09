@@ -1,17 +1,23 @@
+/* eslint-disable import-x/max-dependencies -- all needed here */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
-import globals from 'globals';
 
 import parser from '@typescript-eslint/parser';
-import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import stylisticPlugin from '@stylistic/eslint-plugin';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+
+import stylisticPlugin from '@stylistic/eslint-plugin'; /* eslint-disable-line import-x/order -- grouped by type */
+import typescriptPlugin from '@typescript-eslint/eslint-plugin'; /* eslint-disable-line import-x/order -- grouped by type */
+import htmlPlugin from 'eslint-plugin-html';
+import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
+import regExPlugin from 'eslint-plugin-regexp';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
-import regExPlugin from 'eslint-plugin-regexp';
-import htmlPlugin from 'eslint-plugin-html';
+import globals from 'globals';
+
+/* eslint-disable-next-line import-x/extensions -- errors if removed */
 import customPlugin from './ruleOverwrites/index.js';
 
 export { plugins };
@@ -44,6 +50,7 @@ const
     unicorn: unicornPlugin,
     regexp: regExPlugin,
     html: htmlPlugin, /* eslint-disable-line @typescript-eslint/no-unsafe-assignment */
+    'import-x': importPlugin,
     custom: customPlugin
   },
 
@@ -56,6 +63,7 @@ const
     ...importJsonC('configs/regexp.jsonc'),
     ...importJsonC('configs/sonarjs.jsonc'),
     ...importJsonC('configs/unicorn.jsonc'),
+    ...importJsonC('configs/import-x.jsonc'),
     ...importJsonC('configs/custom.jsonc')
   };
 
@@ -65,7 +73,7 @@ const
 export default [
   {
     name: 'eslint-config:all',
-    files: ['**/*.js', '**/*.mjs', '**/*.ts', '**/*.html'],
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
     languageOptions: {
       parser,
       parserOptions: {
@@ -89,6 +97,12 @@ export default [
     },
     settings: {
       react: { version: 'detect' },
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          alwaysTryTypes: true,
+          bun: true
+        })
+      ],
       ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
@@ -186,6 +200,7 @@ export default [
         }
       ],
       '@typescript-eslint/use-unknown-in-catch-callback-variable': 'warn',
+      'import-x/no-relative-parent-imports': 'off',
       'sonarjs/public-static-readonly': 'warn'
     }
   }

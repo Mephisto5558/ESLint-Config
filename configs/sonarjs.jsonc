@@ -165,7 +165,7 @@
   "no-identical-functions": "warn",
   "no-ignored-exceptions": "off", // Handled by `no-empty`
   "no-ignored-return": "warn",
-  "no-implicit-dependencies": "warn",
+  "no-implicit-dependencies": "off", // Handled by `import-x/no-extraneous-dependencies`
   "no-implicit-global": "off", // Handled by `no-undef`
   "no-in-misuse": "error",
   "no-incomplete-assertions": "warn",
@@ -205,7 +205,7 @@
   "no-reference-error": "off", // Handled by `no-undef`
   "no-referrer-policy": "warn",
   "no-regex-spaces": "off", // Handled by `regexp/prefer-quantifier`
-  "no-require-or-define": "off",
+  "no-require-or-define": "off", // Handled by `import-x/no-commonjs`
   "no-return-type-any": "off", // Handled by `@typescript-eslint/no-explicit-any`
   "no-same-argument-assert": "error",
   "no-same-line-conditional": "off", // Handled by `@stylistic/max-statements-per-line`
@@ -230,7 +230,7 @@
   "no-variable-usage-before-declaration": "off", // Handled by `no-var`
   "no-weak-cipher": "warn",
   "no-weak-keys": "warn",
-  "no-wildcard-import": "warn",
+  "no-wildcard-import": "off", // Handled by `import-x/no-namespace`
   "non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
   "non-number-in-arithmetic-expression": "warn",
   "null-dereference": "error",

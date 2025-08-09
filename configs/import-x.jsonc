@@ -1,0 +1,219 @@
+{
+  // [IMPORT-X] https://github.com/un-ts/eslint-plugin-import-x/blob/master/README.md#rules | Using "warn" wherever applicable
+  //  Helpful warnings
+  "export": "error",
+  "no-deprecated": "off", // Handled by `@typescript-eslint/no-deprecated`
+  "no-empty-named-blocks": "warn",
+  "no-extraneous-dependencies": [
+    "warn",
+    {
+      "devDependencies": true,
+      "optionalDependencies": true,
+      "peerDependencies": true,
+      "bundledDependencies": true,
+      "includeInternal": false,
+      "includeTypes": true,
+      "packageDir": ".",
+      "whitelist": []
+    }
+  ],
+  "no-mutable-exports": "warn",
+  "no-named-as-default": "warn",
+  "no-named-as-default-member": "warn",
+  "no-rename-default": "warn",
+  "no-unused-modules": "off", // Does not support flat config
+  //  Module systems
+  "no-amd": "warn",
+  "no-commonjs": "off",
+  "no-import-module-exports": [
+    "error",
+    {
+      "exceptions": []
+    }
+  ],
+  "no-nodejs-modules": "off",
+  "unambiguous": "off",
+  //  Static analysis
+  "default": "off", // Does not support `module.exports`
+  "named": "error", // Note: TODO could have many false positives
+  "namespace": "off", // Handled by `@typescript-eslint/no-unsafe-member-access`
+  "no-absolute-path": [
+    "warn",
+    {
+      "esmodule": true,
+      "commonjs": true,
+      "amd": false // Handled by `no-amd`
+    }
+  ],
+  "no-cycle": [
+    "error",
+    {
+      "commonjs": true,
+      "amd": true,
+      "maxDepth": 10,
+      "ignoreExternal": false,
+      "allowUnsafeDynamicCyclicDependency": false
+    }
+  ],
+  "no-dynamic-require": "off",
+  "no-internal-modules": "off",
+  "no-relative-packages": "off",
+  "no-relative-parent-imports": "warn",
+  "no-restricted-paths": "off",
+  "no-self-import": "error",
+  "no-unresolved": [
+    "error",
+    {
+      "commonjs": true,
+      "amd": false, // Handled by `no-amd`
+      // "ignore": [],
+      "caseSensitive": true,
+      "caseSensitiveStrict": true
+    }
+  ],
+  "no-useless-path-segments": [
+    "warn",
+    {
+      "noUselessIndex": false, // Can error with ERR_UNSUPPORTED_DIR_IMPORT
+      "commonjs": true
+    }
+  ],
+  "no-webpack-loader-syntax": "warn",
+  //  Style guide
+  "consistent-type-specifier-style": [
+    "warn",
+    "prefer-top-level"
+  ],
+  "dynamic-import-chunkname": "off",
+  "exports-last": "off",
+  "extensions": [
+    "warn",
+    "never",
+    {
+      "fix": true,
+      "json": "always"
+    }
+  ],
+  "first": [
+    "warn"
+  ],
+  "group-exports": "off",
+  "max-dependencies": [
+    "warn",
+    {
+      "max": 10,
+      "ignoreTypeImports": true
+    }
+  ],
+  "newline-after-import": [
+    "warn",
+    {
+      "count": 1,
+      "exactCount": false, // incompatible with `considerComments: false`
+      "considerComments": false // buggy if true
+    }
+  ],
+  "no-anonymous-default-export": [
+    "warn",
+    {
+      "allowArray": true,
+      "allowArrowFunction": false,
+      "allowAnonymousClass": false,
+      "allowAnonymousFunction": false,
+      "allowNew": false,
+      "allowLiteral": false,
+      "allowObject": true
+    }
+  ],
+  "no-default-export": "off",
+  "no-duplicates": [
+    "warn",
+    {
+      "considerQueryString": false,
+      "prefer-inline": false
+    }
+  ],
+  "no-named-default": "warn",
+  "no-named-export": "off",
+  "no-namespace": [
+    "warn",
+    {
+      "ignore": []
+    }
+  ],
+  "no-unassigned-import": [
+    "warn",
+    {
+      "allow": []
+    }
+  ],
+  "order": [
+    "warn",
+    {
+      "groups": [
+        "builtin",
+        "external",
+        "internal",
+        "parent",
+        "sibling",
+        "index",
+        "unknown",
+        "object",
+        "type"
+      ],
+      "pathGroups": [
+        {
+          "pattern": "discord.js",
+          "patternOptions": {
+            "nocomment": true
+          },
+          "group": "builtin",
+          "position": "before"
+        },
+        {
+          "pattern": "../*.json",
+          "patternOptions": {
+            "nocomment": true
+          },
+          "group": "sibling",
+          "position": "after"
+        },
+        {
+          "pattern": "./*.json",
+          "patternOptions": {
+            "nocomment": true
+          },
+          "group": "sibling",
+          "position": "after"
+        }
+      ],
+      "pathGroupsExcludedImportTypes": [
+        "builtin"
+      ],
+      "distinctGroup": false,
+      "newlines-between": "ignore",
+      "alphabetize": {
+        "order": "asc",
+        "orderImportKind": "asc",
+        "caseInsensitive": false
+      },
+      "named": {
+        "enabled": true,
+        "export": false,
+        "cjsExports": false,
+        "types": "types-last"
+      },
+      "warnOnUnassignedImports": true,
+      "sortTypesGroup": true,
+      "newlines-between-types": "ignore"
+      // "consolidateIslands": 
+    }
+  ],
+  "prefer-default-export": [
+    "warn",
+    {
+      "target": "single"
+    }
+  ],
+  "prefer-namespace-import": "off"
+}

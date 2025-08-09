@@ -38,13 +38,7 @@
   "no-dupe-else-if": "off", // Handled by `sonarjs/no-identical-conditions`
   "no-dupe-keys": "warn",
   "no-duplicate-case": "off", // Handled by `sonarjs/no-identical-conditions`
-  "no-duplicate-imports": [
-    "warn",
-    {
-      "includeExports": false, // Incompatible with `unicorn/prefer-export-from`
-      "allowSeparateTypeImports": true
-    }
-  ],
+  "no-duplicate-imports": "off", // Handled by `import-x/no-duplicates`
   "no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
   "no-empty-pattern": [
     "warn",
