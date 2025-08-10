@@ -26,15 +26,15 @@ export default {
   create(context) {
     const baseRule = baseRuleModule.create(context);
 
-    if (!context.options[0].allowVoid || !('awaitExpression' in baseRule)) return baseRule;
+    if (!context.options[0].allowVoid) return baseRule;
 
     return {
       ...baseRule,
-      AwaitExpression(node) {
+      CallExpression(node) {
         if (node.parent.type === 'UnaryExpression' && node.parent.operator === 'void') return;
 
         /* eslint-disable-next-line new-cap */
-        baseRule.AwaitExpression?.(node);
+        baseRule.CallExpression?.(node);
       }
     };
   }
