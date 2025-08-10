@@ -190,15 +190,16 @@ export default [
           onlyInlineLambdas: false
         }
       ],
-      '@typescript-eslint/prefer-readonly-parameter-types': [
-        'warn',
-        {
-          allow: [],
-          checkParameterProperties: true,
-          ignoreInferredTypes: false,
-          treatMethodsAsReadonly: false
-        }
-      ],
+      '@typescript-eslint/prefer-readonly-parameter-types': 'off', // Doesn't seem to work well
+      // [
+      //   'warn',
+      //   {
+      //     allow: [],
+      //     checkParameterProperties: true,
+      //     ignoreInferredTypes: false,
+      //     treatMethodsAsReadonly: false
+      //   }
+      // ],
       '@typescript-eslint/use-unknown-in-catch-callback-variable': 'warn',
       'import-x/no-relative-parent-imports': 'off',
       'sonarjs/public-static-readonly': 'warn'
