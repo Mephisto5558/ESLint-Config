@@ -308,7 +308,7 @@
       // "allowParensAfterCommentPattern": 
       "nestedConditionalExpressions": false,
       "ignoredNodes": [
-        "ArrowFunctionExpression[body.type=ConditionalExpression" // for compatibility with `@stylistic/no-confusing-arrow`
+        "ArrowFunctionExpression[body.type=ConditionalExpression]" // for compatibility with `@stylistic/no-confusing-arrow`
       ]
     }
   ],
