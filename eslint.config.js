@@ -78,7 +78,7 @@ export default [
       parser,
       parserOptions: {
         project: true,
-        tsconfigRootDir: '.',
+        tsconfigRootDir: undefined,
         extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
