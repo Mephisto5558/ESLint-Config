@@ -104,6 +104,7 @@
       "ignoredNodes": [],
       "SwitchCase": 1,
       "VariableDeclarator": 1,
+      "assignmentOperator": 1,
       "outerIIFEBody": 1,
       "MemberExpression": 1,
       "FunctionDeclaration": {
@@ -151,7 +152,6 @@
   "jsx-newline": "",
   "jsx-one-expression-per-line": "",
   "jsx-pascal-case": "",
-  "jsx-props-no-multi-spaces": "",
   "jsx-quotes": "",
   "jsx-self-closing-comp": "",
   "jsx-sort-props": "",
@@ -303,13 +303,13 @@
       "nestedBinaryExpressions": false,
       "ternaryOperandBinaryExpressions": false,
       "ignoreJSX": "none",
-      "enforceForArrowConditionals": false, // for compatibility with `@stylistic/no-confusing-arrow`
       "enforceForSequenceExpressions": true,
-      "enforceForNewInMemberExpressions": true,
       "enforceForFunctionPrototypeMethods": true,
       // "allowParensAfterCommentPattern": 
       "nestedConditionalExpressions": false,
-      "allowNodesInSpreadElement": {}
+      "ignoredNodes": [
+        "ArrowFunctionExpression[body.type=ConditionalExpression" // for compatibility with `@stylistic/no-confusing-arrow`
+      ]
     }
   ],
   "no-extra-semi": "warn",
