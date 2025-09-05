@@ -49,12 +49,7 @@
   "cookie-no-httponly": "warn",
   "cors": "warn",
   "csrf": "warn",
-  "cyclomatic-complexity": [
-    "warn",
-    {
-      "threshold": 20
-    }
-  ],
+  "cyclomatic-complexity": "off", // Handled by `custom/cyclomatic-complexity`
   "declarations-in-global-scope": "off", // Handled by `no-var`
   "deprecation": "off", // Handled by `@typescript-eslint/no-deprecated`
   "destructuring-assignment-syntax": "off", // Handled by `@typescript-eslint/prefer-destructuring`

@@ -1,4 +1,10 @@
 {
+  "cyclomatic-complexity": [
+    "warn",
+    {
+      "threshold": 20
+    }
+  ],
   "no-async-constructor": [
     "warn",
     {
