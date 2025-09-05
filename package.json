@@ -36,6 +36,9 @@
     "eslint-plugin-unicorn": "^60.0.0",
     "globals": "^16.3.0"
   },
+  "peerDependencies": {
+    "better-typescript-lib": "*"
+  },
   "devDependencies": {
     "@types/node": "20.19.0"
   },
