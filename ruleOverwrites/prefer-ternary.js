@@ -29,7 +29,6 @@ export default {
 
   create(context) {
     // Object.create to modify `report`
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-argument */
     return baseRuleModule.create(Object.create(
       context,
       {
@@ -45,8 +44,9 @@ export default {
             if (!descriptor.fix || !('node' in descriptor) || descriptor.node.type !== 'IfStatement' || !descriptor.node.loc)
               return context.report(descriptor);
 
-            /** @type {import('eslint').Rule.Fix | import('eslint').Rule.Fix[]} */
             const
+
+              /** @type {import('eslint').Rule.Fix | import('eslint').Rule.Fix[]} */
               fixes = descriptor.fix(dummyFixer),
               fix = Array.isArray(fixes) ? fixes[0] : fixes;
             if (typeof fix?.text !== 'string') return context.report(descriptor);

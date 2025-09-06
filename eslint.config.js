@@ -26,7 +26,6 @@ export { plugins };
  * @param {string} path Removes comments
  * @returns {Record<string, string | [string | number | Record<string, unknown>, unknown[]][]>} */
 function importJsonC(path) {
-  /** @type {Record<string, string | unknown[]>} */ /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
   const rules = JSON.parse(
     readFileSync(resolve(import.meta.dirname, path), 'utf8')
       .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments

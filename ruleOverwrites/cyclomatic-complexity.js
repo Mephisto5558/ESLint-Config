@@ -2,6 +2,7 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs';
 
 const baseRuleModule = sonarjsPlugin.rules['cyclomatic-complexity'];
 
+
 /** @type {import('eslint').Rule.RuleModule} */
 export default {
   ...baseRuleModule,
@@ -11,12 +12,12 @@ export default {
 
         /** @type {import('eslint').Rule.RuleContext['report']} */
         value(descriptor) {
-          if (typeof descriptor.message === 'string') {
+          if ('message' in descriptor) {
             let data;
             try { data = JSON.parse(descriptor.message); }
             catch { return context.report(descriptor); }
 
-            if (data && typeof data.message === 'string')
+            if (data && 'message' in data && typeof data.message === 'string')
               return context.report({ ...descriptor, message: data.message });
           }
 

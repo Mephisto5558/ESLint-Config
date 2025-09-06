@@ -1,7 +1,6 @@
 /**
  * Normalizes the spacing within a JSDoc type definition string
- * @param {string} content The content of the type definition (inside the braces)
- * @returns {string} The formatted content */
+ * @param {string} content */
 function getCorrectedType(content) {
   const /** @type {string[]} */ placeholders = [];
   let tempContent = content;
@@ -48,23 +47,16 @@ function getCorrectedType(content) {
 
   // FIX #2: UNMASKING must be recursive to handle nested placeholders.
   let finalContent = formattedMaskedContent;
-  while (/__JSDOC_PLACEHOLDER_\d+__/.test(finalContent)) {
-    finalContent = finalContent.replaceAll(/__JSDOC_PLACEHOLDER_(?<i>\d+)__/g,
-
-      /**
-       * @param {string} _
-       * @param {string} i */
-      (_, i) => placeholders[Number.parseInt(i)]);
-  }
+  while (/__JSDOC_PLACEHOLDER_\d+__/.test(finalContent))
+    finalContent = finalContent.replaceAll(/__JSDOC_PLACEHOLDER_(?<i>\d+)__/g, (_, i) => placeholders[Number.parseInt(i)]);
 
   // Always wrap the final result in a single pair of braces for the linter rule.
   return `{${finalContent}}`;
+
+  /* eslint-enable regexp/no-super-linear-move */
 }
 
-/* A more specific regex that only triggers on actual JSDoc type tags. */
 const typeStartRegex = /@(?:extends|implements|param|property|returns|this|throws|type|typedef)\s*\{/g;
-
-/* eslint-enable regexp/no-super-linear-move */
 
 /** @type {import('eslint').Rule.RuleModule} */
 export default {
