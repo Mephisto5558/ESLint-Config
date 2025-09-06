@@ -175,12 +175,7 @@
       "ignoreProperties": false
     }
   ],
-  "no-invalid-this": [
-    "error",
-    {
-      "capIsConstructor": true
-    }
-  ],
+  "no-invalid-this": "off", // Handled by `@typescript-eslint/no-unsafe-*` rules
   "no-invalid-void-type": [
     "warn",
     {
