@@ -1,7 +1,12 @@
 {
   // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules | Using "warn" wherever applicable
   "check-access": "warn",
-  "check-alignment": "warn",
+  "check-alignment": [
+    "warn",
+    {
+      "innerIndent": 1
+    }
+  ],
   "check-examples": "off", // only used in eslint@7, solution for eslint@9 does not work
   "check-indentation": [
     "warn",

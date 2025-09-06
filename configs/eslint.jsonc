@@ -513,6 +513,12 @@
   "prefer-rest-params": "warn",
   "prefer-spread": "off", // Handled by `unicorn/prefer-spread`
   "prefer-template": "off", // Incompatible with `@stylistic/max-len`
+  "preserve-caught-error": [
+    "warn",
+    {
+      "requireCatchParameter": true
+    }
+  ],
   "radix": [
     "warn",
     "as-needed"
