@@ -87,7 +87,10 @@ export default [
         ...globals.builtin,
         ...globals.node,
         ...globals.es2024,
-        NodeJS: 'readonly'
+        NodeJS: 'readonly',
+
+        // better-typescript-lib
+        JSONValue: 'writable'
       }
     },
     linterOptions: {
