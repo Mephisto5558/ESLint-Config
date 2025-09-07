@@ -59,6 +59,12 @@
   "no-array-method-this-argument": "error",
   "no-array-reduce": "off", // Array#reduce my beloved
   "no-array-reverse": "off", // Handled by `sonarjs/no-misleading-array-reverse`
+  "no-array-sort": [
+    "warn",
+    {
+      "allowExpressionStatement": true
+    }
+  ],
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
   "no-console-spaces": "warn",
@@ -171,8 +177,10 @@
       "checkAllIndexAccess": false
     }
   ],
+  "prefer-bigint-literals": "warn",
   "prefer-blob-reading-methods": "warn",
   "prefer-class-fields": "warn",
+  "prefer-classlist-toggle": "warn",
   "prefer-code-point": "error",
   "prefer-date-now": "warn",
   "prefer-default-parameters": "warn",
@@ -250,6 +258,7 @@
     "never"
   ],
   "require-array-join-separator": "warn",
+  "require-module-attributes": "warn",
   "require-module-specifiers": "warn",
   "require-number-to-fixed-digits-argument": "warn",
   "require-post-message-target-origin": "off",
