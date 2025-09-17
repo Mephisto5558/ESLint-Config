@@ -402,5 +402,23 @@
   ],
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
+  "type-formatting": [
+    "warn",
+    {
+      "enableFixer": true,
+      "arrayBrackets": "square",
+      "genericDot": false,
+      "objectFieldQuote": null,
+      "propertyQuotes": null,
+      "stringQuotes": "single",
+      "objectFieldSeparator": "comma",
+      "objectFieldSeparatorOptionalLinebreak": true,
+      "objectFieldIndent": "",
+      "objectFieldSeparatorTrailingPunctuation": false,
+      "separatorForSingleObjectField": false,
+      "typeBracketSpacing": "", // Handled by `custom/jsdoc-formatting.js`
+      "unionSpacing": " "
+    }
+  ],
   "valid-types": "error"
 }
