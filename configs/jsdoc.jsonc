@@ -194,6 +194,7 @@
     }
   ],
   "require-jsdoc": "off",
+  "require-next-type": "warn",
   "require-param-description": "off",
   "require-param-name": "warn",
   "require-param-type": "warn",
@@ -237,6 +238,7 @@
   "require-returns-type": "warn",
   "require-returns": "off",
   "require-template": "off",
+  "require-throws-type": "warn",
   "require-throws": [
     "warn",
     {
@@ -245,6 +247,7 @@
     }
   ],
   "require-yields-check": "warn",
+  "require-yields-type": "warn",
   "require-yields": "off",
   "sort-tags": [
     "warn",
