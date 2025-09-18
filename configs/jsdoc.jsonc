@@ -409,13 +409,13 @@
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
   "type-formatting": [
-    "off", // wants to change `@type {{ a: 1, b: 2 }}` to `@type {{a: 1, b: 2}}`. Waiting if a way to turn it off gets added.
+    "warn",
     {
       "enableFixer": true,
       "arrayBrackets": "square",
       "genericDot": false,
       "objectFieldQuote": null,
-      "propertyQuotes": null,
+      // "propertyQuotes": null, // documented but not valid as of 58.1.1
       "stringQuotes": "single",
       "objectFieldSeparator": "comma",
       "objectFieldSeparatorOptionalLinebreak": true,
