@@ -406,7 +406,7 @@
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
   "type-formatting": [
-    "warn",
+    "off", // wants to change `@type {{ a: 1, b: 2 }}` to `@type {{a: 1, b: 2}}`. Waiting if a way to turn it off gets added.
     {
       "enableFixer": true,
       "arrayBrackets": "square",
@@ -419,7 +419,7 @@
       "objectFieldIndent": "",
       "objectFieldSeparatorTrailingPunctuation": false,
       "separatorForSingleObjectField": false,
-      "typeBracketSpacing": "", // Handled by `custom/jsdoc-formatting.js`
+      "typeBracketSpacing": "",
       "unionSpacing": " "
     }
   ],
