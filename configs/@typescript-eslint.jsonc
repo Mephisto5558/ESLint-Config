@@ -227,7 +227,7 @@
       "checksVoidReturn": {
         "arguments": false,
         "attributes": true,
-        "inheritedMethods": true,
+        "inheritedMethods": false, // to allow inherited methods that return `Promise<void>`
         "properties": true,
         "returns": true,
         "variables": true
