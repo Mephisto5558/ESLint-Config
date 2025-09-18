@@ -11,7 +11,7 @@ export default {
 
         /**
          * @inheritdoc
-         * @returns {[string, import('eslint').Rule.RuleModule]} */
+         * @returns {Promise<[string, import('eslint').Rule.RuleModule]>} */
         async file => {
           /** @type {{ default: import('eslint').Rule.RuleModule }} */
           const module = await import('./' + file); /* eslint-disable-line @typescript-eslint/no-unsafe-assignment -- import cannot be typed */
