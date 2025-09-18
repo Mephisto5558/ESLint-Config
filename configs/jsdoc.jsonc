@@ -409,14 +409,14 @@
       "arrayBrackets": "square",
       "genericDot": false,
       "objectFieldQuote": null,
-      "propertyQuotes": null,
+      // "propertyQuotes": null, // documented but not valid as of 58.1.1
       "stringQuotes": "single",
       "objectFieldSeparator": "comma",
       "objectFieldSeparatorOptionalLinebreak": true,
       "objectFieldIndent": "",
       "objectFieldSeparatorTrailingPunctuation": false,
       "separatorForSingleObjectField": false,
-      "typeBracketSpacing": "", // Handled by `custom/jsdoc-formatting.js`
+      "typeBracketSpacing": "",
       "unionSpacing": " "
     }
   ],

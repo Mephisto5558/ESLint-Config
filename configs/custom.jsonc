@@ -17,7 +17,6 @@
       "ignoreStatic": true
     }
   ],
-  "jsdoc-formatting": "warn",
   "prefer-ternary": [
     "warn",
     "only-single-line",
