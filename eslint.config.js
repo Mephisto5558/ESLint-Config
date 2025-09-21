@@ -20,7 +20,7 @@ import globals from 'globals';
 /* eslint-disable-next-line import-x/extensions -- errors if removed */
 import customPlugin from './ruleOverwrites/index.js';
 
-export { plugins };
+export { plugins, globals };
 
 /**
  * @param {string} path Removes comments
