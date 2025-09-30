@@ -358,7 +358,8 @@
     "always",
     {
       "arraysInObjects": true,
-      "objectsInObjects": true
+      "objectsInObjects": true,
+      "overrides": {}
     }
   ],
   "object-property-newline": "off", // Not configurable enough

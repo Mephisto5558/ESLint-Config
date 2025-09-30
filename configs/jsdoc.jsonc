@@ -56,6 +56,7 @@
     "warn",
     {
       "enableFixer": true,
+      "definedTags": [],
       "jsxTags": true,
       "typed": false
     }
@@ -168,7 +169,16 @@
         "NodeJS"
       ],
       "disableReporting": false,
-      "markVariablesAsUsed": false
+      "markVariablesAsUsed": false,
+      "checkUsedTypedefs": true
+    }
+  ],
+  "prefer-import-tag": [
+    "warn",
+    {
+      "enableFixer": true,
+      "exemptTypedefs": false
+      // "outputType":  // no info to it in the docs yet
     }
   ],
   "require-asterisk-prefix": [
@@ -238,6 +248,7 @@
   "require-returns-description": "off",
   "require-returns-type": "warn",
   "require-returns": "off",
+  "require-tags": "off",
   "require-template": "off",
   "require-throws-description": "warn",
   "require-throws-type": "warn",
