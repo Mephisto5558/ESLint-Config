@@ -96,6 +96,9 @@
       "tags": []
     }
   ],
+  "escape-inline-tags": [
+    "warn", {"allowedInlineTags":[],"enableFixer":true,"fixType":"backticks"}
+  ],
   "implements-on-classes": [
     "warn",
     {
@@ -168,19 +171,19 @@
       "definedTypes": [
         "NodeJS"
       ],
+      "checkUsedTypedefs": false, // nearly everything reported is a false positive
       "disableReporting": false,
-      "markVariablesAsUsed": false,
-      "checkUsedTypedefs": true
+      "markVariablesAsUsed": false
     }
   ],
-  "prefer-import-tag": [
-    "warn",
-    {
-      "enableFixer": true,
-      "exemptTypedefs": false
-      // "outputType":  // no info to it in the docs yet
-    }
-  ],
+  "prefer-import-tag": ["off"],
+  //   "warn",
+  //   {
+  //     "enableFixer": true,
+  //     "exemptTypedefs": false
+  //     // "outputType":  // no info to it in the docs yet
+  //   }
+  // ],
   "require-asterisk-prefix": [
     "warn",
     "always",
@@ -240,8 +243,9 @@
   "require-returns-check": [
     "error",
     {
-      "exemptGenerators": false,
       "exemptAsync": false,
+      "exemptGenerators": false,
+      "noNativeTypes": true,
       "reportMissingReturnForUndefinedTypes": false
     }
   ],
