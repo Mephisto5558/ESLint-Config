@@ -176,14 +176,14 @@
       "markVariablesAsUsed": false
     }
   ],
-  "prefer-import-tag": ["off"],
-  //   "warn",
-  //   {
-  //     "enableFixer": true,
-  //     "exemptTypedefs": false
-  //     // "outputType":  // no info to it in the docs yet
-  //   }
-  // ],
+  "prefer-import-tag": [
+    "warn",
+    {
+      "enableFixer": true,
+      "exemptTypedefs": false
+      // "outputType":  // no info to it in the docs yet
+    }
+  ],
   "require-asterisk-prefix": [
     "warn",
     "always",
