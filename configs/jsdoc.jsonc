@@ -115,7 +115,9 @@
     "warn",
     {
       // "aliases": 
-      // "excludedTags": 
+      "excludedTags": [
+        "import" // false positives when using `@import { bar as barT } from foo`
+      ]
       // "uselessWords": 
     }
   ],

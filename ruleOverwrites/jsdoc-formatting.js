@@ -1,7 +1,8 @@
 /**
  * Normalizes the spacing within a JSDoc type definition string
+ * @param {string} tagName
  * @param {string} content */
-function getCorrectedType(content) {
+function getCorrectedType(tagName, content) {
   const /** @type {string[]} */ placeholders = [];
   let tempContent = content;
 
@@ -50,13 +51,13 @@ function getCorrectedType(content) {
   while (/__JSDOC_PLACEHOLDER_\d+__/.test(finalContent))
     finalContent = finalContent.replaceAll(/__JSDOC_PLACEHOLDER_(?<i>\d+)__/g, (_, i) => placeholders[Number.parseInt(i)]);
 
-  // Always wrap the final result in a single pair of braces for the linter rule.
-  return `{${finalContent}}`;
+  // Wrap the final result in a single pair of braces for the linter rule.
+  return tagName == 'import' ? `{ ${finalContent} }` : `{${finalContent}}`;
 
   /* eslint-enable regexp/no-super-linear-move */
 }
 
-const typeStartRegex = /@(?:extends|implements|param|property|returns|this|throws|type|typedef)\s*\{/g;
+const typeStartRegex = /@(?<tagName>extends|implements|import|param|property|returns|this|throws|type|typedef)\s*\{/g;
 
 /** @type {import('eslint').Rule.RuleModule} */
 export default {
@@ -118,7 +119,7 @@ export default {
               typeDefStartIndex = comment.range[0] + typeStartIndexInComment,
               typeDefEndIndex = comment.range[0] + typeEndIndexInComment,
               originalTypeDef = commentText.slice(typeStartIndexInComment, typeEndIndexInComment),
-              correctedTypeDef = getCorrectedType(originalTypeDef.slice(1, -1));
+              correctedTypeDef = getCorrectedType(match.groups.tagName, originalTypeDef.slice(1, -1));
 
             if (originalTypeDef !== correctedTypeDef) {
               context.report({
