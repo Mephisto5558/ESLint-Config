@@ -97,7 +97,12 @@
     }
   ],
   "escape-inline-tags": [
-    "warn", {"allowedInlineTags":[],"enableFixer":true,"fixType":"backticks"}
+    "warn",
+    {
+      "allowedInlineTags": [],
+      "enableFixer": true,
+      "fixType": "backticks"
+    }
   ],
   "implements-on-classes": [
     "warn",
@@ -423,20 +428,56 @@
   ],
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
+  "ts-method-signature-style": [
+    "warn",
+    "method",
+    {
+      "enableFixer": true
+    }
+  ],
+  "ts-no-empty-object-type": "warn",
+  "ts-no-unnecessary-template-expression": [
+    "warn",
+    {
+      "enableFixer": true
+    }
+  ],
+  "ts-prefer-function-type": [
+    "warn",
+    {
+      "enableFixer": true
+    }
+  ],
   "type-formatting": [
     "off", // wants to change `@type {{ a: 1, b: 2 }}` to `@type {{a: 1, b: 2}}`. Waiting if a way to turn it off gets added.
     {
       "enableFixer": true,
       "arrayBrackets": "square",
+      "arrowFunctionPostReturnMarkerSpacing": " ",
+      "arrowFunctionPreReturnMarkerSpacing": " ",
+      "functionOrClassParameterSpacing": " ",
+      "functionOrClassPostGenericSpacing": "",
+      "functionOrClassPostReturnMarkerSpacing": " ",
+      "functionOrClassPreReturnMarkerSpacing": "",
+      "functionOrClassTypeParameterSpacing": " ",
+      "genericAndTupleElementSpacing": " ",
       "genericDot": false,
+      "keyValuePostColonSpacing": " ",
+      "keyValuePostKeySpacing": "",
+      "keyValuePostOptionalSpacing": "",
+      "keyValuePostVariadicSpacing": "",
+      "methodQuotes": "single",
+      "objectFieldIndent": "",
       "objectFieldQuote": null,
-      "propertyQuotes": null,
-      "stringQuotes": "single",
       "objectFieldSeparator": "comma",
       "objectFieldSeparatorOptionalLinebreak": true,
-      "objectFieldIndent": "",
       "objectFieldSeparatorTrailingPunctuation": false,
+      "parameterDefaultValueSpacing": " ",
+      "postMethodNameSpacing": "",
+      "postNewSpacing": " ",
+      // "propertyQuotes": null, // commented out in eslint-plugin-jsdoc source
       "separatorForSingleObjectField": false,
+      "stringQuotes": "single",
       "typeBracketSpacing": "",
       "unionSpacing": " "
     }

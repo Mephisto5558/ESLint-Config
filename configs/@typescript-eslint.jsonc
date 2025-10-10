@@ -312,7 +312,9 @@
   "no-unsafe-declaration-merging": "warn",
   "no-unsafe-enum-comparison": "warn",
   "no-unsafe-function-type": "warn",
-  "no-unsafe-member-access": "warn",
+  "no-unsafe-member-access": ["warn", {
+    "allowOptionalChaining": false
+  }],
   "no-unsafe-return": "warn",
   "no-unsafe-type-assertion": "warn",
   "no-unsafe-unary-minus": "error",
