@@ -1,4 +1,4 @@
-/** @import { ESLint, Rule } from 'eslint' */ 
+/** @import { ESLint, Rule } from 'eslint' */
 
 import { readdirSync } from 'node:fs';
 
