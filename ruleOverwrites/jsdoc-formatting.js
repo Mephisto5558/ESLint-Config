@@ -1,3 +1,5 @@
+/** @import { Rule } from 'eslint' */
+
 /**
  * Normalizes the spacing within a JSDoc type definition string
  * @param {string} tagName
@@ -59,7 +61,7 @@ function getCorrectedType(tagName, content) {
 
 const typeStartRegex = /@(?<tagName>extends|implements|import|param|property|returns|this|throws|type|typedef)\s*\{/g;
 
-/** @type {import('eslint').Rule.RuleModule} */
+/** @type {Rule.RuleModule} */
 export default {
   meta: {
     type: 'layout',

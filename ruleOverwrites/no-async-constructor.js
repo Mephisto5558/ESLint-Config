@@ -1,9 +1,11 @@
+/** @import { Rule } from 'eslint' */
+
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 
 const baseRuleModule = sonarjsPlugin.rules['no-async-constructor'];
 
 
-/** @type {import('eslint').Rule.RuleModule} */
+/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
   meta: {
@@ -22,7 +24,7 @@ export default {
     ]
   },
 
-  /** @param {import('eslint').Rule.RuleContext & { options: [{ allowVoid: boolean }, ...any] }} context */
+  /** @param {Rule.RuleContext & { options: [{ allowVoid: boolean }, ...any] }} context */
   create(context) {
     const baseRule = baseRuleModule.create(context);
 

@@ -1,10 +1,12 @@
+/** @import { Rule } from 'eslint' */
+
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 const
   { rules } = tsPlugin,
   baseRuleModule = rules['unbound-method'];
 
-/** @type {import('eslint').Rule.RuleModule} */
+/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
   create(context) {

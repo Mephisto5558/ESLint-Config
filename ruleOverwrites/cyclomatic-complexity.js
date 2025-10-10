@@ -1,16 +1,18 @@
+/** @import { Rule } from 'eslint' */
+
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 
 const baseRuleModule = sonarjsPlugin.rules['cyclomatic-complexity'];
 
 
-/** @type {import('eslint').Rule.RuleModule} */
+/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
   create(context) {
     const newContext = Object.create(context, {
       report: {
 
-        /** @type {import('eslint').Rule.RuleContext['report']} */
+        /** @type {Rule.RuleContext['report']} */
         value(descriptor) {
           if ('message' in descriptor) {
             let data;

@@ -1,8 +1,10 @@
+/** @import { ESLint, Rule } from 'eslint' */ 
+
 import { readdirSync } from 'node:fs';
 
 const EXT_LENGTH = 3;
 
-/** @type {import('eslint').ESLint.Plugin} */
+/** @type {ESLint.Plugin} */
 export default {
   rules: Object.fromEntries(await Promise.all(
     readdirSync(import.meta.dirname)
@@ -11,9 +13,9 @@ export default {
 
         /**
          * @inheritdoc
-         * @returns {Promise<[string, import('eslint').Rule.RuleModule]>} */
+         * @returns {Promise<[string, Rule.RuleModule]>} */
         async file => {
-          /** @type {{ default: import('eslint').Rule.RuleModule }} */
+          /** @type {{ default: Rule.RuleModule }} */
           const module = await import('./' + file); /* eslint-disable-line @typescript-eslint/no-unsafe-assignment -- import cannot be typed */
           return [file.slice(0, -EXT_LENGTH), module.default];
         }

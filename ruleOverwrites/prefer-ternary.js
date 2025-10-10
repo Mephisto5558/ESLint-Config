@@ -1,10 +1,12 @@
+/** @import { Rule } from 'eslint'; */
+
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 const
   DEFAULT_MAX_LENGTH = 120,
   baseRuleModule = unicornPlugin.rules['prefer-ternary'],
 
-  /** @type {import('eslint').Rule.RuleFixer} */
+  /** @type {Rule.RuleFixer} */
   dummyFixer = {
     replaceTextRange: (range, text) => ({ range, text }),
     insertTextAfter: (node, text) => ({ range: [node.range[1], node.range[1]], text }),
@@ -14,7 +16,7 @@ const
     removeRange: range => ({ range, text: '' })
   };
 
-/** @type {import('eslint').Rule.RuleModule} */
+/** @type {Rule.RuleModule} */
 export default {
   meta: {
     ...baseRuleModule.meta,
@@ -39,14 +41,14 @@ export default {
           enumerable: true
         },
         report: {
-          /** @type {import('eslint').Rule.RuleContext['report']} */
+          /** @type {Rule.RuleContext['report']} */
           value: function (descriptor) {
             if (!descriptor.fix || !('node' in descriptor) || descriptor.node.type !== 'IfStatement' || !descriptor.node.loc)
               return context.report(descriptor);
 
             const
 
-              /** @type {import('eslint').Rule.Fix | import('eslint').Rule.Fix[]} */
+              /** @type {Rule.Fix | Rule.Fix[]} */
               fixes = descriptor.fix(dummyFixer),
               fix = Array.isArray(fixes) ? fixes[0] : fixes;
             if (typeof fix?.text !== 'string') return context.report(descriptor);

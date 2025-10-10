@@ -1,6 +1,8 @@
 /* eslint-disable import-x/max-dependencies -- all needed here */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 
+/** @import { Linter } from 'eslint' */
+
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
@@ -67,7 +69,7 @@ const
   };
 
 /**
- * @type {import('eslint').Linter.Config[]}
+ * @type {Linter.Config[]}
  * This config lists all rules from every plugin it uses. */
 export default [
   {
