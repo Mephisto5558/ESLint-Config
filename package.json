@@ -16,10 +16,10 @@
   "license": "MIT",
   "author": "Mephisto5558",
   "type": "module",
-  "main": "eslint.config.js",
-  "types": "eslint.config.d.ts",
+  "main": "default_eslint.config.js",
+  "types": "default_eslint.config.d.ts",
   "files": [
-    "eslint.config.d.ts",
+    "default_eslint.config.d.ts",
     "configs",
     "ruleOverwrites"
   ],
