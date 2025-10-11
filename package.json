@@ -1,54 +1,55 @@
 {
   "name": "@mephisto5558/eslint-config",
   "version": "4.0.0",
-  "type": "module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\""
-  },
   "description": "ESLint config file",
-  "main": "eslint.config.js",
-  "types": "eslint.config.d.ts",
-  "files": [
-    "eslint.config.js",
-    "eslint.config.d.ts",
-    "configs",
-    "ruleOverwrites"
-  ],
   "keywords": [
     "eslint"
   ],
-  "author": "Mephisto5558",
-  "license": "MIT",
-  "engines": {
-    "node": ">=20.19.0"
-  },
-  "dependencies": {
-    "@stylistic/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
-    "@typescript-eslint/parser": "^8.46.0",
-    "eslint": "^9.37.0",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-html": "^8.1.3",
-    "eslint-plugin-import-x": "^4.16.1",
-    "eslint-plugin-jsdoc": ">=61.1.0",
-    "eslint-plugin-regexp": "^2.10.0",
-    "eslint-plugin-sonarjs": "^3.0.5",
-    "eslint-plugin-unicorn": "^61.0.2",
-    "globals": "^16.4.0"
-  },
-  "peerDependencies": {
-    "better-typescript-lib": "*"
-  },
-  "devDependencies": {
-    "@types/node": "20.x",
-    "better-typescript-lib": "latest"
+  "homepage": "https://github.com/Mephisto5558/ESLint-Config#readme",
+  "bugs": {
+    "url": "https://github.com/Mephisto5558/ESLint-Config/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mephisto5558/ESLint-Config.git"
   },
-  "bugs": {
-    "url": "https://github.com/Mephisto5558/ESLint-Config/issues"
+  "license": "MIT",
+  "author": "Mephisto5558",
+  "type": "module",
+  "main": "eslint.config.js",
+  "types": "eslint.config.d.ts",
+  "files": [
+    "eslint.config.d.ts",
+    "configs",
+    "ruleOverwrites"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
   },
-  "homepage": "https://github.com/Mephisto5558/ESLint-Config#readme"
+  "dependencies": {
+    "@stylistic/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@typescript-eslint/parser": "8.x",
+    "eslint": "^9.37.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-html": "^8.1.3",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-jsdoc": ">=61.1.0",
+    "eslint-plugin-package-json": "^0.56.3",
+    "eslint-plugin-regexp": "^2.10.0",
+    "eslint-plugin-sonarjs": "^3.0.5",
+    "eslint-plugin-unicorn": "^61.0.2",
+    "globals": "^16.4.0",
+    "jsonc-eslint-parser": "2.x"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "better-typescript-lib": "latest"
+  },
+  "peerDependencies": {
+    "better-typescript-lib": "*"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
 }

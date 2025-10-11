@@ -1,3 +1,4 @@
+/* eslint-disable import-x/order -- manually grouped by kind */
 /* eslint-disable import-x/max-dependencies -- all needed here */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 
@@ -6,14 +7,16 @@
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
-import parser from '@typescript-eslint/parser';
+import typescriptParser from '@typescript-eslint/parser';
+import jsonCParser from 'jsonc-eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
-import stylisticPlugin from '@stylistic/eslint-plugin'; /* eslint-disable-line import-x/order -- grouped by type */
-import typescriptPlugin from '@typescript-eslint/eslint-plugin'; /* eslint-disable-line import-x/order -- grouped by type */
+import stylisticPlugin from '@stylistic/eslint-plugin';
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import htmlPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
+import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
@@ -76,7 +79,7 @@ export default [
     name: 'eslint-config:all',
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
     languageOptions: {
-      parser,
+      parser: typescriptParser,
       parserOptions: {
         project: true,
         tsconfigRootDir: undefined,
@@ -110,6 +113,17 @@ export default [
       ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
+  },
+  {
+    name: 'eslint-config:package-json',
+    files: ['**/package.json'],
+    languageOptions: {
+      parser: jsonCParser
+    },
+    plugins: {
+      'package-json': packageJSONPlugin
+    },
+    rules: importJsonC('configs/package-json.jsonc')
   },
   {
     name: 'eslint-config:react',

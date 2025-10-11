@@ -1,0 +1,146 @@
+{
+  // [PACKAGE-JSON] https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/main/docs/rules | Using "warn" wherever applicable
+  "no-empty-fields": [
+    "warn",
+    {
+      "ignoreProperties": []
+    }
+  ],
+  "no-redundant-files": "warn",
+  "order-properties": [
+    "warn",
+    {
+      "order": "sort-package-json"
+    }
+  ],
+  "repository-shorthand": [
+    "warn",
+    {
+      "form": "object"
+    }
+  ],
+  "require-author": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-bugs": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-bundleDependencies": "off",
+  "require-dependencies": "off",
+  "require-description": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-devDependencies": "off",
+  "require-engines": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-files": "off",
+  "require-keywords": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-name": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-optionalDependencies": "off",
+  "require-peerDependencies": "off",
+  "require-type": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-types": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-version": [
+    "warn",
+    {
+      "ignorePrivate": true
+    }
+  ],
+  "restrict-dependency-ranges": "off",
+  "sort-collections": [
+    "warn",
+    [
+      "config",
+      "dependencies",
+      "devDependencies",
+      "exports",
+      "optionalDependencies",
+      "overrides",
+      "peerDependencies",
+      "peerDependenciesMeta",
+      "scripts"
+    ]
+  ],
+  "unique-dependencies": "warn",
+  "valid-author": "error",
+  "valid-bin": [
+    "error",
+    {
+      "enforceCase": true
+    }
+  ],
+  "valid-bundleDependencies": "error",
+  "valid-config": "error",
+  "valid-cpu": "error",
+  "valid-dependencies": "error",
+  "valid-description": "error",
+  "valid-devDependencies": "error",
+  "valid-directories": "error",
+  "valid-exports": "error",
+  "valid-license": "error",
+  "valid-name": "error",
+  "valid-optionalDependencies": "error",
+  "valid-package-definition": [
+    "error",
+    {
+      "ignoreProperties": [
+        "author",
+        "bin",
+        "bundleDependencies",
+        "config",
+        "cpu",
+        "dependencies",
+        "description",
+        "devDependencies",
+        "directories",
+        "exports",
+        "license",
+        "name",
+        "optionalDependencies",
+        "peerDependencies",
+        "repository-directory",
+        "scripts",
+        "type",
+        "version"
+      ]
+    }
+  ],
+  "valid-peerDependencies": "error",
+  "valid-repository-directory": "error",
+  "valid-scripts": "error",
+  "valid-type": "error",
+  "valid-version": "error"
+}
