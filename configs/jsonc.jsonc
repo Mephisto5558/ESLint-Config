@@ -1,0 +1,66 @@
+{
+  // [JSONC] https://ota-meshi.github.io/eslint-plugin-jsonc/rules | Using "warn" wherever applicable
+  //  JSONC Rules
+  // "auto": "off", // See Extension rules down below
+  "key-name-casing": [
+    "warn",
+    {
+      /* eslint-disable jsonc/key-name-casing */
+      "camelCase": true,
+      "PascalCase": true,
+      "SCREAMING_SNAKE_CASE": false,
+      "kebab-case": true,
+      "snake_case": false,
+      /* eslint-enable jsonc/key-name-casing */
+      "ignores": ["/"]
+    }
+  ],
+  "no-bigint-literals": "error",
+  "no-binary-expression": "error",
+  "no-binary-numeric-literals": "off", // Handled by `jsonc/valid-json-number`
+  "no-comments": "off", // Comments are allowed in jsonc
+  "no-escape-sequence-in-identifier": "error",
+  "no-hexadecimal-numeric-literals": "off", // Handled by `jsonc/valid-json-number`
+  "no-infinity": "off", // Handled by `jsonc/valid-json-number`
+  "no-nan": "off", // Handled by `jsonc/valid-json-number`
+  "no-number-props": "error",
+  "no-numeric-separators": "off", // Handled by `jsonc/valid-json-number`
+  "no-octal-numeric-literals": "off", // Handled by `jsonc/valid-json-number`
+  "no-parenthesized": "error",
+  "no-plus-sign": "off", // Handled by `jsonc/valid-json-number`
+  "no-regexp-literals": "error",
+  "no-template-literals": "error",
+  "no-undefined-value": "error",
+  "no-unicode-codepoint-escapes": "error",
+  "sort-array-values": [
+    "warn",
+    {
+      "pathPattern": ".*",
+      "order": {
+        "type": "asc",
+        "caseSensitive": true,
+        "natural": true
+      },
+      "minValues": 2
+    }
+  ],
+  "sort-keys": [
+    "warn",
+    {
+      "pathPattern": ".*",
+      // "hasProperties": 
+      "order": {
+        "type": "asc",
+        "caseSensitive": true,
+        "natural": true
+      },
+      "minKeys": 2,
+      "allowLineSeparatedGroups": true
+    }
+  ],
+  "valid-json-number": "error",
+  "vue-custom-block/no-parsing-error": "error",
+
+  //  Extension rules
+  "auto": "warn"
+}

@@ -16,6 +16,7 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import htmlPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
+import jsoncPlugin from 'eslint-plugin-jsonc';
 import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
@@ -76,6 +77,9 @@ const
  * This config lists all rules from every plugin it uses. */
 export default [
   {
+    ignores: ['package-lock.json']
+  },
+  {
     name: 'eslint-config:all',
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
     languageOptions: {
@@ -124,6 +128,57 @@ export default [
       'package-json': packageJSONPlugin
     },
     rules: importJsonC('configs/package-json.jsonc')
+  },
+  {
+    name: 'eslint-config:jsonc',
+    files: ['**/*.json{,c,5}'],
+    ignores: ['**/package.json'],
+    languageOptions: {
+      parser: jsonCParser
+    },
+    plugins: {
+      jsonc: jsoncPlugin
+    },
+    rules: importJsonC('configs/jsonc.jsonc')
+  },
+  {
+    name: 'eslint-config:tsconfig.json',
+    files: ['**/tsconfig.json'],
+    languageOptions: {
+      parser: jsonCParser
+    },
+    plugins: {
+      jsonc: jsoncPlugin
+    },
+    rules: {
+      'jsonc/sort-keys': [
+        'warn',
+        {
+          pathPattern: '.*',
+          order: [
+            'extends',
+            'files',
+            'include',
+            'exclude',
+            'compilerOptions',
+            'module',
+            'moduleResolution',
+            'target',
+            'lib',
+            'libreplacement',
+            {
+              order: {
+                type: 'asc',
+                caseSensitive: true,
+                natural: true
+              }
+            }
+          ],
+          minKeys: 2,
+          allowLineSeparatedGroups: true
+        }
+      ]
+    }
   },
   {
     name: 'eslint-config:react',
