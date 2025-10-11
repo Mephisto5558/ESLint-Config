@@ -7,6 +7,8 @@
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
+import { includeIgnoreFile } from '@eslint/compat';
+
 import typescriptParser from '@typescript-eslint/parser';
 import jsonCParser from 'jsonc-eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
@@ -72,13 +74,15 @@ const
     ...importJsonC('configs/custom.jsonc')
   };
 
+let gitIgnore;
+try { gitIgnore = includeIgnoreFile(resolve('.', '.gitignore'), 'eslint-config:cwd-gitignore'); }
+catch (err) { if (err.code != 'ENOENT') throw err; }
+
 /**
  * @type {Linter.Config[]}
  * This config lists all rules from every plugin it uses. */
 export default [
-  {
-    ignores: ['package-lock.json']
-  },
+  gitIgnore,
   {
     name: 'eslint-config:all',
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
@@ -278,4 +282,4 @@ export default [
       'sonarjs/public-static-readonly': 'warn'
     }
   }
-];
+].filter(Boolean);
