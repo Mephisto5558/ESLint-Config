@@ -47,7 +47,7 @@
     "better-typescript-lib": "latest"
   },
   "peerDependencies": {
-    "better-typescript-lib": "*"
+    "better-typescript-lib": "latest"
   },
   "engines": {
     "node": ">=20.19.0"
