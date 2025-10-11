@@ -5,22 +5,22 @@
       "threshold": 20
     }
   ],
+  "jsdoc-formatting": "warn",
   "no-async-constructor": [
     "warn",
     {
       "allowVoid": true
     }
   ],
+  "prefer-ternary": [
+    "warn",
+    "only-single-line",
+    150
+  ],
   "unbound-method": [
     "error",
     {
       "ignoreStatic": true
     }
-  ],
-  "jsdoc-formatting": "warn",
-  "prefer-ternary": [
-    "warn",
-    "only-single-line",
-    150
   ]
 }

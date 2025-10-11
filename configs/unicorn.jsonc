@@ -162,13 +162,13 @@
       "checkFromLast": true
     }
   ],
-  "prefer-array-flat-map": "warn",
   "prefer-array-flat": [
     "warn",
     {
       "functions": []
     }
   ],
+  "prefer-array-flat-map": "warn",
   "prefer-array-index-of": "warn",
   "prefer-array-some": "warn",
   "prefer-at": [

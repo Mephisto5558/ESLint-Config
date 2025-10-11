@@ -22,6 +22,7 @@
   "no-named-as-default-member": "warn",
   "no-rename-default": "warn",
   "no-unused-modules": "off", // Does not support flat config
+
   //  Module systems
   "no-amd": "warn",
   "no-commonjs": "off",
@@ -33,6 +34,7 @@
   ],
   "no-nodejs-modules": "off",
   "unambiguous": "off",
+
   //  Static analysis
   "default": "off", // Does not support `module.exports`
   "named": "error", // Note: TODO could have many false positives
@@ -79,6 +81,7 @@
     }
   ],
   "no-webpack-loader-syntax": "warn",
+
   //  Style guide
   "consistent-type-specifier-style": [
     "warn",

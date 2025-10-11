@@ -1,6 +1,6 @@
 {
   // [REGEXP] https://github.com/ota-meshi/eslint-plugin-regexp#white_check_mark-rules | Using "warn" wherever applicable
-  // [POSSIBLE ERRORS]
+  //  [POSSIBLE ERRORS]
   "no-contradiction-with-assertion": "warn",
   "no-control-character": "warn",
   "no-dupe-disjunctions": [
@@ -62,7 +62,8 @@
   "no-useless-backreference": "warn",
   "no-useless-dollar-replacements": "error",
   "strict": "error",
-  // [BEST PRACTICES]
+
+  //  [BEST PRACTICES]
   "confusing-quantifier": "warn",
   "control-character-escape": "off", // Handled by `regexp/no-control-character`
   "negation": "warn",
@@ -138,7 +139,8 @@
   "simplify-set-operations": "warn",
   "sort-alternatives": "warn",
   "use-ignore-case": "warn",
-  // [STYLISTIC]
+
+  //  [STYLISTIC]
   "grapheme-string-literal": "warn",
   "hexadecimal-escape": [
     "warn",

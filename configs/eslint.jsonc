@@ -149,6 +149,7 @@
       "requireStringLiterals": true
     }
   ],
+
   //  Suggestions
   "accessor-pairs": [
     "warn",
@@ -543,6 +544,7 @@
       "onlyEquality": false
     }
   ],
+
   //  Layout & Formatting
   "unicode-bom": "warn"
 }
