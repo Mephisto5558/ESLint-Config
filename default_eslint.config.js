@@ -169,6 +169,7 @@ export default [
             'moduleResolution',
             'target',
             'lib',
+            'paths',
             'libreplacement',
             {
               order: {
