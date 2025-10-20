@@ -1,19 +1,8 @@
 {
   // [STYLISTIC] https://eslint.style/packages/default#rules | Using "warn" wherever applicable
-  "array-bracket-newline": [
-    "warn",
-    "consistent"
-  ],
-  "array-bracket-spacing": [
-    "warn",
-    "never",
-    {
-      "singleValue": false,
-      "objectsInArrays": false,
-      "arraysInArrays": false
-    }
-  ],
-  "array-element-newline": "off",
+  "array-bracket-newline": "off", // Handled by `@stylistic/list-style`
+  "array-bracket-spacing": "off", // Handled by `@stylistic/list-style`
+  "array-element-newline": "off", // Handled by `@stylistic/list-style`
   "arrow-parens": [
     "warn",
     "as-needed",
@@ -73,15 +62,9 @@
     "warn",
     "never"
   ],
-  "function-call-argument-newline": "off",
-  "function-call-spacing": [
-    "warn",
-    "never"
-  ],
-  "function-paren-newline": [
-    "warn",
-    "consistent"
-  ],
+  "function-call-argument-newline": "off", // Handled by `@stylistic/list-style`
+  "function-call-spacing": "off", // Handled by `@stylistic/list-style`
+  "function-paren-newline": "off", // Handled by `@stylistic/list-style`
   "generator-star-spacing": [
     "warn",
     {
@@ -127,8 +110,11 @@
       "ObjectExpression": 1,
       "ImportDeclaration": 1,
       "flatTernaryExpressions": true,
-      "offsetTernaryExpressions": true,
-      "offsetTernaryExpressionsOffsetCallExpressions": true,
+      "offsetTernaryExpressions": {
+        "CallExpression": true,
+        "AwaitExpression": true,
+        "NewExpression": true
+      },
       "ignoreComments": false,
       "tabLength": 2
     }
@@ -145,7 +131,7 @@
   "jsx-curly-spacing": "",
   "jsx-equals-spacing": "",
   "jsx-fist-prop-new-line": "",
-  "jsx-function-call-newline": "",
+  "jsx-function-call-newline": "off", // Handled by `@stylistic/list-style`
   "jsx-indent": "",
   "jsx-indent-props": "",
   "jsx-max-props-per-line": "",
@@ -224,6 +210,51 @@
     {
       "exceptAfterSingleLine": true,
       "exceptAfterOverload": true
+    }
+  ],
+  /* eslint-disable-next-line jsonc/sort-keys -- correct place when "exp" (experimental) prefix gets removed*/
+  "exp-list-style": [
+    "warn", {
+      "singleLine": {
+        "spacing": "never"
+        // "maxItems": // Handled by `@stylistic/max-len`
+      },
+      "multiLine": {
+        "minItems": 3
+      },
+      "overrides": {
+        /* eslint-disable-next-line jsonc/key-name-casing */
+        "{}": {
+          "singleLine": {
+            "spacing": "always"
+          }
+        }
+        // "[]": {},
+        // "()": {},
+        // "<>": {},
+        // ArrayExpression:
+        // "ArrayPattern": {},
+        // "ArrowFunctionExpression": {},
+        // "CallExpression": {},
+        // "ExportNamedDeclaration": {},
+        // "FunctionDeclaration": {},
+        // "FunctionExpression": {},
+        // "ImportDeclaration": {},
+        // "ImportAttributes": {},
+        // "NewExpression": {},
+        // "ObjectExpression": {},
+        // "ObjectPattern": {},
+        // "TSDeclareFunction": {},
+        // "TSFunctionType": {},
+        // "TSInterfaceBody": {},
+        // "TSEnumBody": {},
+        // "TSTupleType": {}, 
+        // "TSTypeLiteral": {},
+        // "TSTypeParameterDeclaration": {},
+        // "TSTypeParameterInstantiation": {},
+        // "JSONArrayExpression": {},
+        // "JSONObjectExpression" {}
+      }
     }
   ],
   "max-len": [
@@ -347,22 +378,9 @@
   ],
   "no-whitespace-before-property": "warn",
   "nonblock-statement-body-position": "off", // Handled by `curly`
-  "object-curly-newline": [
-    "warn",
-    {
-      "consistent": true
-    }
-  ],
-  "object-curly-spacing": [
-    "warn",
-    "always",
-    {
-      "arraysInObjects": true,
-      "objectsInObjects": true,
-      "overrides": {}
-    }
-  ],
-  "object-property-newline": "off", // Not configurable enough
+  "object-curly-newline": "off", // Handled by `@stylistic/list-style`
+  "object-curly-spacing": "off", // Handled by `@stylistic/list-style`
+  "object-property-newline": "off", // Handled by `@stylistic/list-style`
   "one-var-declaration-per-line": "off", // Handled by `one-var`
   "operator-linebreak": [
     "warn",
@@ -433,10 +451,7 @@
       "catch": "always"
     }
   ],
-  "space-in-parens": [
-    "warn",
-    "never"
-  ],
+  "space-in-parens": "off", // Handled by `@stylistic/list-style`
   "space-infix-ops": [
     "warn",
     {
@@ -491,7 +506,7 @@
       }
     }
   ],
-  "type-generic-spacing": "warn",
+  "type-generic-spacing": "off", // Handled by `@stylistic/list-style`
   "type-named-tuple-spacing": "warn",
   "wrap-iife": [
     "warn",
