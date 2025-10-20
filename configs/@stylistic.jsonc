@@ -127,8 +127,11 @@
       "ObjectExpression": 1,
       "ImportDeclaration": 1,
       "flatTernaryExpressions": true,
-      "offsetTernaryExpressions": true,
-      "offsetTernaryExpressionsOffsetCallExpressions": true,
+      "offsetTernaryExpressions": {
+        "CallExpression": true,
+        "AwaitExpression": true,
+        "NewExpression": true
+      },
       "ignoreComments": false,
       "tabLength": 2
     }
@@ -226,6 +229,8 @@
       "exceptAfterOverload": true
     }
   ],
+  /* eslint-disable-next-line jsonc/sort-keys -- will be here when the experimental-prefix gets removed */
+  "exp-list-style": "off", // See https://github.com/Mephisto5558/ESLint-Config/pull/35
   "max-len": [
     "warn",
     {
@@ -359,7 +364,7 @@
     {
       "arraysInObjects": true,
       "objectsInObjects": true,
-      "overrides": {}
+      "emptyObjects": "never"
     }
   ],
   "object-property-newline": "off", // Not configurable enough

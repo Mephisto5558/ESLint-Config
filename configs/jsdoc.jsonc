@@ -187,8 +187,8 @@
     "warn",
     {
       "enableFixer": true,
-      "exemptTypedefs": false
-      // "outputType":  // no info to it in the docs yet
+      "exemptTypedefs": false,
+      "outputType": "named-import"
     }
   ],
   "require-asterisk-prefix": [

@@ -136,7 +136,7 @@ export default [
   {
     name: 'eslint-config:jsonc',
     files: ['**/*.json{,c,5}'],
-    ignores: ['**/package.json', '**/.vscode/**/*.json'],
+    ignores: ['**/package{,-lock}.json', '**/.vscode/**/*.json'],
     languageOptions: {
       parser: jsonCParser
     },

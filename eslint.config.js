@@ -8,7 +8,7 @@ const
 
 /** @type {Linter.Config[]} */
 export default [
-  ...config,
+  ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
   {
     files: ['**/test.*'],
     rules: {
@@ -24,7 +24,6 @@ export default [
               keyNameCasingRule[0],
               {
                 ...keyNameCasingRule[1],
-                /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
                 ignores: [...'ignores' in keyNameCasingRule[1] ? keyNameCasingRule[1].ignores : [], '^(require|valid)-.*']
               }
             ]
