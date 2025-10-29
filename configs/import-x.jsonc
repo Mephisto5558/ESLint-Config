@@ -60,7 +60,7 @@
   "no-dynamic-require": "off",
   "no-internal-modules": "off",
   "no-relative-packages": "off",
-  "no-relative-parent-imports": "warn",
+  "no-relative-parent-imports": "off",
   "no-restricted-paths": "off",
   "no-self-import": "error",
   "no-unresolved": [
