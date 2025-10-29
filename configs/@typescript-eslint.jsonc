@@ -295,7 +295,7 @@
     "warn",
     {
       "allowConstantLoopConditions": "only-allowed-literals",
-      "checkTypePredicates": true
+      "checkTypePredicates": false
     }
   ],
   "no-unnecessary-parameter-property-assignment": "warn",
