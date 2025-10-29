@@ -1,6 +1,7 @@
 /* eslint-disable import-x/order -- manually grouped by kind */
 /* eslint-disable import-x/max-dependencies -- all needed here */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
+/* eslint-disable import-x/extensions -- errors if removed */
 
 /** @import { Linter } from 'eslint' */
 
@@ -8,6 +9,7 @@ import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
+import globals from 'globals';
 
 import typescriptParser from '@typescript-eslint/parser';
 import jsonCParser from 'jsonc-eslint-parser';
@@ -23,11 +25,9 @@ import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
-import globals from 'globals';
-
-/* eslint-disable-next-line import-x/extensions -- errors if removed */
 import customPlugin from './ruleOverwrites/index.js';
 
+export * from './utils.js';
 export { plugins, globals };
 
 /**
