@@ -36,13 +36,13 @@
     "off",
     {
       "case": "camelCase",
-      "ignore": []
+      "ignore": [ ]
     }
   ],
   "import-style": [
     "warn",
     {
-      "styles": {},
+      "styles": { },
       "extendDefaultStyles": false,
       "checkImport": true,
       "checkDynamicImport": true,
@@ -72,12 +72,13 @@
   "no-empty-file": "warn",
   "no-for-loop": "warn",
   "no-hex-escape": "off", // Handled by `regexp/hexadecimal-escape`
+  "no-immediate-mutation": "warn",
   "no-instanceof-builtins": [
     "error",
     {
       "strategy": "loose",
-      "include": [],
-      "exclude": [],
+      "include": [ ],
+      "exclude": [ ],
       "useErrorIsError": false // Only available on Node>=24
     }
   ],
@@ -113,6 +114,7 @@
   "no-unreadable-array-destructuring": "warn",
   "no-unreadable-iife": "warn",
   "no-unused-properties": "warn",
+  "no-useless-collection-argument": "warn",
   "no-useless-error-capture-stack-trace": "warn",
   "no-useless-fallback-in-spread": "warn",
   "no-useless-length-check": "warn",
@@ -165,7 +167,7 @@
   "prefer-array-flat": [
     "warn",
     {
-      "functions": []
+      "functions": [ ]
     }
   ],
   "prefer-array-flat-map": "warn",
@@ -219,7 +221,7 @@
   "prefer-object-from-entries": [
     "warn",
     {
-      "functions": []
+      "functions": [ ]
     }
   ],
   "prefer-optional-catch-binding": "warn", // Should be handled by `@typescript-eslint/no-unused-vars` but is not for some reason
@@ -227,6 +229,7 @@
   "prefer-query-selector": "warn",
   "prefer-reflect-apply": "warn",
   "prefer-regexp-test": "off", // Handled by `regexp/prefer-regexp-test`
+  "prefer-response-static-json": "warn",
   "prefer-set-has": "warn",
   "prefer-set-size": "warn",
   "prefer-single-call": "warn",
@@ -239,7 +242,7 @@
   "prefer-structured-clone": [
     "warn",
     {
-      "functions": []
+      "functions": [ ]
     }
   ],
   "prefer-switch": [
@@ -268,6 +271,11 @@
     "avoid"
   ],
   "template-indent": "off",
-  "text-encoding-identifier-case": "warn",
+  "text-encoding-identifier-case": [
+    "warn",
+    {
+      "withDash": false
+    }
+  ],
   "throw-new-error": "warn" // Overlaps with `unicorn/new-for-builtins` but not on e.g. SyntaxError
 }

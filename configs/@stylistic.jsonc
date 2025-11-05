@@ -364,6 +364,18 @@
     {
       "arraysInObjects": true,
       "objectsInObjects": true,
+      // "overrides": {
+      //   "ObjectPattern": "",
+      //   "ObjectExpression": "",
+      //   "ImportDeclaration": "",
+      //   "ImportAttributes":"",
+      //   "ExportNamedDeclaration":"",
+      //   "ExportAllDeclaration":"",
+      //   "TSMappedType":"",
+      //   "TSTypeLiteral":"",
+      //   "TSInterfaceBody":"",
+      //   "TSEnumBody":""
+      // },
       "emptyObjects": "never"
     }
   ],

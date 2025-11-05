@@ -1,5 +1,12 @@
 {
   // [PACKAGE-JSON] https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/main/docs/rules | Using "warn" wherever applicable
+  "bin-name-casing": "warn",
+  "exports-subpaths-style": [
+    "warn",
+    {
+      "prefer": "explicit"
+    }
+  ],
   "no-empty-fields": [
     "warn",
     {
@@ -80,6 +87,17 @@
     }
   ],
   "restrict-dependency-ranges": "off",
+  "restrict-private-properties": [
+    "warn",
+    {
+      "blockedProperties": [
+        // Default values
+        "files",
+        "publishedConfig"
+      ]
+    }
+  ],
+  "scripts-name-casing": "warn",
   "sort-collections": [
     "warn",
     [
@@ -96,12 +114,7 @@
   ],
   "unique-dependencies": "warn",
   "valid-author": "error",
-  "valid-bin": [
-    "error",
-    {
-      "enforceCase": true
-    }
-  ],
+  "valid-bin": "error",
   "valid-bundleDependencies": "error",
   "valid-config": "error",
   "valid-cpu": "error",

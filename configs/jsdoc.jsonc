@@ -110,7 +110,7 @@
       // "contexts": 
     }
   ],
-  "imports-as-dependencies": "off", // "warn" // See https://github.com/gajus/eslint-plugin-jsdoc/issues/1114
+  "imports-as-dependencies": "warn",
   "informative-docs": [
     "warn",
     {
@@ -178,7 +178,7 @@
       "definedTypes": [
         "NodeJS"
       ],
-      "checkUsedTypedefs": false, // nearly everything reported is a false positive
+      "checkUsedTypedefs": false, // falsely reports @param comments as unused typedefs
       "disableReporting": false,
       "markVariablesAsUsed": false
     }
