@@ -14,7 +14,7 @@ export default [
   {
     files: ['configs/*.jsonc'],
     rules: {
-      'jsonc/key-name-spacing': getModifiedRule(config,'jsonc/key-name-spacing', {
+      'jsonc/key-name-casing': getModifiedRule(config, 'jsonc/key-name-casing', {
         ignores: ['^(require|valid)-.*']
       }),
       'jsonc/sort-array-values': 'off', // config array order is important
