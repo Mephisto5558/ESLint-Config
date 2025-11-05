@@ -279,10 +279,7 @@
     }
   ],
   "max-lines-per-function": "off", // Handled by `sonarjs/max-lines-per-function`
-  "max-nested-callbacks": [
-    "warn",
-    2
-  ], // promises are to use whenever possible
+  "max-nested-callbacks": "off", // Handled by `sonarjs/no-nested-functions`
   "max-params": "off", // Handled by `@typescript-eslint/max-params`
   "max-statements": "off", // Handled by `sonarjs/cognitive-complexity`, `sonarjs/cyclomatic-complexity`
   "new-cap": [

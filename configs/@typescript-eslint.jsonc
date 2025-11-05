@@ -1,6 +1,6 @@
 {
   // [TYPESCRIPT-ESLINT] https://typescript-eslint.io/rules | Using "warn" wherever applicable
-  "adjacent-overload-signatures": "off", // Set in `eslint.config.js` for only TS files
+  "adjacent-overload-signatures": "off", // Set in `default_eslint.config.js` for only TS files
   "array-type": [
     "warn",
     {
@@ -75,9 +75,9 @@
       "allowIndexSignaturePropertyAccess": true
     }
   ],
-  "explicit-function-return-type": "off", // Set in `eslint.config.js` for only TS files
-  "explicit-member-accessibility": "off", // Set in `eslint.config.js` for only TS files
-  "explicit-module-boundary-types": "off", // Set in `eslint.config.js` for only TS files
+  "explicit-function-return-type": "off", // Set in `default_eslint.config.js` for only TS files
+  "explicit-member-accessibility": "off", // Set in `default_eslint.config.js` for only TS files
+  "explicit-module-boundary-types": "off", // Set in `default_eslint.config.js` for only TS files
   "init-declarations": "off", // Needs more configurability, e.g. allowing declarations before `if`, `try` [
   //   "warn",
   //   "always"
@@ -437,8 +437,8 @@
     }
   ],
   "prefer-promise-reject-errors": "error",
-  "prefer-readonly": "off", // Set in `eslint.config.js` for only TS files
-  "prefer-readonly-parameter-types": "off", // Set in `eslint.config.js` for only TS files
+  "prefer-readonly": "off", // Set in `default_eslint.config.js` for only TS files
+  "prefer-readonly-parameter-types": "off", // Set in `default_eslint.config.js` for only TS files
   "prefer-reduce-type-parameter": "warn",
   "prefer-regexp-exec": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-return-this-type": "error",
@@ -530,5 +530,5 @@
       "ignoreOverloadsWithDifferentJSDoc": false
     }
   ],
-  "use-unknown-in-catch-callback-variable": "off" // Set in `eslint.config.js` for only TS files
+  "use-unknown-in-catch-callback-variable": "off" // Set in `default_eslint.config.js` for only TS files
 }

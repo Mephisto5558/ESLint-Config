@@ -251,7 +251,7 @@ export default [
         }
       ],
       '@typescript-eslint/explicit-module-boundary-types': [
-        'warn',
+        'warn', // Overlap with `@typescript-eslint/explicit-function-return-type` on exported functions, but not fixable
         {
           allowArgumentsExplicitlyTypedAsAny: true,
           /* eslint-disable-next-line id-length */

@@ -181,7 +181,7 @@
   "no-nested-assignment": "warn",
   "no-nested-conditional": "warn",
   "no-nested-functions": [
-    "error",
+    "warn",
     {
       "threshold": 3
     }
@@ -242,7 +242,7 @@
   "prefer-while": "warn",
   "production-debug": "warn",
   "pseudo-random": "warn",
-  "public-static-readonly": "off", // Set in `eslint.config.js` for only TS files
+  "public-static-readonly": "off", // Set in `default_eslint.config.js` for only TS files
   "publicly-writable-directories": "warn",
   "reduce-initial-value": "error",
   "redundant-type-aliases": "warn",
