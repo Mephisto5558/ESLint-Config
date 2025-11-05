@@ -14,6 +14,7 @@ import globals from 'globals';
 import typescriptParser from '@typescript-eslint/parser';
 import jsonCParser from 'jsonc-eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import { getModifiedRule } from './utils.js';
 
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
@@ -205,6 +206,7 @@ export default [
         'error',
         {
           max: 2,
+          // "maxEOF": 0 // Handled by `@stylistic/eol-last`
           maxBOF: 1 // <script> tag should be on its own line
         }
       ],
@@ -220,22 +222,34 @@ export default [
       'no-shadow': 'off',
       'no-use-before-define': 'off',
       'class-methods-use-this': 'off',
-      'jsdoc/check-tag-names': [
-        rules['jsdoc/check-tag-names']?.[0] ?? 'off',
-        {
-          ...rules['jsdoc/check-tag-names']?.[1],
-          typed: true
-        },
-        ...rules['jsdoc/check-tag-names']?.slice(2) ?? []
-      ],
+      'jsdoc/check-tag-names': getModifiedRule({ rules }, 'jsdoc/check-tag-names', { typed: true }),
       'jsdoc/require-param-type': 'off',
       'jsdoc/require-param': 'off',
       'jsdoc/require-returns-type': 'off',
       'jsdoc/check-param-names': 'off',
-      'jsdoc/no-types': 'warn',
+      'jsdoc/no-types': [
+        'warn',
+        {
+          // contexts:
+        }
+      ],
       'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
       '@typescript-eslint/adjacent-overload-signatures': 'warn',
-      '@typescript-eslint/explicit-function-return-type': 'warn',
+      '@typescript-eslint/explicit-function-return-type': [
+        'warn',
+        {
+          /* eslint-disable-next-line id-length */
+          allowConciseArrowFunctionExpressionsStartingWithVoid: false,
+          /* eslint-disable-next-line id-length */
+          allowDirectConstAssertionInArrowFunctions: true,
+          allowExpressions: false,
+          allowFunctionsWithoutTypeParameters: false,
+          allowHigherOrderFunctions: true,
+          allowIIFEs: false,
+          allowTypedFunctionExpressions: true,
+          allowedNames: []
+        }
+      ],
       '@typescript-eslint/explicit-member-accessibility': [
         'warn',
         {
