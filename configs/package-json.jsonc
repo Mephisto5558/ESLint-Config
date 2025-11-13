@@ -14,6 +14,8 @@
     }
   ],
   "no-redundant-files": "warn",
+  /* eslint-disable-next-line jsonc/key-name-casing */
+  "no-redundant-publishConfig": "warn",
   "order-properties": [
     "warn",
     {
@@ -123,9 +125,14 @@
   "valid-devDependencies": "error",
   "valid-directories": "error",
   "valid-exports": "error",
+  "valid-files": "error",
+  "valid-homepage": "error",
+  "valid-keywords": "error",
   "valid-license": "error",
+  "valid-main": "error",
   "valid-name": "error",
   "valid-optionalDependencies": "error",
+  "valid-os": "error",
   "valid-package-definition": [
     "error",
     {
@@ -152,6 +159,7 @@
     }
   ],
   "valid-peerDependencies": "error",
+  "valid-private": "error",
   "valid-repository-directory": "error",
   "valid-scripts": "error",
   "valid-type": "error",

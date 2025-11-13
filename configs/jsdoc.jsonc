@@ -56,7 +56,7 @@
     "warn",
     {
       "enableFixer": true,
-      "definedTags": [],
+      "definedTags": [ ],
       "jsxTags": true,
       "typed": false
     }
@@ -66,7 +66,7 @@
     "error",
     {
       "noDefaults": false,
-      "exemptTagContexts": [],
+      "exemptTagContexts": [ ],
       "unifyParentAndChildTypeChecks": true
     }
   ],
@@ -93,13 +93,13 @@
   "empty-tags": [
     "warn",
     {
-      "tags": []
+      "tags": [ ]
     }
   ],
   "escape-inline-tags": [
     "warn",
     {
-      "allowedInlineTags": [],
+      "allowedInlineTags": [ ],
       "enableFixer": true,
       "fixType": "backticks"
     }
@@ -196,9 +196,9 @@
     "always",
     {
       "tags": {
-        "always": [],
-        "any": [],
-        "never": []
+        "always": [ ],
+        "any": [ ],
+        "never": [ ]
       }
     }
   ],
@@ -210,7 +210,7 @@
     "warn",
     "never",
     {
-      "tags": {}
+      "tags": { }
     }
   ],
   "require-jsdoc": "off",
@@ -280,7 +280,7 @@
       "tagSequence": [
         {
           "tags": [
-            // Copied from https://github.com/gajus/eslint-plugin-blob/main/docs/rules/sort-tags.md#tagsequence
+            // Copied from https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/sort-tags.md#tagsequence
             // Brief descriptions
             "summary",
             "typeSummary",
@@ -346,7 +346,7 @@
             "override",
             "hideconstructor",
             // Core function/object info
-            "this",
+            "this", // moved up here to match typescript's parameter order
             "param",
             "arg",
             "argument",
@@ -426,6 +426,7 @@
       "linesBetween": 0,
       "reportTagGroupSpacing": true,
       "reportIntraTagGroupSpacing": true
+      // "tagExceptions":
     }
   ],
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
