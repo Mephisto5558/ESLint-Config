@@ -28,6 +28,11 @@
       "form": "object"
     }
   ],
+  "require-attribution": [
+    "warn", {
+      "preferContributorsOnly": false
+    }
+  ],
   "require-author": [
     "warn",
     {
@@ -55,6 +60,7 @@
       "ignorePrivate": false
     }
   ],
+  "require-exports": "off", // Handled by `package-json/valid-main`
   "require-files": "off",
   "require-keywords": [
     "warn",
@@ -70,6 +76,7 @@
   ],
   "require-optionalDependencies": "off",
   "require-peerDependencies": "off",
+  "require-sideEffects": "off",
   "require-type": [
     "warn",
     {
@@ -114,54 +121,37 @@
       "scripts"
     ]
   ],
+  "specify-peers-locally": "warn",
   "unique-dependencies": "warn",
   "valid-author": "error",
   "valid-bin": "error",
   "valid-bundleDependencies": "error",
   "valid-config": "error",
+  "valid-contributors": "error",
   "valid-cpu": "error",
   "valid-dependencies": "error",
   "valid-description": "error",
   "valid-devDependencies": "error",
   "valid-directories": "error",
+  "valid-engines": "error",
   "valid-exports": "error",
   "valid-files": "error",
   "valid-homepage": "error",
   "valid-keywords": "error",
   "valid-license": "error",
   "valid-main": "error",
+  "valid-man": "error",
   "valid-name": "error",
   "valid-optionalDependencies": "error",
   "valid-os": "error",
-  "valid-package-definition": [
-    "error",
-    {
-      "ignoreProperties": [
-        "author",
-        "bin",
-        "bundleDependencies",
-        "config",
-        "cpu",
-        "dependencies",
-        "description",
-        "devDependencies",
-        "directories",
-        "exports",
-        "license",
-        "name",
-        "optionalDependencies",
-        "peerDependencies",
-        "repository-directory",
-        "scripts",
-        "type",
-        "version"
-      ]
-    }
-  ],
   "valid-peerDependencies": "error",
   "valid-private": "error",
+  "valid-publishConfig": "error",
+  "valid-repository": "error",
   "valid-repository-directory": "error",
   "valid-scripts": "error",
+  "valid-sideEffects": "error",
   "valid-type": "error",
-  "valid-version": "error"
+  "valid-version": "error",
+  "valid-workspaces": "error"
 }

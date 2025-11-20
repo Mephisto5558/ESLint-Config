@@ -500,12 +500,7 @@
     {
       "before": false,
       "after": true,
-      "overrides": {
-        "arrow": {
-          "before": true,
-          "after": true
-        }
-      }
+      "overrides": {}
     }
   ],
   "type-generic-spacing": "warn",

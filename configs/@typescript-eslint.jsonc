@@ -328,6 +328,7 @@
       "ignoreDirectives": false
     }
   ],
+  "no-unused-private-class-members": "warn",
   "no-unused-vars": [
     "warn",
     {
