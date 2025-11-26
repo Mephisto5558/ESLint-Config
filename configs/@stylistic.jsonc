@@ -498,9 +498,14 @@
   "type-annotation-spacing": [
     "warn",
     {
-      "before": false,
-      "after": true,
-      "overrides": {}
+      // "before":
+      // "after":
+      "overrides": {
+        "colon": {
+          "before": false,
+          "after": true
+        }
+      }
     }
   ],
   "type-generic-spacing": "warn",
