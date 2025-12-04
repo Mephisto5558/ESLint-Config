@@ -16,6 +16,7 @@ import jsonCParser from 'jsonc-eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import { getModifiedRule } from './utils.js';
 
+import cssPlugin from '@eslint/css';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import htmlPlugin from 'eslint-plugin-html';
@@ -44,6 +45,7 @@ function importJsonC(path) {
 
   let filename = basename(path, '.jsonc');
   if (filename.startsWith('sonarjs')) filename = 'sonarjs/';
+  else if (filename.startsWith('eslint-')) filename = filename.slice('eslint-'.length) + '/';
   else filename = filename == 'eslint' ? '' : `${filename}/`;
 
   return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
@@ -211,6 +213,17 @@ export default [
         }
       ],
       '@stylistic/eol-last': 'off' // </script> tag should be on the next line
+    }
+  },
+  {
+    name: 'eslint-config:css',
+    files: ['**/*.css'],
+    language: 'css/css',
+    plugins: {
+      css: cssPlugin
+    },
+    rules: {
+      ...importJsonC('configs/eslint-css.jsonc')
     }
   },
   {

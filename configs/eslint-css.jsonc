@@ -1,0 +1,58 @@
+{
+  // [ESLint/CSS] https://github.com/eslint/css/blob/main/docs/rules | Using "warn" wherever applicable
+  "font-family-fallbacks": "warn",
+  "no-duplicate-imports": "warn",
+  "no-duplicate-keyframe-selectors": "warn",
+  "no-empty-blocks": "warn",
+  "no-important": "warn",
+  "no-invalid-at-rule-placement": "error",
+  "no-invalid-at-rules": "error",
+  "no-invalid-named-grid-areas": "error",
+  "no-invalid-properties": [
+     "error", {
+      "allowUnknownVariables": false
+    } 
+  ],
+  "no-unmatchable-selectors": "warn",
+  "prefer-logical-properties": [
+    "warn", 
+  {
+      "allowProperties": [],
+      "allowUnits": []
+    } 
+  ],
+  "relative-font-units": [
+    "warn", {
+      "allowUnits": ["rem", "%"]
+    }
+  ],
+  "selector-complexity": [ 
+    "warn", {
+      "maxIds": 10,
+      "maxClasses": 10,
+      "maxTypes": 10,
+      "maxAttributes": 5,
+      "maxPseudoClasses": 5,
+      "maxUniversals": 2,
+      "maxCompounds": 5,
+      "maxCombinators": 5,
+      "disallowCombinators": [],
+      "disallowPseudoClasses": [],
+      "disallowPseudoElements": [],
+      "disallowAttributes": [],
+      "disallowAttributeMatchers": []
+    } 
+  ],
+  "use-baseline": [ 
+    "warn", {
+      "available": "newly",
+      "allowAtRules": [],
+      "allowFunctions": [],
+      "allowMediaConditions": [],
+      "allowProperties": [],
+      "allowPropertyValues": {},
+      "allowSelectors": []
+    }
+  ],
+  "use-layers": "off"
+}
