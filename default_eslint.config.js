@@ -87,6 +87,12 @@ catch (err) { if (err.code != 'ENOENT') throw err; }
 export default [
   gitIgnore,
   {
+    name: 'eslint-config:common-ignores',
+    ignores: [
+      '.sonarlint/**/*.json{,c,5}' // use SonarLint default order
+    ]
+  },
+  {
     name: 'eslint-config:all',
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
     languageOptions: {
