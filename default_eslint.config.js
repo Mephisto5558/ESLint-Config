@@ -30,7 +30,7 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 import customPlugin from './ruleOverwrites/index.js';
 
 export * from './utils.js';
-export { plugins, globals };
+export { plugins, globals, tsGlob, jsGlob };
 
 /**
  * @param {string} path Removes comments
@@ -52,6 +52,8 @@ function importJsonC(path) {
 }
 
 const
+  tsGlob = '.{m,c,}ts{,x}',
+  jsGlob = '.{m,c,}js{,x}',
   plugins = {
     '@typescript-eslint': typescriptPlugin,
     '@stylistic': stylisticPlugin,
@@ -94,7 +96,7 @@ export default [
   },
   {
     name: 'eslint-config:all',
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}', '**/*.html'],
+    files: [`**/*${tsGlob}`, `**/*${jsGlob}`, '**/*.html'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
@@ -234,7 +236,7 @@ export default [
   },
   {
     name: 'eslint-config:ts',
-    files: ['**/*.ts'],
+    files: [`**/*${tsGlob}`],
     rules: {
       // TS-Only rules
       'no-undef': 'off',
@@ -313,6 +315,7 @@ export default [
       // ],
       '@typescript-eslint/use-unknown-in-catch-callback-variable': 'warn',
       'import-x/no-relative-parent-imports': 'off',
+      'import-x/extentions': 'off',
       'sonarjs/public-static-readonly': 'warn'
     }
   }
