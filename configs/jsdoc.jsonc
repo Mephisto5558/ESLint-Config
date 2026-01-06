@@ -248,6 +248,7 @@
   "require-property-description": "off",
   "require-property-name": "warn",
   "require-property-type": "warn",
+  "require-rejects": "off",
   "require-returns": "off",
   "require-returns-check": [
     "error",
