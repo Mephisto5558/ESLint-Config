@@ -21,7 +21,6 @@ function mergeObjects(original, update) {
       data[k] = k in update ? mergeObjects(original[k], update[k]) : v;
 
     for (const [k, v] of Object.entries(update))
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment */
       if (!(k in data)) data[k] = v;
   }
 

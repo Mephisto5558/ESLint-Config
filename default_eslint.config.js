@@ -10,6 +10,7 @@ import { basename, resolve } from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import globals from 'globals';
+import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
 import jsonCParser from 'jsonc-eslint-parser';
@@ -34,8 +35,9 @@ export { plugins, globals, tsGlob, jsGlob };
 
 /**
  * @param {string} path Removes comments
- * @returns {Record<string, string | [string | number | Record<string, unknown>, unknown[]][]>} */
+ * @returns {JSONObject} */
 function importJsonC(path) {
+  /** @type {JSONObject} */
   const rules = JSON.parse(
     readFileSync(resolve(import.meta.dirname, path), 'utf8')
       .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
@@ -111,10 +113,8 @@ export default [
         ...globals.builtin,
         ...globals.node,
         ...globals.es2024,
-        NodeJS: 'readonly',
-
-        // better-typescript-lib
-        JSONValue: 'writable'
+        ...betterTypesGlobals,
+        NodeJS: 'readonly'
       }
     },
     linterOptions: {

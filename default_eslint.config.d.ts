@@ -1,3 +1,5 @@
+import type * as __ from '@mephisto5558/better-types'; /* eslint-disable-line import-x/no-namespace -- load in global definitions */
+
 import type { ESLint, Linter } from 'eslint';
 import type Globals from 'globals';
 
