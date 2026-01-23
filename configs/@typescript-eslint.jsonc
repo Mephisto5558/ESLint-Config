@@ -305,7 +305,7 @@
   "no-unnecessary-type-assertion": "warn",
   "no-unnecessary-type-constraint": "warn",
   "no-unnecessary-type-conversion": "warn",
-  "no-unnecessary-type-parameters": "warn", // Note: does not jet have an option to allow same params on overloads
+  "no-unnecessary-type-parameters": "warn", // Note: does not yet have an option to allow same params on overloads
   "no-unsafe-argument": "warn",
   "no-unsafe-assignment": "warn",
   "no-unsafe-call": "warn",
@@ -507,6 +507,12 @@
     "in-try-catch"
   ],
   "strict-boolean-expressions": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`
+  "strict-void-return": [
+    "warn",
+    {
+      "allowReturnAny": false
+    }
+  ],
   "switch-exhaustiveness-check": [
     "warn",
     {

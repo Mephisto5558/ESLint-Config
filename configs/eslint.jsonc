@@ -524,7 +524,7 @@
   "require-await": "off", // Handled by `@typescript-eslint/require-await`
   "require-unicode-regexp": "off", // Handled by `regexp/no-misleading-unicode-character`
   "require-yield": "warn",
-  "sort-imports": "off", // TODO: add eslint-plugin-import
+  "sort-imports": "off",
   "sort-keys": "off",
   "sort-vars": "off",
   "strict": [

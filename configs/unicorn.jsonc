@@ -79,7 +79,7 @@
       "strategy": "loose",
       "include": [ ],
       "exclude": [ ],
-      "useErrorIsError": false // Only available on Node>=24
+      "useErrorIsError": false // Set in `default_eslint.config.js` because it's only available on Node>=24
     }
   ],
   "no-invalid-fetch-options": "error",

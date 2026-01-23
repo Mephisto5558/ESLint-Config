@@ -81,6 +81,14 @@ const
     ...importJsonC('configs/custom.jsonc')
   };
 
+rules['unicorn/no-instanceof-builtins'] = getModifiedRule(
+  { rules }, 'unicorn/no-instanceof-builtins', {
+    /* eslint-disable-next-line @typescript-eslint/no-magic-numbers
+    -- see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
+    useErrorIsError: Number(process.versions.node.split('.', 1)[0]) >= 24
+  }
+);
+
 let gitIgnore;
 try { gitIgnore = includeIgnoreFile(resolve('.', '.gitignore'), 'eslint-config:cwd-gitignore'); }
 catch (err) { if (err.code != 'ENOENT') throw err; }
@@ -122,6 +130,9 @@ export default [
       reportUnusedInlineConfigs: 'warn'
     },
     settings: {
+      jsdoc: {
+        skipInvokedExpressionsForCommentFinding: true
+      },
       react: { version: 'detect' },
       'import-x/resolver-next': [
         createTypeScriptImportResolver({

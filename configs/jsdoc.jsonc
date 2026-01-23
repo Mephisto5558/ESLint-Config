@@ -454,7 +454,7 @@
     }
   ],
   "type-formatting": [
-    "off", // wants to change `@type {{ a: 1, b: 2 }}` to `@type {{a: 1, b: 2}}`. Waiting if a way to turn it off gets added.
+    "warn",
     {
       "enableFixer": true,
       "arrayBrackets": "square",
@@ -477,6 +477,7 @@
       "objectFieldSeparator": "comma",
       "objectFieldSeparatorOptionalLinebreak": true,
       "objectFieldSeparatorTrailingPunctuation": false,
+      "objectTypeBracketSpacing": " ",
       "parameterDefaultValueSpacing": " ",
       "postMethodNameSpacing": "",
       "postNewSpacing": " ",

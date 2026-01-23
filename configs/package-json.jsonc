@@ -82,6 +82,12 @@
       "ignorePrivate": true
     }
   ],
+  "require-scripts": [
+    "warn",
+    {
+      "ignorePrivate": true
+    }
+  ],
   "require-sideEffects": "off",
   "require-type": [
     "warn",
