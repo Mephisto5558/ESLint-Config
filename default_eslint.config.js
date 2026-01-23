@@ -3,7 +3,7 @@
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable import-x/extensions -- errors if removed */
 
-/** @import { Linter } from 'eslint' */
+/** @import { Linter, ESLint } from 'eslint' */
 
 import { readFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
@@ -20,7 +20,7 @@ import { getModifiedRule } from './utils.js';
 import cssPlugin from '@eslint/css';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import htmlPlugin from 'eslint-plugin-html';
+import htmlPluginRaw from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
@@ -29,6 +29,10 @@ import regExPlugin from 'eslint-plugin-regexp';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import customPlugin from './ruleOverwrites/index.js';
+
+/** @type {ESLint.Plugin} */
+/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- this plugin does not export types */
+const htmlPlugin = htmlPluginRaw;
 
 export * from './utils.js';
 export { plugins, globals, tsGlob, jsGlob };
@@ -57,15 +61,16 @@ const
   tsGlob = '.{m,c,}ts{,x}',
   jsGlob = '.{m,c,}js{,x}',
   plugins = {
-    '@typescript-eslint': typescriptPlugin,
-    '@stylistic': stylisticPlugin,
-    jsdoc: jsdocPlugin,
-    sonarjs: sonarjsPlugin,
-    unicorn: unicornPlugin,
-    regexp: regExPlugin,
-    html: htmlPlugin, /* eslint-disable-line @typescript-eslint/no-unsafe-assignment */
-    'import-x': importPlugin,
-    custom: customPlugin
+    [typescriptPlugin.meta.namespace ?? '@typescript-eslint']: typescriptPlugin,
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- consistency */
+    [stylisticPlugin.meta?.namespace ?? '@stylistic']: stylisticPlugin,
+    [jsdocPlugin.meta?.namespace ?? 'jsdoc']: jsdocPlugin,
+    [sonarjsPlugin.meta.namespace ?? 'sonarjs']: sonarjsPlugin,
+    [unicornPlugin.meta?.namespace ?? 'unicorn']: unicornPlugin,
+    [regExPlugin.meta.namespace ?? 'regexp']: regExPlugin,
+    [htmlPlugin.meta?.namespace ?? 'html']: htmlPlugin,
+    [importPlugin.meta.namespace ?? 'import-x']: importPlugin,
+    [customPlugin.meta.namespace]: customPlugin
   },
 
   /** @type {ReturnType<importJsonC> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }} */
@@ -122,7 +127,7 @@ export default [
         ...globals.node,
         ...globals.es2024,
         ...betterTypesGlobals,
-        NodeJS: 'readonly'
+        NodeJS: 'readonly' // @types/node
       }
     },
     linterOptions: {
@@ -151,7 +156,7 @@ export default [
       parser: jsonCParser
     },
     plugins: {
-      'package-json': packageJSONPlugin
+      [packageJSONPlugin.meta.namespace ?? 'package-json']: packageJSONPlugin
     },
     rules: importJsonC('configs/package-json.jsonc')
   },
@@ -163,9 +168,12 @@ export default [
       parser: jsonCParser
     },
     plugins: {
-      jsonc: jsoncPlugin
+      [jsoncPlugin.meta.namespace ?? 'jsonc']: jsoncPlugin
     },
-    rules: importJsonC('configs/jsonc.jsonc')
+    rules: {
+      ...importJsonC('configs/jsonc.jsonc'),
+      'no-warning-comments': rules['no-warning-comments']
+    }
   },
   {
     name: 'eslint-config:tsconfig.json',
@@ -174,7 +182,7 @@ export default [
       parser: jsonCParser
     },
     plugins: {
-      jsonc: jsoncPlugin
+      [jsoncPlugin.meta.namespace ?? 'jsonc']: jsoncPlugin
     },
     rules: {
       'jsonc/sort-keys': [
@@ -239,7 +247,7 @@ export default [
     files: ['**/*.css'],
     language: 'css/css',
     plugins: {
-      css: cssPlugin
+      [cssPlugin.meta.namespace ?? 'css']: cssPlugin
     },
     rules: {
       ...importJsonC('configs/eslint-css.jsonc')

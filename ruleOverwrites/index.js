@@ -6,6 +6,10 @@ const EXT_LENGTH = 3;
 
 /** @type {ESLint.Plugin} */
 export default {
+  meta: {
+    name: 'custom',
+    namespace: 'custom'
+  },
   rules: Object.fromEntries(await Promise.all(
     readdirSync(import.meta.dirname)
       .filter(e => e !== 'index.js')
