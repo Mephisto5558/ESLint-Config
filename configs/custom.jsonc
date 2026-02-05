@@ -14,7 +14,10 @@
   "prefer-ternary": [
     "warn",
     "only-single-line",
-    150
+    {
+      "maxLength": 150,
+      "preventNestedTernary": true
+    }
   ],
   "unbound-method": [
     "error",
