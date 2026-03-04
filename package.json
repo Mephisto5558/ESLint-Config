@@ -19,10 +19,11 @@
   "main": "default_eslint.config.js",
   "types": "default_eslint.config.d.ts",
   "files": [
-    "default_eslint.config.d.ts",
-    "utils.js",
     "configs",
-    "ruleOverwrites"
+    "data.js",
+    "default_eslint.config.d.ts",
+    "ruleOverwrites",
+    "utils.js"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\""
@@ -48,6 +49,9 @@
     "eslint-plugin-sonarjs": "^4.0.0",
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "17.x"
+  },
+  "devDependencies": {
+    "@eslint/json": "^1.0.1"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"

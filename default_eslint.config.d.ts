@@ -8,7 +8,7 @@ declare const defaultExport: Linter.Config[];
 
 export default defaultExport;
 export const pluginNames: Record<
-  'css' | 'html' | 'import' | 'jsdoc' | 'jsonc' | 'packageJSON'
+  'css' | 'html' | 'import' | 'jsdoc' | 'json' | 'jsonc' | 'packageJSON'
   | 'regex' | 'sonar' | 'stylistic' | 'typescript' | 'unicorn' | 'custom',
   string
 >;

@@ -1,0 +1,11 @@
+{
+  // [ESLint/JSON] https://github.com/eslint/json/blob/main/docs/rules | Using "warn" wherever applicable
+  "no-duplicate-keys": "error",
+  "no-empty-keys": "warn",
+  "no-unnormalized-keys": ["warn", {
+    "form": "NFC"
+  }],
+  "no-unsafe-values": "warn",
+  "sort-keys": "off", // Handled by `jsonc/sort-keys`
+  "top-level-interop": "off"
+}

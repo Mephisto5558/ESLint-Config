@@ -1,93 +1,27 @@
+/* eslint-disable unicorn/filename-case */
+
 /* eslint-disable import-x/order -- manually grouped by kind */
-/* eslint-disable import-x/max-dependencies -- all needed here */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
-/* eslint-disable import-x/extensions -- errors if removed */
 
-/** @import { Linter, ESLint } from 'eslint' */
+/** @import { Linter } from 'eslint' */
 
-import { readFileSync } from 'node:fs';
-import { basename, resolve } from 'node:path';
+import { resolve } from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
 import globals from 'globals';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
-import jsonCParser from 'jsonc-eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+
 import { getModifiedRule } from './utils.js';
-
-import cssPlugin from '@eslint/css';
-import stylisticPlugin from '@stylistic/eslint-plugin';
-import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-import htmlPluginRaw from 'eslint-plugin-html';
-import importPlugin from 'eslint-plugin-import-x';
-import jsdocPlugin from 'eslint-plugin-jsdoc';
-import jsoncPlugin from 'eslint-plugin-jsonc';
-import packageJSONPlugin from 'eslint-plugin-package-json';
-import regExPlugin from 'eslint-plugin-regexp';
-import sonarjsPlugin from 'eslint-plugin-sonarjs';
-import unicornPlugin from 'eslint-plugin-unicorn';
-import customPlugin from './ruleOverwrites/index.js';
-
-/** @type {ESLint.Plugin} */
-/* eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- this plugin does not export types */
-const htmlPlugin = htmlPluginRaw;
+import { importJsonC, pluginNames, rules, jsGlob, tsGlob, plugins, filetypeSpecificPlugins } from './data.js';
 
 export * from './utils.js';
-export { plugins, globals, tsGlob, jsGlob };
+export { plugins, pluginNames, globals, tsGlob, jsGlob };
 
-/**
- * @param {string} path Removes comments
- * @returns {JSONObject} */
-function importJsonC(path) {
-  /** @type {JSONObject} */
-  const rules = JSON.parse(
-    readFileSync(resolve(import.meta.dirname, path), 'utf8')
-      .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
-      .replaceAll(/\/\/.*/g, '') // remove line comments
-  );
-
-
-  let filename = basename(path, '.jsonc');
-  if (filename.startsWith('sonarjs')) filename = 'sonarjs/';
-  else if (filename.startsWith('eslint-')) filename = filename.slice('eslint-'.length) + '/';
-  else filename = filename == 'eslint' ? '' : `${filename}/`;
-
-  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
-}
-
-const
-  tsGlob = '.{m,c,}ts{,x}',
-  jsGlob = '.{m,c,}js{,x}',
-  plugins = {
-    [typescriptPlugin.meta.namespace ?? '@typescript-eslint']: typescriptPlugin,
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access -- consistency */
-    [stylisticPlugin.meta?.namespace ?? '@stylistic']: stylisticPlugin,
-    [jsdocPlugin.meta?.namespace ?? 'jsdoc']: jsdocPlugin,
-    [sonarjsPlugin.meta.namespace ?? 'sonarjs']: sonarjsPlugin,
-    [unicornPlugin.meta?.namespace ?? 'unicorn']: unicornPlugin,
-    [regExPlugin.meta.namespace ?? 'regexp']: regExPlugin,
-    [htmlPlugin.meta?.namespace ?? 'html']: htmlPlugin,
-    [importPlugin.meta.namespace ?? 'import-x']: importPlugin,
-    [customPlugin.meta.namespace]: customPlugin
-  },
-
-  /** @type {ReturnType<importJsonC> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }} */
-  rules = {
-    ...importJsonC('configs/eslint.jsonc'),
-    ...importJsonC('configs/@stylistic.jsonc'),
-    ...importJsonC('configs/@typescript-eslint.jsonc'),
-    ...importJsonC('configs/jsdoc.jsonc'),
-    ...importJsonC('configs/regexp.jsonc'),
-    ...importJsonC('configs/sonarjs.jsonc'),
-    ...importJsonC('configs/unicorn.jsonc'),
-    ...importJsonC('configs/import-x.jsonc'),
-    ...importJsonC('configs/custom.jsonc')
-  };
-
-rules['unicorn/no-instanceof-builtins'] = getModifiedRule(
-  { rules }, 'unicorn/no-instanceof-builtins', {
+rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
+  { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, {
     /* eslint-disable-next-line @typescript-eslint/no-magic-numbers
     -- see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
     useErrorIsError: Number(process.versions.node.split('.', 1)[0]) >= 24
@@ -106,7 +40,8 @@ export default [
   {
     name: 'eslint-config:common-ignores',
     ignores: [
-      '.sonarlint/**/*.json{,c,5}' // use SonarLint default order
+      '.sonarlint/**/*.json{,c,5}', // use SonarLint default order
+      'package-lock.json' // generated file
     ]
   },
   {
@@ -115,9 +50,7 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        projectService: {
-          allowDefaultProject: [`*.${tsGlob}`, `*.${jsGlob}`]
-        },
+        projectService: true,
         tsconfigRootDir: undefined,
         extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
@@ -137,57 +70,69 @@ export default [
       reportUnusedInlineConfigs: 'warn'
     },
     settings: {
-      jsdoc: {
+      [pluginNames.jsdoc]: {
         skipInvokedExpressionsForCommentFinding: true
       },
       react: { version: 'detect' },
-      'import-x/resolver-next': [
-        createTypeScriptImportResolver({
-          alwaysTryTypes: true,
-          bun: true
-        })
-      ],
+      [pluginNames.import]: {
+        'resolver-next': [
+          createTypeScriptImportResolver({
+            alwaysTryTypes: true,
+            bun: true
+          })
+        ]
+      },
       ...importJsonC('configs/html.jsonc')
     },
     plugins, rules
   },
   {
-    name: 'eslint-config:package-json',
-    files: ['**/package.json'],
-    languageOptions: {
-      parser: jsonCParser
-    },
-    plugins: {
-      [packageJSONPlugin.meta.namespace ?? 'package-json']: packageJSONPlugin
-    },
-    rules: importJsonC('configs/package-json.jsonc')
-  },
-  {
-    name: 'eslint-config:jsonc',
+    name: 'eslint-config:all-json',
     files: ['**/*.json{,c,5}'],
-    ignores: ['**/package{,-lock}.json', '**/.vscode/**/*.json'],
-    languageOptions: {
-      parser: jsonCParser
-    },
+    ignores: ['package-lock.json'],
     plugins: {
-      [jsoncPlugin.meta.namespace ?? 'jsonc']: jsoncPlugin
+      [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json],
+      [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]
     },
     rules: {
+      ...importJsonC('configs/eslint-json.jsonc'),
       ...importJsonC('configs/jsonc.jsonc'),
       'no-warning-comments': rules['no-warning-comments']
     }
   },
   {
-    name: 'eslint-config:tsconfig.json',
-    files: ['**/tsconfig.json'],
-    languageOptions: {
-      parser: jsonCParser
-    },
+    name: 'eslint-config:package-json',
+    files: ['**/package.json'],
+    language: `${pluginNames.jsonc}/x`,
     plugins: {
-      [jsoncPlugin.meta.namespace ?? 'jsonc']: jsoncPlugin
+      [pluginNames.packageJSON]: filetypeSpecificPlugins[pluginNames.packageJSON]
     },
     rules: {
-      'jsonc/sort-keys': [
+      ...importJsonC('configs/package-json.jsonc'),
+      [`${pluginNames.jsonc}/sort-keys`]: 'off' // Handled by `package-json/order-properties`
+    }
+  },
+  {
+    name: 'eslint-config:json',
+    files: ['**/*.json'],
+    ignores: ['**/package.json', '**/.vscode/**/*.json'],
+    language: `${pluginNames.json}/json`
+  },
+  {
+    name: 'eslint-config:jsonc',
+    files: ['**/*.jsonc', '**/.vscode/**/*.json'],
+    language: `${pluginNames.json}/jsonc`
+  },
+  {
+    name: 'eslint-config:json5',
+    files: ['**/*.json5'],
+    language: `${pluginNames.json}/json5`
+  },
+  {
+    name: 'eslint-config:tsconfig.json',
+    files: ['**/tsconfig.json'],
+    rules: {
+      [`${pluginNames.jsonc}/sort-keys`]: [
         'warn',
         {
           pathPattern: '.*',
@@ -229,11 +174,11 @@ export default [
       globals: globals.browser
     },
     rules: {
-      'sonarjs/no-table-as-layout': 'warn',
-      'sonarjs/object-alt-content': 'warn',
-      'sonarjs/table-header': 'warn',
-      'sonarjs/table-header-reference': 'warn',
-      '@stylistic/no-multiple-empty-lines': [
+      [`${pluginNames.sonar}/no-table-as-layout`]: 'warn',
+      [`${pluginNames.sonar}/object-alt-content`]: 'warn',
+      [`${pluginNames.sonar}/table-header`]: 'warn',
+      [`${pluginNames.sonar}/table-header-reference`]: 'warn',
+      [`${pluginNames.stylistic}/no-multiple-empty-lines`]: [
         'error',
         {
           max: 2,
@@ -241,15 +186,15 @@ export default [
           maxBOF: 1 // <script> tag should be on its own line
         }
       ],
-      '@stylistic/eol-last': 'off' // </script> tag should be on the next line
+      [`${pluginNames.stylistic}/eol-last`]: 'off' // </script> tag should be on the next line
     }
   },
   {
     name: 'eslint-config:css',
     files: ['**/*.css'],
-    language: 'css/css',
+    language: `${pluginNames.css}/css`,
     plugins: {
-      [cssPlugin.meta.namespace ?? 'css']: cssPlugin
+      [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]
     },
     rules: {
       ...importJsonC('configs/eslint-css.jsonc')
@@ -264,20 +209,20 @@ export default [
       'no-shadow': 'off',
       'no-use-before-define': 'off',
       'class-methods-use-this': 'off',
-      'jsdoc/check-tag-names': getModifiedRule({ rules }, 'jsdoc/check-tag-names', { typed: true }),
-      'jsdoc/require-param-type': 'off',
-      'jsdoc/require-param': 'off',
-      'jsdoc/require-returns-type': 'off',
-      'jsdoc/check-param-names': 'off',
-      'jsdoc/no-types': [
+      [`${pluginNames.jsdoc}/check-tag-names`]: getModifiedRule({ rules }, `${pluginNames.jsdoc}/check-tag-names`, { typed: true }),
+      [`${pluginNames.jsdoc}/require-param-type`]: 'off',
+      [`${pluginNames.jsdoc}/require-param`]: 'off',
+      [`${pluginNames.jsdoc}/require-returns-type`]: 'off',
+      [`${pluginNames.jsdoc}/check-param-names`]: 'off',
+      [`${pluginNames.jsdoc}/no-types`]: [
         'warn',
         {
           // contexts:
         }
       ],
-      'jsdoc/no-defaults': 'off', // cannot set them in ts function declarations
-      '@typescript-eslint/adjacent-overload-signatures': 'warn',
-      '@typescript-eslint/explicit-function-return-type': [
+      [`${pluginNames.jsdoc}/no-defaults`]: 'off', // cannot be set in ts function declarations
+      [`${pluginNames.typescript}/adjacent-overload-signatures`]: 'warn',
+      [`${pluginNames.typescript}/explicit-function-return-type`]: [
         'warn',
         {
           /* eslint-disable-next-line id-length */
@@ -292,7 +237,7 @@ export default [
           allowedNames: []
         }
       ],
-      '@typescript-eslint/explicit-member-accessibility': [
+      [`${pluginNames.typescript}/explicit-member-accessibility`]: [
         'warn',
         {
           accessibility: 'no-public',
@@ -306,7 +251,7 @@ export default [
           }
         }
       ],
-      '@typescript-eslint/explicit-module-boundary-types': [
+      [`${pluginNames.typescript}/explicit-module-boundary-types`]: [
         'warn', // Overlap with `@typescript-eslint/explicit-function-return-type` on exported functions, but not fixable
         {
           allowArgumentsExplicitlyTypedAsAny: true,
@@ -318,13 +263,13 @@ export default [
           allowedNames: []
         }
       ],
-      '@typescript-eslint/prefer-readonly': [
+      [`${pluginNames.typescript}/prefer-readonly`]: [
         'warn',
         {
           onlyInlineLambdas: false
         }
       ],
-      '@typescript-eslint/prefer-readonly-parameter-types': 'off', // Doesn't seem to work well
+      [`${pluginNames.typescript}/prefer-readonly-parameter-types`]: 'off', // Doesn't seem to work well
       // [
       //   'warn',
       //   {
@@ -334,10 +279,10 @@ export default [
       //     treatMethodsAsReadonly: false
       //   }
       // ],
-      '@typescript-eslint/use-unknown-in-catch-callback-variable': 'warn',
-      'import-x/no-relative-parent-imports': 'off',
-      'import-x/extentions': 'off',
-      'sonarjs/public-static-readonly': 'warn'
+      [`${pluginNames.typescript}/use-unknown-in-catch-callback-variable`]: 'warn',
+      [`${pluginNames.import}/no-relative-parent-imports`]: 'off',
+      [`${pluginNames.import}/extentions`]: 'off',
+      [`${pluginNames.sonar}/public-static-readonly`]: 'warn'
     }
   }
 ].filter(Boolean);
