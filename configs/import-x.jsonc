@@ -54,7 +54,7 @@
       "commonjs": true,
       "amd": true,
       "maxDepth": 10,
-      "ignoreExternal": false,
+      "ignoreExternal": true,
       "allowUnsafeDynamicCyclicDependency": false
     }
   ],
