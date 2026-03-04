@@ -21,11 +21,11 @@ export * from './utils.js';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
 
 rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
-  { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, {
+  { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
     /* eslint-disable-next-line @typescript-eslint/no-magic-numbers
     -- see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
     useErrorIsError: Number(process.versions.node.split('.', 1)[0]) >= 24
-  }
+  }], true
 );
 
 let gitIgnore;
@@ -109,7 +109,8 @@ export default [
     },
     rules: {
       ...importJsonC('configs/package-json.jsonc'),
-      [`${pluginNames.jsonc}/sort-keys`]: 'off' // Handled by `package-json/order-properties`
+      [`${pluginNames.jsonc}/sort-keys`]: 'off', // Handled by `package-json/order-properties`
+      [`${pluginNames.jsonc}/key-name-casing`]: 'off'
     }
   },
   {
@@ -209,7 +210,7 @@ export default [
       'no-shadow': 'off',
       'no-use-before-define': 'off',
       'class-methods-use-this': 'off',
-      [`${pluginNames.jsdoc}/check-tag-names`]: getModifiedRule({ rules }, `${pluginNames.jsdoc}/check-tag-names`, { typed: true }),
+      ...getModifiedRule({ rules }, `${pluginNames.jsdoc}/check-tag-names`, [{ typed: true }]),
       [`${pluginNames.jsdoc}/require-param-type`]: 'off',
       [`${pluginNames.jsdoc}/require-param`]: 'off',
       [`${pluginNames.jsdoc}/require-returns-type`]: 'off',

@@ -29,12 +29,12 @@ function mergeObjects(original, update) {
 
 /** @type {getModifiedRuleT} */
 /* eslint-disable-next-line import-x/prefer-default-export -- may add more utils in the future */
-export function getModifiedRule(config, name, ...newData) {
+export function getModifiedRule(config, name, newData, returnRuleOnly = false) {
   const
 
     /** @type {[string | number, ...JSONValue[]]} */
     [severity, ...ruleConfig] = (Array.isArray(config) ? config : [config]).find(e => e.rules && name in e.rules)?.rules[name] ?? ['off'],
     mergedConfig = Array.from({ length: Math.max(ruleConfig.length, newData.length) }, (_, i) => mergeObjects(ruleConfig[i], newData[i]));
 
-  return [severity, ...mergedConfig];
+  return returnRuleOnly ? [severity, ...mergedConfig] : { [name]: [severity, ...mergedConfig] };
 }

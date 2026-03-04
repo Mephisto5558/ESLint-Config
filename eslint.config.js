@@ -18,13 +18,13 @@ export default [
   {
     files: ['configs/*.jsonc'],
     rules: {
-      [`${pluginNames.jsonc}/key-name-casing`]: getModifiedRule(config, `${pluginNames.jsonc}/key-name-casing`, {
+      ...getModifiedRule(config, `${pluginNames.jsonc}/key-name-casing`, [{
         ignores: ['^(require|valid)-.*']
-      }),
+      }]),
       [`${pluginNames.jsonc}/sort-array-values`]: 'off', // config array order is important
-      [`${pluginNames.jsonc}/sort-keys`]: getModifiedRule(config, `${pluginNames.jsonc}/sort-keys`, {
+      ...getModifiedRule(config, `${pluginNames.jsonc}/sort-keys`, [{
         pathPattern: '^$' // anything below top-level is manually ordered according to the plugin docs
-      })
+      }])
     }
   },
   {

@@ -18,6 +18,6 @@ export const tsGlob: '.{m,c,}ts{,x}';
 export const jsGlob: '.{m,c,}js{,x}';
 
 /** Merge old and new config for a rule, returning the new rule */
-export function getModifiedRule(
-  config: Linter.Config | Linter.Config[], name: string, ...newData: JSONValue[]
-): Linter.RuleEntry;
+export function getModifiedRule<NAME extends string, RULE_ONLY extends boolean = false>(
+  config: Linter.Config | Linter.Config[], name: NAME, newData: JSONValue[], returnRuleOnly?: RULE_ONLY
+): RULE_ONLY extends true ? Linter.RuleEntry : Record<NAME, Linter.RuleEntry>;
