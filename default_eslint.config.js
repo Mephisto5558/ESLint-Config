@@ -115,7 +115,9 @@ export default [
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
-        project: true,
+        projectService: {
+          allowDefaultProject: [`*.${tsGlob}`, `*.${jsGlob}`]
+        },
         tsconfigRootDir: undefined,
         extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
