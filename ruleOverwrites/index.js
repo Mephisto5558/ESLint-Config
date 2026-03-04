@@ -4,7 +4,7 @@ import { readdirSync } from 'node:fs';
 
 const EXT_LENGTH = 3;
 
-/** @type {ESLint.Plugin} */
+/** @type {ESLint.Plugin & { meta: { namespace: string } }} */
 export default {
   meta: {
     name: 'custom',

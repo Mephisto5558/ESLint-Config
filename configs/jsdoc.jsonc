@@ -57,7 +57,7 @@
     "warn",
     {
       "enableFixer": true,
-      "definedTags": [ ],
+      "definedTags": [],
       "jsxTags": true,
       "typed": false
     }
@@ -67,7 +67,7 @@
     "error",
     {
       "noDefaults": false,
-      "exemptTagContexts": [ ],
+      "exemptTagContexts": [],
       "unifyParentAndChildTypeChecks": true
     }
   ],
@@ -94,13 +94,13 @@
   "empty-tags": [
     "warn",
     {
-      "tags": [ ]
+      "tags": []
     }
   ],
   "escape-inline-tags": [
     "warn",
     {
-      "allowedInlineTags": [ ],
+      "allowedInlineTags": [],
       "enableFixer": true,
       "fixType": "backticks"
     }
@@ -197,9 +197,9 @@
     "always",
     {
       "tags": {
-        "always": [ ],
-        "any": [ ],
-        "never": [ ]
+        "always": [],
+        "any": [],
+        "never": []
       }
     }
   ],
@@ -211,7 +211,7 @@
     "warn",
     "never",
     {
-      "tags": { }
+      "tags": {}
     }
   ],
   "require-jsdoc": "off",
@@ -481,9 +481,9 @@
       "parameterDefaultValueSpacing": " ",
       "postMethodNameSpacing": "",
       "postNewSpacing": " ",
-      // "propertyQuotes": null, // commented out in eslint-plugin-jsdoc source
       "separatorForSingleObjectField": false,
       "stringQuotes": "single",
+      "trailingPunctuationMultilineOnly": true,
       "typeBracketSpacing": "",
       "unionSpacing": " "
     }

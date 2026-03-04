@@ -155,6 +155,7 @@
   "jsx-newline": "",
   "jsx-one-expression-per-line": "",
   "jsx-pascal-case": "",
+  "jsx-props-style": "",
   "jsx-quotes": "",
   "jsx-self-closing-comp": "",
   "jsx-tag-spacing": "",

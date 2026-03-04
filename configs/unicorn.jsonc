@@ -31,23 +31,30 @@
   "expiring-todo-comments": "off", // Handled by `no-warning-comments`
   "explicit-length-check": "off",
   "filename-case": [
-    // See filename-case: eslint disable directive does not work
-    // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2043
-    "off",
+    "warn",
     {
       "case": "camelCase",
-      "ignore": [ ]
+      "ignore": []
     }
   ],
   "import-style": [
     "warn",
     {
-      "styles": { },
+      "styles": {},
       "extendDefaultStyles": false,
       "checkImport": true,
       "checkDynamicImport": true,
-      "checkExportFrom": false, // broken, see https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2148
+      "checkExportFrom": true,
       "checkRequire": true
+    }
+  ],
+  "isolated-functions": [
+    "warn",
+    {
+      // "functions": [],
+      // "selectors": [],
+      // "comments": [],
+      // "overrideGlobals": {} // uses ESLint's language options globals (https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md#overrideglobals)
     }
   ],
   "new-for-builtins": "error",
@@ -77,8 +84,8 @@
     "error",
     {
       "strategy": "loose",
-      "include": [ ],
-      "exclude": [ ],
+      "include": [],
+      "exclude": [],
       "useErrorIsError": false // Set in `default_eslint.config.js` because it's only available on Node>=24
     }
   ],
@@ -167,7 +174,7 @@
   "prefer-array-flat": [
     "warn",
     {
-      "functions": [ ]
+      "functions": []
     }
   ],
   "prefer-array-flat-map": "warn",
@@ -221,7 +228,7 @@
   "prefer-object-from-entries": [
     "warn",
     {
-      "functions": [ ]
+      "functions": []
     }
   ],
   "prefer-optional-catch-binding": "warn", // Should be handled by `@typescript-eslint/no-unused-vars` but is not for some reason
@@ -242,7 +249,7 @@
   "prefer-structured-clone": [
     "warn",
     {
-      "functions": [ ]
+      "functions": []
     }
   ],
   "prefer-switch": [

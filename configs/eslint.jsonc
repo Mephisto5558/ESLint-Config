@@ -9,7 +9,7 @@
       "allowVoid": true
     }
   ],
-  "constructor-super": "off", // Handled by `sonarjs/super-invocation`
+  "constructor-super": "error",
   "for-direction": "off", // Handled by `sonarjs/for-loop-increment-sign`
   "getter-return": [
     "error",
@@ -99,7 +99,7 @@
   "no-setter-return": "warn",
   "no-sparse-arrays": "warn",
   "no-template-curly-in-string": "warn",
-  "no-this-before-super": "off", // Handled by `sonarjs/super-invocation`
+  "no-this-before-super": "error",
   "no-unassigned-vars": "error",
   "no-undef": [
     // Handled by `@typescript-eslint/no-unsafe-assignment`, `@typescript-eslint/no-unsafe-call` except for typeof checks
@@ -517,10 +517,7 @@
       "requireCatchParameter": true
     }
   ],
-  "radix": [
-    "warn",
-    "as-needed"
-  ],
+  "radix": "warn",
   "require-await": "off", // Handled by `@typescript-eslint/require-await`
   "require-unicode-regexp": "off", // Handled by `regexp/no-misleading-unicode-character`
   "require-yield": "warn",

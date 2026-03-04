@@ -30,7 +30,8 @@
   ],
   "require-attribution": [
     "warn", {
-      "preferContributorsOnly": false
+      "preferContributorsOnly": false,
+      "ignorePrivate": false
     }
   ],
   "require-author": [

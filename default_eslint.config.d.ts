@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/filename-case */
 import type * as __ from '@mephisto5558/better-types'; /* eslint-disable-line import-x/no-namespace -- load in global definitions */
 
 import type { ESLint, Linter } from 'eslint';
@@ -6,6 +7,11 @@ import type Globals from 'globals';
 declare const defaultExport: Linter.Config[];
 
 export default defaultExport;
+export const pluginNames: Record<
+  'css' | 'html' | 'import' | 'jsdoc' | 'jsonc' | 'packageJSON'
+  | 'regex' | 'sonar' | 'stylistic' | 'typescript' | 'unicorn' | 'custom',
+  string
+>;
 export const plugins: Record<string, ESLint.Plugin>;
 export const globals: typeof Globals;
 export const tsGlob: '.{m,c,}ts{,x}';

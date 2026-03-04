@@ -262,7 +262,6 @@
   "stateful-regex": "error",
   "strict-transport-security": "warn",
   "strings-comparison": "error",
-  "super-invocation": "error",
   "test-check-exception": "warn",
   "todo-tag": "off", // Handled by `no-warning-comments`
   "too-many-break-or-continue-in-loop": "off",

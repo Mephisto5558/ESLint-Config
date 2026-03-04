@@ -20,8 +20,9 @@
   "no-mutable-exports": "warn",
   "no-named-as-default": "warn",
   "no-named-as-default-member": "warn",
-  "no-rename-default": "warn",
-  "no-unused-modules": "off", // Does not support flat config
+  "no-rename-default": "off",
+  // "no-unused-modules": "off", // Does not support ESLint v10 yet
+  "no-unused-modules": "error",
 
   //  Module systems
   "no-amd": "warn",
@@ -37,7 +38,7 @@
 
   //  Static analysis
   "default": "off", // Does not support `module.exports`
-  "named": "error", // Note: TODO could have many false positives
+  "named": "error",
   "namespace": "off", // Handled by `@typescript-eslint/no-unsafe-member-access`
   "no-absolute-path": [
     "warn",
@@ -90,7 +91,7 @@
   "dynamic-import-chunkname": "off",
   "exports-last": "off",
   "extensions": [
-    "warn",
+    "off", // does not support ESM imports
     "never",
     {
       "fix": true,
