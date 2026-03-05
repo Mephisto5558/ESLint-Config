@@ -33,7 +33,9 @@
   "filename-case": [
     "warn",
     {
-      "case": "camelCase",
+      "cases": {
+        "camelCase": true
+      },
       "ignore": []
     }
   ],
