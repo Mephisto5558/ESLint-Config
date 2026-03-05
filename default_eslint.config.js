@@ -121,8 +121,17 @@ export default [
   },
   {
     name: 'eslint-config:jsonc',
-    files: ['**/*.jsonc', '**/.vscode/**/*.json'],
+    files: ['**/*.jsonc'],
     language: `${pluginNames.json}/jsonc`
+  },
+  {
+    name: 'eslint-config:vscode-json',
+    files: ['**/.vscode/**/*.json'],
+    language: `${pluginNames.json}/jsonc`,
+    rules: {
+      [`${pluginNames.jsonc}/sort-keys`]: 'off', // use VSCode default order
+      [`${pluginNames.jsonc}/key-name-casing`]: 'off'
+    }
   },
   {
     name: 'eslint-config:json5',
