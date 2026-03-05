@@ -29,7 +29,10 @@
     "test": "echo \"Error: no test specified\""
   },
   "overrides": {
-    "baseline-browser-mapping": "latest"
+    "baseline-browser-mapping": "latest",
+    "eslint-plugin-import-x": {
+      "eslint": "^10.0.x"
+    }
   },
   "dependencies": {
     "@eslint/compat": "2.x",
