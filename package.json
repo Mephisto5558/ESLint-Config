@@ -1,6 +1,6 @@
 {
   "name": "@mephisto5558/eslint-config",
-  "version": "4.4.0",
+  "version": "5.0.0-pre.0",
   "description": "ESLint config file",
   "keywords": [
     "eslint"
