@@ -12,6 +12,30 @@
 
 This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, CSS and HTML.
 
+## How to use
+1. Installation
+```sh
+npm install --save-dev @mephisto5558/eslint-config
+```
+2. Use in eslint.config.js / cjs / mjs
+```js
+import config, { jsGlob } from '@mephisto5558/eslint-config';
+
+export default [
+  ...config,
+  {
+    name: 'your-project-overrides',
+    files: [`*${jsGlob}`],
+    rules: {
+      ...
+    }
+  }
+]
+```
+See one of my other project's ESLint config for a more complex example using `getModifiedRule`: [Teufelsbot](https://github.com/Mephisto5558/Teufelsbot/blob/main/eslint.config.mjs).
+
+It is recommended to use [`@mephisto5558/better-types`](https://www.npmjs.com/package/@mephisto5558/better-types) alongside this linter configuration as it uses [`better-typescript-lib`](https://www.npmjs.com/package/better-typescript-lib) under the hood to improve the default types. View its readme for how to set it up.
+
 ## Rule Severity
 
 The rules are divided into three severity levels: `error`, `warn`, and `off`.
