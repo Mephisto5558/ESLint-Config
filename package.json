@@ -37,6 +37,7 @@
   "dependencies": {
     "@eslint/compat": "2.x",
     "@eslint/css": "^0.14.1",
+    "@eslint/json": "^1.0.1",
     "@mephisto5558/better-types": "latest",
     "@stylistic/eslint-plugin": "^5.9.0",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
@@ -52,9 +53,6 @@
     "eslint-plugin-sonarjs": "^4.0.0",
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "17.x"
-  },
-  "devDependencies": {
-    "@eslint/json": "^1.0.1"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
