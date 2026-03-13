@@ -251,6 +251,8 @@
         "i", // index
         "k", // key
         "v", // value
+        "x", // horizontal axis
+        "y", // vertical axis
         "_" // omitted function param, e.g. (_, a) => a
       ]
       // "exceptionPatterns": 
