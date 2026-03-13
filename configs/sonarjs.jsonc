@@ -33,7 +33,6 @@
   "chai-determinate-assertion": "warn",
   "class-name": "off", // Handled by `camelcase`
   "class-prototype": "warn",
-  "code-eval": "off", // Handled by `no-eval`, `@typescript-eslint/no-implied-eval`
   "cognitive-complexity": [
     "warn",
     30
@@ -58,6 +57,7 @@
   "disabled-resource-integrity": "warn",
   "disabled-timeout": "error",
   "duplicates-in-character-class": "off", // Handled by `regexp/no-dupe-characters-character-class`, `regexp/no-obscure-range`, `regexp/prefer-range`
+  "dynamically-constructed-templates": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "elseif-without-else": "off",
   "empty-string-repetition": "off", // Handled by `regexp/no-empty-group`, `regexp/no-empty-alternative`
   "encryption-secure-mode": "warn",
@@ -81,6 +81,7 @@
   "function-return-type": "off", // Not configurable: Cannot allow undefined/null
   "future-reserved-words": "warn",
   "generator-without-yield": "warn",
+  "hardcoded-secret-signatures": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "hashing": "warn",
   "hidden-files": "warn",
   "in-operator-type-error": "error",
@@ -205,6 +206,7 @@
   "no-same-argument-assert": "error",
   "no-same-line-conditional": "off", // Handled by `@stylistic/max-statements-per-line`
   "no-selector-parameter": "warn",
+  "no-session-cookies-on-static-assets": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "no-skipped-tests": "warn",
   "no-small-switch": "warn",
   "no-sonar-comments": "warn", // Use `eslint-disable-line` instead
@@ -229,6 +231,7 @@
   "non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
   "non-number-in-arithmetic-expression": "warn",
   "null-dereference": "error",
+  "object-alt-content": "off", // Set in `default_eslint-config.js` for only HTML files
   "operation-returning-nan": "error",
   "os-command": "warn",
   "post-message": "warn",
@@ -252,6 +255,7 @@
       "threshold": 20
     }
   ],
+  "review-blockchain-mnemonic": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "session-regeneration": "warn",
   "shorthand-property-grouping": "warn",
   "single-char-in-character-classes": "off", // Handled by `regexp/no-useless-character-class`
@@ -262,6 +266,8 @@
   "stateful-regex": "error",
   "strict-transport-security": "warn",
   "strings-comparison": "error",
+  "table-header": "off", // Set in `default_eslint.config.js` for only HTML files
+  "table-header-reference": "off", // Set in `default_eslint.config.js` for only HTML files
   "test-check-exception": "warn",
   "todo-tag": "off", // Handled by `no-warning-comments`
   "too-many-break-or-continue-in-loop": "off",
@@ -271,6 +277,7 @@
   "unverified-certificate": "warn",
   "unverified-hostname": "warn",
   "updated-const-var": "off", // Handled by `no-const-assign`
+  "updated-loop-counter": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "use-type-alias": "warn",
   "values-not-convertible-to-numbers": "error",
   "variable-name": "off", // Handled by `camelcase`

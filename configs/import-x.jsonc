@@ -21,8 +21,17 @@
   "no-named-as-default": "warn",
   "no-named-as-default-member": "warn",
   "no-rename-default": "off",
-  // "no-unused-modules": "off", // Does not support ESLint v10 yet
-  "no-unused-modules": "error",
+  "no-unused-modules": [
+    "warn",
+    {
+      "missingExports": true,
+      "unusedExports": true,
+      "ignoreUnusedTypeExports": false,
+      // "src": []
+      // "ignoreExports": []
+      "suppressMissingFileEnumeratorAPIWarning": true
+    }
+  ], 
 
   //  Module systems
   "no-amd": "warn",

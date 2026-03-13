@@ -40,6 +40,7 @@
       "ignorePrivate": false
     }
   ],
+  "require-bin": "off",
   "require-bugs": [
     "warn",
     {
@@ -47,6 +48,8 @@
     }
   ],
   "require-bundleDependencies": "off",
+  "require-contributors": "off", // Handled by `package-json/require-attribution`
+  "require-cpu": "off",
   "require-dependencies": "off",
   "require-description": [
     "warn",
@@ -55,6 +58,13 @@
     }
   ],
   "require-devDependencies": "off",
+  "require-devEngines": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-directories": "off",
   "require-engines": [
     "warn",
     {
@@ -63,6 +73,7 @@
   ],
   "require-exports": "off", // Handled by `package-json/valid-main`
   "require-files": "off",
+  "require-funding": "off",
   "require-homepage": "off",
   "require-keywords": [
     "warn",
@@ -70,6 +81,20 @@
       "ignorePrivate": false
     }
   ],
+  "require-license": [
+    "warn",
+    {
+      "ignorePrivate": true
+    }
+  ],
+  "require-main": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "require-man": "off",
+  "require-module": "off",
   "require-name": [
     "warn",
     {
@@ -77,8 +102,11 @@
     }
   ],
   "require-optionalDependencies": "off",
+  "require-os": "off",
   "require-packageManager": "off",
   "require-peerDependencies": "off",
+  "require-private": "off",
+  "require-publishConfig": "off",
   "require-repository": [
     "warn", {
       "ignorePrivate": true
@@ -139,6 +167,7 @@
   "unique-dependencies": "warn",
   "valid-author": "error",
   "valid-bin": "error",
+  "valid-bugs": "error",
   "valid-bundleDependencies": "error",
   "valid-config": "error",
   "valid-contributors": "error",
@@ -150,6 +179,7 @@
   "valid-engines": "error",
   "valid-exports": "error",
   "valid-files": "error",
+  "valid-funding": "error",
   "valid-homepage": "error",
   "valid-keywords": "error",
   "valid-license": "error",
@@ -159,6 +189,8 @@
   "valid-name": "error",
   "valid-optionalDependencies": "error",
   "valid-os": "error",
+  "valid-package-definition": "error",
+  "valid-packageManager": "error",
   "valid-peerDependencies": "error",
   "valid-private": "error",
   "valid-publishConfig": "error",

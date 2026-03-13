@@ -438,7 +438,15 @@
       "requireNullish": false
     }
   ],
-  "prefer-promise-reject-errors": "error",
+  "prefer-promise-reject-errors": [
+    "error",
+    {
+      "allowEmptyReject": false,
+      // "allow": [],
+      "allowThrowingAny": false,
+      "allowThrowingUnknown": false
+    }
+  ],
   "prefer-readonly": "off", // Set in `default_eslint.config.js` for only TS files
   "prefer-readonly-parameter-types": "off", // Set in `default_eslint.config.js` for only TS files
   "prefer-reduce-type-parameter": "warn",
