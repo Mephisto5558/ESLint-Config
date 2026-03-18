@@ -1,4 +1,4 @@
-import config, { getModifiedRule, pluginNames } from './default_eslint.config.js';
+import config, { getModifiedRule, pluginNames } from './src/index.js';
 import type { Linter } from 'eslint';
 
 export default [

@@ -2,7 +2,7 @@
 
 /**
  * @import { ESLint } from 'eslint'
- * @import { pluginNames as pluginNamesT } from './default_eslint.config.d.ts' */
+ * @import { pluginNames as pluginNamesT } from '../default_eslint.config' */
 
 import { readFileSync } from 'node:fs';
 import { basename, parse, resolve } from 'node:path';
