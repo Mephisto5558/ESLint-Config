@@ -1,0 +1,14 @@
+{
+  "import-alias": [
+    "warn",
+    {
+      "isAllowBaseUrlResolvedImport": false,
+      "relativeImportOverrides": [
+        {
+          "depth": 0, 
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

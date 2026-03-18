@@ -9,6 +9,7 @@ import { basename, parse, resolve } from 'node:path';
 
 import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
+import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import htmlPluginRaw from 'eslint-plugin-html';
@@ -34,6 +35,7 @@ export const
     css: cssPlugin.meta.namespace ?? 'css',
     html: htmlPlugin.meta?.namespace ?? 'html',
     import: importPlugin.meta.namespace ?? 'import-x',
+    importAlias: importAliasPlugin.meta?.namespace ?? '@limegrass/import-alias',
     jsdoc: jsdocPlugin.meta?.namespace ?? 'jsdoc',
     json: jsonPlugin.meta.namespace ?? 'json',
     jsonc: jsoncPlugin.meta.namespace ?? 'jsonc',
@@ -50,6 +52,7 @@ export const
   plugins = {
     [pluginNames.html]: htmlPlugin,
     [pluginNames.import]: importPlugin,
+    [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
     [pluginNames.regex]: regExPlugin,
     [pluginNames.sonar]: sonarjsPlugin,
@@ -100,5 +103,6 @@ export const rules = {
   ...importJsonC('configs/sonarjs.jsonc'),
   ...importJsonC('configs/unicorn.jsonc'),
   ...importJsonC('configs/import-x.jsonc'),
+  ...importJsonC('configs/@limegrass/import-alias.jsonc'),
   ...importJsonC('configs/custom.jsonc')
 };
