@@ -5,7 +5,7 @@
  * @import { pluginNames as pluginNamesT } from './default_eslint.config.d.ts' */
 
 import { readFileSync } from 'node:fs';
-import { basename, resolve } from 'node:path';
+import { basename, parse, resolve } from 'node:path';
 
 import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
@@ -67,23 +67,27 @@ export const
   };
 
 /**
- * @param {string} path Removes comments
+ * @param {string} path relative to import.meta.dirname
  * @returns {JSONObject} */
 export function importJsonC(path) {
-  /** @type {JSONObject} */
-  const rules = JSON.parse(
-    readFileSync(resolve(import.meta.dirname, path), 'utf8')
-      .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
-      .replaceAll(/\/\/.*/g, '') // remove line comments
-  );
+  const
+    fullPath = resolve(import.meta.dirname, path),
+    parsedPath = parse(fullPath),
+    /** @type {JSONObject} */ rules = JSON.parse(
+      readFileSync(fullPath, 'utf8')
+        .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
+        .replaceAll(/\/\/.*/g, '') // remove line comments
+    );
 
+  let namespace = basename(parsedPath.dir);
+  namespace = namespace.startsWith('@') ? `${namespace}/` : '';
 
-  let filename = basename(path, '.jsonc');
+  let filename = parsedPath.name;
   if (filename.startsWith(pluginNames.sonar)) filename = `${pluginNames.sonar}/`;
   else if (filename.startsWith('eslint-')) filename = filename.slice('eslint-'.length) + '/';
   else filename = filename == 'eslint' ? '' : `${filename}/`;
 
-  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${filename}${k}`, v]));
+  return Object.fromEntries(Object.entries(rules).filter(([, v]) => v !== '').map(([k, v]) => [`${namespace}${filename}${k}`, v]));
 }
 
 /** @type {ReturnType<importJsonC> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }} */
