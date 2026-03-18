@@ -1,8 +1,6 @@
-/** @import { Linter } from 'eslint' */
-
 import config, { getModifiedRule, pluginNames } from './default_eslint.config.js';
+import type { Linter } from 'eslint';
 
-/** @type {Linter.Config[]} */
 export default [
   ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
   {
@@ -33,4 +31,4 @@ export default [
       [`${pluginNames.unicorn}/filename-case`]: 'off' // prefer consistency with rule names
     }
   }
-];
+] satisfies Linter.Config[];
