@@ -5,7 +5,7 @@
       "isAllowBaseUrlResolvedImport": false,
       "relativeImportOverrides": [
         {
-          "depth": 0, 
+          "depth": 1,
           "path": "."
         }
       ]
