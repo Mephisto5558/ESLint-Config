@@ -175,6 +175,7 @@
   "valid-dependencies": "error",
   "valid-description": "error",
   "valid-devDependencies": "error",
+  "valid-devEngines": "error",
   "valid-directories": "error",
   "valid-engines": "error",
   "valid-exports": "error",
