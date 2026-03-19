@@ -1,11 +1,11 @@
-/** @import { Rule } from 'eslint' */
-
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 
-const baseRuleModule = sonarjsPlugin.rules['no-async-constructor'];
+import type { Rule } from 'eslint';
+
+/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+const baseRuleModule = sonarjsPlugin.rules!['no-async-constructor']!;
 
 
-/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
   meta: {
@@ -24,15 +24,14 @@ export default {
     ]
   },
 
-  /** @param {Rule.RuleContext & { options: [{ allowVoid: boolean }, ...any] }} context */
-  create(context) {
+  create(context: Rule.RuleContext & { options: [{ allowVoid: boolean }, ...unknown[]] }): Rule.RuleListener {
     const baseRule = baseRuleModule.create(context);
 
     if (!context.options[0].allowVoid) return baseRule;
 
     return {
       ...baseRule,
-      CallExpression(node) {
+      CallExpression(node): void {
         if (node.parent.type === 'UnaryExpression' && node.parent.operator === 'void') return;
 
         /* eslint-disable-next-line new-cap */
@@ -40,4 +39,4 @@ export default {
       }
     };
   }
-};
+} as Rule.RuleModule;

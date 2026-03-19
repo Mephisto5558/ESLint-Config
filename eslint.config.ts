@@ -1,8 +1,12 @@
-import config, { getModifiedRule, pluginNames } from './src/index.js';
+import config, { getModifiedRule, pluginNames } from './src/index.ts';
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 
 export default [
   ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
+  {
+    ignores: ['dist/**']
+  },
   {
     files: ['**/test.*'],
     linterOptions: {
@@ -26,9 +30,9 @@ export default [
     }
   },
   {
-    files: ['ruleOverwrites/*.js'],
+    files: ['src/ruleOverwrites/*'],
     rules: {
       [`${pluginNames.unicorn}/filename-case`]: 'off' // prefer consistency with rule names
     }
   }
-] satisfies Linter.Config[];
+] as Linter.Config[];

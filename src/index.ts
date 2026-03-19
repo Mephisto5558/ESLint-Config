@@ -1,12 +1,13 @@
-/* eslint-disable unicorn/filename-case */
-
 /* eslint-disable import-x/order -- manually grouped by kind */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-/** @import { Linter } from 'eslint' */
+import type * as __ from '@mephisto5558/better-types'; /* eslint-disable-line import-x/no-namespace -- load in global definitions */
 
 import { resolve } from 'node:path';
+import { readFileSync } from 'node:fs';
 
+import { minVersion } from 'semver';
 import { includeIgnoreFile } from '@eslint/compat';
 import globals from 'globals';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
@@ -14,29 +15,40 @@ import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint
 import typescriptParser from '@typescript-eslint/parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
-import { getModifiedRule } from './utils.js';
-import { importJsonC, pluginNames, rules, jsGlob, tsGlob, plugins, filetypeSpecificPlugins } from './data.js';
+import { getModifiedRule } from './utils.ts';
+import { importRules, pluginNames, rules, jsGlob, tsGlob, plugins, filetypeSpecificPlugins } from './data.ts';
 
-export * from './utils.js';
+import type { Linter } from 'eslint';
+
+export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
+
+/** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
+const ERROR_IS_ERROR_MIN_VERSION = 24;
+
+let useErrorIsError = Number(process.versions.node.split('.', 1)[0]) >= ERROR_IS_ERROR_MIN_VERSION;
+try {
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- catch handles invalid package.json */
+  const packageJson = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8')) as { engines?: { node?: string } };
+  if ('engines' in packageJson && 'node' in packageJson.engines && packageJson.engines.node)
+    useErrorIsError = (minVersion(packageJson.engines.node)?.major ?? 0) >= ERROR_IS_ERROR_MIN_VERSION;
+}
+catch { /* ignore */ }
 
 rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
   { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
-    /* eslint-disable-next-line @typescript-eslint/no-magic-numbers
-    -- see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
-    useErrorIsError: Number(process.versions.node.split('.', 1)[0]) >= 24
+    useErrorIsError
   }], true
 );
 
 let gitIgnore;
 try { gitIgnore = includeIgnoreFile(resolve('.', '.gitignore'), 'eslint-config:cwd-gitignore'); }
-catch (err) { if (err.code != 'ENOENT') throw err; }
+catch (rawErr) {
+  const err = rawErr instanceof Error ? rawErr : new Error(String(rawErr));
+  if (!('code' in err) || err.code != 'ENOENT') throw err;
+}
 
-/**
- * @type {Linter.Config[]}
- * This config lists all rules from every plugin it uses. */
-export default [
-  gitIgnore,
+const eslintConfig = [
   {
     name: 'eslint-config:common-ignores',
     ignores: [
@@ -82,7 +94,7 @@ export default [
           })
         ]
       },
-      ...importJsonC('configs/html.jsonc')
+      ...importRules('configs/html.jsonc')
     },
     plugins, rules
   },
@@ -91,12 +103,12 @@ export default [
     files: ['**/*.json{,c,5}'],
     ignores: ['package-lock.json'],
     plugins: {
-      [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json],
-      [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]
+      [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json]!,
+      [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]!
     },
     rules: {
-      ...importJsonC('configs/eslint-json.jsonc'),
-      ...importJsonC('configs/jsonc.jsonc'),
+      ...importRules('configs/eslint-json.jsonc'),
+      ...importRules('configs/jsonc.jsonc'),
       'no-warning-comments': rules['no-warning-comments']
     }
   },
@@ -105,10 +117,10 @@ export default [
     files: ['**/package.json'],
     language: `${pluginNames.jsonc}/x`,
     plugins: {
-      [pluginNames.packageJSON]: filetypeSpecificPlugins[pluginNames.packageJSON]
+      [pluginNames.packageJSON]: filetypeSpecificPlugins[pluginNames.packageJSON]!
     },
     rules: {
-      ...importJsonC('configs/package-json.jsonc'),
+      ...importRules('configs/package-json.jsonc'),
       [`${pluginNames.jsonc}/sort-keys`]: 'off', // Handled by `package-json/order-properties`
       [`${pluginNames.jsonc}/key-name-casing`]: 'off'
     }
@@ -175,7 +187,7 @@ export default [
   {
     name: 'eslint-config:react',
     files: ['**/*.jsx'],
-    rules: importJsonC('configs/sonarjs-react.jsonc')
+    rules: importRules('configs/sonarjs-react.jsonc')!
   },
   {
     name: 'eslint-config:html',
@@ -204,10 +216,10 @@ export default [
     files: ['**/*.css'],
     language: `${pluginNames.css}/css`,
     plugins: {
-      [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]
+      [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!
     },
     rules: {
-      ...importJsonC('configs/eslint-css.jsonc')
+      ...importRules('configs/eslint-css.jsonc')
     }
   },
   {
@@ -295,4 +307,8 @@ export default [
       [`${pluginNames.sonar}/public-static-readonly`]: 'warn'
     }
   }
-].filter(Boolean);
+] as Linter.Config[];
+
+if (gitIgnore) eslintConfig.unshift(gitIgnore);
+
+export default eslintConfig;

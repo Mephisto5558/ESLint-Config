@@ -1,22 +1,19 @@
-/** @import { Rule } from 'eslint' */
-
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
+import type { Rule } from 'eslint';
 
-const baseRuleModule = sonarjsPlugin.rules['cyclomatic-complexity'];
+/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+const baseRuleModule = sonarjsPlugin.rules!['cyclomatic-complexity']!;
 
-
-/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
-  create(context) {
+  create(context): Rule.RuleListener {
     const newContext = Object.create(context, {
       report: {
-
-        /** @type {Rule.RuleContext['report']} */
         value(descriptor) {
           if ('message' in descriptor) {
             let data;
-            try { data = JSON.parse(descriptor.message); }
+            /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+            try { data = JSON.parse(descriptor.message) as JSONObject | undefined; }
             catch { return context.report(descriptor); }
 
             if (data && 'message' in data && typeof data.message === 'string')
@@ -25,9 +22,9 @@ export default {
 
           return context.report(descriptor);
         }
-      }
+      } as { value: Rule.RuleContext['report'] }
     });
 
     return baseRuleModule.create(newContext);
   }
-};
+} as Rule.RuleModule;

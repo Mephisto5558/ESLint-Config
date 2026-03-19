@@ -16,17 +16,18 @@
   "license": "MIT",
   "author": "Mephisto5558",
   "type": "module",
-  "main": "default_eslint.config.js",
-  "types": "default_eslint.config.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "configs",
-    "data.js",
-    "default_eslint.config.d.ts",
-    "ruleOverwrites",
-    "utils.js"
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "build": "npm run clean && tsc --build src",
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true });\"",
+    "lint": "eslint . --cache --cache-location ./node_modules/.cache/eslint/ >eslint.log",
+    "test": "echo \"Error: no test specified\"",
+    "watch": "npm run build -- --watch"
   },
   "overrides": {
     "baseline-browser-mapping": "latest"
@@ -51,7 +52,14 @@
     "eslint-plugin-sonarjs": "^4.0.2",
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "17.x",
-    "jiti": ">=2.2"
+    "jiti": ">=2.2",
+    "semver": "7.x"
+  },
+  "devDependencies": {
+    "@types/estree": "^1.x",
+    "@types/node": "20.x",
+    "@types/semver": "7.x",
+    "typescript": "latest"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"

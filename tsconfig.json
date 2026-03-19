@@ -1,22 +1,25 @@
 {
   "exclude": [
+    "dist",
     "node_modules"
   ],
   "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "target": "ESNext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "esnext",
     "lib": [
       "ESNext"
     ],
+    "allowImportingTsExtensions": true,
     "allowJs": true,
+    "declaration": true,
     "exactOptionalPropertyTypes": true,
     "libReplacement": true,
     "noEmit": true,
     "noImplicitOverride": true,
     "noUncheckedIndexedAccess": true,
     "noUncheckedSideEffectImports": true,
-    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "strict": true
   }

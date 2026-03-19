@@ -1,21 +1,21 @@
-/** @import { Rule } from 'eslint' */
-
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import type { Rule } from 'eslint';
 
 const
   { rules } = tsPlugin,
-  baseRuleModule = rules['unbound-method'];
+  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
+  baseRuleModule = rules['unbound-method']!;
 
-/** @type {Rule.RuleModule} */
 export default {
   ...baseRuleModule,
-  create(context) {
-    const baseRule = baseRuleModule.create(context);
+  create(context): Rule.RuleListener {
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+    const baseRule = baseRuleModule.create(context as never) as Rule.RuleListener;
 
     return {
       ...baseRule,
 
-      ObjectPattern: node => {
+      ObjectPattern(node): void {
         if (
           /* eslint-disable-next-line sonarjs/expression-complexity */
           node.parent.type === 'VariableDeclarator'
@@ -32,4 +32,4 @@ export default {
       }
     };
   }
-};
+} as Rule.RuleModule;
