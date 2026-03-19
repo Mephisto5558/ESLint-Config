@@ -40,7 +40,6 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "@typescript-eslint/eslint-plugin": "^8.57.1",
     "@typescript-eslint/parser": "8.x",
-    "eslint": "^10.0.3",
     "eslint-import-resolver-typescript": "4.x",
     "eslint-plugin-html": "^8.1.4",
     "eslint-plugin-import-x": "^4.16.2",
@@ -51,15 +50,20 @@
     "eslint-plugin-sonarjs": "^4.0.2",
     "eslint-plugin-unicorn": "^63.0.0",
     "globals": "17.x",
-    "jiti": ">=2.2",
     "semver": "7.x"
   },
   "devDependencies": {
     "@mephisto5558/better-types": "latest",
-    "@types/estree": "^1.x",
+    "@types/estree": "1.x",
     "@types/node": "20.x",
     "@types/semver": "7.x",
+    "eslint": "^10.0.3",
+    "jiti": ">=2.2",
     "typescript": "latest"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.3",
+    "jiti": ">=2.2"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"

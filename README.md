@@ -30,7 +30,7 @@ export default [
       ...
     }
   }
-] satisfies typeof config;
+] as typeof config;
 ```
 See one of my other project's ESLint config for a more complex example using `getModifiedRule`: [Teufelsbot](https://github.com/Mephisto5558/Teufelsbot/blob/main/eslint.config.ts).
 
