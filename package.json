@@ -37,7 +37,6 @@
     "@eslint/css": "^1.0.0",
     "@eslint/json": "^1.1.0",
     "@limegrass/eslint-plugin-import-alias": "^1.6.1",
-    "@mephisto5558/better-types": "latest",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@typescript-eslint/eslint-plugin": "^8.57.1",
     "@typescript-eslint/parser": "8.x",
@@ -56,6 +55,7 @@
     "semver": "7.x"
   },
   "devDependencies": {
+    "@mephisto5558/better-types": "latest",
     "@types/estree": "^1.x",
     "@types/node": "20.x",
     "@types/semver": "7.x",
