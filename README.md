@@ -10,7 +10,7 @@
 
 [![Discord Server](https://discord.com/api/guilds/1011956895529041950/widget.png?style=shield)](https://discord.com/invite/yWwGTeppjR)
 
-This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, CSS and HTML.
+This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, CSS, HTML, JSON and JSON5.
 
 ## How to use
 ### 1. Installation
