@@ -62,6 +62,7 @@
     "typescript": "latest"
   },
   "peerDependencies": {
+    "@mephisto5558/better-types": "latest",
     "eslint": "^10.0.3",
     "jiti": ">=2.2"
   },
