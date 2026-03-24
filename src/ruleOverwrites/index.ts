@@ -11,7 +11,7 @@ export default {
   } as const,
   rules: Object.fromEntries(await Promise.all(
     readdirSync(import.meta.dirname)
-      .filter(e => e !== 'index.js')
+      .filter(e => e.endsWith('.js') && e !== 'index.js')
       .map<Promise<[string, Rule.RuleModule]>>(async file => {
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- import cannot be typed */
         const module = await import('./' + file) as { default: Rule.RuleModule };
