@@ -21,6 +21,7 @@ import { getModifiedRule } from './utils.ts';
 
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
+import type { ParserOptions } from '@typescript-eslint/parser';
 
 export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
@@ -65,7 +66,6 @@ const eslintConfig = [
       parser: typescriptParser,
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: undefined,
         extraFileExtensions: ['.html'],
         warnOnUnsupportedTypeScriptVersion: true
       },
@@ -323,7 +323,7 @@ const eslintConfig = [
       [`${pluginNames.sonar}/public-static-readonly`]: 'warn'
     }
   }
-] as Linter.Config[];
+] as (Linter.Config & { languageOptions?: { parserOptions?: ParserOptions } })[];
 
 if (gitIgnore) eslintConfig.unshift(gitIgnore);
 

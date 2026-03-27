@@ -1,8 +1,5 @@
 import config, { getModifiedRule, pluginNames } from './src/index.ts';
 
-/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
-import type { Linter } from 'eslint';
-
 export default [
   ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
   {
@@ -36,4 +33,4 @@ export default [
       [`${pluginNames.unicorn}/filename-case`]: 'off' // prefer consistency with rule names
     }
   }
-] as Linter.Config[];
+] as typeof config;
