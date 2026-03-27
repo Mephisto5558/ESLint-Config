@@ -1,0 +1,40 @@
+{
+  "exclude": [
+    "**/dist",
+    "**/node_modules"
+  ],
+  "compilerOptions": {
+    "rootDir": "${configDir}/src",
+    "outDir": "${configDir}/dist",
+    "paths": {
+      "#/*": ["${configDir}/src/*"]
+    },
+    "libReplacement": true,
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "noUncheckedSideEffectImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "preserveSymlinks": true,
+    "preserveWatchOutput": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true
+  },
+  "typeAcquisition": {
+    "disableFilenameBasedTypeAcquisition": true
+  }
+}

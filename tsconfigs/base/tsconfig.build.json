@@ -1,0 +1,8 @@
+{
+  "include": [
+    "${configDir}/src/**/*"
+  ],
+  "compilerOptions": {
+    "noEmit": false
+  }
+}

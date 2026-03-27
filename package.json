@@ -20,10 +20,11 @@
   "types": "dist/index.d.ts",
   "files": [
     "configs",
-    "dist"
+    "dist",
+    "tsconfigs"
   ],
   "scripts": {
-    "build": "npm run clean && tsc --build src",
+    "build": "npm run clean && tsc -p ./tsconfig.build.json",
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true });\"",
     "lint": "eslint . --cache --cache-location ./node_modules/.cache/eslint/ >eslint.log",
     "test": "echo \"Error: no test specified\"",
@@ -59,7 +60,7 @@
     "@types/semver": "7.x",
     "eslint": "^10.0.3",
     "jiti": ">=2.2",
-    "typescript": "latest"
+    "typescript": "6.x"
   },
   "peerDependencies": {
     "@mephisto5558/better-types": "latest",

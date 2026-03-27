@@ -1,0 +1,12 @@
+{
+  "extends": "../base/tsconfig.base.json",
+  "compilerOptions": {
+    "module": "nodenext",
+    "lib": [
+      "ESNext"
+    ],
+    "types": [
+      "node"
+    ]
+  }
+}

@@ -2,7 +2,9 @@
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import type * as __ from '@mephisto5558/better-types'; /* eslint-disable-line import-x/no-namespace -- load in global definitions */
+/* eslint-disable-next-line import-x/no-unassigned-import, import-x/no-empty-named-blocks, unicorn/require-module-specifiers, import-x/order
+  -- load in global types for everyone */
+import type {} from '@mephisto5558/better-types';
 
 import { resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
@@ -152,7 +154,7 @@ const eslintConfig = [
   },
   {
     name: 'eslint-config:tsconfig.json',
-    files: ['**/tsconfig.json'],
+    files: ['**/*tsconfig*.json'],
     rules: {
       [`${pluginNames.jsonc}/sort-keys`]: [
         'warn',
@@ -168,8 +170,10 @@ const eslintConfig = [
             'moduleResolution',
             'target',
             'lib',
+            'rootDir',
+            'outDir',
             'paths',
-            'libreplacement',
+            'libReplacement',
             {
               order: {
                 type: 'asc',
@@ -180,6 +184,18 @@ const eslintConfig = [
           ],
           minKeys: 2,
           allowLineSeparatedGroups: true
+        }
+      ],
+      [`${pluginNames.jsonc}/sort-array-values`]: [
+        'warn',
+        { // Exclude some properties because their order is important.
+          pathPattern: '^(?!(extends|paths|rootDirs)).*$',
+          order: {
+            type: 'asc',
+            caseSensitive: true,
+            natural: true
+          },
+          minValues: 2
         }
       ]
     }
