@@ -1,4 +1,5 @@
 import config, { getModifiedRule, pluginNames } from './src/index.ts';
+
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 

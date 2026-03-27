@@ -1,8 +1,9 @@
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
+
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Rule } from 'eslint';
 
-/* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-const baseRuleModule = sonarjsPlugin.rules!['cyclomatic-complexity']!;
+const baseRuleModule = sonarjsPlugin.rules['cyclomatic-complexity'];
 
 export default {
   ...baseRuleModule,

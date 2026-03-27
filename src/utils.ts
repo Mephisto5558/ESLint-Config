@@ -1,3 +1,4 @@
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 
 function mergeObjects<T>(original: T, update: T | undefined): T {

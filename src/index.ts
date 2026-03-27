@@ -1,4 +1,3 @@
-/* eslint-disable import-x/order -- manually grouped by kind */
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
@@ -6,20 +5,21 @@
   -- load in global types for everyone */
 import type {} from '@mephisto5558/better-types';
 
-import { resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 
-import { minVersion } from 'semver';
+import { minVersion } from 'semver'; /* eslint-disable-line import-x/order */
+import globals from 'globals'; /* eslint-disable-line import-x/order */
 import { includeIgnoreFile } from '@eslint/compat';
-import globals from 'globals';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
+import { filetypeSpecificPlugins, importRules, jsGlob, pluginNames, plugins, rules, tsGlob } from './data.ts';
 import { getModifiedRule } from './utils.ts';
-import { importRules, pluginNames, rules, jsGlob, tsGlob, plugins, filetypeSpecificPlugins } from './data.ts';
 
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 
 export * from './utils.ts';

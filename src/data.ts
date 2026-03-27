@@ -21,6 +21,7 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 /* eslint-disable-next-line import-x/no-unresolved -- required for .js extension in ts files */
 import customPlugin from './ruleOverwrites/index.js';
 
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { ESLint } from 'eslint';
 
 const getNamespace = <T extends ESLint.Plugin>(

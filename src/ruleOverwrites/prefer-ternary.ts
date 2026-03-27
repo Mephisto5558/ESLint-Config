@@ -1,6 +1,8 @@
 /** @import { Node, IfStatement } from 'estree'; */
 
 import unicornPlugin from 'eslint-plugin-unicorn';
+
+/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { JSSyntaxElement, Rule } from 'eslint';
 import type { IfStatement, Node } from 'estree';
 
