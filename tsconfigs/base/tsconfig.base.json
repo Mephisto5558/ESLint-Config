@@ -32,7 +32,8 @@
     "rewriteRelativeImportExtensions": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "tsBuildInfoFile": "${configDir}/dist/tsconfig.tsbuildinfo"
   },
   "typeAcquisition": {
     "disableFilenameBasedTypeAcquisition": true

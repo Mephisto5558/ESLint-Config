@@ -1,10 +1,6 @@
 /* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-/* eslint-disable-next-line import-x/no-unassigned-import, import-x/no-empty-named-blocks, unicorn/require-module-specifiers, import-x/order
-  -- load in global types for everyone */
-import type {} from '@mephisto5558/better-types';
-
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -19,12 +15,14 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import { filetypeSpecificPlugins, importRules, jsGlob, pluginNames, plugins, rules, tsGlob } from './data.ts';
 import { getModifiedRule } from './utils.ts';
 
+import type { ParserOptions } from '@typescript-eslint/parser';
+
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
-import type { ParserOptions } from '@typescript-eslint/parser';
 
 export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
+export type * from '@mephisto5558/better-types';
 
 /** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
 const ERROR_IS_ERROR_MIN_VERSION = 24;

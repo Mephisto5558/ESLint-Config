@@ -14,7 +14,7 @@ export default {
     readdirSync(import.meta.dirname)
 
       // support loading from src or dist
-      .filter(e => !e.endsWith('.d.ts') && !e.startsWith('index.'))
+      .filter(e => !e.startsWith('index.') && (e.endsWith('.js') || e.endsWith('.ts') && !e.endsWith('.d.ts')))
       .map<Promise<[string, Rule.RuleModule]>>(async file => {
         /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- import cannot be typed */
         const module = await import('./' + file) as { default: Rule.RuleModule };
