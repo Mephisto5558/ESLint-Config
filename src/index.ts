@@ -49,7 +49,7 @@ catch (rawErr) {
   if (!('code' in err) || err.code != 'ENOENT') throw err;
 }
 
-const eslintConfig = [
+const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: ParserOptions } })[] = [
   {
     name: 'eslint-config:common-ignores',
     ignores: [
@@ -62,9 +62,11 @@ const eslintConfig = [
     files: [`**/*${tsGlob}`, `**/*${jsGlob}`, '**/*.html'],
     languageOptions: {
       parser: typescriptParser,
+      // @ts-expect-error `tsconfigRootDir: undefined` has some undocumented behavior that I need for some projects
       parserOptions: {
         projectService: true,
         extraFileExtensions: ['.html'],
+        tsconfigRootDir: undefined,
         warnOnUnsupportedTypeScriptVersion: true
       },
       ecmaVersion: 'latest',
@@ -321,7 +323,7 @@ const eslintConfig = [
       [`${pluginNames.sonar}/public-static-readonly`]: 'warn'
     }
   }
-] as (Linter.Config & { languageOptions?: { parserOptions?: ParserOptions } })[];
+];
 
 if (gitIgnore) eslintConfig.unshift(gitIgnore);
 
