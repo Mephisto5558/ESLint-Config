@@ -3,6 +3,7 @@
     "${configDir}/src/**/*"
   ],
   "compilerOptions": {
+    "rootDir": "${configDir}/src",
     "noEmit": false
   }
 }
