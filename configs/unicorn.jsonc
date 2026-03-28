@@ -21,6 +21,7 @@
       "checkArrowFunctions": true
     }
   ],
+  "consistent-template-literal-escape": "warn",
   "custom-error-definition": "error",
   "empty-brace-spaces": "off", // Handled by `no-empty`
   "error-message": "warn",
@@ -126,6 +127,7 @@
   "no-useless-collection-argument": "warn",
   "no-useless-error-capture-stack-trace": "warn",
   "no-useless-fallback-in-spread": "warn",
+  "no-useless-iterator-to-array": "warn",
   "no-useless-length-check": "warn",
   "no-useless-promise-resolve-reject": "warn",
   "no-useless-spread": "warn",
@@ -241,6 +243,7 @@
   "prefer-response-static-json": "warn",
   "prefer-set-has": "warn",
   "prefer-set-size": "warn",
+  "prefer-simple-condition-first": "warn",
   "prefer-single-call": "warn",
   "prefer-spread": "warn",
   "prefer-string-raw": "warn",
@@ -279,6 +282,7 @@
     "warn",
     "avoid"
   ],
+  "switch-case-break-position": "warn",
   "template-indent": "off",
   "text-encoding-identifier-case": [
     "warn",
