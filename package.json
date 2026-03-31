@@ -61,6 +61,7 @@
     "@types/node": "20.x",
     "@types/semver": "7.x",
     "eslint": "^10.1.0",
+    "eslint-plugin-eslint-plugin": "^7.3.2",
     "jiti": ">=2.2",
     "typescript": "^5.7.0 || ^6.0.0"
   },
