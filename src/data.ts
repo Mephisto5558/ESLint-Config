@@ -17,6 +17,7 @@ import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
 import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
+import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 /* eslint-disable-next-line import-x/no-unresolved -- required for .js extension in ts files */
@@ -44,6 +45,7 @@ export const
     markdown: getNamespace(markdownPlugin, 'markdown'),
     packageJSON: getNamespace(packageJSONPlugin, 'package-json'),
     regex: getNamespace(regExPlugin, 'regexp'),
+    security: getNamespace(securityPlugin, 'security'),
     sonar: getNamespace(sonarjsPlugin, 'sonarjs'),
     stylistic: getNamespace(stylisticPlugin, '@stylistic'),
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
@@ -60,6 +62,7 @@ export const
     [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
     [pluginNames.regex]: regExPlugin,
+    [pluginNames.security]: securityPlugin,
     [pluginNames.sonar]: sonarjsPlugin,
     [pluginNames.stylistic]: stylisticPlugin,
     [pluginNames.typescript]: typescriptPlugin,
@@ -105,6 +108,7 @@ export const rules: ReturnType<typeof importRules>
     ...importRules('configs/@typescript-eslint.jsonc'),
     ...importRules('configs/jsdoc.jsonc'),
     ...importRules('configs/regexp.jsonc'),
+    ...importRules('configs/security.jsonc'),
     ...importRules('configs/sonarjs.jsonc'),
     ...importRules('configs/unicorn.jsonc'),
     ...importRules('configs/import-x.jsonc'),

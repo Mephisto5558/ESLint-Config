@@ -1,0 +1,16 @@
+{
+  // [SECURITY] https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules | Using "warn" wherever applicable, error on dangerous vulnerabilities
+  "detect-bidi-characters": "error",
+  "detect-buffer-noassert": "off", // Removed in Node 10: https://nodejs.org/api/buffer.html
+  "detect-child-process": "warn",
+  "detect-disable-mustache-escape": "off", // Handled by `no-eval`
+  "detect-new-buffer": "off", // Handled by `unicorn/no-new-buffer`, `@typescript-eslint/no-deprecated`
+  "detect-no-csrf-before-method-override": "warn",
+  "detect-non-literal-fs-filename": "off",
+  "detect-non-literal-regexp": "warn",
+  "detect-non-literal-require": "warn",
+  "detect-object-injection": "off",
+  "detect-possible-timing-attacks": "warn", // todo
+  "detect-pseudoRandomBytes": "warn",
+  "detect-unsafe-regex": "off" // Handled by `regexp/*`
+}

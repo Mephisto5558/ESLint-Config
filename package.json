@@ -50,6 +50,7 @@
     "eslint-plugin-jsonc": "^3.1.2",
     "eslint-plugin-package-json": "^0.91.1",
     "eslint-plugin-regexp": "^3.1.0",
+    "eslint-plugin-security": "^4.0.0",
     "eslint-plugin-sonarjs": "^4.0.2",
     "eslint-plugin-unicorn": "^64.0.0",
     "globals": "17.x",
@@ -57,6 +58,7 @@
   },
   "devDependencies": {
     "@mephisto5558/better-types": "latest",
+    "@types/eslint-plugin-security": "3.x",
     "@types/estree": "1.x",
     "@types/node": "20.x",
     "@types/semver": "7.x",

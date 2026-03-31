@@ -22,7 +22,7 @@ export default [
     files: ['configs/**/*.jsonc'],
     rules: {
       ...getModifiedRule(config, `${pluginNames.jsonc}/key-name-casing`, [{
-        ignores: ['^(require|valid)-.*']
+        ignores: ['^(require|valid|detect)-.*']
       }]),
       [`${pluginNames.jsonc}/sort-array-values`]: 'off', // config array order is important
       ...getModifiedRule(config, `${pluginNames.jsonc}/sort-keys`, [{
