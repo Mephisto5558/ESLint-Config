@@ -3,6 +3,7 @@ import config, { getModifiedRule, pluginNames } from './src/index.ts';
 export default [
   ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
   {
+    name: 'rule-overwrites:test',
     files: ['**/test.*'],
     linterOptions: {
       reportUnusedDisableDirectives: false
@@ -13,6 +14,7 @@ export default [
     }
   },
   {
+    name: 'rule-overwrites:config-jsonc',
     files: ['configs/*.jsonc'],
     rules: {
       ...getModifiedRule(config, `${pluginNames.jsonc}/key-name-casing`, [{
@@ -25,7 +27,8 @@ export default [
     }
   },
   {
-    files: ['src/ruleOverwrites/*'],
+    name: 'rule-overwrites:ruleOverwrites',
+    files: ['src/ruleOverwrites/**'],
     rules: {
       [`${pluginNames.unicorn}/filename-case`]: 'off' // prefer consistency with rule names
     }
