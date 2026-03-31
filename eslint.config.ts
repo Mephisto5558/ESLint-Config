@@ -3,9 +3,6 @@ import config, { getModifiedRule, pluginNames } from './src/index.ts';
 export default [
   ...config.filter(e => e.name != 'eslint-config:cwd-gitignore'),
   {
-    ignores: ['dist/**']
-  },
-  {
     files: ['**/test.*'],
     linterOptions: {
       reportUnusedDisableDirectives: false

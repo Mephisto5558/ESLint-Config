@@ -54,7 +54,8 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     name: 'eslint-config:common-ignores',
     ignores: [
       '.sonarlint/**/*.json{,c,5}', // use SonarLint default order
-      'package-lock.json' // generated file
+      'package-lock.json', // generated file
+      'dist/**' // generated code
     ]
   },
   {
