@@ -14,7 +14,6 @@
     }
   ],
   "no-redundant-files": "warn",
-  /* eslint-disable-next-line jsonc/key-name-casing */
   "no-redundant-publishConfig": "warn",
   "order-properties": [
     "warn",

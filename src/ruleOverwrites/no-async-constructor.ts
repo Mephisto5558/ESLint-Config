@@ -34,7 +34,7 @@ export default {
       CallExpression(node): void {
         if (node.parent.type === 'UnaryExpression' && node.parent.operator === 'void') return;
 
-        /* eslint-disable-next-line new-cap */
+        /* eslint-disable-next-line new-cap -- eslint wants it this way */
         baseRule.CallExpression?.(node);
       }
     };

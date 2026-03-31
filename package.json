@@ -35,6 +35,7 @@
     "baseline-browser-mapping": "latest"
   },
   "dependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@eslint/compat": "2.x",
     "@eslint/css": "^1.1.0",
     "@eslint/json": "^1.2.0",

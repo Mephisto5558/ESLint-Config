@@ -6,12 +6,13 @@ import { basename, parse, resolve } from 'node:path';
 import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
 import markdownPlugin from '@eslint/markdown';
+import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
 import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 // @ts-expect-error not important
-import htmlPlugin from 'eslint-plugin-html';
+import _htmlPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
@@ -26,17 +27,20 @@ import customPlugin from './ruleOverwrites/index.js';
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { ESLint } from 'eslint';
 
-const getNamespace = <T extends ESLint.Plugin>(
-  plugin: T, defaultNamespace: string
-): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace;
+const
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- eslint-plugin-html cannot be augmented */
+  htmlPlugin = _htmlPlugin as ESLint.Plugin,
+  getNamespace = <T extends ESLint.Plugin>(
+    plugin: T, defaultNamespace: string
+  ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace;
 
 export const
   tsGlob = '.{m,c,}ts{,x}',
   jsGlob = '.{m,c,}js{,x}',
   pluginNames = {
     css: getNamespace(cssPlugin, 'css'),
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
-    html: getNamespace(htmlPlugin as ESLint.Plugin, 'html'),
+    eslintComments: getNamespace(eslintCommentsPlugin, '@eslint-community/eslint-comments'),
+    html: getNamespace(htmlPlugin, 'html'),
     import: getNamespace(importPlugin, 'import-x'),
     importAlias: getNamespace(importAliasPlugin, '@limegrass/import-alias'),
     jsdoc: getNamespace(jsdocPlugin, 'jsdoc'),
@@ -48,16 +52,16 @@ export const
     security: getNamespace(securityPlugin, 'security'),
     sonar: getNamespace(sonarjsPlugin, 'sonarjs'),
     stylistic: getNamespace(stylisticPlugin, '@stylistic'),
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- typeScriptPlugin does not extend or implement ESLint.Plugin */
     typescript: getNamespace(typescriptPlugin as unknown as ESLint.Plugin, '@typescript-eslint'),
     unicorn: getNamespace(unicornPlugin, 'unicorn'),
 
     custom: getNamespace(customPlugin, 'custom')
   } as const,
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- being less specific */
   plugins = {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
-    [pluginNames.html]: htmlPlugin as ESLint.Plugin,
+    [pluginNames.eslintComments]: eslintCommentsPlugin,
+    [pluginNames.html]: htmlPlugin,
     [pluginNames.import]: importPlugin,
     [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
@@ -83,7 +87,7 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
   const
     fullPath = resolve(import.meta.dirname, '..', path),
     parsedPath = parse(fullPath),
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- this cannot be typeguarded easily */
     rules = JSON.parse(
       readFileSync(fullPath, 'utf8')
         .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
@@ -103,6 +107,7 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
 
 export const rules: ReturnType<typeof importRules>
   & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
+    ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
     ...importRules('configs/eslint/eslint.jsonc'),
     ...importRules('configs/@stylistic.jsonc'),
     ...importRules('configs/@typescript-eslint.jsonc'),

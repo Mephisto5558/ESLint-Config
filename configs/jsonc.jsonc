@@ -5,13 +5,11 @@
   "key-name-casing": [
     "warn",
     {
-      /* eslint-disable jsonc/key-name-casing */
       "camelCase": true,
       "PascalCase": true,
       "SCREAMING_SNAKE_CASE": false,
       "kebab-case": true,
       "snake_case": false,
-      /* eslint-enable jsonc/key-name-casing */
       "ignores": ["/"]
     }
   ],

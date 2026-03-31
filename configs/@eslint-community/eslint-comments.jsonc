@@ -1,0 +1,37 @@
+{
+  // [ESLINT-COMMENTS] https://eslint-community.github.io/eslint-plugin-eslint-comments/rules | Using "warn" wherever applicable
+  // Best Practice
+  "disable-enable-pair": [
+    "warn",
+    {
+      "allowWholeFile": true
+    }
+  ],
+  "no-aggregating-enable": "warn",
+  "no-duplicate-disable": "warn",
+  "no-unlimited-disable": "warn",
+  "no-unused-enable": "warn",
+
+  // Stylistic
+  "no-restricted-disable": "off",
+  "no-use": [
+    "warn",
+    {
+      "allow": [
+        // Everyting else should be put in the eslint config file
+        "eslint-disable",
+        "eslint-enable",
+        "eslint-disable-line",
+        "eslint-disable-next-line"
+      ]
+    }
+  ],
+  "require-description": [
+    "warn",
+    {
+      "ignore": [
+        "eslint-enable" // Descriptions are already required on the disable comments
+      ]
+    }
+  ]
+}

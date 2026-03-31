@@ -1,16 +1,17 @@
 /* eslint-disable max-lines, @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-non-null-assertion -- only used and needed for `filetypeSpecificPlugins` */
 
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { minVersion } from 'semver'; /* eslint-disable-line import-x/order */
-import globals from 'globals'; /* eslint-disable-line import-x/order */
 import { includeIgnoreFile } from '@eslint/compat';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+
+import globals from 'globals';
+import { minVersion } from 'semver';
 
 import { filetypeSpecificPlugins, importRules, jsGlob, pluginNames, plugins, rules, tsGlob } from './data.ts';
 import { getModifiedRule } from './utils.ts';
@@ -107,11 +108,14 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     ignores: ['package-lock.json'],
     plugins: {
       [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json]!,
-      [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]!
+      [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]!,
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
     },
     rules: {
       ...importRules('configs/eslint/json.jsonc'),
       ...importRules('configs/jsonc.jsonc'),
+      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
       'no-warning-comments': rules['no-warning-comments']
     }
   },
@@ -204,7 +208,9 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   {
     name: 'eslint-config:react',
     files: ['**/*.jsx'],
-    rules: importRules('configs/sonarjs-react.jsonc')!
+    rules: {
+      ...importRules('configs/sonarjs-react.jsonc')
+    }
   },
   {
     name: 'eslint-config:html',
@@ -233,9 +239,13 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     files: ['**/*.css'],
     language: `${pluginNames.css}/css`,
     plugins: {
-      [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!
+      [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!,
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
+
     },
     rules: {
+      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
       ...importRules('configs/eslint/css.jsonc')
     }
   },
@@ -264,10 +274,10 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [`${pluginNames.typescript}/explicit-function-return-type`]: [
         'warn',
         {
-          /* eslint-disable-next-line id-length */
+          /* eslint-disable id-length -- depends on the plugin */
           allowConciseArrowFunctionExpressionsStartingWithVoid: false,
-          /* eslint-disable-next-line id-length */
           allowDirectConstAssertionInArrowFunctions: true,
+          /* eslint-enable id-length  */
           allowExpressions: false,
           allowFunctionsWithoutTypeParameters: false,
           allowHigherOrderFunctions: true,
@@ -294,7 +304,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
         'warn', // Overlap with `@typescript-eslint/explicit-function-return-type` on exported functions, but not fixable
         {
           allowArgumentsExplicitlyTypedAsAny: true,
-          /* eslint-disable-next-line id-length */
+          /* eslint-disable-next-line id-length -- depends on the plugin */
           allowDirectConstAssertionInArrowFunctions: true,
           allowHigherOrderFunctions: true,
           allowOverloadFunctions: false,
@@ -329,10 +339,14 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     files: ['**/*.md'],
     language: `${pluginNames.markdown}/gfm`,
     plugins: {
-      [pluginNames.markdown]: filetypeSpecificPlugins[pluginNames.markdown]!
+      [pluginNames.markdown]: filetypeSpecificPlugins[pluginNames.markdown]!,
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
+
     },
     rules: {
-      ...importRules('configs/eslint/markdown.jsonc')!
+      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
+      ...importRules('configs/eslint/markdown.jsonc')
     }
   }
 ];

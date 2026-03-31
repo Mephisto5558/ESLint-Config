@@ -61,7 +61,7 @@
     }
   ],
   "new-for-builtins": "error",
-  "no-abusive-eslint-disable": "warn",
+  "no-abusive-eslint-disable": "off", // Handled by `@eslint-community/eslint-comments/no-unlimited-disable`
   "no-accessor-recursion": "error",
   "no-anonymous-default-export": "warn",
   "no-array-callback-reference": "off", // No whitelist config option;

@@ -1,6 +1,7 @@
 /** @import { Node, IfStatement } from 'estree'; */
 
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { pluginNames } from '../data.ts';
 
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { JSSyntaxElement, Rule } from 'eslint';
@@ -8,30 +9,31 @@ import type { IfStatement, Node } from 'estree';
 
 const
   DEFAULT_MAX_LENGTH = 120,
-  /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-  baseRuleModule = unicornPlugin.rules?.['prefer-ternary']!,
+  baseRuleModule = unicornPlugin.rules?.['prefer-ternary'];
 
-  dummyFixer = {
-    /* eslint-disable @typescript-eslint/no-non-null-assertion -- fine due to these being dummy fixes */
-    replaceTextRange: (range, text): Rule.Fix => ({ range, text }),
-    insertTextAfter: (node, text): Rule.Fix => ({ range: [node.range![1], node.range![1]], text }),
-    insertTextBefore: (node, text): Rule.Fix => ({ range: [node.range![0], node.range![0]], text }),
-    replaceText: (node, text): Rule.Fix => ({ range: node.range!, text }),
-    remove: (node): Rule.Fix => ({ range: node.range!, text: '' }),
-    removeRange: (range): Rule.Fix => ({ range, text: '' }),
-    insertTextAfterRange: (range, text): Rule.Fix => ({ range: [range[1], range[1]], text }),
-    insertTextBeforeRange: (range, text): Rule.Fix => ({ range: [range[0], range[0]], text })
-    /* eslint-enable @typescript-eslint/no-non-null-assertion */
-  } satisfies Partial<Rule.RuleFixer>;
+if (!baseRuleModule) throw new Error(`${pluginNames.unicorn}/prefer-ternary not found`);
+
+const dummyFixer = {
+  /* eslint-disable @typescript-eslint/no-non-null-assertion -- fine due to these being dummy fixes */
+  replaceTextRange: (range, text): Rule.Fix => ({ range, text }),
+  insertTextAfter: (node, text): Rule.Fix => ({ range: [node.range![1], node.range![1]], text }),
+  insertTextBefore: (node, text): Rule.Fix => ({ range: [node.range![0], node.range![0]], text }),
+  replaceText: (node, text): Rule.Fix => ({ range: node.range!, text }),
+  remove: (node): Rule.Fix => ({ range: node.range!, text: '' }),
+  removeRange: (range): Rule.Fix => ({ range, text: '' }),
+  insertTextAfterRange: (range, text): Rule.Fix => ({ range: [range[1], range[1]], text }),
+  insertTextBeforeRange: (range, text): Rule.Fix => ({ range: [range[0], range[0]], text })
+  /* eslint-enable @typescript-eslint/no-non-null-assertion */
+} satisfies Partial<Rule.RuleFixer>;
 
 function hasTernary(node: Node | null | undefined, sourceCode: Rule.RuleContext['sourceCode']): boolean {
   if (!node) return false;
   if (node.type === 'ConditionalExpression') return true;
 
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
   const keys = sourceCode.visitorKeys[node.type] as (keyof Node)[] | undefined ?? [];
   for (const key of keys) {
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
     const value = node[key] as Node | Node[] | undefined;
     if (Array.isArray(value)) {
       if (value.some(e => hasTernary(e, sourceCode))) return true;
@@ -45,12 +47,15 @@ function isIfStatement(node: JSSyntaxElement | undefined): node is IfStatement &
   return node?.type === 'IfStatement' && node.loc != undefined;
 }
 
+function isIterable<T>(obj: T | Iterable<T>): obj is Iterable<T> {
+  return obj && typeof obj === 'object' && Symbol.iterator in obj;
+}
+
 export default {
   meta: {
     ...baseRuleModule.meta,
     schema: [
-      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
-      (baseRuleModule.meta?.schema as unknown[])[0],
+      Array.isArray(baseRuleModule.meta?.schema) ? baseRuleModule.meta.schema[0] : baseRuleModule.meta?.schema,
       {
         type: 'object',
         properties: {
@@ -84,8 +89,7 @@ export default {
 
             const
               fixes = descriptor.fix(dummyFixer),
-              /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
-              fix = (Array.isArray(fixes) ? fixes[0] : fixes) as Rule.Fix | undefined;
+              fix = isIterable(fixes) ? [...fixes][0] : fixes;
 
             if (!fix || !('text' in fix) || typeof fix.text !== 'string') return context.report(descriptor);
 

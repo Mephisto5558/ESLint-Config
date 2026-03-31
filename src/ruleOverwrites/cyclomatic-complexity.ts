@@ -13,8 +13,10 @@ export default {
         value(descriptor) {
           if ('message' in descriptor) {
             let data;
-            /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
-            try { data = JSON.parse(descriptor.message) as JSONObject | undefined; }
+            try {
+              data = JSON.parse(descriptor.message);
+              if (typeof data != 'object' || Array.isArray(data)) throw new Error('Message is valid');
+            }
             catch { return context.report(descriptor); }
 
             if (data && 'message' in data && typeof data.message === 'string')
