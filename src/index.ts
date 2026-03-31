@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
+/* eslint-disable max-lines, @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import { readFileSync } from 'node:fs';
@@ -321,6 +321,17 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [`${pluginNames.import}/no-relative-parent-imports`]: 'off',
       [`${pluginNames.import}/extentions`]: 'off',
       [`${pluginNames.sonar}/public-static-readonly`]: 'warn'
+    }
+  },
+  {
+    name: 'eslint-config:markdown',
+    files: ['**/*.md'],
+    language: `${pluginNames.markdown}/gfm`,
+    plugins: {
+      [pluginNames.markdown]: filetypeSpecificPlugins[pluginNames.markdown]!
+    },
+    rules: {
+      ...importRules('configs/eslint/markdown.jsonc')!
     }
   }
 ];

@@ -1,0 +1,85 @@
+{
+  // [ESLint/MARKDOWN] https://github.com/eslint/markdown/blob/main/docs/rules | Using "warn" wherever applicable
+  "fenced-code-language": [
+    "warn",
+    {
+      // "required": []
+    }
+  ],
+  "fenced-code-meta": "off",
+  "heading-increment": [
+    "warn",
+    {
+      // "frontmatterTitle":
+    }
+  ],
+  "no-bare-urls": "warn",
+  "no-duplicate-definitions": [
+    "warn",
+    {
+      // "allowDefinitions": []
+    }
+  ],
+  "no-duplicate-headings": [
+    "warn",
+    {
+      "checkSiblingsOnly": true
+    }
+  ],
+  "no-empty-definitions": [
+    "warn",
+    {
+      // "allowDefinitions": []
+    }
+  ],
+  "no-empty-images": "warn",
+  "no-empty-links": "warn",
+  "no-html": "off",
+  "no-invalid-label-refs": "warn",
+  "no-missing-atx-heading-space": [
+    "warn",
+    {
+      "checkClosedHeadings": true
+    }
+  ],
+  "no-missing-label-refs": [
+    "warn",
+    {
+      "allowLabels": []
+    }
+  ],
+  "no-missing-link-fragments": [
+    "warn",
+    {
+      "ignoreCase": false
+      // "allowPattern": ""
+    }
+  ],
+  "no-multiple-h1": [
+    "warn",
+    {
+      // "frontmatterTitle": ""
+    }
+  ],
+  "no-reference-like-urls": "warn",
+  "no-reversed-media-syntax": "error",
+  "no-space-in-emphasis": [
+    "warn",
+    {
+      "checkStrikethrough": true
+    }
+  ],
+  "no-unused-definitions": [
+    "warn",
+    {
+      // "allowDefinitions": []
+    }
+  ],
+  "require-alt-text": "warn",
+  "table-column-count": [
+    "error",
+    {
+      "checkMissingCells": false
+    }
+  ]
+}

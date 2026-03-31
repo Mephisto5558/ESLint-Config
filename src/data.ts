@@ -5,6 +5,7 @@ import { basename, parse, resolve } from 'node:path';
 
 import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
+import markdownPlugin from '@eslint/markdown';
 import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
@@ -40,6 +41,7 @@ export const
     jsdoc: getNamespace(jsdocPlugin, 'jsdoc'),
     json: getNamespace(jsonPlugin, 'json'),
     jsonc: getNamespace(jsoncPlugin, 'jsonc'),
+    markdown: getNamespace(markdownPlugin, 'markdown'),
     packageJSON: getNamespace(packageJSONPlugin, 'package-json'),
     regex: getNamespace(regExPlugin, 'regexp'),
     sonar: getNamespace(sonarjsPlugin, 'sonarjs'),
@@ -69,8 +71,9 @@ export const
     [pluginNames.css]: cssPlugin,
     [pluginNames.json]: jsonPlugin,
     [pluginNames.jsonc]: jsoncPlugin,
-    [pluginNames.packageJSON]: packageJSONPlugin
-  } as Record<(typeof pluginNames)['css' | 'json' | 'jsonc' | 'packageJSON'], ESLint.Plugin>;
+    [pluginNames.packageJSON]: packageJSONPlugin,
+    [pluginNames.markdown]: markdownPlugin
+  } as Record<(typeof pluginNames)['css' | 'json' | 'jsonc' | 'packageJSON' | 'markdown'], ESLint.Plugin>;
 
 /** @param path relative to import.meta.dirname */
 export function importRules(path: string): ESLint.ConfigData['rules'] {

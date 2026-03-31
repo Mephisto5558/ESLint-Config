@@ -19,7 +19,7 @@
 
 [![Discord Server](https://discord.com/api/guilds/1011956895529041950/widget.png?style=shield)](https://discord.com/invite/yWwGTeppjR)
 
-This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, CSS, HTML, JSON and JSON5.
+This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, Markdown, CSS, HTML, JSON and JSON5.
 
 ## Features
   - **Comprehensive ruleset**: Pre-configured for modern Web and Node.js development.
