@@ -1,7 +1,4 @@
-/* eslint-disable import-x/max-dependencies -- all needed here */
-
-import { readFileSync } from 'node:fs';
-import { basename, parse, resolve } from 'node:path';
+/* eslint-disable import-x/max-dependencies -- all needed */
 
 import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
@@ -11,7 +8,7 @@ import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
-// @ts-expect-error not important
+// @ts-expect-error -- eslint-plugin-html cannot be augmented
 import _htmlPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
@@ -81,42 +78,3 @@ export const
     [pluginNames.packageJSON]: packageJSONPlugin,
     [pluginNames.markdown]: markdownPlugin
   } as Record<(typeof pluginNames)['css' | 'json' | 'jsonc' | 'packageJSON' | 'markdown'], ESLint.Plugin>;
-
-/** @param path relative to import.meta.dirname */
-export function importRules(path: string): ESLint.ConfigData['rules'] {
-  const
-    fullPath = resolve(import.meta.dirname, '..', path),
-    parsedPath = parse(fullPath),
-    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- this cannot be typeguarded easily */
-    rules = JSON.parse(
-      readFileSync(fullPath, 'utf8')
-        .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
-        .replaceAll(/\/\/.*/g, '') // remove line comments
-    ) as NonNullable<ESLint.ConfigData['rules']>;
-
-  let namespace = basename(parsedPath.dir);
-  namespace = namespace.startsWith('@') ? `${namespace}/` : '';
-
-  let filename = parsedPath.name;
-  if (filename.startsWith(pluginNames.sonar)) filename = `${pluginNames.sonar}/`;
-  else filename = filename == 'eslint' ? '' : `${filename}/`;
-
-  /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- support for empty strings */
-  return Object.fromEntries(Object.entries(rules).map(([k, v]) => [`${namespace}${filename}${k}`, v || 'off']));
-}
-
-export const rules: ReturnType<typeof importRules>
-  & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
-    ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
-    ...importRules('configs/eslint/eslint.jsonc'),
-    ...importRules('configs/@stylistic.jsonc'),
-    ...importRules('configs/@typescript-eslint.jsonc'),
-    ...importRules('configs/jsdoc.jsonc'),
-    ...importRules('configs/regexp.jsonc'),
-    ...importRules('configs/security.jsonc'),
-    ...importRules('configs/sonarjs.jsonc'),
-    ...importRules('configs/unicorn.jsonc'),
-    ...importRules('configs/import-x.jsonc'),
-    ...importRules('configs/@limegrass/import-alias.jsonc'),
-    ...importRules('configs/custom.jsonc')
-  };

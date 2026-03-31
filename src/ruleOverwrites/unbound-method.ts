@@ -1,5 +1,4 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
-import { pluginNames } from '../data.ts';
 
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Rule } from 'eslint';
@@ -8,7 +7,7 @@ const
   { rules } = tsPlugin,
   baseRuleModule = rules['unbound-method'];
 
-if (!baseRuleModule) throw new Error(`${pluginNames.typescript}/prefer-ternary not found`);
+if (!baseRuleModule) throw new Error('baseRule for unbound-method not found');
 
 export default {
   ...baseRuleModule,

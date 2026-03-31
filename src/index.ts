@@ -13,14 +13,15 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import globals from 'globals';
 import { minVersion } from 'semver';
 
-import { filetypeSpecificPlugins, importRules, jsGlob, pluginNames, plugins, rules, tsGlob } from './data.ts';
-import { getModifiedRule } from './utils.ts';
+import { filetypeSpecificPlugins, jsGlob, pluginNames, plugins, tsGlob } from './constants.ts';
+import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
 
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 
+export * from './constants.ts';
 export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
 export type * from '@mephisto5558/better-types';
@@ -36,6 +37,22 @@ try {
     useErrorIsError = (minVersion(packageJson.engines.node)?.major ?? 0) >= ERROR_IS_ERROR_MIN_VERSION;
 }
 catch { /* ignore */ }
+
+const rules: ReturnType<typeof importRules>
+  & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
+    ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
+    ...importRules('configs/eslint/eslint.jsonc'),
+    ...importRules('configs/@stylistic.jsonc'),
+    ...importRules('configs/@typescript-eslint.jsonc'),
+    ...importRules('configs/jsdoc.jsonc'),
+    ...importRules('configs/regexp.jsonc'),
+    ...importRules('configs/security.jsonc'),
+    ...importRules('configs/sonarjs.jsonc'),
+    ...importRules('configs/unicorn.jsonc'),
+    ...importRules('configs/import-x.jsonc'),
+    ...importRules('configs/@limegrass/import-alias.jsonc'),
+    ...importRules('configs/custom.jsonc')
+  };
 
 rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
   { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{

@@ -1,7 +1,6 @@
 /** @import { Node, IfStatement } from 'estree'; */
 
 import unicornPlugin from 'eslint-plugin-unicorn';
-import { pluginNames } from '../data.ts';
 
 /* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { JSSyntaxElement, Rule } from 'eslint';
@@ -11,7 +10,7 @@ const
   DEFAULT_MAX_LENGTH = 120,
   baseRuleModule = unicornPlugin.rules?.['prefer-ternary'];
 
-if (!baseRuleModule) throw new Error(`${pluginNames.unicorn}/prefer-ternary not found`);
+if (!baseRuleModule) throw new Error('baseRule for prefer-ternary not found');
 
 const dummyFixer = {
   /* eslint-disable @typescript-eslint/no-non-null-assertion -- fine due to these being dummy fixes */
