@@ -92,7 +92,6 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
 
   let filename = parsedPath.name;
   if (filename.startsWith(pluginNames.sonar)) filename = `${pluginNames.sonar}/`;
-  else if (filename.startsWith('eslint-')) filename = filename.slice('eslint-'.length) + '/';
   else filename = filename == 'eslint' ? '' : `${filename}/`;
 
   /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- support for empty strings */
@@ -101,7 +100,7 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
 
 export const rules: ReturnType<typeof importRules>
   & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
-    ...importRules('configs/eslint.jsonc'),
+    ...importRules('configs/eslint/eslint.jsonc'),
     ...importRules('configs/@stylistic.jsonc'),
     ...importRules('configs/@typescript-eslint.jsonc'),
     ...importRules('configs/jsdoc.jsonc'),

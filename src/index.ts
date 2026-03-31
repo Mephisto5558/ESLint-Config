@@ -110,7 +110,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]!
     },
     rules: {
-      ...importRules('configs/eslint-json.jsonc'),
+      ...importRules('configs/eslint/json.jsonc'),
       ...importRules('configs/jsonc.jsonc'),
       'no-warning-comments': rules['no-warning-comments']
     }
@@ -236,7 +236,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!
     },
     rules: {
-      ...importRules('configs/eslint-css.jsonc')
+      ...importRules('configs/eslint/css.jsonc')
     }
   },
   {

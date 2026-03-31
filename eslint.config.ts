@@ -15,7 +15,7 @@ export default [
   },
   {
     name: 'rule-overwrites:config-jsonc',
-    files: ['configs/*.jsonc'],
+    files: ['configs/**/*.jsonc'],
     rules: {
       ...getModifiedRule(config, `${pluginNames.jsonc}/key-name-casing`, [{
         ignores: ['^(require|valid)-.*']
