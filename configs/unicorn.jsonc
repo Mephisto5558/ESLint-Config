@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/.README#rules | Using "warn" wherever applicable
   "better-regex": "off", // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
   "catch-error-name": [

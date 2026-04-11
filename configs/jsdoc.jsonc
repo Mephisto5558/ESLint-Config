@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [JSDOC] https://github.com/gajus/eslint-plugin-jsdoc/tree/main/.README#rules | Using "warn" wherever applicable
   "check-access": "warn",
   "check-alignment": [

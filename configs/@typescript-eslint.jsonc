@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [TYPESCRIPT-ESLINT] https://typescript-eslint.io/rules | Using "warn" wherever applicable
   "adjacent-overload-signatures": "off", // Set in `default_eslint.config.js` for only TS files
   "array-type": [

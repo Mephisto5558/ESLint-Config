@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [JSONC] https://ota-meshi.github.io/eslint-plugin-jsonc/rules | Using "warn" wherever applicable
   //  JSONC Rules
   // "auto": "off", // See Extension rules down below

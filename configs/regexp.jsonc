@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [REGEXP] https://github.com/ota-meshi/eslint-plugin-regexp#white_check_mark-rules | Using "warn" wherever applicable
   //  [POSSIBLE ERRORS]
   "no-contradiction-with-assertion": "warn",

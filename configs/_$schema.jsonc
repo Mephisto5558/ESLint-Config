@@ -1,0 +1,40 @@
+/* eslint-disable jsonc/sort-keys -- using the default order */
+
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ESLint Rules Configuration",
+  "description": "A record of ESLint rules without their namespace prefix.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": {
+    "$ref": "#/$defs/ruleConfig"
+  },
+  "$defs": {
+    "severity": {
+      "enum": ["", "off", "warn", "error"],
+      "description": "Severity level"
+    },
+    "ruleConfig": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/severity"
+        },
+        {
+          "type": "array",
+          "prefixItems": [
+            {
+              "$ref": "#/$defs/severity"
+            }
+          ],
+          "items": true,
+          "minItems": 1,
+          "description": "Rule configuration"
+        }
+      ]
+    }
+  }
+}

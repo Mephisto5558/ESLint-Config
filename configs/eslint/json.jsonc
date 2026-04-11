@@ -1,5 +1,6 @@
 {
   // [ESLint/JSON] https://github.com/eslint/json/blob/main/docs/rules | Using "warn" wherever applicable
+  "$schema": "../_$schema.jsonc",
   "no-duplicate-keys": "error",
   "no-empty-keys": "warn",
   "no-unnormalized-keys": ["warn", {

@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [PACKAGE-JSON] https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/main/docs/rules | Using "warn" wherever applicable
   "bin-name-casing": "warn",
   "exports-subpaths-style": [

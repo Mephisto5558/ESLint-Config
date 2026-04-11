@@ -1,5 +1,6 @@
 {
   // [ESLint/MARKDOWN] https://github.com/eslint/markdown/blob/main/docs/rules | Using "warn" wherever applicable
+  "$schema": "../_$schema.jsonc",
   "fenced-code-language": [
     "warn",
     {

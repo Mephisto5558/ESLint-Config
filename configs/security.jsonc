@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [SECURITY] https://github.com/eslint-community/eslint-plugin-security/blob/main/docs/rules | Using "warn" wherever applicable, error on dangerous vulnerabilities
   "detect-bidi-characters": "error",
   "detect-buffer-noassert": "off", // Removed in Node 10: https://nodejs.org/api/buffer.html

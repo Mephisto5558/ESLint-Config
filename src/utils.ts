@@ -56,7 +56,7 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
       readFileSync(fullPath, 'utf8')
         .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
         .replaceAll(/\/\/.*/g, '') // remove line comments
-    ) as NonNullable<ESLint.ConfigData['rules']>;
+    ) as Record<string, Linter.RuleEntry | ''>;
 
   let namespace = basename(parsedPath.dir);
   namespace = namespace.startsWith('@') ? `${namespace}/` : '';
@@ -65,6 +65,9 @@ export function importRules(path: string): ESLint.ConfigData['rules'] {
   if (filename.startsWith(pluginNames.sonar)) filename = `${pluginNames.sonar}/`;
   else filename = filename == 'eslint' ? '' : `${filename}/`;
 
-  /* eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- support for empty strings */
-  return Object.fromEntries(Object.entries(rules).map(([k, v]) => [`${namespace}${filename}${k}`, v || 'off']));
+  return Object.fromEntries(
+    Object.entries(rules)
+      .filter(([k]) => !k.startsWith('$'))
+      .map(([k, v]) => [`${namespace}${filename}${k}`, v || 'off'])
+  );
 }

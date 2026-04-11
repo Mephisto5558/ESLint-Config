@@ -1,4 +1,5 @@
 {
-  "indent": "+2",
+  "$schema": "./_$schema.jsonc",
+  // [HTML] https://github.com/BenoitZugmeyer/eslint-plugin-html?tab=readme-ov-file#usage | Using "warn" wherever applicable
   "report-bad-indent": "warn" // Handled by `@stylistic/indent` but not correctly if the first line is indented wrong
 }

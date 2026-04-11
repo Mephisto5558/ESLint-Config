@@ -103,10 +103,10 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       reportUnusedInlineConfigs: 'warn'
     },
     settings: {
+      react: { version: 'detect' },
       [pluginNames.jsdoc]: {
         skipInvokedExpressionsForCommentFinding: true
       },
-      react: { version: 'detect' },
       [pluginNames.import]: {
         'resolver-next': [
           createTypeScriptImportResolver({
@@ -115,7 +115,10 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
           })
         ]
       },
-      ...importRules('configs/html.jsonc')
+      [pluginNames.html]: {
+        indent: '+2',
+        ...importRules('configs/html.jsonc')
+      }
     },
     plugins, rules
   },

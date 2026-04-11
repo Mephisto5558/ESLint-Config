@@ -1,4 +1,5 @@
 {
+  "$schema": "../_$schema.jsonc",
   // [ESLINT-COMMENTS] https://eslint-community.github.io/eslint-plugin-eslint-comments/rules | Using "warn" wherever applicable
   // Best Practice
   "disable-enable-pair": [

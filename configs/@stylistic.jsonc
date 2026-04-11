@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [STYLISTIC] https://eslint.style/packages/default#rules | Using "warn" wherever applicable
   "array-bracket-newline": [
     "warn",

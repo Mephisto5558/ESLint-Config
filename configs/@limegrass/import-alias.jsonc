@@ -1,4 +1,6 @@
 {
+  "$schema": "../_$schema.jsonc",
+  // [IMPORT-ALIAS] https://github.com/dword-design/eslint-plugin-import-alias?tab=readme-ov-file#usage | Using "warn" wherever applicable
   "import-alias": [
     "warn",
     {

@@ -1,5 +1,6 @@
 {
   // [ESLint/CSS] https://github.com/eslint/css/blob/main/docs/rules | Using "warn" wherever applicable
+  "$schema": "../_$schema.jsonc",
   "font-family-fallbacks": "warn",
   "no-duplicate-imports": "warn",
   "no-duplicate-keyframe-selectors": "warn",

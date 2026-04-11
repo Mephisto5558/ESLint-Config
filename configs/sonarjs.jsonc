@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md#rules | Using "warn" wherever applicable
   "anchor-precedence": "error",
   "argument-type": "error",

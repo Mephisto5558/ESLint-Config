@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   "jsx-key": "",
   "jsx-no-constructed-context-values": "",
   "jsx-no-leaked-render": "",

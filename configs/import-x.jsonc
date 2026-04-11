@@ -1,4 +1,5 @@
 {
+  "$schema": "./_$schema.jsonc",
   // [IMPORT-X] https://github.com/un-ts/eslint-plugin-import-x/blob/master/README.md#rules | Using "warn" wherever applicable
   //  Helpful warnings
   "export": "error",
