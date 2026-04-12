@@ -1,0 +1,120 @@
+{
+  "$schema": "./_$schema.jsonc",
+  // [N] https://github.com/eslint-community/eslint-plugin-n/tree/master/docs/rules | Using "warn" wherever applicable
+  "callback-return": [
+    "error",
+    [
+      "callback",
+      "cb",
+      "next",
+      "done"
+    ]
+  ],
+  "exports-style": "off", // Handled by `n/no-exports-assign`
+  "file-extension-in-import": "off", // Handled by `import-x/*` and typescript
+  "global-require": "off",
+  "handle-callback-err": [
+    "warn",
+    // anything not prefixed with "_" is handled by `@typescript-eslint/no-unused-vars`
+    // Supports _err, _error, _connectionError
+    "^_.*(e|E)rr(or)?$"
+  ],
+  "hashbang": [
+    "warn",
+    {
+      "ignoreUnpublished": false
+      // "additionalExecutables": [],
+      // "executeableMap": {}
+    }
+  ],
+  "no-callback-literal": "warn",
+  "no-deprecated-api": "off", // Handled by `@typescript-eslint/no-deprecated`
+  "no-exports-assign": "error",
+  "no-extraneous-import": "off", // Handled by `import-x/no-extraneous-dependencies`
+  "no-extraneous-require": "off", // Handled by `import-x/no-extraneous-dependencies`
+  "no-missing-import": "off", // Handled by `import-x/no-unresolved`
+  "no-missing-require": "off", // Handled by `import-x/no-unresolved`
+  "no-mixed-requires": "warn", // Surprisingly is compatible with `one-var`
+  "no-new-require": "off", // Handled by `typescript-eslint/no-unsafe-*`
+  "no-path-concat": "error",
+  "no-process-env": "off",
+  "no-process-exit": "warn",
+  "no-restricted-import": "off", // Handled by `@typescript-eslint/no-restricted-imports`
+  "no-restricted-require": "off", // Handled by `@typescript-eslint/no-restricted-imports`
+  "no-sync": [
+    "warn",
+    {
+      "allowAtRootLevel": true,
+      "ignores": []
+    }
+  ],
+  "no-top-level-await": [
+    "warn",
+    {
+      "ignoreBin": true
+    }
+  ],
+  "no-unpublished-bin": "error",
+  "no-unpublished-import": [
+    "error",
+    {
+      "ignoreTypeImport": false,
+      "ignorePrivate": false
+    }
+  ],
+  "no-unpublished-require": [
+    "error",
+    {
+      "ignorePrivate": false
+    }
+  ],
+  "prefer-node-protocol": "off", // Handled by `unicorn/prefer-node-protocol`
+  "process-exit-as-throw": "warn",
+  
+  // [NO-UNSUPPORTED-FEATURES]
+  "no-unsupported-features/es-builtins": "off", // Handled by `custom/es-builtins`
+  "no-unsupported-features/es-syntax": "off", // Handled by `custom/es-syntax`
+  "no-unsupported-features/node-builtins": "off", // Handled by `custom/node-builtins`
+
+  // [PREFER-GLOBAL]
+  "prefer-global/buffer": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/console": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/crypto": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/process": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/text-decoder": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/text-encoder": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/timers": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/url": [
+    "warn",
+    "always"
+  ],
+  "prefer-global/url-search-params": [
+    "warn",
+    "always"
+  ],
+
+  // [PREFER-PROMISES]
+  "prefer-promises/dns": "warn",
+  "prefer-promises/fs": "warn"
+}

@@ -13,7 +13,7 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import globals from 'globals';
 import { minVersion } from 'semver';
 
-import { filetypeSpecificPlugins, jsGlob, pluginNames, plugins, tsGlob } from './constants.ts';
+import { filetypeSpecificPlugins, jsExtensions, jsGlob, pluginNames, plugins, tsExtensions, tsGlob } from './constants.ts';
 import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
@@ -118,6 +118,9 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [pluginNames.html]: {
         indent: '+2',
         ...importRules('configs/html.jsonc')
+      },
+      [pluginNames.node]: {
+        tryExtentions: [...tsExtensions, ...jsExtensions]
       }
     },
     plugins, rules

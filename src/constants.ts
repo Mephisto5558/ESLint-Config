@@ -13,6 +13,7 @@ import _htmlPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
+import nodePlugin from 'eslint-plugin-n';
 import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
@@ -29,11 +30,15 @@ const
   htmlPlugin = _htmlPlugin as ESLint.Plugin,
   getNamespace = <T extends ESLint.Plugin>(
     plugin: T, defaultNamespace: string
-  ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace;
+  ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace,
+
+  extensions = ['{}', '{}x', 'm{}', 'c{}'];
 
 export const
-  tsGlob = '.{m,c,}ts{,x}',
-  jsGlob = '.{m,c,}js{,x}',
+  tsExtensions = extensions.map(e => `.${e.replace('{}', 'ts')}`),
+  jsExtensions = extensions.map(e => `.${e.replace('{}', 'js')}`),
+  tsGlob = `.{${tsExtensions.map(e => e.slice(1)).join(',')}}`,
+  jsGlob = `.{${jsExtensions.map(e => e.slice(1)).join(',')}}`,
   pluginNames = {
     css: getNamespace(cssPlugin, 'css'),
     eslintComments: getNamespace(eslintCommentsPlugin, '@eslint-community/eslint-comments'),
@@ -44,6 +49,7 @@ export const
     json: getNamespace(jsonPlugin, 'json'),
     jsonc: getNamespace(jsoncPlugin, 'jsonc'),
     markdown: getNamespace(markdownPlugin, 'markdown'),
+    node: getNamespace(nodePlugin, 'n'),
     packageJSON: getNamespace(packageJSONPlugin, 'package-json'),
     regex: getNamespace(regExPlugin, 'regexp'),
     security: getNamespace(securityPlugin, 'security'),
@@ -62,6 +68,7 @@ export const
     [pluginNames.import]: importPlugin,
     [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
+    [pluginNames.node]: nodePlugin,
     [pluginNames.regex]: regExPlugin,
     [pluginNames.security]: securityPlugin,
     [pluginNames.sonar]: sonarjsPlugin,

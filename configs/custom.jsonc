@@ -6,10 +6,32 @@
       "threshold": 20
     }
   ],
+  "es-builtins": [
+    "error",
+    {
+      // "version": "",
+      "ignores": []
+    }
+  ],
+  "es-syntax": [
+    "error",
+    {
+      // "version": "",
+      "ignores": []
+    }
+  ],
   "no-async-constructor": [
     "warn",
     {
       "allowVoid": true
+    }
+  ],
+  "node-builtins": [
+    "error",
+    {
+      // "version": "",
+      "allowExperimental": false,
+      "ignores": []
     }
   ],
   "prefer-ternary": [
