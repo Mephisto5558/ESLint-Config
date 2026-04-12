@@ -1,5 +1,6 @@
 /* eslint-disable max-lines, @stylistic/multiline-comment-style, @stylistic/lines-around-comment -- for easy enabling and disabling */
 /* eslint-disable @typescript-eslint/no-non-null-assertion -- only used and needed for `filetypeSpecificPlugins` */
+/* eslint-disable import-x/max-dependencies -- all needed */
 
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -14,7 +15,10 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import globals from 'globals';
 import { minVersion } from 'semver';
 
-import { disableTypedChecked, filetypeSpecificPlugins, jsExtensions, jsGlob, pluginNames, plugins, tsExtensions, tsGlob } from './constants.ts';
+import {
+  allFilesGlob, disableTypedChecked, filetypeSpecificPlugins, jsExtensions,
+  jsGlob, pluginNames, plugins, tsExtensions, tsGlob
+} from './constants.ts';
 import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
@@ -80,7 +84,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:all',
-    files: [`**/*${tsGlob}`, `**/*${jsGlob}`, '**/*.html'],
+    files: [tsGlob, jsGlob, '.html'].map(e => allFilesGlob + e),
     languageOptions: {
       parser: typescriptParser,
       // @ts-expect-error `tsconfigRootDir: undefined` has some undocumented behavior that I need for some projects
@@ -129,7 +133,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:all-json',
-    files: ['**/*.json{,c,5}'],
+    files: [`${allFilesGlob}.json{,c,5}`],
     ignores: ['package-lock.json'],
     plugins: {
       [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json]!,
@@ -159,18 +163,18 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:json',
-    files: ['**/*.json'],
-    ignores: ['**/package.json', '**/.vscode/**/*.json'],
+    files: [`${allFilesGlob}.json`],
+    ignores: ['**/package.json', `**/.vscode/${allFilesGlob}.json`],
     language: `${pluginNames.json}/json`
   },
   {
     name: 'eslint-config:jsonc',
-    files: ['**/*.jsonc'],
+    files: [`${allFilesGlob}.jsonc`],
     language: `${pluginNames.json}/jsonc`
   },
   {
     name: 'eslint-config:vscode-json',
-    files: ['**/.vscode/**/*.json'],
+    files: [`**/.vscode/${allFilesGlob}.json`],
     language: `${pluginNames.json}/jsonc`,
     rules: {
       [`${pluginNames.jsonc}/sort-keys`]: 'off', // use VSCode default order
@@ -179,12 +183,12 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:json5',
-    files: ['**/*.json5'],
+    files: [`${allFilesGlob}.json5`],
     language: `${pluginNames.json}/json5`
   },
   {
     name: 'eslint-config:tsconfig.json',
-    files: ['**/*tsconfig*.json'],
+    files: [`${allFilesGlob}tsconfig*.json`],
     rules: {
       [`${pluginNames.jsonc}/sort-keys`]: [
         'warn',
@@ -232,14 +236,14 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:react',
-    files: ['**/*.jsx'],
+    files: [`${allFilesGlob}.jsx`],
     rules: {
       ...importRules('configs/sonarjs-react.jsonc')
     }
   },
   {
     name: 'eslint-config:html',
-    files: ['**/*.html'],
+    files: [`${allFilesGlob}.html`],
     // language: `${pluginNames.html}/html`, // This crashes many rules without having any positive difference
     languageOptions: {
       parser: htmlParser,
@@ -267,7 +271,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:css',
-    files: ['**/*.css'],
+    files: [`${allFilesGlob}.css`],
     language: `${pluginNames.css}/css`,
     plugins: {
       [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!,
@@ -282,7 +286,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   },
   {
     name: 'eslint-config:ts',
-    files: [`**/*${tsGlob}`],
+    files: [allFilesGlob + tsGlob],
     rules: {
       // TS-Only rules
       'no-undef': 'off',

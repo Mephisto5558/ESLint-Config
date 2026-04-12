@@ -40,6 +40,7 @@ export const
   jsExtensions = extensions.map(e => `.${e.replace('{}', 'js')}`),
   tsGlob = `.{${tsExtensions.map(e => e.slice(1)).join(',')}}`,
   jsGlob = `.{${jsExtensions.map(e => e.slice(1)).join(',')}}`,
+  allFilesGlob = '**/*',
   pluginNames = {
     css: getNamespace(cssPlugin, 'css'),
     eslintComments: getNamespace(eslintCommentsPlugin, '@eslint-community/eslint-comments'),
