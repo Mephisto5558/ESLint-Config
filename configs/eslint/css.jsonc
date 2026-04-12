@@ -46,7 +46,7 @@
   ],
   "use-baseline": [ 
     "warn", {
-      "available": "newly",
+      "available": "newly", // Consistent with `@html-eslint/use-baseline`
       "allowAtRules": [],
       "allowFunctions": [],
       "allowMediaConditions": [],

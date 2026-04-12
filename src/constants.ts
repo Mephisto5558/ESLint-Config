@@ -4,12 +4,13 @@ import cssPlugin from '@eslint/css';
 import jsonPlugin from '@eslint/json';
 import markdownPlugin from '@eslint/markdown';
 import eslintCommentsPlugin from '@eslint-community/eslint-plugin-eslint-comments';
+import htmlPlugin from '@html-eslint/eslint-plugin';
 import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 // @ts-expect-error -- eslint-plugin-html cannot be augmented
-import _htmlPlugin from 'eslint-plugin-html';
+import _htmlJSPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
@@ -27,7 +28,7 @@ import type { ESLint } from 'eslint';
 
 const
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- eslint-plugin-html cannot be augmented */
-  htmlPlugin = _htmlPlugin as ESLint.Plugin,
+  htmlJSPlugin = _htmlJSPlugin as ESLint.Plugin,
   getNamespace = <T extends ESLint.Plugin>(
     plugin: T, defaultNamespace: string
   ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace,
@@ -42,7 +43,8 @@ export const
   pluginNames = {
     css: getNamespace(cssPlugin, 'css'),
     eslintComments: getNamespace(eslintCommentsPlugin, '@eslint-community/eslint-comments'),
-    html: getNamespace(htmlPlugin, 'html'),
+    htmlJS: getNamespace(htmlJSPlugin, 'html'),
+    html: getNamespace(htmlPlugin, '@html-eslint'),
     import: getNamespace(importPlugin, 'import-x'),
     importAlias: getNamespace(importAliasPlugin, '@limegrass/import-alias'),
     jsdoc: getNamespace(jsdocPlugin, 'jsdoc'),
@@ -65,6 +67,7 @@ export const
   plugins = {
     [pluginNames.eslintComments]: eslintCommentsPlugin,
     [pluginNames.html]: htmlPlugin,
+    [pluginNames.htmlJS]: htmlJSPlugin,
     [pluginNames.import]: importPlugin,
     [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
@@ -85,3 +88,15 @@ export const
     [pluginNames.packageJSON]: packageJSONPlugin,
     [pluginNames.markdown]: markdownPlugin
   } as Record<(typeof pluginNames)['css' | 'json' | 'jsonc' | 'packageJSON' | 'markdown'], ESLint.Plugin>;
+
+
+/* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- this is fine here */
+let disableTypedCheckedConfig = plugins[pluginNames.typescript as keyof typeof plugins].configs?.['disable-type-checked'];
+if (Array.isArray(disableTypedCheckedConfig)) disableTypedCheckedConfig = disableTypedCheckedConfig[0];
+
+if (disableTypedCheckedConfig?.rules) {
+  disableTypedCheckedConfig.rules[`${pluginNames.typescript}/consistent-type-imports`] = 'off'; // this one is missing in the config
+  disableTypedCheckedConfig.rules[`${pluginNames.custom}/unbound-method`] = 'off';
+}
+
+export const disableTypedChecked = disableTypedCheckedConfig ?? {};

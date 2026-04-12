@@ -1,6 +1,6 @@
 {
   "$schema": "./_$schema.jsonc",
-  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/jsts/src/rules/README.md#rules | Using "warn" wherever applicable
+  // [SONARJS] https://github.com/SonarSource/SonarJS/blob/master/packages/analysis/src/jsts/rules/README.md#rules | Using "warn" wherever applicable
   "anchor-precedence": "error",
   "argument-type": "error",
   "arguments-order": "error",
@@ -232,7 +232,7 @@
   "non-existent-operator": "off", // Handled by `@stylistic/space-infix-ops`, `@stylistic/space-unary-ops`
   "non-number-in-arithmetic-expression": "warn",
   "null-dereference": "error",
-  "object-alt-content": "off", // Set in `default_eslint-config.js` for only HTML files
+  "object-alt-content": "off", // Set in `sonarjs-html.jsonc`
   "operation-returning-nan": "error",
   "os-command": "warn",
   "post-message": "warn",
@@ -267,8 +267,8 @@
   "stateful-regex": "error",
   "strict-transport-security": "warn",
   "strings-comparison": "error",
-  "table-header": "off", // Set in `default_eslint.config.js` for only HTML files
-  "table-header-reference": "off", // Set in `default_eslint.config.js` for only HTML files
+  "table-header": "off", // Set in `sonarjs-html.jsonc`
+  "table-header-reference": "off", // Set in `sonarjs-html.jsonc`
   "test-check-exception": "warn",
   "todo-tag": "off", // Handled by `no-warning-comments`
   "too-many-break-or-continue-in-loop": "off",

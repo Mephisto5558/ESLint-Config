@@ -1,0 +1,177 @@
+{
+  "$schema": "./_$schema.jsonc",
+  // [@HTML-ESLINT] https://html-eslint.org/docs/rules | Using "warn" wherever applicable
+  // [BEST PRACTICE]
+  "css-no-empty-blocks": "warn",
+  "head-order": [
+    "warn",
+    {
+      "ignores": []
+    }
+  ],
+  "max-element-depth": [
+    "warn",
+    { 
+      "max": 10
+    }
+  ],
+  "no-duplicate-attrs": "warn",
+  "no-duplicate-class": "warn",
+  "no-duplicate-id": "warn",
+  "no-duplicate-in-head": "warn",
+  "no-ineffective-attrs": "warn",
+  "no-inline-styles": "warn",
+  "no-invalid-attr-value": [
+    "error",
+    {
+      "allow": []
+    }
+  ],
+  "no-invalid-entity": "error",
+  "no-nested-interactive": "warn",
+  "no-obsolete-attrs": "warn",
+  "no-obsolete-tags": "warn",
+  "no-restricted-attr-values": "off",
+  "no-restricted-attrs": "off",
+  "no-restricted-tags": "off",
+  "no-script-style-type": "warn",
+  "no-target-blank": "warn",
+  "no-whitespace-only-children": [
+    "warn",
+    {
+      // "tagPatterns": []
+    }
+  ],
+  "prefer-https": "warn",
+  "require-attrs": "off",
+  "require-button-type": "warn",
+  "require-closing-tags": [
+    "warn",
+    {
+      "selfClosing": "never",
+      "selfClosingCustomPatterns": []
+    }
+  ],
+  "require-details-summary": "warn",
+  "require-doctype": "warn",
+  "require-explicit-size": [
+    "warn",
+    {
+      "allowClass": [],
+      "allowId": []
+    }
+  ],
+  "require-li-container": "warn",
+  "require-meta-charset": "warn",
+  "svg-require-viewbox": "warn",
+  "use-baseline": [
+    "warn",
+    {
+      "available": "newly" // Consistent with `css/use-baseline`
+    }
+  ],
+
+  // [SEO]
+  "no-multiple-h1": "warn",
+  "require-lang": "warn",
+  "require-meta-description": "warn",
+  "require-open-graph-protocol": "off",
+  "require-title": "warn",
+
+  // [ACCESSIBILITY]
+  "no-abstract-roles": "warn",
+  "no-accesskey-attrs": "warn",
+  "no-aria-hidden-body": "warn",
+  "no-aria-hidden-on-focusable": "warn",
+  "no-empty-headings": "off", // Handled by `@html-eslint/require-content`
+  "no-heading-inside-button": "warn",
+  "no-invalid-role": "error",
+  "no-non-scalable-viewport": "warn",
+  "no-positive-tabindex": "warn",
+  "no-redundant-role": "warn",
+  "no-skip-heading-levels": "warn",
+  "require-content": "warn",
+  "require-form-method": "warn",
+  "require-frame-title": "warn",
+  "require-img-alt": [
+    "warn",
+    {
+      "substitute": []
+    }
+  ],
+  "require-input-label": "warn",
+  "require-meta-viewport": "warn",
+
+  // [STYLE]
+  "attrs-newline": "off", // Handled by `@stylistic/max-len`
+  "class-spacing": "warn",
+  "element-newline": [
+    "warn",
+    {
+      "skip": [],
+      "inline": ["$inline"]
+    }
+  ],
+  "id-naming-convention": [
+    "warn",
+    "kebab-case"
+  ],
+  "indent": [
+    "warn",
+    2,
+    {
+      "Attribute": 1,
+      "tagChildrenIndent": {
+        "html": 0
+      },
+      "ignoreComment": false,
+      "templateIndentBase": "templateTag"
+    }
+  ],
+  "lowercase": "warn",
+  "no-extra-spacing-attrs": [
+    "warn",
+    {
+      "enforceBeforeSelfClose": true,
+      "disallowMissing": true,
+      "disallowTabs": false, // Handled by `@stylistic/no-tabs`
+      "disallowInAssignment": false // Handled by `@html-eslint/no-extra-spacing-attrs`
+    }
+  ],
+  "no-extra-spacing-text": "off", // Handled by `@html-eslint/no-extra-spacing-attrs`, `@stylistic/no-trailing-spaces`
+  "no-multiple-empty-lines": [
+    "warn", {
+      "max": 2
+    }
+  ],
+  "no-trailing-spaces": "off", // Handled by `@stylistic/no-trailing-spaces`
+  "quotes": [
+    "warn",
+    "single",
+    {
+      "enforceTemplatedAttrValue": true
+    }
+  ],
+  "sort-attrs": [
+    "warn",
+    {
+      "priority": [
+        "id",
+        "for",
+        "class",
+        "style",
+        "name",
+        "content",
+
+        "rel",
+        "type",
+        "href",
+
+        "src",
+        "crossorigin",
+        "integrity",
+        { "pattern": "on.*" }
+      ]
+    }
+  ]
+}

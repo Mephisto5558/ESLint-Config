@@ -1,0 +1,6 @@
+{
+  "no-table-as-layout": "warn",
+  "object-alt-content": "warn",
+  "table-header": "warn",
+  "table-header-reference": "warn"
+}

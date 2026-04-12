@@ -19,7 +19,18 @@
 
 [![Discord Server](https://discord.com/api/guilds/1011956895529041950/widget.png?style=shield)](https://discord.com/invite/yWwGTeppjR)
 
-This is a full opinionated eslint config using multiple plugins supporting Typescript, JavaScript, Markdown, CSS, HTML, JSON and JSON5.
+This is a fully opinionated eslint config using multiple plugins supporting
+- Typescript
+- JavaScript & JavaScript within HTML
+- JSDOC
+- HTML & [HTML within JavaScript/TypeScript](https://html-eslint.org/docs/getting-started#lint-html-code-inside-javascript-template-literals)
+- CSS
+- Markdown
+- JSON & package.json
+- JSONC
+- JSON5
+
+enforcing best practices and a consistent code style.
 
 ## Features
   - **Comprehensive ruleset**: Pre-configured for modern Web and Node.js development.

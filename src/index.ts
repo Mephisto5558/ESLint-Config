@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 import { includeIgnoreFile } from '@eslint/compat';
+import htmlParser from '@html-eslint/parser';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
@@ -13,7 +14,7 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 import globals from 'globals';
 import { minVersion } from 'semver';
 
-import { filetypeSpecificPlugins, jsExtensions, jsGlob, pluginNames, plugins, tsExtensions, tsGlob } from './constants.ts';
+import { disableTypedChecked, filetypeSpecificPlugins, jsExtensions, jsGlob, pluginNames, plugins, tsExtensions, tsGlob } from './constants.ts';
 import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
@@ -42,6 +43,7 @@ const rules: ReturnType<typeof importRules>
   & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
     ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
     ...importRules('configs/eslint/eslint.jsonc'),
+    ...importRules('configs/@html-eslint.jsonc'),
     ...importRules('configs/@stylistic.jsonc'),
     ...importRules('configs/@typescript-eslint.jsonc'),
     ...importRules('configs/jsdoc.jsonc'),
@@ -115,7 +117,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
           })
         ]
       },
-      [pluginNames.html]: {
+      [pluginNames.htmlJS]: {
         indent: '+2',
         ...importRules('configs/html.jsonc')
       },
@@ -238,14 +240,20 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   {
     name: 'eslint-config:html',
     files: ['**/*.html'],
+    // language: `${pluginNames.html}/html`, // This crashes many rules without having any positive difference
     languageOptions: {
+      parser: htmlParser,
       globals: globals.browser
     },
     rules: {
-      [`${pluginNames.sonar}/no-table-as-layout`]: 'warn',
-      [`${pluginNames.sonar}/object-alt-content`]: 'warn',
-      [`${pluginNames.sonar}/table-header`]: 'warn',
-      [`${pluginNames.sonar}/table-header-reference`]: 'warn',
+      ...disableTypedChecked.rules,
+      ...importRules('configs/sonarjs-html.jsonc'),
+
+      // some rules crash
+      'capitalized-comments': 'off',
+      [`${pluginNames.stylistic}/spaced-comment`]: 'off',
+
+
       [`${pluginNames.stylistic}/no-multiple-empty-lines`]: [
         'error',
         {
