@@ -21,8 +21,8 @@ export default {
       .filter(e => !e.startsWith('index.') && (e.endsWith('.js') || e.endsWith('.ts') && !e.endsWith('.d.ts')))
       .map(async file => {
         try {
-          /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- import cannot be typed */
-          const module = await import('./' + file) as { default: Rule.RuleModule };
+          /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion, nounsanitized/method -- import cannot be typed */
+          const module = await import(`./${file}`) as { default: Rule.RuleModule };
           return [file.slice(0, -EXT_LENGTH), module.default];
         }
         catch (err) {

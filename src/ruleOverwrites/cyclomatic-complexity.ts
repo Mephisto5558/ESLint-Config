@@ -5,10 +5,12 @@ import type { Rule } from 'eslint';
 
 const baseRuleModule = sonarjsPlugin.rules['cyclomatic-complexity'];
 
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive, required by TS */
 export default {
   ...baseRuleModule,
   create(context): Rule.RuleListener {
     const newContext = Object.create(context, {
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
       report: {
         value(descriptor) {
           if ('message' in descriptor) {

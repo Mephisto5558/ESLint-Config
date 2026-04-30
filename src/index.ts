@@ -46,7 +46,7 @@ catch { /* ignore */ }
 const rules = ['eslint/eslint', ...Object.keys(plugins)].reduce<
   ReturnType<typeof importRules> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }
   // skip htmlJS due to it using settings instead of rules
->((acc, e) => e == pluginNames.htmlJS ? acc : ({...acc, ...importRules(e)}), {});
+>((acc, e) => e == pluginNames.htmlJS ? acc : { ...acc, ...importRules(e) }, {});
 
 rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
   { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{

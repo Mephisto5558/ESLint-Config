@@ -52,6 +52,7 @@ export function importRules(plugin: string): ESLint.ConfigData['rules'] {
     parsedPath = parse(fullPath),
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- this cannot be typeguarded easily */
     rules = JSON.parse(
+      /* eslint-disable-next-line n/no-sync -- using sync is required here */
       readFileSync(fullPath, 'utf8')
         .replaceAll(/\/\*.*?\*\//gs, '') // remove block comments
         .replaceAll(/\/\/.*/g, '') // remove line comments

@@ -74,6 +74,7 @@ export default {
         options: {
           value: context.options[0] ? [context.options[0]] : []
         },
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
         report: {
           value: function (descriptor) {
             if (!descriptor.fix || !('node' in descriptor)) return context.report(descriptor);
