@@ -1,0 +1,6 @@
+{
+  "$schema": "./_$schema.jsonc",
+  // [NO-UNSANITIZED] https://github.com/mozilla/eslint-plugin-no-unsanitized/tree/main/docs/rules | Using "warn" wherever applicable
+  "method": "warn",
+  "property": "warn"
+}

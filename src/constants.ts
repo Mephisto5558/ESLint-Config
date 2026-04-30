@@ -11,6 +11,9 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 // @ts-expect-error -- eslint-plugin-html cannot be augmented
 import _htmlJSPlugin from 'eslint-plugin-html';
+
+// @ts-expect-error -- eslint-plugin-no-unsanitized cannot be augmented
+import _unsanitizedPlugin from 'eslint-plugin-no-unsanitized'
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
@@ -29,6 +32,7 @@ import type { ESLint } from 'eslint';
 const
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- eslint-plugin-html cannot be augmented */
   htmlJSPlugin = _htmlJSPlugin as ESLint.Plugin,
+  unsanitizedPlugin = _unsanitizedPlugin as ESLint.Plugin,
   getNamespace = <T extends ESLint.Plugin>(
     plugin: T, defaultNamespace: string
   ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace,
@@ -54,6 +58,7 @@ export const
     markdown: getNamespace(markdownPlugin, 'markdown'),
     node: getNamespace(nodePlugin, 'n'),
     packageJSON: getNamespace(packageJSONPlugin, 'package-json'),
+    noUnsanitized: getNamespace(unsanitizedPlugin, 'nounsanitized'),
     regex: getNamespace(regExPlugin, 'regexp'),
     security: getNamespace(securityPlugin, 'security'),
     sonar: getNamespace(sonarjsPlugin, 'sonarjs'),
@@ -73,6 +78,7 @@ export const
     [pluginNames.importAlias]: importAliasPlugin,
     [pluginNames.jsdoc]: jsdocPlugin,
     [pluginNames.node]: nodePlugin,
+    [pluginNames.noUnsanitized]: unsanitizedPlugin,
     [pluginNames.regex]: regExPlugin,
     [pluginNames.security]: securityPlugin,
     [pluginNames.sonar]: sonarjsPlugin,

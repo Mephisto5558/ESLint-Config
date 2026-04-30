@@ -57,6 +57,7 @@ const rules: ReturnType<typeof importRules>
     ...importRules('configs/unicorn.jsonc'),
     ...importRules('configs/import-x.jsonc'),
     ...importRules('configs/@limegrass/import-alias.jsonc'),
+    ...importRules('configs/nounsanitized.jsonc'),
     ...importRules('configs/custom.jsonc')
   };
 
