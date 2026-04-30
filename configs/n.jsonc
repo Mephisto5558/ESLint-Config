@@ -34,7 +34,14 @@
   "no-extraneous-require": "off", // Handled by `import-x/no-extraneous-dependencies`
   "no-missing-import": "off", // Handled by `import-x/no-unresolved`
   "no-missing-require": "off", // Handled by `import-x/no-unresolved`
-  "no-mixed-requires": "warn", // Surprisingly is compatible with `one-var`
+  "no-mixed-requires": [
+    // Surprisingly is compatible with `one-var`
+    "warn",
+    {
+      "grouping": false,
+      "allowCall": true
+    }
+  ], 
   "no-new-require": "off", // Handled by `typescript-eslint/no-unsafe-*`
   "no-path-concat": "error",
   "no-process-env": "off",
