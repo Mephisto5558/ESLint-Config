@@ -45,7 +45,7 @@
   "no-new-require": "off", // Handled by `typescript-eslint/no-unsafe-*`
   "no-path-concat": "error",
   "no-process-env": "off",
-  "no-process-exit": "warn",
+  "no-process-exit": "off", // Handled by `unicorn/no-process-exit`
   "no-restricted-import": "off", // Handled by `@typescript-eslint/no-restricted-imports`
   "no-restricted-require": "off", // Handled by `@typescript-eslint/no-restricted-imports`
   "no-sync": [
