@@ -57,6 +57,7 @@
   "disabled-auto-escaping": "warn",
   "disabled-resource-integrity": "warn",
   "disabled-timeout": "error",
+  "dompurify-unsafe-config": "off", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "duplicates-in-character-class": "off", // Handled by `regexp/no-dupe-characters-character-class`, `regexp/no-obscure-range`, `regexp/prefer-range`
   "dynamically-constructed-templates": "", // TODO: Docs currently give 403 so this rule cannot be implemented.
   "elseif-without-else": "off",

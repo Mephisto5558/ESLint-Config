@@ -129,13 +129,13 @@
     }
   ],
   "lowercase": "warn",
-  "no-extra-spacing-attrs": [
+  "no-extra-spacing-tags": [
     "warn",
     {
       "enforceBeforeSelfClose": true,
       "disallowMissing": true,
       "disallowTabs": false, // Handled by `@stylistic/no-tabs`
-      "disallowInAssignment": false // Handled by `@html-eslint/no-extra-spacing-attrs`
+      "disallowInAssignment": true
     }
   ],
   "no-extra-spacing-text": "off", // Handled by `@html-eslint/no-extra-spacing-attrs`, `@stylistic/no-trailing-spaces`

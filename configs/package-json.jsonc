@@ -148,6 +148,7 @@
       ]
     }
   ],
+  "restrict-top-level-properties": "off",
   "scripts-name-casing": "warn",
   "sort-collections": [
     "warn",
