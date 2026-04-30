@@ -46,10 +46,9 @@ export function getModifiedRule<NAME extends string, RULE_ONLY extends boolean =
   ) as RULE_ONLY extends true ? Linter.RuleEntry : Record<NAME, Linter.RuleEntry>;
 }
 
-/** @param path relative to import.meta.dirname */
-export function importRules(path: string): ESLint.ConfigData['rules'] {
+export function importRules(plugin: string): ESLint.ConfigData['rules'] {
   const
-    fullPath = resolve(import.meta.dirname, '..', path),
+    fullPath = resolve(import.meta.dirname, '..', 'configs', `${plugin}.jsonc`),
     parsedPath = parse(fullPath),
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- this cannot be typeguarded easily */
     rules = JSON.parse(

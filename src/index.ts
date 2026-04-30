@@ -43,23 +43,10 @@ try {
 }
 catch { /* ignore */ }
 
-const rules: ReturnType<typeof importRules>
-  & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined } = {
-    ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
-    ...importRules('configs/eslint/eslint.jsonc'),
-    ...importRules('configs/@html-eslint.jsonc'),
-    ...importRules('configs/@stylistic.jsonc'),
-    ...importRules('configs/@typescript-eslint.jsonc'),
-    ...importRules('configs/jsdoc.jsonc'),
-    ...importRules('configs/regexp.jsonc'),
-    ...importRules('configs/security.jsonc'),
-    ...importRules('configs/sonarjs.jsonc'),
-    ...importRules('configs/unicorn.jsonc'),
-    ...importRules('configs/import-x.jsonc'),
-    ...importRules('configs/@limegrass/import-alias.jsonc'),
-    ...importRules('configs/nounsanitized.jsonc'),
-    ...importRules('configs/custom.jsonc')
-  };
+const rules = ['eslint/eslint', ...Object.keys(plugins)].reduce<
+  ReturnType<typeof importRules> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }
+  // skip htmlJS due to it using settings instead of rules
+>((acc, e) => e == pluginNames.htmlJS ? acc : ({...acc, ...importRules(e)}), {});
 
 rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
   { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
@@ -124,7 +111,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       },
       [pluginNames.htmlJS]: {
         indent: '+2',
-        ...importRules('configs/html.jsonc')
+        ...importRules(pluginNames.htmlJS)
       },
       [pluginNames.node]: {
         tryExtentions: [...tsExtensions, ...jsExtensions]
@@ -143,9 +130,9 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
     },
     rules: {
-      ...importRules('configs/eslint/json.jsonc'),
-      ...importRules('configs/jsonc.jsonc'),
-      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
+      ...importRules(`eslint/${pluginNames.json}`),
+      ...importRules(pluginNames.jsonc),
+      ...importRules(pluginNames.eslintComments),
       'no-warning-comments': rules['no-warning-comments']
     }
   },
@@ -157,7 +144,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
       [pluginNames.packageJSON]: filetypeSpecificPlugins[pluginNames.packageJSON]!
     },
     rules: {
-      ...importRules('configs/package-json.jsonc'),
+      ...importRules(pluginNames.packageJSON),
       [`${pluginNames.jsonc}/sort-keys`]: 'off', // Handled by `package-json/order-properties`
       [`${pluginNames.jsonc}/key-name-casing`]: 'off'
     }
@@ -239,7 +226,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     name: 'eslint-config:react',
     files: [`${allFilesGlob}.jsx`],
     rules: {
-      ...importRules('configs/sonarjs-react.jsonc')
+      ...importRules(`${pluginNames.sonar}-react`)
     }
   },
   {
@@ -252,7 +239,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     },
     rules: {
       ...disableTypedChecked.rules,
-      ...importRules('configs/sonarjs-html.jsonc'),
+      ...importRules(`${pluginNames.sonar}-html`),
 
       // some rules crash
       'capitalized-comments': 'off',
@@ -281,8 +268,8 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
 
     },
     rules: {
-      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
-      ...importRules('configs/eslint/css.jsonc')
+      ...importRules(pluginNames.eslintComments),
+      ...importRules(`eslint/${pluginNames.css}`)
     }
   },
   {
@@ -381,8 +368,8 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
 
     },
     rules: {
-      ...importRules('configs/@eslint-community/eslint-comments.jsonc'),
-      ...importRules('configs/eslint/markdown.jsonc')
+      ...importRules(pluginNames.eslintComments),
+      ...importRules(`eslint/${pluginNames.markdown}`)
     }
   }
 ];

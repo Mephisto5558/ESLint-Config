@@ -6,3 +6,4 @@ dist/
 test.*
 *.tsbuildinfo
 eslint.log
+*.diff

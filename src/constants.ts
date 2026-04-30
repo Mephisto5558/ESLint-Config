@@ -11,13 +11,13 @@ import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 // @ts-expect-error -- eslint-plugin-html cannot be augmented
 import _htmlJSPlugin from 'eslint-plugin-html';
-
-// @ts-expect-error -- eslint-plugin-no-unsanitized cannot be augmented
-import _unsanitizedPlugin from 'eslint-plugin-no-unsanitized'
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';
 import jsoncPlugin from 'eslint-plugin-jsonc';
 import nodePlugin from 'eslint-plugin-n';
+
+// @ts-expect-error -- eslint-plugin-no-unsanitized cannot be augmented
+import _unsanitizedPlugin from 'eslint-plugin-no-unsanitized';
 import packageJSONPlugin from 'eslint-plugin-package-json';
 import regExPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
@@ -30,9 +30,11 @@ import customPlugin from './ruleOverwrites/index.js';
 import type { ESLint } from 'eslint';
 
 const
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- eslint-plugin-html cannot be augmented */
+  /* eslint-disable @typescript-eslint/no-unsafe-type-assertion -- these plugins cannot be augmented */
   htmlJSPlugin = _htmlJSPlugin as ESLint.Plugin,
   unsanitizedPlugin = _unsanitizedPlugin as ESLint.Plugin,
+  /* eslint-enable @typescript-eslint/no-unsafe-type-assertion */
+
   getNamespace = <T extends ESLint.Plugin>(
     plugin: T, defaultNamespace: string
   ): T['meta'] extends { namespace: string } ? T['meta']['namespace'] : string => plugin.meta?.namespace ?? defaultNamespace,
