@@ -36,7 +36,6 @@
   },
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
-    "@eslint/compat": "2.x",
     "@eslint/css": "^1.2.0",
     "@eslint/json": "^1.2.0",
     "@eslint/markdown": "^8.0.1",
@@ -67,14 +66,14 @@
     "@types/estree": "1.x",
     "@types/node": "20.x",
     "@types/semver": "7.x",
-    "eslint": "^10.2.1",
+    "eslint": "^10.4.0",
     "eslint-plugin-eslint-plugin": "^7.3.3",
     "jiti": ">=2.2",
     "typescript": "^5.7.0 || ^6.0.0"
   },
   "peerDependencies": {
     "@mephisto5558/better-types": "latest",
-    "eslint": "^10.3.0",
+    "eslint": "^10.4.0",
     "jiti": ">=2.2",
     "typescript": ">=5.7.0"
   },

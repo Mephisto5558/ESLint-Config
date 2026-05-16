@@ -5,7 +5,7 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from 'eslint/config';
 import htmlParser from '@html-eslint/parser';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
