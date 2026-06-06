@@ -37,7 +37,7 @@
   "dependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.7.1",
     "@eslint/css": "^1.2.0",
-    "@eslint/json": "^1.2.0",
+    "@eslint/json": "^2.0.0",
     "@eslint/markdown": "^8.0.1",
     "@html-eslint/eslint-plugin": "^0.60.0",
     "@html-eslint/parser": "0.x",
