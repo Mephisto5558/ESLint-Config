@@ -376,7 +376,7 @@
   ],
   "no-multi-str": "warn",
   "no-negated-condition": "off", // Handled by `unicorn/no-negated-condition` because unicorn has an autofix option for it
-  "no-nested-ternary": "off", // Handled by `unicorn/no-nested-ternary`
+  "no-nested-ternary": "off", // Handled by `sonarjs/no-nested-conditional`
   "no-new": "warn",
   "no-new-func": "off", // Handled by `@typescript-eslint/no-implied-eval`
   "no-new-wrappers": "off", // Handled by `unicorn/new-for-builtins`
