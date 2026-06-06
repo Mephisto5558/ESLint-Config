@@ -41,7 +41,6 @@
   "comma-or-logical-or-case": "off", // Handled by `no-sequences`, `no-constant-binary-expression`, `@typescript-eslint/no-unnecessary-condition`
   "comment-regex": "off",
   "concise-regex": "off", // Handled by `regexp/prefer-d`, `regexp/prefer-w`, `regexp/use-ignore-case`, `regexp/match-any`, `regexp/prefer-question-quantifier`, `regexp/prefer-star-quantifier`, `regexp/prefer-plus-quantifier`, `regexp/no-useless-quantifier`
-  "conditional-indentation": "off", // Handled by `@stylistic/indent`
   "confidential-information-logging": "warn",
   "constructor-for-side-effects": "off", // Handled by `no-new`
   "content-length": "warn",
@@ -217,7 +216,6 @@
   "no-undefined-argument": "off", // Handled by `unicorn/no-useless-undefined`
   "no-undefined-assignment": "off", // Incompatible with `unicorn/no-null`
   "no-unenclosed-multiline-block": "warn",
-  "no-unsafe-unzip": "warn",
   "no-unthrown-error": "off", // Handled b< `no-new`
   "no-unused-collection": "warn",
   "no-unused-function-argument": "off", // Handled by `@typescript-eslint/no-unused-vars`

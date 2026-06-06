@@ -539,7 +539,6 @@
       "types": "never"
     }
   ],
-  "typedef": "off", // see warning on https://typescript-eslint.io/rules/typedef
   "unbound-method": "off", // Handled by `custom/unbound-method` which allows node:*
   "unified-signatures": [
     "warn", {

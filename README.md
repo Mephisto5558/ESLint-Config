@@ -19,7 +19,7 @@
 
 [![Discord Server](https://discord.com/api/guilds/1011956895529041950/widget.png?style=shield)](https://discord.com/invite/yWwGTeppjR)
 
-This is a fully opinionated eslint config enforcing **<!-- RULE_COUNT -->868<!-- /RULE_COUNT --> rules** using multiple plugins supporting
+This is a fully opinionated eslint config enforcing **<!-- RULE_COUNT -->870<!-- /RULE_COUNT --> rules** using multiple plugins supporting
 - Typescript
 - JavaScript & JavaScript within HTML
 - JSDOC

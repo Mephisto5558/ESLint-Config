@@ -1,6 +1,5 @@
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 
-/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Rule } from 'eslint';
 
 const

@@ -1,6 +1,5 @@
 import semver from 'semver';
 
-/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { ESLint, Rule } from 'eslint';
 
 /**

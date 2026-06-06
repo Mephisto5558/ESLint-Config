@@ -4,7 +4,6 @@ import { readdirSync } from 'node:fs';
 -- loaded here because of race conditions with Jiti and async loading of custom rules */
 import './utils/index.ts';
 
-/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { ESLint, Rule } from 'eslint';
 
 const EXT_LENGTH = 3;

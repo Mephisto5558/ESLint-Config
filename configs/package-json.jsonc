@@ -14,6 +14,12 @@
       "ignoreProperties": []
     }
   ],
+  "no-local-dependencies": [
+    "warn",
+    {
+      "ignorePrivate": false
+    }
+  ],
   "no-redundant-files": "warn",
   "no-redundant-publishConfig": "warn",
   "order-properties": [
@@ -29,18 +35,15 @@
     }
   ],
   "require-attribution": [
-    "warn", {
+    "warn",
+    {
       "preferContributorsOnly": false,
       "ignorePrivate": false
     }
   ],
-  "require-author": [
-    "warn",
-    {
-      "ignorePrivate": false
-    }
-  ],
+  "require-author": "off", // Handled by `package-json/require-attribution`
   "require-bin": "off",
+  "require-browser": "off",
   "require-bugs": [
     "warn",
     {
@@ -48,6 +51,7 @@
     }
   ],
   "require-bundleDependencies": "off",
+  "require-config": "off",
   "require-contributors": "off", // Handled by `package-json/require-attribution`
   "require-cpu": "off",
   "require-dependencies": "off",
@@ -74,13 +78,20 @@
   "require-exports": "off", // Handled by `package-json/valid-main`
   "require-files": "off",
   "require-funding": "off",
-  "require-homepage": "off",
+  "require-gypfile": "off",
+  "require-homepage": [
+    "warn",
+    {
+      "ignorePrivate": true
+    }
+  ],
   "require-keywords": [
     "warn",
     {
       "ignorePrivate": false
     }
   ],
+  "require-libc": "off",
   "require-license": [
     "warn",
     {
@@ -105,10 +116,12 @@
   "require-os": "off",
   "require-packageManager": "off",
   "require-peerDependencies": "off",
+  "require-peerDependenciesMeta": "off",
   "require-private": "off",
   "require-publishConfig": "off",
   "require-repository": [
-    "warn", {
+    "warn",
+    {
       "ignorePrivate": true
     }
   ],
@@ -168,6 +181,7 @@
   "unique-dependencies": "warn",
   "valid-author": "error",
   "valid-bin": "error",
+  "valid-browser": "error",
   "valid-bugs": "error",
   "valid-bundleDependencies": "error",
   "valid-config": "error",
@@ -182,8 +196,10 @@
   "valid-exports": "error",
   "valid-files": "error",
   "valid-funding": "error",
+  "valid-gypfile": "error",
   "valid-homepage": "error",
   "valid-keywords": "error",
+  "valid-libc": "error",
   "valid-license": "error",
   "valid-main": "error",
   "valid-man": "error",
@@ -191,9 +207,10 @@
   "valid-name": "error",
   "valid-optionalDependencies": "error",
   "valid-os": "error",
-  "valid-package-definition": "error",
   "valid-packageManager": "error",
   "valid-peerDependencies": "error",
+  "valid-peerDependenciesMeta": "error",
+  "valid-peerDependenciesMeta-relationship": "error",
   "valid-private": "error",
   "valid-publishConfig": "error",
   "valid-repository": "error",

@@ -5,11 +5,11 @@
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-import { includeIgnoreFile } from 'eslint/config';
 import htmlParser from '@html-eslint/parser';
 import { globals as betterTypesGlobals } from '@mephisto5558/better-types/eslint';
 
 import typescriptParser from '@typescript-eslint/parser';
+import { includeIgnoreFile } from 'eslint/config';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 import globals from 'globals';
@@ -22,8 +22,6 @@ import {
 import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
-
-/* eslint-disable-next-line @limegrass/import-alias/import-alias -- false positive */
 import type { Linter } from 'eslint';
 
 export * from './constants.ts';
@@ -139,7 +137,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   {
     name: 'eslint-config:package-json',
     files: ['**/package.json'],
-    language: `${pluginNames.jsonc}/x`,
+    language: `${pluginNames.json}/json`,
     plugins: {
       [pluginNames.packageJSON]: filetypeSpecificPlugins[pluginNames.packageJSON]!
     },

@@ -101,6 +101,7 @@ export default [
          [`${eslintPluginPlugin.meta.namespace}/no-only-tests`]: '',
          [`${eslintPluginPlugin.meta.namespace}/prefer-output-null`]: '',
          [`${eslintPluginPlugin.meta.namespace}/require-test-case-name`]: '',
+         [`${eslintPluginPlugin.meta.namespace}/require-test-error-positions`]: '',
          [`${eslintPluginPlugin.meta.namespace}/test-case-property-ordering`]: '',
          [`${eslintPluginPlugin.meta.namespace}/test-case-shorthand-strings`]: '',
          [`${eslintPluginPlugin.meta.namespace}/unique-test-case-names`]: '' */
