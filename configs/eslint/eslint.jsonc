@@ -261,13 +261,7 @@
   ],
   "id-match": "off", // Handled by `camelcase`
   "init-declarations": "off", // Handled by `@typescript-eslint/init-declarations`
-  "logical-assignment-operators": [ // Partially handled by `@typescript-eslint/prefer-nullish-coalescing`
-    "warn",
-    "always",
-    {
-      "enforceForIfStatements": true
-    }
-  ],
+  "logical-assignment-operators": "off", // Handled by `unicorn/logical-assignment-operators`
   "max-classes-per-file": "off",
   "max-depth": [
     "warn",
@@ -297,20 +291,15 @@
     }
   ],
   "no-alert": "warn",
-  "no-array-constructor": "off", // Handled by `@typescript-eslint/no-array-constructor`
-  "no-bitwise": "off", // Handled by `sonarjs/bitwise-operators`
+  "no-array-constructor": "off", // Handled by `unicorn/no-new-array`
+  "no-bitwise": "off", // Handled by `unicorn/no-accidental-bitwise-operator`, `unicorn/prefer-math-trunc`
   "no-caller": "warn",
   "no-case-declarations": "warn",
   "no-console": "off",
   "no-continue": "off",
   "no-delete-var": "error",
   "no-div-regex": "warn",
-  "no-else-return": [
-    "warn",
-    {
-      "allowElseIf": true
-    }
-  ],
+  "no-else-return": "off", // Handled by `unicorn/no-useless-else`
   "no-empty": [
     "warn",
     {
@@ -437,7 +426,7 @@
       "enforceForClassMembers": true
     }
   ],
-  "no-useless-concat": "warn",
+  "no-useless-concat": "off", // Handled by `unicorn/no-useless-concat`
   "no-useless-constructor": "off", // Handled by `@typescript-eslint/no-useless-constructor`
   "no-useless-escape": "off", // Handled by `regexp/no-useless-escape`
   "no-useless-rename": [
@@ -451,17 +440,7 @@
   "no-useless-return": "off", // Handled by `sonarjs/no-redundant-jump`
   "no-var": "error",
   "no-void": "off", // Cannot allow `return void xyz`
-  "no-warning-comments": [
-    "warn",
-    {
-      "terms": [
-        "todo",
-        "fixme"
-      ],
-      "location": "anywhere"
-      // "decoration": []
-    }
-  ],
+  "no-warning-comments": "off", // Handled by `unicorn/expiring-todo-comments`
   "no-with": "error",
   "object-shorthand": [
     "warn",
@@ -480,10 +459,7 @@
       "uninitialized": "consecutive"
     }
   ],
-  "operator-assignment": [
-    "warn",
-    "always"
-  ],
+  "operator-assignment": "off", // Handled by `unicorn/operator-assignment`
   "prefer-arrow-callback": [
     "warn",
     {

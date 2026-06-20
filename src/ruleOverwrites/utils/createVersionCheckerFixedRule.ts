@@ -9,27 +9,25 @@ import type { ESLint, Rule } from 'eslint';
 export const createVersionCheckerFixedRule = (baseRuleModule: NonNullable<ESLint.Plugin['rules']>[string]): Rule.RuleModule => ({
   ...baseRuleModule,
   create(context: Rule.RuleContext & { options: [{ allowExperimental?: boolean } | undefined, ...unknown[]] }): Rule.RuleListener {
-    const
-      allowExperimental = context.options[0]?.allowExperimental,
-      newContext = Object.create(context, {
-        report: {
-          value(descriptor: Rule.ReportDescriptor) {
-            const supportedVersion = (descriptor.data?.supported ?? (allowExperimental ? descriptor.data?.experimental : undefined))
-              ?.toString().replaceAll(/ \(backported: |, /gi, '||').replace(')', '');
+    const allowExperimental = context.options[0]?.allowExperimental;
 
-            if (descriptor.data?.version && supportedVersion) {
-              const
-                minConfigured = semver.minVersion(descriptor.data.version.toString()),
-                minSupported = semver.minVersion(supportedVersion);
+    return baseRuleModule.create(Object.create(context, {
+      report: {
+        value(descriptor: Rule.ReportDescriptor) {
+          const supportedVersion = (descriptor.data?.supported ?? (allowExperimental ? descriptor.data?.experimental : undefined))
+            ?.toString().replaceAll(/ \(backported: |, /gi, '||').replace(')', '');
 
-              if (minConfigured && minSupported && semver.gte(minConfigured, minSupported)) return;
-            }
+          if (descriptor.data?.version && supportedVersion) {
+            const
+              minConfigured = semver.minVersion(descriptor.data.version.toString()),
+              minSupported = semver.minVersion(supportedVersion);
 
-            return context.report(descriptor);
+            if (minConfigured && minSupported && semver.gte(minConfigured, minSupported)) return;
           }
-        }
-      });
 
-    return baseRuleModule.create(newContext);
+          return context.report(descriptor);
+        }
+      }
+    }));
   }
 });

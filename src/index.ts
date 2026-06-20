@@ -13,7 +13,7 @@ import { includeIgnoreFile } from 'eslint/config';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 import globals from 'globals';
-import { minVersion } from 'semver';
+import { SemVer, lt, minVersion } from 'semver';
 
 import {
   allFilesGlob, disableTypedChecked, filetypeSpecificPlugins, jsExtensions,
@@ -29,15 +29,16 @@ export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
 export type * from '@mephisto5558/better-types';
 
-/** https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility */
-const ERROR_IS_ERROR_MIN_VERSION = 24;
-
-let useErrorIsError = Number(process.versions.node.split('.', 1)[0]) >= ERROR_IS_ERROR_MIN_VERSION;
+let minNodeVersion = new SemVer(process.versions.node);
 try {
-  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- catch handles invalid package.json */
-  const packageJson = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8')) as { engines?: { node?: string } };
+  const
+    packageJSONPath = resolve(process.cwd(), 'package.json'),
+
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- catch handles invalid package.json */
+    packageJson = JSON.parse(readFileSync(packageJSONPath, 'utf8')) as { engines?: { node?: string } };
+
   if ('engines' in packageJson && 'node' in packageJson.engines && packageJson.engines.node)
-    useErrorIsError = (minVersion(packageJson.engines.node)?.major ?? 0) >= ERROR_IS_ERROR_MIN_VERSION;
+    minNodeVersion = minVersion(packageJson.engines.node) ?? new SemVer('0.0.0');
 }
 catch { /* ignore */ }
 
@@ -46,11 +47,29 @@ const rules = ['eslint/eslint', ...Object.keys(plugins)].reduce<
   // skip htmlJS due to it using settings instead of rules
 >((acc, e) => e == pluginNames.htmlJS ? acc : { ...acc, ...importRules(e) }, {});
 
-rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
-  { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
-    useErrorIsError
-  }], true
-);
+if (lt(minNodeVersion, '24.0.0')) {
+  rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
+    { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility
+      useErrorIsError: false
+    }], true
+  );
+}
+
+if (lt(minNodeVersion, '25.0.0')) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64#browser_compatibility
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromBase64#browser_compatibility
+  rules[`${pluginNames.unicorn}/prefer-uint8array-base64`] = 'off';
+}
+
+if (lt(minNodeVersion, '26.0.0')) {
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/concat#browser_compatibility
+  rules[`${pluginNames.unicorn}/prefer-iterator-concat`] = 'off';
+
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility
+  rules[`${pluginNames.unicorn}/prefer-temporal`] = 'off';
+}
+
 
 let gitIgnore;
 try { gitIgnore = includeIgnoreFile(resolve('.', '.gitignore'), 'eslint-config:cwd-gitignore'); }
@@ -372,6 +391,7 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
   }
 ];
 
+/* eslint-disable-next-line unicorn/no-array-front-mutation -- needed here */
 if (gitIgnore) eslintConfig.unshift(gitIgnore);
 
 export default eslintConfig;

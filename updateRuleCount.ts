@@ -17,7 +17,7 @@ for (const block of config as typeof srcConfig) {
 }
 
 const updated = readFileSync('README.md', 'utf8')
-  .replaceAll(/(?<=<!-- RULE_COUNT -->).*?(?=<!--)/g, enabledRules.size.toString());
+  .replaceAll(/(?<=<!-- RULE_COUNT -->).*?(?=<!--)/g, () => enabledRules.size.toString());
 
 writeFileSync('README.md', updated);
 console.log(`Updated README.md with ${enabledRules.size} rules.`);

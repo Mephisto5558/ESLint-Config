@@ -10,7 +10,7 @@ export default [
     name: 'rule-overwrites:test',
     files: ['**/test.*'],
     linterOptions: {
-      reportUnusedDisableDirectives: false
+      reportUnusedDisableDirectives: 'off'
     },
     rules: {
       [`${pluginNames.unicorn}/no-empty-file`]: 'off',

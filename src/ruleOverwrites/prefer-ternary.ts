@@ -65,41 +65,40 @@ export default {
     ]
   },
 
-  create(context: Rule.RuleContext & { options: [unknown, { maxLength?: number; preventNestedTernary?: boolean }?] }): Rule.RuleListener {
-    // Object.create to modify `report`
-    return baseRuleModule.create(Object.create(
-      context,
-      {
-        options: {
-          value: context.options[0] ? [context.options[0]] : []
-        },
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
-        report: {
-          value: function (descriptor) {
-            if (!descriptor.fix || !('node' in descriptor)) return context.report(descriptor);
+  create: (
+    context: Rule.RuleContext & { options: [unknown, { maxLength?: number; preventNestedTernary?: boolean }?] }
+  ): Rule.RuleListener => baseRuleModule.create(Object.create(
+    context,
+    {
+      options: {
+        value: context.options[0] ? [context.options[0]] : []
+      },
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
+      report: {
+        value: function (descriptor) {
+          if (!descriptor.fix || !('node' in descriptor)) return context.report(descriptor);
 
-            const { node } = descriptor;
-            if (!isIfStatement(node)) return context.report(descriptor);
+          const { node } = descriptor;
+          if (!isIfStatement(node)) return context.report(descriptor);
 
-            if (
-              context.options[1]?.preventNestedTernary
-              && (hasTernary(node.consequent, context.sourceCode) || hasTernary(node.alternate, context.sourceCode))
-            ) return; // Suppress the error
+          if (
+            context.options[1]?.preventNestedTernary
+            && (hasTernary(node.consequent, context.sourceCode) || hasTernary(node.alternate, context.sourceCode))
+          ) return; // Suppress the error
 
-            const
-              fixes = descriptor.fix(dummyFixer),
-              fix = isIterable(fixes) ? [...fixes][0] : fixes;
+          const
+            fixes = descriptor.fix(dummyFixer),
+            fix = isIterable(fixes) ? [...fixes][0] : fixes;
 
-            if (!fix || !('text' in fix) || typeof fix.text !== 'string') return context.report(descriptor);
+          if (!fix || !('text' in fix) || typeof fix.text !== 'string') return context.report(descriptor);
 
-            const indentation = context.sourceCode.lines[node.loc.start.line - 1]?.slice(0, node.loc.start.column);
-            if (indentation && indentation.length + fix.text.length > (context.options[1]?.maxLength ?? DEFAULT_MAX_LENGTH))
-              return; // Suppress the error
+          const indentation = context.sourceCode.lines[node.loc.start.line - 1]?.slice(0, node.loc.start.column);
+          if (indentation && indentation.length + fix.text.length > (context.options[1]?.maxLength ?? DEFAULT_MAX_LENGTH))
+            return; // Suppress the error
 
-            context.report(descriptor); // Report normally
-          }
-        } as { value: Rule.RuleContext['report'] }
-      }
-    ));
-  }
+          context.report(descriptor); // Report normally
+        }
+      } as { value: Rule.RuleContext['report'] }
+    }
+  ))
 } as Rule.RuleModule;

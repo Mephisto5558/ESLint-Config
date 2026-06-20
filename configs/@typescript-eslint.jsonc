@@ -96,7 +96,7 @@
     "method"
   ],
   "naming-convention": "off", // too complex and covered by other rules
-  "no-array-constructor": "off", // Handled by `unicorn/new-for-builtins`, `sonarjs/array-constructor`
+  "no-array-constructor": "off", // Handled by `unicorn/new-for-builtins`, `unicorn/no-new-array`
   "no-array-delete": "error",
   "no-base-to-string": [
     "error",
@@ -313,9 +313,11 @@
   "no-unsafe-declaration-merging": "warn",
   "no-unsafe-enum-comparison": "warn",
   "no-unsafe-function-type": "warn",
-  "no-unsafe-member-access": ["warn", {
-    "allowOptionalChaining": false
-  }],
+  "no-unsafe-member-access": [
+    "warn", {
+      "allowOptionalChaining": false
+    }
+  ],
   "no-unsafe-return": "warn",
   "no-unsafe-type-assertion": "warn",
   "no-unsafe-unary-minus": "error",

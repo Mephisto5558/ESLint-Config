@@ -31,18 +31,18 @@ function mergeObjects<T>(original: T, update: T | undefined): T {
 
 /** Merge old and new config for a rule, returning the new rule */
 export function getModifiedRule<NAME extends string, RULE_ONLY extends boolean = false>(
-  config: Linter.Config | Linter.Config[], name: NAME, newData: JSONValue[], returnRuleOnly?: RULE_ONLY
+  config: Linter.Config | Linter.Config[], name: NAME, data: JSONValue[], returnRuleOnly?: RULE_ONLY
 ): RULE_ONLY extends true ? Linter.RuleEntry : Record<NAME, Linter.RuleEntry> {
   const
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- generics do not work well */
     [severity, ...ruleConfig] = (Array.isArray(config) ? config : [config])
       .find(e => 'rules' in e && name in e.rules)?.rules?.[name] as [string | number, ...JSONValue[]] | undefined ?? ['off'],
-    mergedConfig = Array.from({ length: Math.max(ruleConfig.length, newData.length) }, (_, i) => mergeObjects(ruleConfig[i], newData[i]));
+    mergedConfig = Array.from({ length: Math.max(ruleConfig.length, data.length) }, (_, i) => mergeObjects(ruleConfig[i], data[i]));
 
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- generics do not work well */
   return (
     returnRuleOnly ? [severity, ...mergedConfig] : { [name]: [severity, ...mergedConfig] }
-  ) as RULE_ONLY extends true ? Linter.RuleEntry : Record<NAME, Linter.RuleEntry>;
+  ) as ReturnType<typeof getModifiedRule<NAME, RULE_ONLY>>;
 }
 
 export function importRules(plugin: string): ESLint.ConfigData['rules'] {

@@ -6,7 +6,7 @@
   "arguments-order": "error",
   "arguments-usage": "off", // Handled by `prefer-rest-params`
   "array-callback-without-return": "off", // Handled by `array-callback-return`
-  "array-constructor": "error",
+  "array-constructor": "off", // Handled by `unicorn/no-new-array`
   "arrow-function-convention": "off", // Handled by `@stylistic/arrow-parens` and `arrow-body-style`
   "assertions-in-tests": "warn",
   "aws-apigateway-public-api": "warn",
@@ -27,7 +27,7 @@
   "aws-sagemaker-unencrypted-notebook": "warn",
   "aws-sns-unencrypted-topics": "warn",
   "aws-sqs-unencrypted-queue": "warn",
-  "bitwise-operators": "error",
+  "bitwise-operators": "off", // // Handled by `unicorn/no-accidental-bitwise-operator`, `unicorn/prefer-math-trunc`
   "block-scoped-var": "off", // Handled by `no-var`, `vars-on-top`, `no-inner-declarations`, `@typescript-eslint/no-redeclare`
   "bool-param-default": "warn", // Does not support JSDoc annotations
   "call-argument-line": "off", // Handled by `@stylistic/function-call-spacing`, `no-unexpected-newline`
@@ -125,7 +125,7 @@
   "no-clear-text-protocols": "warn",
   "no-code-after-done": "warn",
   "no-collapsible-if": "warn",
-  "no-collection-size-mischeck": "warn",
+  "no-collection-size-mischeck": "off", // Handled by `unicorn/no-impossible-length-comparison`
   "no-commented-code": "warn",
   "no-control-regex": "off", // Handled by `regexp/no-control-character`
   "no-dead-store": "off", // Handled by `no-useless-assignment`, `@typescript-eslint/no-unused-vars`
@@ -147,7 +147,7 @@
   "no-empty-test-file": "off", // Handled by `unicorn/no-empty-file`
   "no-equals-in-for-termination": "error",
   "no-exclusive-tests": "warn",
-  "no-extra-arguments": "warn",
+  "no-extra-arguments": "off", // Handled by `unicorn/no-invalid-argument-count`
   "no-fallthrough": "off", // Handled by `no-fallthrough`
   "no-for-in-iterable": "off", // Handled by `@typescript-eslint/no-for-in-array`
   "no-function-declaration-in-block": "off", // Handled by `unicorn/consistent-function-scoping`
@@ -158,7 +158,7 @@
   "no-hardcoded-passwords": "warn",
   "no-hardcoded-secrets": "warn",
   "no-identical-conditions": "error",
-  "no-identical-expressions": "error",
+  "no-identical-expressions": "off", // Handled by `unicorn/no-duplicate-operands`
   "no-identical-functions": "warn",
   "no-ignored-exceptions": "off", // Handled by `no-empty`
   "no-ignored-return": "warn",
@@ -172,7 +172,7 @@
   "no-intrusive-permissions": "warn",
   "no-invalid-regexp": "off", // Handled by `regexp/no-invalid-regexp`
   "no-invariant-returns": "warn",
-  "no-inverted-boolean-check": "warn",
+  "no-inverted-boolean-check": "off", // Handled by `unicorn/no-negated-comparison`
   "no-ip-forward": "warn",
   "no-labels": "off", // Handled by `no-labels`
   "no-literal-call": "error", // Note: Does not detect assigned literals
@@ -240,7 +240,7 @@
   "prefer-object-literal": "warn",
   "prefer-promise-shorthand": "warn",
   "prefer-regexp-exec": "warn",
-  "prefer-single-boolean-return": "error",
+  "prefer-single-boolean-return": "off", // Handled by `unicorn/prefer-boolean-return`
   "prefer-type-guard": "warn",
   "prefer-while": "warn",
   "production-debug": "warn",

@@ -1,7 +1,7 @@
 {
   "$schema": "./_$schema.jsonc",
   // [UNICORN] https://github.com/sindresorhus/eslint-plugin-unicorn/tree/main/.README#rules | Using "warn" wherever applicable
-  "better-regex": "off", // See https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2409
+  "better-dom-traversing": "warn",
   "catch-error-name": [
     "warn",
     {
@@ -11,40 +11,144 @@
       ]
     }
   ],
+  "class-reference-in-static-methods": [
+    "warn",
+    {
+      "preferThis": true,
+      "preferSuper": true
+    }
+  ],
+  "comment-content": "off",
   "consistent-assert": "warn",
+  "consistent-boolean-name": "off", // "warn" // very slow (~8%) for not much use
+  // "consistent-boolean-name": [
+  //   "warn",
+  //   {
+  //     "checkProperties": false, // to many unfixables with dependency-defined properties
+  //     "prefixes": {
+  //       "does": true
+  //     }
+  //   }
+  // ],
+  "consistent-class-member-order": [
+    "warn",
+    {
+      "order": [
+        "static-field",
+        "static-block",
+        "static-method",
+        
+        "public-field",
+        "private-field",
+
+        "constructor",
+        
+        "public-method",
+        "private-method"
+      ]
+    }
+  ],
+  "consistent-compound-words": [
+    "warn",
+    {
+      "replacements": {
+        "fileName": "filename",
+        "dirName": "dirname"
+      },
+      "extendDefaultReplacements": true,
+      "allowList": { },
+      "checkVariables": true,
+      "checkProperties": true,
+      "checkDefaultAndNamespaceImports": "internal",
+      "checkShorthandImports": "internal",
+      "checkShorthandProperties": true
+    }
+  ],
+  "consistent-conditional-object-spread": [
+    "warn",
+    "logical"
+  ],
   "consistent-date-clone": "warn",
   "consistent-destructuring": "warn",
   "consistent-empty-array-spread": "warn",
   "consistent-existence-index-check": "warn",
+  "consistent-export-decorator-position": [
+    "warn",
+    "above"
+  ],
   "consistent-function-scoping": [
     "warn",
     {
       "checkArrowFunctions": true
     }
   ],
+  "consistent-function-style": "off", // Many edge cases and rule incompatibilities
+  "consistent-json-file-read": [
+    "warn",
+    "string"
+  ],
+  "consistent-optional-chaining": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`
   "consistent-template-literal-escape": "warn",
   "custom-error-definition": "error",
+  "default-export-style": [
+    "warn",
+    {
+      "functions": "inline",
+      "classes": "inline"
+    }
+  ],
+  "dom-node-dataset": [
+    "warn",
+    {
+      "preferAttributes": false
+    }
+  ],
   "empty-brace-spaces": "off", // Handled by `no-empty`
   "error-message": "warn",
   "escape-case": [
     "warn",
     "uppercase"
   ],
-  "expiring-todo-comments": "off", // Handled by `no-warning-comments`
+  "expiring-todo-comments": [
+    "warn",
+    {
+      "checkDates": true,
+      "checkDatesOnPullRequests": false,
+      "terms": [
+        "todo",
+        "fixme",
+        "wip"
+      ],
+      "allowWarningComments": false,
+      "ignore": []
+      // "date": // using default
+    }
+  ],
   "explicit-length-check": "off",
+  "explicit-timer-delay": [
+    "warn",
+    "always"
+  ],
   "filename-case": [
     "warn",
     {
       "cases": {
         "camelCase": true
       },
-      "ignore": []
+      "ignore": [],
+      "checkDirectories": true,
+      "multipleFileExtensions": false
     }
   ],
+  "id-match": "off", // Handled by `camelcase`
   "import-style": [
     "warn",
     {
-      "styles": {},
+      "styles": {
+        "node:path": {
+          "named": true
+        }
+      },
       "extendDefaultStyles": false,
       "checkImport": true,
       "checkDynamicImport": true,
@@ -61,12 +165,32 @@
       // "overrideGlobals": {} // uses ESLint's language options globals (https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md#overrideglobals)
     }
   ],
+  "logical-assignment-operators": [ // Partially handled by `@typescript-eslint/prefer-nullish-coalescing`
+    "warn",
+    "always",
+    {
+      "enforceForIfStatements": true
+    }
+  ],
+  "max-nested-calls": [
+    "warn",
+    {
+      "max": 4
+    }
+  ],
+  "name-replacements": "off",
   "new-for-builtins": "error",
   "no-abusive-eslint-disable": "off", // Handled by `@eslint-community/eslint-comments/no-unlimited-disable`
   "no-accessor-recursion": "error",
+  "no-accidental-bitwise-operator": [
+    "error"
+  ],
   "no-anonymous-default-export": "warn",
-  "no-array-callback-reference": "off", // No whitelist config option;
-  "no-array-for-each": "warn",
+  "no-array-callback-reference": "off", // Would prefer if it alerts on multi-param callbacks instead
+  "no-array-concat-in-loop": "warn",
+  "no-array-fill-with-reference-type": "warn", // Partially handled by `unicorn/no-new-array`
+  "no-array-from-fill": "warn",
+  "no-array-front-mutation": "warn",
   "no-array-method-this-argument": "error",
   "no-array-reduce": "off", // Array#reduce my beloved
   "no-array-reverse": "off", // Handled by `sonarjs/no-misleading-array-reverse`
@@ -76,63 +200,181 @@
       "allowExpressionStatement": true
     }
   ],
+  "no-array-sort-for-min-max": "warn",
+  "no-array-splice": "warn",
+  "no-asterisk-prefix-in-documentation-comments": "off",
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
+  "no-blob-to-file": "warn",
+  "no-boolean-sort-comparator": "warn",
+  "no-break-in-nested-loop": "warn",
+  "no-canvas-to-image": "warn",
+  "no-chained-comparison": "off", // Handled by `sonarjs/different-types-comparison`, `sonarjs/non-number-in-arithmetic-expression`
+  "no-collection-bracket-access": "off", // Handled by `@typescript-eslint/no-unsafe-*`, `@typescript-eslint/dot-notation`
+  "no-computed-property-existence-check": "off",
+  "no-confusing-array-splice": "warn",
+  "no-confusing-array-with": "warn",
   "no-console-spaces": "warn",
+  "no-constant-zero-expression": "warn",
+  "no-declarations-before-early-exit": "off", // does not allow constants and makes code less readable imo
   "no-document-cookie": "warn",
-  "no-empty-file": "warn",
+  "no-double-comparison": "warn",
+  "no-duplicate-if-branches": "off", // Handled by `sonarjs/no-all-duplicated-branches`, `sonarjs/no-duplicated-branches`
+  "no-duplicate-logical-operands": "warn",
+  "no-duplicate-loops": "warn",
+  "no-duplicate-set-values": "warn",
+  "no-empty-file": [
+    "warn",
+    {
+      "allowComments": true
+    }
+  ],
+  "no-error-property-assignment": "warn",
+  "no-exports-in-scripts": "warn",
+  "no-for-each": "warn",
   "no-for-loop": "warn",
-  "no-hex-escape": "off", // Handled by `regexp/hexadecimal-escape`
+  "no-global-object-property-assignment": "off",
   "no-immediate-mutation": "warn",
+  "no-impossible-length-comparison": "error",
+  "no-incorrect-query-selector": "warn",
+  "no-incorrect-template-string-interpolation": "off", // Handled by `@stylistic/quotes`
   "no-instanceof-builtins": [
     "error",
     {
       "strategy": "loose",
       "include": [],
       "exclude": [],
-      "useErrorIsError": false // Set in `default_eslint.config.js` because it's only available on Node>=24
+      "useErrorIsError": true
     }
   ],
+  "no-invalid-argument-count": "warn",
+  "no-invalid-character-comparison": "error", // Partially handled by `@typescript-eslint/prefer-string-starts-ends-with`
   "no-invalid-fetch-options": "error",
+  "no-invalid-file-input-accept": "warn",
   "no-invalid-remove-event-listener": "error",
-  "no-keyword-prefix": "off",
+  "no-keyword-prefix": [
+    "warn",
+    {
+      "disallowedPrefixes": [
+        "new",
+        "class",
+        "const",
+        "let"
+      ],
+      "checkProperties": false,
+      "onlyCamelCase": true
+    }
+  ],
+  "no-late-current-target-access": "warn",
   "no-lonely-if": "warn",
-  "no-magic-array-flat-depth": "off", // Handled by `@typescript/eslint/no-magic-numbers`
+  "no-loop-iterable-mutation": "error",
+  "no-magic-array-flat-depth": "off", // Handled by `@typescript-eslint/no-magic-numbers`
+  "no-manually-wrapped-comments": "off",
+  "no-mismatched-map-key": "warn",
+  "no-misrefactored-assignment": "error",
   "no-named-default": "warn",
+  "no-negated-array-predicate": "warn",
+  "no-negated-comparison": [
+    "warn",
+    {
+      "checkLogicalExpressions": true
+    }
+  ],
   "no-negated-condition": "warn",
   "no-negation-in-equality-check": "error",
   "no-nested-ternary": "off", // Handled by `sonarjs/no-nested-conditional`
-  "no-new-array": "off", // Handled by `sonarjs/array-constructor`
+  "no-new-array": "warn",
   "no-new-buffer": "warn",
+  "no-non-function-verb-prefix": [
+    "warn",
+    {
+      "verbs": [
+        "get",
+        "set",
+        "unset",
+        "delete",
+        "add",
+        "remove",
+        "destroy",
+        "create"
+      ]
+    }
+  ],
+  "no-nonstandard-builtin-properties": "off", // Not configurable and generally handled by `@typescript-eslint/no-unsafe-*` and TS.
   "no-null": [
     "warn",
     {
+      "checkArguments": true,
       "checkStrictEquality": false
     }
   ],
   "no-object-as-default-parameter": "error",
+  "no-object-methods-with-collections": "warn",
+  "no-optional-chaining-on-undeclared-variable": "off", // Handled by `no-undef`, `@typescript-eslint/no-unsafe-*`
   "no-process-exit": "warn",
-  "no-single-promise-in-promise-methods": "error",
+  "no-redundant-comparison": "warn",
+  "no-return-array-push": "warn",
+  "no-selector-as-dom-name": "warn",
+  "no-single-promise-in-promise-methods": "warn",
   "no-static-only-class": "warn",
+  "no-subtraction-comparison": "warn",
   "no-thenable": "error",
   "no-this-assignment": "off", // Handled by `@typescript-eslint/no-this-alias`
+  "no-this-outside-of-class": "off",
+  "no-top-level-assignment-in-function": "warn",
+  "no-top-level-side-effects": "warn",
   "no-typeof-undefined": "warn",
+  "no-uncalled-method": "error",
+  "no-undeclared-class-members": "off", // Handled by `@typescript-eslint/no-unsafe-*`
   "no-unnecessary-array-flat-depth": "warn",
   "no-unnecessary-array-splice-count": "warn",
   "no-unnecessary-await": "warn",
-  "no-unnecessary-polyfills": "warn",
+  "no-unnecessary-boolean-comparison": "off", // Handled by `@typescript-eslint/no-unnecessary-boolean-literal-compare`
+  "no-unnecessary-global-this": "warn",
+  "no-unnecessary-nested-ternary": "warn",
+  "no-unnecessary-polyfills": [
+    "warn",
+    {
+      // "targets": [] // checks package.json
+    }
+  ],
   "no-unnecessary-slice-end": "warn",
-  "no-unreadable-array-destructuring": "warn",
+  "no-unnecessary-splice": "warn",
+  "no-unreadable-array-destructuring": [
+    "warn",
+    {
+      "maximumIgnoredElements": 1
+    }
+  ],
+  "no-unreadable-for-of-expression": "off", // Partially disagree with its strictness, e.g. `for(const e of await abc())` is considered unreadable.
   "no-unreadable-iife": "warn",
+  "no-unreadable-new-expression": "off", // Missing configurability to allow this: `new Foo().init()` where both have parens
+  "no-unreadable-object-destructuring": "warn",
+  "no-unsafe-buffer-conversion": "warn",
+  "no-unsafe-dom-html": "warn",
+  "no-unsafe-property-key": "warn",
+  "no-unsafe-string-replacement": "off",
+  "no-unused-array-method-return": "off", // Handled by `sonarjs/no-ignored-return`
   "no-unused-properties": "warn",
+  "no-useless-boolean-cast": "off", // Handled by `@typescript-eslint/no-unnecessary-type-conversion`
+  "no-useless-coercion": "off", // Handled by `@typescript-eslint/no-unnecessary-type-conversion`
   "no-useless-collection-argument": "warn",
+  "no-useless-compound-assignment": "warn",
+  "no-useless-concat": "warn",
+  "no-useless-continue": "off", // Handled by `sonarjs/no-redundant-jump`
+  "no-useless-delete-check": "warn",
+  "no-useless-else": "warn",
   "no-useless-error-capture-stack-trace": "warn",
   "no-useless-fallback-in-spread": "warn",
   "no-useless-iterator-to-array": "warn",
   "no-useless-length-check": "warn",
+  "no-useless-logical-operand": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`, `sonarjs/no-redundant-boolean`, `no-constant-binary-expression`
+  "no-useless-override": "warn",
   "no-useless-promise-resolve-reject": "warn",
+  "no-useless-recursion": "warn",
   "no-useless-spread": "warn",
   "no-useless-switch-case": "warn",
+  "no-useless-template-literals": "off", // Handled by `@typescript-eslint/no-unnecessary-template-expression`
   "no-useless-undefined": [
     "warn",
     {
@@ -140,6 +382,7 @@
       "checkArrowFunctionBody": true
     }
   ],
+  "no-xor-as-exponentiation": "warn",
   "no-zero-fractions": "warn",
   "number-literal-case": [
     "warn",
@@ -166,10 +409,16 @@
       "number": {
         "minimumDigits": 5,
         "groupLength": 3
+        // "fractionGroupLength": // Infinity
       }
     }
   ],
+  "operator-assignment": [
+    "warn",
+    "always"
+  ],
   "prefer-add-event-listener": "warn",
+  "prefer-add-event-listener-options": "warn",
   "prefer-array-find": [
     "warn",
     {
@@ -183,46 +432,92 @@
     }
   ],
   "prefer-array-flat-map": "warn",
+  "prefer-array-from-async": "warn",
+  "prefer-array-from-map": "warn",
   "prefer-array-index-of": "warn",
+  "prefer-array-iterable-methods": "warn",
+  "prefer-array-last-methods": "warn",
+  "prefer-array-slice": "warn",
   "prefer-array-some": "warn",
   "prefer-at": [
     "warn",
     {
-      "checkAllIndexAccess": false
+      "checkAllIndexAccess": false,
+      "getLastElementFunctions": []
     }
   ],
+  "prefer-await": "off", // Generally agree but would like to allow empty `.catch` without adding `void`
   "prefer-bigint-literals": "warn",
   "prefer-blob-reading-methods": "warn",
+  "prefer-boolean-return": "warn",
   "prefer-class-fields": "warn",
   "prefer-classlist-toggle": "warn",
   "prefer-code-point": "error",
+  "prefer-continue": [
+    "warn",
+    {
+      "maximumStatements": 0 // consistent with `unicorn/prefer-early-return`
+    }
+  ],
   "prefer-date-now": "warn",
   "prefer-default-parameters": "warn",
+  "prefer-direct-iteration": "warn",
+  "prefer-dispose": "warn",
   "prefer-dom-node-append": "warn",
-  "prefer-dom-node-dataset": "warn",
+  "prefer-dom-node-html-methods": "off", // Handled by `no-unsafe-dom-html`
   "prefer-dom-node-remove": "warn",
   "prefer-dom-node-text-content": "warn",
+  "prefer-early-return": [
+    "warn",
+    {
+      "maximumStatements": 0 // consistent with `unicorn/prefer-continue`
+    }
+  ],
+  "prefer-else-if": "warn",
   "prefer-event-target": "warn",
   "prefer-export-from": [
     "warn",
     {
-      "ignoreUsedVariables": true
+      "checkUsedVariables": false
     }
   ],
+  "prefer-flat-math-min-max": "warn",
+  "prefer-get-or-insert-computed": "warn",
+  "prefer-global-number-constants": "off", // Handled by `unicorn/prefer-number-properties`
   "prefer-global-this": "warn",
+  "prefer-has-check": "warn",
+  "prefer-hoisting-branch-code": "warn",
+  "prefer-https": "warn",
+  "prefer-identifier-import-export-specifiers": "off", // Handled by `no-useless-rename`
   "prefer-import-meta-properties": "warn",
   "prefer-includes": "warn",
-  "prefer-json-parse-buffer": "off",
+  "prefer-includes-over-repeated-comparisons": [
+    "warn",
+    {
+      "minimumComparisons": 3
+    }
+  ],
+  "prefer-iterable-in-constructor": "warn",
+  "prefer-iterator-concat": "warn",
+  "prefer-iterator-to-array": "warn",
+  "prefer-iterator-to-array-at-end": "warn",
   "prefer-keyboard-event-key": "off", // Handled by `@typescript-eslint/no-deprecated`
+  "prefer-location-assign": "warn",
   "prefer-logical-operator-over-ternary": "warn",
+  "prefer-map-from-entries": "warn",
+  "prefer-math-abs": "warn",
+  "prefer-math-constants": "error",
   "prefer-math-min-max": "warn",
   "prefer-math-trunc": "warn",
+  "prefer-minimal-ternary": "warn",
   "prefer-modern-dom-apis": "warn",
   "prefer-modern-math-apis": "warn",
-  "prefer-module": "off",
+  "prefer-module": "warn",
   "prefer-native-coercion-functions": "off", // Handled by `unicorn/new-for-builtins`
   "prefer-negative-index": "warn",
   "prefer-node-protocol": "warn",
+  "prefer-number-coercion": "off",
+  "prefer-number-is-safe-integer": "warn",
   "prefer-number-properties": [
     "warn",
     {
@@ -230,24 +525,69 @@
       "checkNaN": true
     }
   ],
+  "prefer-object-define-properties": "warn",
+  "prefer-object-destructuring-defaults": "warn",
   "prefer-object-from-entries": [
     "warn",
     {
       "functions": []
     }
   ],
-  "prefer-optional-catch-binding": "warn", // Should be handled by `@typescript-eslint/no-unused-vars` but is not for some reason
+  "prefer-object-iterable-methods": "warn",
+  "prefer-optional-catch-binding": "warn", // Not handled by `@typescript-eslint/no-unused-vars` for some reason
+  "prefer-path2d": "warn",
+  "prefer-private-class-fields": "warn",
+  "prefer-promise-with-resolvers": "warn",
   "prefer-prototype-methods": "warn",
-  "prefer-query-selector": "warn",
+  "prefer-query-selector": [
+    "warn",
+    {
+      "allowWithVariables": true
+    }
+  ],
+  "prefer-queue-microtask": [
+    "warn",
+    {
+      "checkSetImmediate": true,
+      "checkSetTimeout": true
+    }
+  ],
   "prefer-reflect-apply": "warn",
+  "prefer-regexp-escape": "off", // Handled by `regexp/*`
   "prefer-regexp-test": "off", // Handled by `regexp/prefer-regexp-test`
   "prefer-response-static-json": "warn",
-  "prefer-set-has": "warn",
+  "prefer-scoped-selector": "warn",
+  "prefer-set-has": [
+    "warn",
+    {
+      "minimumItems": 0
+    }
+  ],
   "prefer-set-size": "warn",
+  "prefer-short-arrow-method": "warn",
   "prefer-simple-condition-first": "warn",
-  "prefer-single-call": "warn",
+  "prefer-simple-sort-comparator": "warn",
+  "prefer-single-array-predicate": "warn",
+  "prefer-single-call": [
+    "warn",
+    {
+      // "ignore": []
+    }
+  ],
+  "prefer-single-object-destructuring": "warn",
+  "prefer-single-replace": "warn",
+  "prefer-smaller-scope": "warn",
+  "prefer-split-limit": "warn",
   "prefer-spread": "warn",
+  "prefer-string-match-all": "warn",
+  "prefer-string-pad-start-end": "warn",
   "prefer-string-raw": "warn",
+  "prefer-string-repeat": [
+    "warn",
+    {
+      "minimumRepetitions": 3
+    }
+  ],
   "prefer-string-replace-all": "warn",
   "prefer-string-slice": "warn",
   "prefer-string-starts-ends-with": "warn",
@@ -265,19 +605,42 @@
       "emptyDefaultCase": "no-default-case"
     }
   ],
+  "prefer-temporal": [
+    "warn",
+    {
+      "checkDateNow": false,
+      "checkReferences": true,
+      "checkMethods": true
+    }
+  ],
   "prefer-ternary": "off", // Handled by `custom/prefer-ternary`
-  "prefer-top-level-await": "off",
+  "prefer-top-level-await": "warn",
   "prefer-type-error": "warn",
-  "prevent-abbreviations": "off",
+  "prefer-type-literal-last": "warn",
+  "prefer-uint8array-base64": "warn",
+  "prefer-unary-minus": "warn",
+  "prefer-unicode-code-point-escapes": "warn",
+  "prefer-url-can-parse": "warn",
+  "prefer-url-href": "warn",
+  "prefer-while-loop-condition": "warn",
   "relative-url-style": [
     "warn",
-    "never"
+    "always"
   ],
   "require-array-join-separator": "warn",
+  "require-array-sort-compare": "off", // Handled by `@typescript-eslint/require-array-sort-compare`
+  "require-css-escape": [
+    "warn",
+    {
+      "checkAllSelectors": false
+    }
+  ],
   "require-module-attributes": "warn",
   "require-module-specifiers": "warn",
   "require-number-to-fixed-digits-argument": "warn",
+  "require-passive-events": "warn",
   "require-post-message-target-origin": "off",
+  "require-proxy-trap-boolean-return": "warn",
   "string-content": "off",
   "switch-case-braces": [
     "warn",
@@ -291,5 +654,6 @@
       "withDash": false
     }
   ],
-  "throw-new-error": "warn" // Overlaps with `unicorn/new-for-builtins` but not on e.g. SyntaxError
+  "throw-new-error": "off", // Handled by `unicorn/new-for-builtins`, `new-cap`
+  "try-complexity": "off"
 }
