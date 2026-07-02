@@ -13,7 +13,7 @@ import { includeIgnoreFile } from 'eslint/config';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 import globals from 'globals';
-import { SemVer, lt, minVersion } from 'semver';
+import { SemVer, gte, minVersion } from 'semver';
 
 import {
   allFilesGlob, disableTypedChecked, filetypeSpecificPlugins, jsExtensions,
@@ -45,29 +45,33 @@ catch { /* ignore */ }
 const rules = ['eslint/eslint', ...Object.keys(plugins)].reduce<
   ReturnType<typeof importRules> & { 'jsdoc/check-tag-names'?: [string, Record<string, boolean> | undefined] | undefined }
   // skip htmlJS due to it using settings instead of rules
->((acc, e) => e == pluginNames.htmlJS ? acc : { ...acc, ...importRules(e) }, {});
+  >((acc, e) => e == pluginNames.htmlJS ? acc : { ...acc, ...importRules(e) }, {}),
 
-if (lt(minNodeVersion, '24.0.0')) {
-  rules[`${pluginNames.unicorn}/no-instanceof-builtins`] = getModifiedRule(
-    { rules }, `${pluginNames.unicorn}/no-instanceof-builtins`, [{
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility
-      useErrorIsError: false
-    }], true
-  );
-}
+  disableList = new Map<`${number}.${number}.${number}`, string[]>([
+    ['23.0.0', [
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/try#browser_compatibility
+      `${pluginNames.unicorn}/prefer-promise-try`
+    ]],
+    ['24.0.0', [
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility
+      `${pluginNames.unicorn}/prefer-error-is-error`
+    ]],
+    ['25.0.0', [
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64#browser_compatibility
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromBase64#browser_compatibility
+      `${pluginNames.unicorn}/prefer-uint8array-base64`
+    ]],
+    ['26.0.0', [
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/concat#browser_compatibility
+      `${pluginNames.unicorn}/prefer-iterator-concat`,
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility
+      `${pluginNames.unicorn}/prefer-temporal`
+    ]]
+  ]);
 
-if (lt(minNodeVersion, '25.0.0')) {
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64#browser_compatibility
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromBase64#browser_compatibility
-  rules[`${pluginNames.unicorn}/prefer-uint8array-base64`] = 'off';
-}
-
-if (lt(minNodeVersion, '26.0.0')) {
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/concat#browser_compatibility
-  rules[`${pluginNames.unicorn}/prefer-iterator-concat`] = 'off';
-
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility
-  rules[`${pluginNames.unicorn}/prefer-temporal`] = 'off';
+for (const [minRuleVersion, rulesToDisable] of disableList) {
+  if (gte(minNodeVersion, minRuleVersion)) continue;
+  for (const rule of rulesToDisable) rules[rule] = 'off';
 }
 
 

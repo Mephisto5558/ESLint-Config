@@ -24,7 +24,13 @@
   "no-compare-neg-zero": "error",
   "no-cond-assign": "off", // Handled by `sonarjs/no-nested-assignment`
   "no-const-assign": "error",
-  "no-constant-binary-expression": "error", // Partially handled by `@typescript-eslint/no-unnecessary-condition`
+  "no-constant-binary-expression": [
+    // Partially handled by `@typescript-eslint/no-unnecessary-condition`
+    "error",
+    {
+      "checkRelationalComparisons": true
+    }
+  ], 
   "no-constant-condition": [ // Partially handled by `@typescript-eslint/no-unnecessary-condition`
     "error",
     {

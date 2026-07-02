@@ -20,7 +20,12 @@
   "no-duplicate-id": "warn",
   "no-duplicate-in-head": "warn",
   "no-ineffective-attrs": "warn",
-  "no-inline-styles": "warn",
+  "no-inline-styles": [
+    "warn",
+    {
+      "allowExpressions": false
+    }
+  ],
   "no-invalid-attr-value": [
     "error",
     {

@@ -89,6 +89,7 @@
   ],
   "consistent-optional-chaining": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`
   "consistent-template-literal-escape": "warn",
+  "consistent-tuple-labels": "warn",
   "custom-error-definition": "error",
   "default-export-style": [
     "warn",
@@ -203,6 +204,7 @@
   "no-array-sort-for-min-max": "warn",
   "no-array-splice": "warn",
   "no-asterisk-prefix-in-documentation-comments": "off",
+  "no-async-promise-finally": "warn",
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
   "no-blob-to-file": "warn",
@@ -244,7 +246,7 @@
       "strategy": "loose",
       "include": [],
       "exclude": [],
-      "useErrorIsError": true
+      "useErrorIsError": false // handled by `unicorn/prefer-error-is-error`
     }
   ],
   "no-invalid-argument-count": "warn",
@@ -252,6 +254,7 @@
   "no-invalid-fetch-options": "error",
   "no-invalid-file-input-accept": "warn",
   "no-invalid-remove-event-listener": "error",
+  "no-invalid-well-known-symbol-methods": "error",
   "no-keyword-prefix": [
     "warn",
     {
@@ -266,6 +269,7 @@
     }
   ],
   "no-late-current-target-access": "warn",
+  "no-late-event-control": "warn",
   "no-lonely-if": "warn",
   "no-loop-iterable-mutation": "error",
   "no-magic-array-flat-depth": "off", // Handled by `@typescript-eslint/no-magic-numbers`
@@ -330,6 +334,7 @@
   "no-unnecessary-array-splice-count": "warn",
   "no-unnecessary-await": "warn",
   "no-unnecessary-boolean-comparison": "off", // Handled by `@typescript-eslint/no-unnecessary-boolean-literal-compare`
+  "no-unnecessary-fetch-options": "warn",
   "no-unnecessary-global-this": "warn",
   "no-unnecessary-nested-ternary": "warn",
   "no-unnecessary-polyfills": [
@@ -352,6 +357,7 @@
   "no-unreadable-object-destructuring": "warn",
   "no-unsafe-buffer-conversion": "warn",
   "no-unsafe-dom-html": "warn",
+  "no-unsafe-promise-all-settled-values": "warn",
   "no-unsafe-property-key": "warn",
   "no-unsafe-string-replacement": "off",
   "no-unused-array-method-return": "off", // Handled by `sonarjs/no-ignored-return`
@@ -417,8 +423,11 @@
     "warn",
     "always"
   ],
+  "prefer-abort-signal-any": "warn",
+  "prefer-abort-signal-timeout": "warn",
   "prefer-add-event-listener": "warn",
   "prefer-add-event-listener-options": "warn",
+  "prefer-aggregate-error": "warn",
   "prefer-array-find": [
     "warn",
     {
@@ -434,6 +443,7 @@
   "prefer-array-flat-map": "warn",
   "prefer-array-from-async": "warn",
   "prefer-array-from-map": "warn",
+  "prefer-array-from-range": "warn",
   "prefer-array-index-of": "warn",
   "prefer-array-iterable-methods": "warn",
   "prefer-array-last-methods": "warn",
@@ -449,6 +459,7 @@
   "prefer-await": "off", // Generally agree but would like to allow empty `.catch` without adding `void`
   "prefer-bigint-literals": "warn",
   "prefer-blob-reading-methods": "warn",
+  "prefer-block-statement-over-iife": "warn",
   "prefer-boolean-return": "warn",
   "prefer-class-fields": "warn",
   "prefer-classlist-toggle": "warn",
@@ -466,6 +477,7 @@
   "prefer-dom-node-append": "warn",
   "prefer-dom-node-html-methods": "off", // Handled by `no-unsafe-dom-html`
   "prefer-dom-node-remove": "warn",
+  "prefer-dom-node-replace-children": "warn",
   "prefer-dom-node-text-content": "warn",
   "prefer-early-return": [
     "warn",
@@ -474,6 +486,7 @@
     }
   ],
   "prefer-else-if": "warn",
+  "prefer-error-is-error": "warn",
   "prefer-event-target": "warn",
   "prefer-export-from": [
     "warn",
@@ -485,6 +498,7 @@
   "prefer-get-or-insert-computed": "warn",
   "prefer-global-number-constants": "off", // Handled by `unicorn/prefer-number-properties`
   "prefer-global-this": "warn",
+  "prefer-group-by": "warn",
   "prefer-has-check": "warn",
   "prefer-hoisting-branch-code": "warn",
   "prefer-https": "warn",
@@ -499,6 +513,7 @@
   ],
   "prefer-iterable-in-constructor": "warn",
   "prefer-iterator-concat": "warn",
+  "prefer-iterator-helpers": "warn",
   "prefer-iterator-to-array": "warn",
   "prefer-iterator-to-array-at-end": "warn",
   "prefer-keyboard-event-key": "off", // Handled by `@typescript-eslint/no-deprecated`
@@ -509,7 +524,13 @@
   "prefer-math-constants": "error",
   "prefer-math-min-max": "warn",
   "prefer-math-trunc": "warn",
-  "prefer-minimal-ternary": "warn",
+  "prefer-minimal-ternary": [
+    "warn",
+    {
+      "checkVaryingCallee": false, // would be nice if `(test ? a : b).method(value)` would be allowable separately
+      "checkComputedMemberAccess": false // bad readability
+    }
+  ],
   "prefer-modern-dom-apis": "warn",
   "prefer-modern-math-apis": "warn",
   "prefer-module": "warn",
@@ -534,9 +555,11 @@
     }
   ],
   "prefer-object-iterable-methods": "warn",
+  "prefer-observer-apis": "warn",
   "prefer-optional-catch-binding": "warn", // Not handled by `@typescript-eslint/no-unused-vars` for some reason
   "prefer-path2d": "warn",
   "prefer-private-class-fields": "warn",
+  "prefer-promise-try": "warn",
   "prefer-promise-with-resolvers": "warn",
   "prefer-prototype-methods": "warn",
   "prefer-query-selector": [
@@ -563,10 +586,12 @@
       "minimumItems": 0
     }
   ],
+  "prefer-set-methods": "warn",
   "prefer-set-size": "warn",
   "prefer-short-arrow-method": "warn",
   "prefer-simple-condition-first": "warn",
   "prefer-simple-sort-comparator": "warn",
+  "prefer-simplified-conditions": "warn",
   "prefer-single-array-predicate": "warn",
   "prefer-single-call": [
     "warn",
@@ -614,6 +639,7 @@
     }
   ],
   "prefer-ternary": "off", // Handled by `custom/prefer-ternary`
+  "prefer-toggle-attribute": "warn",
   "prefer-top-level-await": "warn",
   "prefer-type-error": "warn",
   "prefer-type-literal-last": "warn",
@@ -622,6 +648,7 @@
   "prefer-unicode-code-point-escapes": "warn",
   "prefer-url-can-parse": "warn",
   "prefer-url-href": "warn",
+  "prefer-url-search-parameters": "warn",
   "prefer-while-loop-condition": "warn",
   "relative-url-style": [
     "warn",
