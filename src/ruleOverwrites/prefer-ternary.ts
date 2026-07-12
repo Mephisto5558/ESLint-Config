@@ -1,5 +1,3 @@
-/** @import { Node, IfStatement } from 'estree'; */
-
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 import type { JSSyntaxElement, Rule } from 'eslint';
