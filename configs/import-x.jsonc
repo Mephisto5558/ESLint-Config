@@ -134,7 +134,7 @@
       "allowArrowFunction": false,
       "allowAnonymousClass": false,
       "allowAnonymousFunction": false,
-      "allowNew": false,
+      "allowNew": true,
       "allowLiteral": false,
       "allowObject": true
     }

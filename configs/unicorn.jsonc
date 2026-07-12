@@ -187,7 +187,7 @@
   "no-accidental-bitwise-operator": [
     "error"
   ],
-  "no-anonymous-default-export": "warn",
+  "no-anonymous-default-export": "off", // Handled by `import-x/no-anonymous-default-export`
   "no-array-callback-reference": "off", // Would prefer if it alerts on multi-param callbacks instead
   "no-array-concat-in-loop": "warn",
   "no-array-fill-with-reference-type": "warn", // Partially handled by `unicorn/no-new-array`
