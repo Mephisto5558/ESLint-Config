@@ -8,12 +8,12 @@
   "no-extraneous-dependencies": [
     "warn",
     {
-      "devDependencies": true,
-      "optionalDependencies": true,
+      "devDependencies": false,
+      "optionalDependencies": false,
       "peerDependencies": true,
       "bundledDependencies": true,
       "includeInternal": false,
-      "includeTypes": true,
+      "includeTypes": false, // Handled by typescript, this option does not handle @types/ packages
       "packageDir": ".",
       "whitelist": []
     }
