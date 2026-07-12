@@ -118,7 +118,8 @@
       "terms": [
         "todo",
         "fixme",
-        "wip"
+        "wip",
+        "temp"
       ],
       "allowWarningComments": false,
       "ignore": []
