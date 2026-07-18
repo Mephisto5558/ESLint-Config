@@ -395,7 +395,18 @@
       "allowSingleLineBlocks": false
     }
   ],
-  "padding-line-between-statements": "off",
+  "padding-line-between-statements": [
+    "warn",
+    { 
+      "blankLine": "always", 
+      "prev": {
+        "selector": "ImportDeclaration[importKind!='type']"
+      }, 
+      "next": {
+        "selector": "ImportDeclaration[importKind='type']"
+      } 
+    }
+  ],
   "quote-props": [
     "warn",
     "as-needed",
