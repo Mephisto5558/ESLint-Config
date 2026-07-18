@@ -122,9 +122,9 @@
   "newline-after-import": [
     "warn",
     {
-      "count": 1,
-      "exactCount": false, // incompatible with `considerComments: false`
-      "considerComments": false // buggy if true
+      "count": 2,
+      "exactCount": true,
+      "considerComments": false
     }
   ],
   "no-anonymous-default-export": [
