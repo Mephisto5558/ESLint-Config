@@ -28,6 +28,7 @@ import customPlugin from './ruleOverwrites/index.js';
 
 import type { ESLint } from 'eslint';
 
+
 const
   /* eslint-disable @typescript-eslint/no-unsafe-type-assertion -- these plugins cannot be augmented */
   htmlJSPlugin = _htmlJSPlugin as ESLint.Plugin,

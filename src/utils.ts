@@ -5,6 +5,7 @@ import { pluginNames } from './constants.ts';
 
 import type { ESLint, Linter } from 'eslint';
 
+
 function mergeObjects<T>(original: T, update: T | undefined): T {
   if (update === undefined) return original;
   if (
@@ -36,7 +37,8 @@ export function getModifiedRule<NAME extends string, RULE_ONLY extends boolean =
   const
     /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- generics do not work well */
     [severity, ...ruleConfig] = (Array.isArray(config) ? config : [config])
-      .find(e => 'rules' in e && name in e.rules && e.rules[name] !== 'off')?.rules?.[name] as [string | number, ...JSONValue[]] | undefined ?? ['off'],
+      .find(e => 'rules' in e && name in e.rules && e.rules[name] !== 'off')?.rules?.[name] as [string | number, ...JSONValue[]] | undefined
+      ?? ['off'],
     mergedConfig = Array.from({ length: Math.max(ruleConfig.length, data.length) }, (_, i) => mergeObjects(ruleConfig[i], data[i]));
 
   /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- generics do not work well */

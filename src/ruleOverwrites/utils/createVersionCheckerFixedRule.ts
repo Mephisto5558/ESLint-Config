@@ -1,6 +1,8 @@
 import semver from 'semver';
 
+/* eslint-disable-next-line import-x/newline-after-import -- false positive? */
 import type { ESLint, Rule } from 'eslint';
+
 
 /**
  * eslint-plugin-n has a bug where it considers a use safe if any of the versions set match,
@@ -17,7 +19,7 @@ export const createVersionCheckerFixedRule = (baseRuleModule: NonNullable<ESLint
           const supportedVersion = (descriptor.data?.supported ?? (allowExperimental ? descriptor.data?.experimental : undefined))
             ?.toString().replaceAll(/ \(backported: |, /gi, '||').replace(')', '');
 
-          if (descriptor.data?.version && supportedVersion) {
+          if (supportedVersion && descriptor.data?.version) {
             const
               minConfigured = semver.minVersion(descriptor.data.version.toString()),
               minSupported = semver.minVersion(supportedVersion);

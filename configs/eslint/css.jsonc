@@ -12,22 +12,22 @@
   "no-invalid-properties": [
      "error", {
       "allowUnknownVariables": false
-    } 
+    }
   ],
   "no-unmatchable-selectors": "warn",
   "prefer-logical-properties": [
-    "warn", 
+    "warn",
   {
       "allowProperties": [],
       "allowUnits": []
-    } 
+    }
   ],
   "relative-font-units": [
     "warn", {
       "allowUnits": ["rem", "%"]
     }
   ],
-  "selector-complexity": [ 
+  "selector-complexity": [
     "warn", {
       "maxIds": 10,
       "maxClasses": 10,
@@ -42,9 +42,9 @@
       "disallowPseudoElements": [],
       "disallowAttributes": [],
       "disallowAttributeMatchers": []
-    } 
+    }
   ],
-  "use-baseline": [ 
+  "use-baseline": [
     "warn", {
       "available": "newly", // Consistent with `@html-eslint/use-baseline`
       "allowAtRules": [],

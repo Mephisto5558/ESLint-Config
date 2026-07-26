@@ -310,7 +310,7 @@
       "ignoreJSX": "none",
       "enforceForSequenceExpressions": true,
       "enforceForFunctionPrototypeMethods": true,
-      // "allowParensAfterCommentPattern": 
+      // "allowParensAfterCommentPattern":
       "nestedConditionalExpressions": false,
       "ignoredNodes": [
         "ArrowFunctionExpression[body.type=ConditionalExpression]" // for compatibility with `@stylistic/no-confusing-arrow`
@@ -397,14 +397,23 @@
   ],
   "padding-line-between-statements": [
     "warn",
-    { 
-      "blankLine": "always", 
+    {
+      "blankLine": "always",
       "prev": {
         "selector": "ImportDeclaration[importKind!='type']"
-      }, 
+      },
       "next": {
         "selector": "ImportDeclaration[importKind='type']"
-      } 
+      }
+    },
+    {
+      "blankLine": "always",
+      "prev": {
+        "selector": "ExportDeclaration[exportKind!='type']"
+      },
+      "next": {
+        "selector": "ExportDeclaration[exportKind='type']"
+      }
     }
   ],
   "quote-props": [

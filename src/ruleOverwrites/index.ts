@@ -6,6 +6,7 @@ import './utils/index.ts';
 
 import type { ESLint, Rule } from 'eslint';
 
+
 const EXT_LENGTH = 3;
 
 export default {

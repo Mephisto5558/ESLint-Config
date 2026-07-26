@@ -22,12 +22,14 @@ import {
 import { getModifiedRule, importRules } from './utils.ts';
 
 import type { ParserOptions } from '@typescript-eslint/parser';
-import type { Linter } from 'eslint';
+import type { Config } from 'eslint/config';
+
 
 export * from './constants.ts';
 export * from './utils.ts';
 export { plugins, pluginNames, globals, tsGlob, jsGlob };
 export type * from '@mephisto5558/better-types';
+
 
 let minNodeVersion = new SemVer(process.versions.node);
 try {
@@ -82,7 +84,7 @@ catch (rawErr) {
   if (!('code' in err) || err.code != 'ENOENT') throw err;
 }
 
-const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: ParserOptions } })[] = [
+const eslintConfig: (Config & { languageOptions?: { parserOptions?: ParserOptions } })[] = [
   {
     name: 'eslint-config:common-ignores',
     ignores: [
@@ -285,12 +287,17 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     plugins: {
       [pluginNames.css]: filetypeSpecificPlugins[pluginNames.css]!,
       /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
-      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames],
 
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.unicorn]: plugins[pluginNames.unicorn as keyof typeof pluginNames]
     },
     rules: {
       ...importRules(pluginNames.eslintComments),
-      ...importRules(`eslint/${pluginNames.css}`)
+      ...importRules(`eslint/${pluginNames.css}`),
+      [`${pluginNames.unicorn}/no-missing-local-resource`]: 'warn',
+      [`${pluginNames.unicorn}/no-shorthand-property-overrides`]: 'error',
+      [`${pluginNames.unicorn}/no-transition-all`]: 'warn'
     }
   },
   {
@@ -385,12 +392,15 @@ const eslintConfig: (Linter.Config & { languageOptions?: { parserOptions?: Parse
     plugins: {
       [pluginNames.markdown]: filetypeSpecificPlugins[pluginNames.markdown]!,
       /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
-      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames],
 
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.unicorn]: plugins[pluginNames.unicorn as keyof typeof pluginNames]
     },
     rules: {
       ...importRules(pluginNames.eslintComments),
-      ...importRules(`eslint/${pluginNames.markdown}`)
+      ...importRules(`eslint/${pluginNames.markdown}`),
+      [`${pluginNames.unicorn}/no-missing-local-resource`]: 'warn'
     }
   }
 ];

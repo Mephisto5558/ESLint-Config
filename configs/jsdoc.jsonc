@@ -75,9 +75,9 @@
   "check-values": [
     "warn",
     {
-      // "allowedAuthors": 
-      // "allowedLicenses": 
-      // "licensePattern": 
+      // "allowedAuthors":
+      // "allowedLicenses":
+      // "licensePattern":
       "numericOnlyVariation": false
     }
   ],
@@ -87,9 +87,9 @@
       "enableFixer": true,
       "lineOrBlockStyle": "both",
       "enforceJsdocLineStyle": "single"
-      // "allowedPrefixes": 
-      // "contexts": 
-      // "contextsBeforeAndAfter": 
+      // "allowedPrefixes":
+      // "contexts":
+      // "contextsBeforeAndAfter":
     }
   ],
   "empty-tags": [
@@ -109,18 +109,18 @@
   "implements-on-classes": [
     "warn",
     {
-      // "contexts": 
+      // "contexts":
     }
   ],
   "imports-as-dependencies": "warn",
   "informative-docs": [
     "warn",
     {
-      // "aliases": 
+      // "aliases":
       "excludedTags": [
         "import" // false positives when using `@import { bar as barT } from foo`
       ]
-      // "uselessWords": 
+      // "uselessWords":
     }
   ],
   "lines-before-block": "off", // Handled by `@stylistic/lines-around-comment`
@@ -133,7 +133,7 @@
       "noFinalLineText": false,
       "noSingleLineBlocks": false,
       "requireSingleLineUnderCount": 150,
-      // "singleLineTags": 
+      // "singleLineTags":
       "noMultilineBlocks": false,
       // "minimumLengthForMultiline": ,
       "multilineTags": [
@@ -145,7 +145,7 @@
   "no-bad-blocks": [
     "warn",
     {
-      // "ignore": 
+      // "ignore":
       "preventAllMultiAsteriskBlocks": false
     }
   ],
@@ -160,7 +160,7 @@
     "warn",
     {
       "noOptionalParamNames": false
-      // "contexts": 
+      // "contexts":
     }
   ],
   "no-missing-syntax": "off",
@@ -183,6 +183,14 @@
       "checkUsedTypedefs": false, // falsely reports @param comments as unused typedefs
       "disableReporting": false,
       "markVariablesAsUsed": false
+    }
+  ],
+  "normalize-see-links": [
+    "warn",
+    {
+      "canonicalForm": "pipe",
+      "enableFixer": true,
+      "wrapBareUrls": false
     }
   ],
   "prefer-import-tag": [
@@ -230,9 +238,9 @@
         "obj",
         "arg"
       ],
-      // "exemptedBy": 
-      // "checkTypesPattern": 
-      // "contexts": 
+      // "exemptedBy":
+      // "checkTypesPattern":
+      // "contexts":
       "checkConstructors": true,
       "checkGetters": false,
       "checkSetters": false,
@@ -267,8 +275,8 @@
   "require-throws": [
     "warn",
     {
-      // "exemptedBy": 
-      // "contexts": 
+      // "exemptedBy":
+      // "contexts":
     }
   ],
   "require-throws-description": "warn",

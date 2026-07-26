@@ -32,7 +32,7 @@
       // "ignoreExports": []
       "suppressMissingFileEnumeratorAPIWarning": true
     }
-  ], 
+  ],
 
   //  Module systems
   "no-amd": "warn",
@@ -220,7 +220,7 @@
       "warnOnUnassignedImports": true,
       "sortTypesGroup": true,
       "newlines-between-types": "ignore"
-      // "consolidateIslands": 
+      // "consolidateIslands":
     }
   ],
   "prefer-default-export": [

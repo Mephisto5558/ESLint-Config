@@ -1,5 +1,7 @@
+/* eslint-disable-next-line import-x/no-extraneous-dependencies -- this file is local only */
 import eslintPluginPlugin_ from 'eslint-plugin-eslint-plugin';
 import config, { getModifiedRule, pluginNames } from './src/index.ts';
+
 
 const eslintPluginPlugin = eslintPluginPlugin_ as typeof eslintPluginPlugin_ & { meta: { namespace?: string } };
 eslintPluginPlugin.meta.namespace ??= 'eslint-plugin';
@@ -91,6 +93,7 @@ export default [
         }
       ],
       [`${eslintPluginPlugin.meta.namespace}/require-meta-has-suggestions`]: 'error', // error because ESLint throws if it's missing
+      [`${eslintPluginPlugin.meta.namespace}/require-meta-languages`]: 'warn',
       [`${eslintPluginPlugin.meta.namespace}/require-meta-schema`]: 'off', // Handled by eslint internally
       [`${eslintPluginPlugin.meta.namespace}/require-meta-schema-description`]: 'warn',
       [`${eslintPluginPlugin.meta.namespace}/require-meta-type`]: 'warn'

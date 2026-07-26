@@ -2,6 +2,7 @@ import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 import type { Rule } from 'eslint';
 
+
 const
   { rules } = tsPlugin,
   baseRuleModule = rules['unbound-method'];

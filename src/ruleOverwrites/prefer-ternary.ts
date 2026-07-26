@@ -3,6 +3,7 @@ import unicornPlugin from 'eslint-plugin-unicorn';
 import type { JSSyntaxElement, Rule } from 'eslint';
 import type { IfStatement, Node } from 'estree';
 
+
 const
   DEFAULT_MAX_LENGTH = 120,
   baseRuleModule = unicornPlugin.rules?.['prefer-ternary'];

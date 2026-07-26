@@ -2,6 +2,7 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs';
 
 import type { Rule } from 'eslint';
 
+
 const baseRuleModule = sonarjsPlugin.rules['no-async-constructor'];
 
 

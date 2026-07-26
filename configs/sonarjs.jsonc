@@ -139,7 +139,7 @@
   ],
   "no-duplicated-branches": "warn",
   "no-element-overwrite": "warn",
-  "no-empty-after-reluctant": "error", // Partially handled by `regexp/no-useless-lazy`, 
+  "no-empty-after-reluctant": "error", // Partially handled by `regexp/no-useless-lazy`
   "no-empty-alternatives": "off", // Handled by `regexp/no-empty-alternative`
   "no-empty-character-class": "off", // Handled by `regexp/no-empty-character-class`
   "no-empty-collection": "warn",

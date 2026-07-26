@@ -41,7 +41,7 @@
       "grouping": false,
       "allowCall": true
     }
-  ], 
+  ],
   "no-new-require": "off", // Handled by `typescript-eslint/no-unsafe-*`
   "no-path-concat": "error",
   "no-process-env": "off",
@@ -77,7 +77,7 @@
   ],
   "prefer-node-protocol": "off", // Handled by `unicorn/prefer-node-protocol`
   "process-exit-as-throw": "warn",
-  
+
   // [NO-UNSUPPORTED-FEATURES]
   "no-unsupported-features/es-builtins": "off", // Handled by `custom/es-builtins`
   "no-unsupported-features/es-syntax": "off", // Handled by `custom/es-syntax`

@@ -30,7 +30,7 @@
     {
       "checkRelationalComparisons": true
     }
-  ], 
+  ],
   "no-constant-condition": [ // Partially handled by `@typescript-eslint/no-unnecessary-condition`
     "error",
     {
@@ -57,7 +57,7 @@
   "no-fallthrough": [
     "warn",
     {
-      // "commentPattern": 
+      // "commentPattern":
       "allowEmptyCase": false,
       "reportUnusedFallthroughComment": true
     }
@@ -232,7 +232,7 @@
       "allowArrowFunctions": true,
       "allowTypeAnnotation": false,
       "overrides": {
-        // "namedExports": 
+        // "namedExports":
       }
     }
   ],
@@ -252,7 +252,7 @@
       "max": 40,
       "properties": "always",
       "exceptions": [
-        "a", // first item in .sort() 
+        "a", // first item in .sort()
         "b", // second item in .sort()
         "e", // entry
         "i", // index
@@ -262,7 +262,7 @@
         "y", // vertical axis
         "_" // omitted function param, e.g. (_, a) => a
       ]
-      // "exceptionPatterns": 
+      // "exceptionPatterns":
     }
   ],
   "id-match": "off", // Handled by `camelcase`
@@ -454,7 +454,7 @@
     {
       "avoidQuotes": true
       // "ignoreConstructors": true,
-      // "methodsIgnorePattern": 
+      // "methodsIgnorePattern":
       // "avoidExplicitReturnArrows": true
     }
   ],
@@ -499,7 +499,8 @@
   "preserve-caught-error": [
     "warn",
     {
-      "requireCatchParameter": true
+      "requireCatchParameter": true,
+      "errorClassNames": []
     }
   ],
   "radix": "warn",

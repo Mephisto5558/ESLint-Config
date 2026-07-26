@@ -37,12 +37,12 @@
         "static-field",
         "static-block",
         "static-method",
-        
+
         "public-field",
         "private-field",
 
         "constructor",
-        
+
         "public-method",
         "private-method"
       ]
@@ -277,6 +277,8 @@
   "no-manually-wrapped-comments": "off",
   "no-mismatched-map-key": "warn",
   "no-misrefactored-assignment": "error",
+  "no-missing-local-resource": "warn",
+  "no-multiple-promise-resolver-calls": "error",
   "no-named-default": "warn",
   "no-negated-array-predicate": "warn",
   "no-negated-comparison": [
@@ -320,6 +322,7 @@
   "no-redundant-comparison": "warn",
   "no-return-array-push": "warn",
   "no-selector-as-dom-name": "warn",
+  "no-shorthand-property-overrides": "off", // Set in index.ts for CSS only
   "no-single-promise-in-promise-methods": "warn",
   "no-static-only-class": "warn",
   "no-subtraction-comparison": "warn",
@@ -328,6 +331,7 @@
   "no-this-outside-of-class": "off",
   "no-top-level-assignment-in-function": "warn",
   "no-top-level-side-effects": "warn",
+  "no-transition-all": "warn",
   "no-typeof-undefined": "warn",
   "no-uncalled-method": "error",
   "no-undeclared-class-members": "off", // Handled by `@typescript-eslint/no-unsafe-*`
@@ -346,6 +350,7 @@
   ],
   "no-unnecessary-slice-end": "warn",
   "no-unnecessary-splice": "warn",
+  "no-unnecessary-string-trim": "warn",
   "no-unreadable-array-destructuring": [
     "warn",
     {
@@ -378,6 +383,7 @@
   "no-useless-logical-operand": "off", // Handled by `@typescript-eslint/no-unnecessary-condition`, `sonarjs/no-redundant-boolean`, `no-constant-binary-expression`
   "no-useless-override": "warn",
   "no-useless-promise-resolve-reject": "warn",
+  "no-useless-re-export": "warn",
   "no-useless-recursion": "warn",
   "no-useless-spread": "warn",
   "no-useless-switch-case": "warn",
@@ -489,6 +495,7 @@
   "prefer-else-if": "warn",
   "prefer-error-is-error": "warn",
   "prefer-event-target": "warn",
+  "prefer-explicit-viewport-units": "off", // Handled by `css/relative-font-units`
   "prefer-export-from": [
     "warn",
     {
@@ -528,7 +535,7 @@
   "prefer-minimal-ternary": [
     "warn",
     {
-      "checkVaryingCallee": false, // would be nice if `(test ? a : b).method(value)` would be allowable separately
+      "checkVaryingBase": false, // would be nice if `(test ? a : b).method(value)` would be allowable separately
       "checkComputedMemberAccess": false // bad readability
     }
   ],
@@ -589,7 +596,10 @@
   ],
   "prefer-set-methods": "warn",
   "prefer-set-size": "warn",
-  "prefer-short-arrow-method": "warn",
+  "prefer-short-arrow-method": [
+    "warn",
+    "always"
+  ],
   "prefer-simple-condition-first": "warn",
   "prefer-simple-sort-comparator": "warn",
   "prefer-simplified-conditions": "warn",
@@ -640,6 +650,7 @@
     }
   ],
   "prefer-ternary": "off", // Handled by `custom/prefer-ternary`
+  "prefer-then-catch": "warn",
   "prefer-toggle-attribute": "warn",
   "prefer-top-level-await": "warn",
   "prefer-type-error": "warn",
@@ -663,6 +674,7 @@
       "checkAllSelectors": false
     }
   ],
+  "require-frontmatter-fields": "off",
   "require-module-attributes": "warn",
   "require-module-specifiers": "warn",
   "require-number-to-fixed-digits-argument": "warn",
