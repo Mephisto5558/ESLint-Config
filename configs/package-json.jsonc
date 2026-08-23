@@ -162,7 +162,13 @@
     }
   ],
   "restrict-top-level-properties": "off",
-  "scripts-name-casing": "warn",
+  "scripts-name-casing": [
+    "warn",
+    {
+      // "ignoreNames": [],
+      // "ignorePatterns": []
+    }
+  ],
   "sort-collections": [
     "warn",
     [

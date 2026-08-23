@@ -37,14 +37,18 @@
   "check-param-names": [
     "error",
     {
+      "allowExtraTrailingParamDocs": false,
+      "badParamNames": false,
+      "badParamOrder": true,
+      "checkDestructured": true,
       "checkRestProperty": false,
       // "checkTypesPattern":
-      "enableFixer": false,
-      "allowExtraTrailingParamDocs": false,
-      "checkDestructured": true,
-      "useDefaultObjectProperties": true,
       "disableExtraPropertyReporting": false,
-      "disableMissingParamChecks": false
+      "disableMissingParamChecks": false,
+      "duplicateParams": false,
+      "enableFixer": true,
+      "extraParams": false,
+      "useDefaultObjectProperties": true
     }
   ],
   "check-property-names": [

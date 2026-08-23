@@ -19,17 +19,24 @@
     }
   ],
   "comment-content": "off",
+  "consistent-arrow-return-style": "off", // Handled by `arrow-body-style`; not configurable
   "consistent-assert": "warn",
-  "consistent-boolean-name": "off", // "warn" // very slow (~8%) for not much use
-  // "consistent-boolean-name": [
-  //   "warn",
-  //   {
-  //     "checkProperties": false, // to many unfixables with dependency-defined properties
-  //     "prefixes": {
-  //       "does": true
-  //     }
-  //   }
-  // ],
+  // "consistent-boolean-name": "off", // "warn" // very slow (~8%) for not much use
+  "consistent-boolean-name": [
+    "warn",
+    {
+      "checkVariables": "always",
+      "checkArguments": "always",
+      "checkFunctions": "always",
+      "checkMethods": "always",
+      "checkFields": "never", // to many unfixables with dependency-defined properties
+      "prefixes": {
+        "does": true
+      },
+      "wrappers": {}
+      // "ignore": []
+    }
+  ],
   "consistent-class-member-order": [
     "warn",
     {
@@ -167,6 +174,10 @@
       // "overrideGlobals": {} // uses ESLint's language options globals (https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md#overrideglobals)
     }
   ],
+  "iteration-fallback-style": [
+    "warn",
+    "guard"
+  ],
   "logical-assignment-operators": [ // Partially handled by `@typescript-eslint/prefer-nullish-coalescing`
     "warn",
     "always",
@@ -208,6 +219,7 @@
   "no-async-promise-finally": "warn",
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
+  "no-barrel-files": "off",
   "no-blob-to-file": "warn",
   "no-boolean-sort-comparator": "warn",
   "no-break-in-nested-loop": "warn",
@@ -365,6 +377,7 @@
   "no-unsafe-dom-html": "warn",
   "no-unsafe-promise-all-settled-values": "warn",
   "no-unsafe-property-key": "warn",
+  "no-unsafe-sqlite-interpolation": "warn",
   "no-unsafe-string-replacement": "off",
   "no-unused-array-method-return": "off", // Handled by `sonarjs/no-ignored-return`
   "no-unused-properties": "warn",
@@ -509,7 +522,12 @@
   "prefer-group-by": "warn",
   "prefer-has-check": "warn",
   "prefer-hoisting-branch-code": "warn",
-  "prefer-https": "warn",
+  "prefer-https": [
+    "warn",
+    {
+      // "ignore": []
+    }
+  ],
   "prefer-identifier-import-export-specifiers": "off", // Handled by `no-useless-rename`
   "prefer-import-meta-properties": "warn",
   "prefer-includes": "warn",
@@ -681,6 +699,7 @@
   "require-passive-events": "warn",
   "require-post-message-target-origin": "off",
   "require-proxy-trap-boolean-return": "warn",
+  "single-line-block-comment-style": ["warn", "single-line"],
   "string-content": "off",
   "switch-case-braces": [
     "warn",

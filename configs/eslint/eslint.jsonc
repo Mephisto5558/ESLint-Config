@@ -116,7 +116,12 @@
     }
   ],
   "no-unexpected-multiline": "warn",
-  "no-unmodified-loop-condition": "warn",
+  "no-unmodified-loop-condition": [
+    "warn",
+    {
+      "checkConditionalExpressions": true
+    }
+  ],
   "no-unreachable": "warn",
   "no-unreachable-loop": [
     "warn",

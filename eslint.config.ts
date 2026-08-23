@@ -45,6 +45,34 @@ export default [
       ],
       [`${eslintPluginPlugin.meta.namespace}/no-deprecated-context-methods`]: 'off', // Handled by `@typescript-eslint/no-deprecated`
       [`${eslintPluginPlugin.meta.namespace}/no-deprecated-report-api`]: 'off', // Handled by `@typescript-eslint/no-deprecated`
+      [`${eslintPluginPlugin.meta.namespace}/no-incomplete-meta-schema`]: [
+        'warn',
+        {
+          checks: {
+            explicitAdditionalProperties: true,
+            explicitItems: true,
+            typedItems: true,
+            boundedTuples: true
+          }
+        }
+      ],
+      [`${eslintPluginPlugin.meta.namespace}/no-incorrect-meta-schema`]: [
+        'error',
+        {
+          checks: {
+            emptyRoot: true,
+            bareArrayRoot: true,
+            nonArrayRootType: true,
+            nonConstrainingRoot: true,
+            ignoredKeywords: true,
+            ignoredRefSiblings: true,
+            unresolvedRefs: true,
+            ignoredAdditionalItems: true,
+            incompatibleTypeKeywords: true,
+            impossibleBounds: true
+          }
+        }
+      ],
       [`${eslintPluginPlugin.meta.namespace}/no-matching-violation-suggest-message-ids`]: 'warn',
       [`${eslintPluginPlugin.meta.namespace}/no-meta-replaced-by`]: 'off', // Handled by `@typescript-eslint/no-deprecated`
       [`${eslintPluginPlugin.meta.namespace}/no-meta-schema-default`]: 'warn',

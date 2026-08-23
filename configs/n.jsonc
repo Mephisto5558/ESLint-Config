@@ -76,6 +76,12 @@
     }
   ],
   "prefer-node-protocol": "off", // Handled by `unicorn/prefer-node-protocol`
+  "prefer-process-get-builtin-module": [
+    "warn",
+    {
+      // "version": // keeping the default here
+    }
+  ],
   "process-exit-as-throw": "warn",
 
   // [NO-UNSUPPORTED-FEATURES]
@@ -119,7 +125,10 @@
   "prefer-global/url-search-params": [
     "warn",
     "always"
-  ],
+  ],  
+
+  // [PREFER-IMPORT]
+  "prefer-import/assert-strict": "warn",
 
   // [PREFER-PROMISES]
   "prefer-promises/dns": "warn",
