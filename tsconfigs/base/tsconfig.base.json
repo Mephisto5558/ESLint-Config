@@ -1,7 +1,7 @@
 {
   "exclude": [
-    "**/dist",
-    "**/node_modules"
+    "${configDir}/**/dist",
+    "${configDir}/**/node_modules"
   ],
   "compilerOptions": {
     "outDir": "${configDir}/dist",

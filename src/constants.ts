@@ -8,8 +8,6 @@ import htmlPlugin from '@html-eslint/eslint-plugin';
 import importAliasPlugin from '@limegrass/eslint-plugin-import-alias';
 import stylisticPlugin from '@stylistic/eslint-plugin';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
-
-// @ts-expect-error -- eslint-plugin-html cannot be augmented
 import _htmlJSPlugin from 'eslint-plugin-html';
 import importPlugin from 'eslint-plugin-import-x';
 import jsdocPlugin from 'eslint-plugin-jsdoc';

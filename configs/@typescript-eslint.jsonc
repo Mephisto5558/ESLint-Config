@@ -9,7 +9,12 @@
       // "readonly": // Defaults to `default`
     }
   ],
-  "await-thenable": "error",
+  "await-thenable": [
+    "error",
+    {
+      "allowMixedPromiseArrays": false
+    }
+  ],
   "ban-ts-comment": [
     "warn",
     {
@@ -167,6 +172,7 @@
     }
   ],
   "no-for-in-array": "warn",
+  "no-generated-empty-object-type": "error",
   "no-implied-eval": "warn",
   "no-import-type-side-effects": "warn",
   "no-inferrable-types": [
@@ -186,7 +192,6 @@
       ]
     }
   ],
-  "no-loop-func": "warn",
   "no-magic-numbers": [
     "warn",
     {
@@ -223,7 +228,9 @@
   "no-misused-promises": [
     "error",
     {
-      "checksConditionals": true,
+      "checksConditionals": {
+        "flagUnions": "strict"
+      },
       "checksSpreads": true,
       "checksVoidReturn": {
         "arguments": false,
@@ -310,6 +317,7 @@
   "no-unsafe-assignment": "warn",
   "no-unsafe-call": "warn",
   "no-unsafe-declaration-merging": "warn",
+  "no-unsafe-enum-assignment": "warn",
   "no-unsafe-enum-comparison": "warn",
   "no-unsafe-function-type": "warn",
   "no-unsafe-member-access": [

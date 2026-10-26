@@ -366,7 +366,7 @@
   ],
   "no-lone-blocks": "warn",
   "no-lonely-if": "warn",
-  "no-loop-func": "off", // Handled by `@typescript-eslint/no-loop-func`
+  "no-loop-func": "warn",
   "no-magic-numbers": "off", // Handled by `@typescript-eslint/no-magic-numbers`
   "no-multi-assign": [
     "warn",

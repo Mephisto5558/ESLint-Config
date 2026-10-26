@@ -5,6 +5,7 @@
   "check-alignment": [
     "warn",
     {
+      "ignoreEmptyLines": false,
       "innerIndent": 1
     }
   ],
@@ -13,6 +14,7 @@
     "warn",
     {
       "allowIndentedSections": true,
+      "allowNoSpaceAfterAsterisk": false,
       "excludeTags": [
         "example"
       ]
@@ -57,7 +59,12 @@
       "enableFixer": false
     }
   ],
-  "check-syntax": "warn",
+  "check-syntax": [
+    "warn",
+    {
+      "enableFixer": true
+    }
+  ],
   "check-tag-names": [
     "warn",
     {
@@ -187,6 +194,17 @@
       "checkUsedTypedefs": false, // falsely reports @param comments as unused typedefs
       "disableReporting": false,
       "markVariablesAsUsed": false
+    }
+  ],
+  "no-unnecessary-type-assertion": [
+    "warn",
+    {
+      "checkLiteralConstAssertions": true,
+      "enableFixer": true,
+      "fixTypeChangingCasts": false,
+      "preferConstToLiteralTuples": true,
+      "treatAnyAsRedundant": true
+      // "typesToIgnore": []
     }
   ],
   "normalize-see-links": [
@@ -446,6 +464,7 @@
   ],
   "tag-lines": "off", // Handled by `jsdoc/sort-tags`
   "text-escaping": "off",
+  "ts-ban-ts-comments": "off", // Handled by `@typescript-eslint/ban-ts-comments`
   "ts-method-signature-style": [
     "warn",
     "method",

@@ -10,14 +10,14 @@
   "no-invalid-at-rules": "error",
   "no-invalid-named-grid-areas": "error",
   "no-invalid-properties": [
-     "error", {
+    "error", {
       "allowUnknownVariables": false
     }
   ],
   "no-unmatchable-selectors": "warn",
   "prefer-logical-properties": [
     "warn",
-  {
+    {
       "allowProperties": [],
       "allowUnits": []
     }

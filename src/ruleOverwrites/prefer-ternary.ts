@@ -56,48 +56,69 @@ export default {
       {
         type: 'object',
         properties: {
+          ...Array.isArray(baseRuleModule.meta?.schema) && baseRuleModule.meta.schema[1]?.properties,
           maxLength: { type: 'number', minimum: 0 },
           preventNestedTernary: { type: 'boolean' }
         },
         additionalProperties: false
+      }
+    ],
+    defaultOptions: [
+      baseRuleModule.meta?.defaultOptions?.[0],
+      {
+        /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false */
+        ...baseRuleModule.meta?.defaultOptions?.[1] as Record<string, unknown> | undefined,
+        maxLength: DEFAULT_MAX_LENGTH,
+        preventNestedTernary: false
       }
     ]
   },
 
   create: (
     context: Rule.RuleContext & { options: [unknown, { maxLength?: number; preventNestedTernary?: boolean }?] }
-  ): Rule.RuleListener => baseRuleModule.create(Object.create(
-    context,
-    {
-      options: {
-        value: context.options[0] ? [context.options[0]] : []
-      },
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
-      report: {
-        value: function (descriptor) {
-          if (!descriptor.fix || !('node' in descriptor)) return context.report(descriptor);
+  ): Rule.RuleListener => {
+    const { maxLength: _maxLength, preventNestedTernary: _preventNestedTernary, ...unicornSecondOption } = context.options[1] ?? {};
 
-          const { node } = descriptor;
-          if (!isIfStatement(node)) return context.report(descriptor);
+    return baseRuleModule.create(Object.create(
+      context,
+      {
+        options: {
+          value: [
+            context.options[0] ?? baseRuleModule.meta?.defaultOptions?.[0],
+            {
+              /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false */
+              ...baseRuleModule.meta?.defaultOptions?.[1] as Record<string, unknown> | undefined,
+              ...unicornSecondOption
+            }
+          ]
+        },
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion -- false positive */
+        report: {
+          value: function (descriptor) {
+            if (!descriptor.fix || !('node' in descriptor)) return context.report(descriptor);
 
-          if (
-            context.options[1]?.preventNestedTernary
-            && (hasTernary(node.consequent, context.sourceCode) || hasTernary(node.alternate, context.sourceCode))
-          ) return; // Suppress the error
+            const { node } = descriptor;
+            if (!isIfStatement(node)) return context.report(descriptor);
 
-          const
-            fixes = descriptor.fix(dummyFixer),
-            fix = isIterable(fixes) ? [...fixes][0] : fixes;
+            if (
+              context.options[1]?.preventNestedTernary
+              && (hasTernary(node.consequent, context.sourceCode) || hasTernary(node.alternate, context.sourceCode))
+            ) return; // Suppress the error
 
-          if (!fix || !('text' in fix) || typeof fix.text !== 'string') return context.report(descriptor);
+            const
+              fixes = descriptor.fix(dummyFixer),
+              fix = isIterable(fixes) ? [...fixes][0] : fixes;
 
-          const indentation = context.sourceCode.lines[node.loc.start.line - 1]?.slice(0, node.loc.start.column);
-          if (indentation && indentation.length + fix.text.length > (context.options[1]?.maxLength ?? DEFAULT_MAX_LENGTH))
-            return; // Suppress the error
+            if (!fix || !('text' in fix) || typeof fix.text !== 'string') return context.report(descriptor);
 
-          context.report(descriptor); // Report normally
-        }
-      } as { value: Rule.RuleContext['report'] }
-    }
-  ))
+            const indentation = context.sourceCode.lines[node.loc.start.line - 1]?.slice(0, node.loc.start.column);
+            if (indentation && indentation.length + fix.text.length > (context.options[1]?.maxLength ?? DEFAULT_MAX_LENGTH))
+              return; // Suppress the error
+
+            context.report(descriptor); // Report normally
+          }
+        } as { value: Rule.RuleContext['report'] }
+      }
+    ));
+  }
 } as Rule.RuleModule;

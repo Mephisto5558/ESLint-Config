@@ -18,10 +18,10 @@
       "preferSuper": true
     }
   ],
+  "comma-spacing": "off", // Set in index.ts for only JSON* files
   "comment-content": "off",
   "consistent-arrow-return-style": "off", // Handled by `arrow-body-style`; not configurable
   "consistent-assert": "warn",
-  // "consistent-boolean-name": "off", // "warn" // very slow (~8%) for not much use
   "consistent-boolean-name": [
     "warn",
     {
@@ -31,7 +31,7 @@
       "checkMethods": "always",
       "checkFields": "never", // to many unfixables with dependency-defined properties
       "prefixes": {
-        "does": true
+        "do": true
       },
       "wrappers": {}
       // "ignore": []
@@ -146,6 +146,7 @@
       },
       "ignore": [],
       "checkDirectories": true,
+      // "directoryRoots": []
       "multipleFileExtensions": false
     }
   ],
@@ -178,6 +179,7 @@
     "warn",
     "guard"
   ],
+  "key-name-casing": "off", // Handled by `jsonc/key-name-casing`
   "logical-assignment-operators": [ // Partially handled by `@typescript-eslint/prefer-nullish-coalescing`
     "warn",
     "always",
@@ -216,17 +218,24 @@
   "no-array-sort-for-min-max": "warn",
   "no-array-splice": "warn",
   "no-asterisk-prefix-in-documentation-comments": "off",
+  "no-async-iterator-callback": "warn",
   "no-async-promise-finally": "warn",
   "no-await-expression-member": "off",
   "no-await-in-promise-methods": "warn",
   "no-barrel-files": "off",
   "no-blob-to-file": "warn",
   "no-boolean-sort-comparator": "warn",
-  "no-break-in-nested-loop": "warn",
+  "no-break-in-nested-loop": [
+    "warn",
+    {
+      "checkContinue": true
+    }
+  ],
   "no-canvas-to-image": "warn",
   "no-chained-comparison": "off", // Handled by `sonarjs/different-types-comparison`, `sonarjs/non-number-in-arithmetic-expression`
   "no-collection-bracket-access": "off", // Handled by `@typescript-eslint/no-unsafe-*`, `@typescript-eslint/dot-notation`
   "no-computed-property-existence-check": "off",
+  "no-conflicting-constraints": "warn",
   "no-confusing-array-splice": "warn",
   "no-confusing-array-with": "warn",
   "no-console-spaces": "warn",
@@ -244,15 +253,23 @@
       "allowComments": true
     }
   ],
+  "no-empty-link-text": "off", // Set in index.ts for only MD files
   "no-error-property-assignment": "warn",
   "no-exports-in-scripts": "warn",
   "no-for-each": "warn",
   "no-for-loop": "warn",
   "no-global-object-property-assignment": "off",
-  "no-immediate-mutation": "warn",
+  "no-immediate-mutation": [
+    "warn",
+    {
+      "checkConditionals": true
+    }
+  ],
   "no-impossible-length-comparison": "error",
+  "no-incomplete-accessor-override": "warn",
   "no-incorrect-query-selector": "warn",
   "no-incorrect-template-string-interpolation": "off", // Handled by `@stylistic/quotes`
+  "no-ineffective-csp-directives": "warn",
   "no-instanceof-builtins": [
     "error",
     {
@@ -263,11 +280,21 @@
     }
   ],
   "no-invalid-argument-count": "warn",
+  "no-invalid-boolean-attribute-value": "warn",
   "no-invalid-character-comparison": "error", // Partially handled by `@typescript-eslint/prefer-string-starts-ends-with`
+  "no-invalid-dom-token": "error",
   "no-invalid-fetch-options": "error",
   "no-invalid-file-input-accept": "warn",
+  "no-invalid-integrity": "error",
+  "no-invalid-intl-options": "error", // only partially handled by TS (i.e. `new Intl.NumberFormat('en', { style: 'currency' });` is missing `currency` property)
+  "no-invalid-property-descriptor": "error",
   "no-invalid-remove-event-listener": "error",
+  "no-invalid-response-options": "error",
+  "no-invalid-style-set-property": "error",
+  "no-invalid-temporal-arithmetic": "error",
+  "no-invalid-url-protocol-comparison": "error",
   "no-invalid-well-known-symbol-methods": "error",
+  "no-javascript-url": "off", // Set in index.ts for only MD files
   "no-keyword-prefix": [
     "warn",
     {
@@ -283,8 +310,10 @@
   ],
   "no-late-current-target-access": "warn",
   "no-late-event-control": "warn",
+  "no-leading-empty-lines": "off", // Handled by `@stylistic/no-multiple-empty-lines`
   "no-lonely-if": "warn",
   "no-loop-iterable-mutation": "error",
+  "no-loss-of-precision": "off", // Set in index.ts for only JSON, CSS files
   "no-magic-array-flat-depth": "off", // Handled by `@typescript-eslint/no-magic-numbers`
   "no-manually-wrapped-comments": "off",
   "no-mismatched-map-key": "warn",
@@ -330,8 +359,10 @@
   "no-object-as-default-parameter": "error",
   "no-object-methods-with-collections": "warn",
   "no-optional-chaining-on-undeclared-variable": "off", // Handled by `no-undef`, `@typescript-eslint/no-unsafe-*`
+  "no-prevent-default-in-passive-listener": "warn",
   "no-process-exit": "warn",
   "no-redundant-comparison": "warn",
+  "no-repeated-call-wrappers": "warn",
   "no-return-array-push": "warn",
   "no-selector-as-dom-name": "warn",
   "no-shorthand-property-overrides": "off", // Set in index.ts for CSS only
@@ -342,7 +373,12 @@
   "no-this-assignment": "off", // Handled by `@typescript-eslint/no-this-alias`
   "no-this-outside-of-class": "off",
   "no-top-level-assignment-in-function": "warn",
-  "no-top-level-side-effects": "warn",
+  "no-top-level-side-effects": [
+    "warn",
+    {
+      "checkUnknownCalls": false
+    }
+  ],
   "no-transition-all": "warn",
   "no-typeof-undefined": "warn",
   "no-uncalled-method": "error",
@@ -351,9 +387,16 @@
   "no-unnecessary-array-splice-count": "warn",
   "no-unnecessary-await": "warn",
   "no-unnecessary-boolean-comparison": "off", // Handled by `@typescript-eslint/no-unnecessary-boolean-literal-compare`
+  "no-unnecessary-default-arguments": "warn", // Handles cases where `unicorn/no-unnecessary-parameters` does not apply due to `minimumCallCount`
   "no-unnecessary-fetch-options": "warn",
   "no-unnecessary-global-this": "warn",
   "no-unnecessary-nested-ternary": "warn",
+  "no-unnecessary-parameters": [
+    "warn",
+    {
+      "minimumCallCount": 2
+    }
+  ],
   "no-unnecessary-polyfills": [
     "warn",
     {
@@ -375,12 +418,15 @@
   "no-unreadable-object-destructuring": "warn",
   "no-unsafe-buffer-conversion": "warn",
   "no-unsafe-dom-html": "warn",
+  "no-unsafe-json-serialization": "error",
   "no-unsafe-promise-all-settled-values": "warn",
   "no-unsafe-property-key": "warn",
   "no-unsafe-sqlite-interpolation": "warn",
   "no-unsafe-string-replacement": "off",
-  "no-unused-array-method-return": "off", // Handled by `sonarjs/no-ignored-return`
+  "no-unused-builtin-method-return": "warn",
+  "no-unused-iterator-helper": "error",
   "no-unused-properties": "warn",
+  "no-url-in-search-params": "warn",
   "no-useless-boolean-cast": "off", // Handled by `@typescript-eslint/no-unnecessary-type-conversion`
   "no-useless-coercion": "off", // Handled by `@typescript-eslint/no-unnecessary-type-conversion`
   "no-useless-collection-argument": "warn",
@@ -398,6 +444,7 @@
   "no-useless-promise-resolve-reject": "warn",
   "no-useless-re-export": "warn",
   "no-useless-recursion": "warn",
+  "no-useless-set-construction": "warn",
   "no-useless-spread": "warn",
   "no-useless-switch-case": "warn",
   "no-useless-template-literals": "off", // Handled by `@typescript-eslint/no-unnecessary-template-expression`
@@ -408,6 +455,7 @@
       "checkArrowFunctionBody": true
     }
   ],
+  "no-using-resource-escape": "warn",
   "no-xor-as-exponentiation": "warn",
   "no-zero-fractions": "warn",
   "number-literal-case": [
@@ -484,14 +532,27 @@
   "prefer-class-fields": "warn",
   "prefer-classlist-toggle": "warn",
   "prefer-code-point": "error",
+  "prefer-combined-guards": [
+    "warn",
+    {
+      "checkCompoundConditions": true,
+      "checkMultiStatementBodies": true
+    }
+  ],
   "prefer-continue": [
     "warn",
     {
-      "maximumStatements": 0 // consistent with `unicorn/prefer-early-return`
+      "maximumStatements": 0, // consistent with `unicorn/prefer-early-return`
+      "checkShortBodies": true
     }
   ],
   "prefer-date-now": "warn",
-  "prefer-default-parameters": "warn",
+  "prefer-default-parameters": [
+    "warn",
+    {
+      "checkFallbackExpressions": true
+    }
+  ],
   "prefer-direct-iteration": "warn",
   "prefer-dispose": "warn",
   "prefer-dom-node-append": "warn",
@@ -507,8 +568,8 @@
   ],
   "prefer-else-if": "warn",
   "prefer-error-is-error": "warn",
+  "prefer-escaped-irregular-whitespace": "off", // Set in index.ts for only JSON* files
   "prefer-event-target": "warn",
-  "prefer-explicit-viewport-units": "off", // Handled by `css/relative-font-units`
   "prefer-export-from": [
     "warn",
     {
@@ -542,7 +603,10 @@
   "prefer-iterator-helpers": "warn",
   "prefer-iterator-to-array": "warn",
   "prefer-iterator-to-array-at-end": "warn",
+  "prefer-iterator-zip": "warn",
+  "prefer-json-import": "warn",
   "prefer-keyboard-event-key": "off", // Handled by `@typescript-eslint/no-deprecated`
+  "prefer-literal-ascii": "warn",
   "prefer-location-assign": "warn",
   "prefer-logical-operator-over-ternary": "warn",
   "prefer-map-from-entries": "warn",
@@ -585,6 +649,7 @@
   "prefer-optional-catch-binding": "warn", // Not handled by `@typescript-eslint/no-unused-vars` for some reason
   "prefer-path2d": "warn",
   "prefer-private-class-fields": "warn",
+  "prefer-promise-static-methods": "warn",
   "prefer-promise-try": "warn",
   "prefer-promise-with-resolvers": "warn",
   "prefer-prototype-methods": "warn",
@@ -618,9 +683,15 @@
     "warn",
     "always"
   ],
+  "prefer-short-escape-sequences": "warn",
   "prefer-simple-condition-first": "warn",
   "prefer-simple-sort-comparator": "warn",
-  "prefer-simplified-conditions": "warn",
+  "prefer-simplified-conditions": [
+    "warn",
+    {
+      "negatedConditions": "simplify"
+    }
+  ],
   "prefer-single-array-predicate": "warn",
   "prefer-single-call": [
     "warn",
@@ -667,6 +738,7 @@
       "checkMethods": true
     }
   ],
+  "prefer-temporal-conversion": "warn",
   "prefer-ternary": "off", // Handled by `custom/prefer-ternary`
   "prefer-then-catch": "warn",
   "prefer-toggle-attribute": "warn",
@@ -674,6 +746,7 @@
   "prefer-type-error": "warn",
   "prefer-type-literal-last": "warn",
   "prefer-uint8array-base64": "warn",
+  "prefer-uint8array-hex": "warn",
   "prefer-unary-minus": "warn",
   "prefer-unicode-code-point-escapes": "warn",
   "prefer-url-can-parse": "warn",
@@ -699,6 +772,7 @@
   "require-passive-events": "warn",
   "require-post-message-target-origin": "off",
   "require-proxy-trap-boolean-return": "warn",
+  "require-text-decoder-streaming": "error",
   "single-line-block-comment-style": ["warn", "single-line"],
   "string-content": "off",
   "switch-case-braces": [

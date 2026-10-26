@@ -38,6 +38,9 @@
     "warn",
     "only-single-line",
     {
+      // consistent with `unicorn/prefer-minimal-ternary`
+      "checkVaryingBase": false,
+      "checkComputedMemberAccess": false,
       "maxLength": 150,
       "preventNestedTernary": true
     }

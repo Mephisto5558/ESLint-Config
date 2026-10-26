@@ -5,6 +5,7 @@
   "detect-buffer-noassert": "off", // Removed in Node 10: https://nodejs.org/api/buffer.html
   "detect-child-process": "warn",
   "detect-disable-mustache-escape": "off", // Handled by `no-eval`
+  "detect-invisible-characters": "error",
   "detect-new-buffer": "off", // Handled by `unicorn/no-new-buffer`, `@typescript-eslint/no-deprecated`
   "detect-no-csrf-before-method-override": "warn",
   "detect-non-literal-fs-filename": "off",

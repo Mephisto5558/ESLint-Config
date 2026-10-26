@@ -51,20 +51,23 @@ const rules = ['eslint/eslint', ...Object.keys(plugins)].reduce<
 
   disableList = new Map<`${number}.${number}.${number}`, string[]>([
     ['23.0.0', [
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/try#browser_compatibility
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/try#browser_compatibility
       `${pluginNames.unicorn}/prefer-promise-try`
     ]],
     ['24.0.0', [
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/isError#browser_compatibility
       `${pluginNames.unicorn}/prefer-error-is-error`
     ]],
     ['25.0.0', [
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64#browser_compatibility
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromBase64#browser_compatibility
-      `${pluginNames.unicorn}/prefer-uint8array-base64`
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64#browser_compatibility
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromBase64#browser_compatibility
+      `${pluginNames.unicorn}/prefer-uint8array-base64`,
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toHex#browser_compatibility
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/fromHex#browser_compatibility
+      `${pluginNames.unicorn}/prefer-uint8array-hex`
     ]],
     ['26.0.0', [
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/concat#browser_compatibility
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Iterator/concat#browser_compatibility
       `${pluginNames.unicorn}/prefer-iterator-concat`,
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility
       `${pluginNames.unicorn}/prefer-temporal`
@@ -103,7 +106,7 @@ const eslintConfig: (Config & { languageOptions?: { parserOptions?: ParserOption
         projectService: true,
         extraFileExtensions: ['.html'],
         tsconfigRootDir: undefined,
-        warnOnUnsupportedTypeScriptVersion: true
+        onUnsupportedTypeScriptVersion: 'warn'
       },
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -150,13 +153,26 @@ const eslintConfig: (Config & { languageOptions?: { parserOptions?: ParserOption
       [pluginNames.json]: filetypeSpecificPlugins[pluginNames.json]!,
       [pluginNames.jsonc]: filetypeSpecificPlugins[pluginNames.jsonc]!,
       /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
-      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames]
+      [pluginNames.eslintComments]: plugins[pluginNames.eslintComments as keyof typeof pluginNames],
+
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion -- false positive */
+      [pluginNames.unicorn]: plugins[pluginNames.unicorn as keyof typeof pluginNames]
     },
     rules: {
       ...importRules(`eslint/${pluginNames.json}`),
       ...importRules(pluginNames.jsonc),
       ...importRules(pluginNames.eslintComments),
-      'no-warning-comments': rules['no-warning-comments']
+      'no-warning-comments': rules['no-warning-comments'],
+      [`${pluginNames.unicorn}/comma-spacing`]: 'warn',
+      [`${pluginNames.unicorn}/prefer-escaped-irregular-whitespace`]: 'error',
+      [`${pluginNames.unicorn}/no-loss-of-precision`]: 'warn',
+      [`${pluginNames.unicorn}/indent`]: [
+        'warn',
+        {
+          indent: 2,
+          tabWidth: 2
+        }
+      ]
     }
   },
   {
@@ -297,7 +313,15 @@ const eslintConfig: (Config & { languageOptions?: { parserOptions?: ParserOption
       ...importRules(`eslint/${pluginNames.css}`),
       [`${pluginNames.unicorn}/no-missing-local-resource`]: 'warn',
       [`${pluginNames.unicorn}/no-shorthand-property-overrides`]: 'error',
-      [`${pluginNames.unicorn}/no-transition-all`]: 'warn'
+      [`${pluginNames.unicorn}/no-transition-all`]: 'warn',
+      [`${pluginNames.unicorn}/no-loss-of-precision`]: 'warn',
+      [`${pluginNames.unicorn}/indent`]: [
+        'warn',
+        {
+          indent: 2,
+          tabWidth: 2
+        }
+      ]
     }
   },
   {
@@ -400,12 +424,14 @@ const eslintConfig: (Config & { languageOptions?: { parserOptions?: ParserOption
     rules: {
       ...importRules(pluginNames.eslintComments),
       ...importRules(`eslint/${pluginNames.markdown}`),
-      [`${pluginNames.unicorn}/no-missing-local-resource`]: 'warn'
+      [`${pluginNames.unicorn}/no-missing-local-resource`]: 'warn',
+      [`${pluginNames.unicorn}/no-empty-link-text`]: 'warn',
+      [`${pluginNames.unicorn}/no-javascript-url`]: 'warn'
     }
   }
 ];
 
-/* eslint-disable-next-line unicorn/no-array-front-mutation -- needed here */
+/* eslint-disable-next-line unicorn/no-array-front-mutation, unicorn/no-immediate-mutation -- needed here */
 if (gitIgnore) eslintConfig.unshift(gitIgnore);
 
 export default eslintConfig;

@@ -3,9 +3,12 @@
   "$schema": "../_$schema.jsonc",
   "no-duplicate-keys": "error",
   "no-empty-keys": "warn",
-  "no-unnormalized-keys": ["warn", {
-    "form": "NFC"
-  }],
+  "no-unnormalized-keys": [
+    "warn",
+    {
+      "form": "NFC"
+    }
+  ],
   "no-unsafe-values": "warn",
   "sort-keys": "off", // Handled by `jsonc/sort-keys`
   "top-level-interop": "off"

@@ -2,6 +2,21 @@
   "$schema": "./_$schema.jsonc",
   // [PACKAGE-JSON] https://github.com/JoshuaKGoldberg/eslint-plugin-package-json/blob/main/docs/rules | Using "warn" wherever applicable
   "bin-name-casing": "warn",
+  "consistent-package-manager-declaration": [
+    "warn",
+    {
+      "prefer": "devEngines"
+    }
+  ],
+  "consistent-property-aliases": [
+    "warn",
+    {
+      "prefer": {
+        "bundleDependencies": true,
+        "license": true
+      }
+    }
+  ],
   "exports-subpaths-style": [
     "warn",
     {
@@ -28,6 +43,7 @@
       "order": "sort-package-json"
     }
   ],
+  "prefer-rolling-workspace-spec": "off",
   "repository-shorthand": [
     "warn",
     {
@@ -114,6 +130,7 @@
   ],
   "require-optionalDependencies": "off",
   "require-os": "off",
+  "require-package-json-export": "warn",
   "require-packageManager": "off",
   "require-peerDependencies": "off",
   "require-peerDependenciesMeta": "off",
@@ -151,6 +168,13 @@
     }
   ],
   "restrict-dependency-ranges": "off",
+  "restrict-dist-tags": [
+    "warn",
+    {
+      // "allowed": [],
+      // "allowedFor": []
+    }
+  ],
   "restrict-private-properties": [
     "warn",
     {

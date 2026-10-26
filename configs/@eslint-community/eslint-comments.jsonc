@@ -25,6 +25,7 @@
         "eslint-disable-line",
         "eslint-disable-next-line"
       ]
+      // "additionalDirectives": []
     }
   ],
   "require-description": [
@@ -33,6 +34,7 @@
       "ignore": [
         "eslint-enable" // Descriptions are already required on the disable comments
       ]
+      // "additionalDirectives": []
     }
   ]
 }

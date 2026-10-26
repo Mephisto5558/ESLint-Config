@@ -16,7 +16,7 @@ export default {
           let data;
           try {
             data = JSON.parse(descriptor.message);
-            if (typeof data !== 'object' || Array.isArray(data)) throw new Error('Message is valid');
+            if (typeof data !== 'object' || Array.isArray(data)) throw new TypeError('Message is valid');
           }
           catch { return context.report(descriptor); }
 
